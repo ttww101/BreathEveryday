@@ -51,6 +51,7 @@ class HomeViewController: UIViewController {
             subView.backgroundColor = UIColor.white
             displayView.view.addSubview(subView)
             subView.layer.opacity = 1
+            
             self.present(displayView, animated: false, completion: {
                 UIView.animate(withDuration: 0.5, animations: {
                     subView.layer.opacity = 0.0
