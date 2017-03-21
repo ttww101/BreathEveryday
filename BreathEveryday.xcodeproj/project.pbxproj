@@ -8,20 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		F4FA6A9B1E7FB0F100C2E46E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */; };
-		F4FA6A9D1E7FB0F100C2E46E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6A9C1E7FB0F100C2E46E /* ViewController.swift */; };
+		F4FA6A9D1E7FB0F100C2E46E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */; };
 		F4FA6AA01E7FB0F100C2E46E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6A9E1E7FB0F100C2E46E /* Main.storyboard */; };
 		F4FA6AA21E7FB0F100C2E46E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6AA11E7FB0F100C2E46E /* Assets.xcassets */; };
 		F4FA6AA51E7FB0F100C2E46E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6AA31E7FB0F100C2E46E /* LaunchScreen.storyboard */; };
+		F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AAC1E7FC24700C2E46E /* ListViewController.swift */; };
+		F4FA6AAF1E7FCD0D00C2E46E /* IndentifierModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AAE1E7FCD0D00C2E46E /* IndentifierModel.swift */; };
+		F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AB01E7FD3DD00C2E46E /* ListTableViewCell.swift */; };
+		F4FA6AB31E7FD3DD00C2E46E /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */; };
+		F4FA6AB71E7FD8F100C2E46E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F4FA6A971E7FB0F100C2E46E /* BreathEveryday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreathEveryday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F4FA6A9C1E7FB0F100C2E46E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F4FA6A9F1E7FB0F100C2E46E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4FA6AA11E7FB0F100C2E46E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4FA6AA41E7FB0F100C2E46E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4FA6AA61E7FB0F100C2E46E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4FA6AAC1E7FC24700C2E46E /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		F4FA6AAE1E7FCD0D00C2E46E /* IndentifierModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndentifierModel.swift; sourceTree = "<group>"; };
+		F4FA6AB01E7FD3DD00C2E46E /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +65,12 @@
 			isa = PBXGroup;
 			children = (
 				F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */,
-				F4FA6A9C1E7FB0F100C2E46E /* ViewController.swift */,
+				F4FA6AAE1E7FCD0D00C2E46E /* IndentifierModel.swift */,
+				F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */,
+				F4FA6AAC1E7FC24700C2E46E /* ListViewController.swift */,
+				F4FA6AB01E7FD3DD00C2E46E /* ListTableViewCell.swift */,
+				F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */,
+				F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */,
 				F4FA6A9E1E7FB0F100C2E46E /* Main.storyboard */,
 				F4FA6AA11E7FB0F100C2E46E /* Assets.xcassets */,
 				F4FA6AA31E7FB0F100C2E46E /* LaunchScreen.storyboard */,
@@ -125,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FA6AA51E7FB0F100C2E46E /* LaunchScreen.storyboard in Resources */,
+				F4FA6AB31E7FD3DD00C2E46E /* ListTableViewCell.xib in Resources */,
 				F4FA6AA21E7FB0F100C2E46E /* Assets.xcassets in Resources */,
 				F4FA6AA01E7FB0F100C2E46E /* Main.storyboard in Resources */,
 			);
@@ -137,8 +153,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4FA6A9D1E7FB0F100C2E46E /* ViewController.swift in Sources */,
+				F4FA6A9D1E7FB0F100C2E46E /* HomeViewController.swift in Sources */,
 				F4FA6A9B1E7FB0F100C2E46E /* AppDelegate.swift in Sources */,
+				F4FA6AAF1E7FCD0D00C2E46E /* IndentifierModel.swift in Sources */,
+				F4FA6AB71E7FD8F100C2E46E /* DetailViewController.swift in Sources */,
+				F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */,
+				F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +283,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5VBM73Y9G2;
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = PrototypeB.BreathEveryday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -276,6 +297,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 5VBM73Y9G2;
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = PrototypeB.BreathEveryday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
