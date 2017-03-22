@@ -27,17 +27,17 @@
                         </constraints>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="enX-Wp-eca">
-                        <rect key="frame" x="18" y="13" width="388" height="120.5"/>
+                        <rect key="frame" x="18" y="13" width="388" height="125.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </string>
-                        <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="20"/>
-                        <textInputTraits key="textInputTraits"/>
+                        <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="18"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES" calendarEvent="YES" shipmentTrackingNumber="YES" flightNumber="YES" lookupSuggestion="YES"/>
                     </textView>
                 </subviews>
                 <color key="backgroundColor" red="1" green="0.93725490199999995" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="l7n-4o-6gC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="6FB-qV-9fw"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="enX-Wp-eca" secondAttribute="bottom" constant="10" id="MUB-g7-aqk"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="enX-Wp-eca" secondAttribute="bottom" constant="5" id="MUB-g7-aqk"/>
                     <constraint firstAttribute="trailingMargin" secondItem="l7n-4o-6gC" secondAttribute="trailing" constant="10" id="PCn-cS-yyA"/>
                     <constraint firstItem="l7n-4o-6gC" firstAttribute="leading" secondItem="enX-Wp-eca" secondAttribute="trailing" constant="10" id="iR0-mK-diI"/>
                     <constraint firstItem="enX-Wp-eca" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="jOg-dH-gkw"/>

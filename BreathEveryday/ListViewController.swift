@@ -26,28 +26,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         listTableView.register(UINib(nibName: Identifier.listCell.rawValue, bundle: nil), forCellReuseIdentifier: Identifier.listCell.rawValue)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        let indexPath = IndexPath(row: 1, section: 0)
-        self.listTableView.reloadRows(at: [indexPath], with: .fade)
-    
-//        self.listTableView.sizeToFit()
-    }
-
     //Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Appearance of Back btn
         let backItem = UIBarButtonItem()
         backItem.title = ""
         self.navigationController?.navigationBar.tintColor = UIColor.black
-        navigationItem.backBarButtonItem = backItem // backBarBtn belongs to previous controller
+        navigationItem.backBarButtonItem = backItem
     }
     
     func viewChangeToDetailPage(sender: UIButton) {
@@ -62,38 +47,19 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
-//    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell {
-            return cell.textView.contentSize.height + 30
-        } else {
-            print(tableView.cellForRow(at: indexPath))
-        }
-        return 350
-    }
-    
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = listTableView.dequeueReusableCell(withIdentifier: Identifier.listCell.rawValue, for: indexPath)
+//        let cell = Bundle.main.loadNibNamed(Identifier.listCell.rawValue, owner: self, options: nil)?.first as? UITableViewCell
+        
         if let dequeCell = cell as? ListTableViewCell {
             
             dequeCell.viewDetailBtn.addTarget(self, action: #selector(viewChangeToDetailPage), for: .touchUpInside)
-            
-//            dequeCell.textView.frame = CGRect(x: dequeCell.frame.minX,
-//                                              y: dequeCell.frame.minY,
-//                                              width: dequeCell.frame.width,
-//                                              height: dequeCell.textView.contentSize.height)
-            print(dequeCell.textView.frame)
             dequeCell.textView.tag = indexPath.row
-            dequeCell.sizeToFit()
-//            self.listTableView.sizeToFit()
-            
+
             return dequeCell
         }
         
