@@ -97,7 +97,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="listTableView" destination="njh-bq-OPJ" id="hl7-1Y-thq"/>
+                        <outlet property="listTableView" destination="njh-bq-OPJ" id="nB4-3R-0Xp"/>
                         <segue destination="nAw-WO-pXU" kind="show" identifier="DetailViewController" id="FdC-qo-xe1"/>
                     </connections>
                 </viewController>

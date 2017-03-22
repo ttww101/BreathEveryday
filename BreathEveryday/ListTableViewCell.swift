@@ -11,17 +11,16 @@ import UIKit
 class ListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint?
     @IBOutlet weak var viewDetailImage: UIImageView!
     let viewDetailBtn = UIButton()
+    let coveredAddItemView = UIView()
+    let emptyView = UIView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        // Initialization code
-        viewDetailBtn.layer.frame = CGRect(x: 0, y: 0, width: viewDetailImage.frame.width, height: viewDetailImage.frame.height)
-        viewDetailBtn.alpha = 0.1
-        viewDetailImage.addSubview(viewDetailBtn)
+        addCoveredView()
+        addDetailBtn()
         textView.delegate = self
         
     }
@@ -31,10 +30,60 @@ class ListTableViewCell: UITableViewCell {
         
         if selected {
             textView?.becomeFirstResponder()
-            
         } else {
             textView?.resignFirstResponder()
         }
+        
+        print(selected)
+        
+    }
+    
+    //Default set up
+    func addDetailBtn() {
+        viewDetailBtn.layer.frame = CGRect(x: 0, y: 0, width: viewDetailImage.frame.width, height: viewDetailImage.frame.height)
+        viewDetailBtn.alpha = 0.1
+        viewDetailImage.addSubview(viewDetailBtn)
+    }
+    
+    func addCoveredView() {
+        //coveredView
+        contentView.addSubview(coveredAddItemView)
+        coveredAddItemView.backgroundColor = contentView.backgroundColor
+        coveredAddItemView.translatesAutoresizingMaskIntoConstraints = false
+        coveredAddItemView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
+        coveredAddItemView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
+        coveredAddItemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
+        coveredAddItemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
+        coveredAddItemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(removeCoveredView)))
+        //plusImageView
+        let plusImageView = UIImageView()
+        plusImageView.contentMode = .scaleAspectFit
+        plusImageView.alpha = 0.5
+        plusImageView.image = #imageLiteral(resourceName: "Plus-50")
+        plusImageView.backgroundColor = contentView.backgroundColor
+        coveredAddItemView.addSubview(plusImageView)
+        plusImageView.translatesAutoresizingMaskIntoConstraints = false
+        plusImageView.topAnchor.constraint(equalTo: coveredAddItemView.topAnchor).isActive = true
+        plusImageView.bottomAnchor.constraint(equalTo: coveredAddItemView.bottomAnchor).isActive = true
+        plusImageView.leadingAnchor.constraint(equalTo: coveredAddItemView.leadingAnchor, constant: 10).isActive = true
+        plusImageView.trailingAnchor.constraint(equalTo: coveredAddItemView.leadingAnchor, constant: 40).isActive = true
+        //CoveredEmtyView
+        emptyView.backgroundColor = contentView.backgroundColor
+        contentView.addSubview(emptyView)
+        emptyView.translatesAutoresizingMaskIntoConstraints = false
+        emptyView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        emptyView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        emptyView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
+        emptyView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
+    }
+    
+    func removeCoveredView() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.textView.becomeFirstResponder()
+            self.coveredAddItemView.frame = CGRect(x: self.coveredAddItemView.frame.maxX - 30, y: self.coveredAddItemView.frame.minY, width: self.coveredAddItemView.frame.width, height: self.coveredAddItemView.frame.height)
+        }, completion: { (_) in
+            self.coveredAddItemView.removeFromSuperview()
+        })
     }
     
 }
@@ -85,6 +134,7 @@ extension ListTableViewCell: UITextViewDelegate {
                               at: .bottom,
                               animated: false)
     }
+    
 }
 
 
