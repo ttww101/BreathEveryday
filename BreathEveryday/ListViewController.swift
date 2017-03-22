@@ -47,7 +47,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 10 + countForEnableCell
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,8 +59,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             dequeCell.viewDetailBtn.addTarget(self, action: #selector(viewChangeToDetailPage), for: .touchUpInside)
             dequeCell.textView.tag = indexPath.row
-            //enable first item
-            if indexPath.row == 0 || indexPath.row == 1 {
+            //enable add function first item
+            if indexPath.row == 0 {
                 dequeCell.emptyView.removeFromSuperview()
             }
             

@@ -21,6 +21,7 @@ class ListTableViewCell: UITableViewCell {
         
         addCoveredView()
         addDetailBtn()
+        addToolBarOnKeyboard()
         textView.delegate = self
         
     }
@@ -36,6 +37,86 @@ class ListTableViewCell: UITableViewCell {
         
         print(selected)
         
+    }
+    
+    func addToolBarOnKeyboard() {
+        
+        let toolBar = UIToolbar()
+        
+        let starBtn = UIBarButtonItem(customView: createButtonWithImage(image: #imageLiteral(resourceName: "Star-48"), action: #selector(btnStarToolBar)))
+        
+        let locateBtn = UIBarButtonItem(customView: createButtonWithImage(image: #imageLiteral(resourceName: "Marker-50"), action: #selector(btnLocateToolBar)))
+        
+        let calendarBtn = UIBarButtonItem(customView: createButtonWithImage(image: #imageLiteral(resourceName: "Calendar Filled-50"), action: #selector(btnCalendarToolBar)))
+        
+        let alarmBtn = UIBarButtonItem(customView: createButtonWithImage(image: #imageLiteral(resourceName: "Alarm-50"), action: #selector(btnAlarmToolBar)))
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(dismissKeyboard))
+        
+        toolBar.setItems([starBtn, locateBtn, calendarBtn, alarmBtn, flexibleSpace, doneBtn], animated: false)
+        
+        toolBar.sizeToFit()
+        textView.inputAccessoryView = toolBar
+        
+    }
+    
+    func createButtonWithImage(image: UIImage, action: Selector) -> UIButton {
+        
+        let createBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 27))
+        createBtn.addTarget(self, action: action, for: .touchUpInside)
+        createBtn.setImage(image, for: .normal)
+        createBtn.imageView?.contentMode = .scaleAspectFit
+        createBtn.imageView?.translatesAutoresizingMaskIntoConstraints = false
+        createBtn.imageView?.topAnchor.constraint(equalTo: createBtn.topAnchor).isActive = true
+        createBtn.imageView?.bottomAnchor.constraint(equalTo: createBtn.bottomAnchor).isActive = true
+        createBtn.imageView?.leadingAnchor.constraint(equalTo: createBtn.leadingAnchor).isActive = true
+        createBtn.imageView?.trailingAnchor.constraint(equalTo: createBtn.trailingAnchor).isActive = true
+        
+        return createBtn
+    }
+    
+    func btnStarToolBar() {
+        print("star")
+    }
+    
+    func btnLocateToolBar() {
+        print("locate")
+    }
+    
+    func btnCalendarToolBar() {
+        print("calendar")
+    }
+    
+    func btnAlarmToolBar() {
+        print("alarm")
+    }
+    
+    func dismissKeyboard() {
+        contentView.endEditing(true)
+    }
+    
+    func removeCoveredView() {
+        UIView.animate(withDuration: 0.35, animations: {
+            //enable text
+            self.textView.becomeFirstResponder()
+            //remove next emptyview
+            if let tableView = self.textView.superview?.superview?.superview?.superview as? UITableView {
+                if let nextCell = tableView.cellForRow(at: IndexPath(row: self.textView.tag + 1, section: 0)) as? ListTableViewCell {
+                    nextCell.emptyView.removeFromSuperview()
+                }
+                tableView.beginUpdates()
+                tableView.insertRows(at: [IndexPath(row: 10 + countForEnableCell, section: 0)], with: .fade)
+                countForEnableCell += 1
+                tableView.endUpdates()
+            }
+            //removing animation
+            self.coveredAddItemView.frame = CGRect(x: self.coveredAddItemView.frame.maxX - 50, y: self.coveredAddItemView.frame.minY, width: self.coveredAddItemView.frame.width, height: self.coveredAddItemView.frame.height)
+        }, completion: { (_) in
+            //remove coveredAddItemView
+            self.coveredAddItemView.removeFromSuperview()
+        })
     }
     
     //Default set up
@@ -77,14 +158,6 @@ class ListTableViewCell: UITableViewCell {
         emptyView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
     }
     
-    func removeCoveredView() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.textView.becomeFirstResponder()
-            self.coveredAddItemView.frame = CGRect(x: self.coveredAddItemView.frame.maxX - 30, y: self.coveredAddItemView.frame.minY, width: self.coveredAddItemView.frame.width, height: self.coveredAddItemView.frame.height)
-        }, completion: { (_) in
-            self.coveredAddItemView.removeFromSuperview()
-        })
-    }
     
 }
 
@@ -126,13 +199,13 @@ extension ListTableViewCell: UITextViewDelegate {
             tableView.beginUpdates()
             tableView.endUpdates()
             UIView.setAnimationsEnabled(true)
-            print(textView.tag)
         }
         //allow to see when typing
+        print(textView.tag)
         let indexPath = IndexPath(row: textView.tag + 1, section: 0)
         tableView.scrollToRow(at: indexPath,
                               at: .bottom,
-                              animated: false)
+                              animated: true)
     }
     
 }
