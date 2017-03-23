@@ -5,6 +5,11 @@
 //  Created by Lucy on 2017/3/20.
 //  Copyright © 2017年 Bomi. All rights reserved.
 //
+enum listSectionType {
+    case add
+    case content
+}
+
 
 import UIKit
 
@@ -14,6 +19,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func homeBtn(_ sender: Any) {
         displayHomeView()
     }
+    var tableViewBottomConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +27,34 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         listTableView.delegate = self
         listTableView.dataSource = self
         listTableView.rowHeight = UITableViewAutomaticDimension
-        listTableView.estimatedRowHeight = 150.0
+        listTableView.estimatedRowHeight = 77
         listTableView.allowsSelection = false
         listTableView.register(UINib(nibName: Identifier.listCell.rawValue, bundle: nil), forCellReuseIdentifier: Identifier.listCell.rawValue)
+        tableViewBottomConstraint = NSLayoutConstraint(item: listTableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        view.addConstraint(tableViewBottomConstraint!)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
+    func handleKeyboardNotification(notification: NSNotification) {
+        
+        if let userInfo = notification.userInfo {
+            if let rectInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+                //get rect
+                let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+                tableViewBottomConstraint?.constant = isKeyboardShowing ? -rectInfo.height : 0
+                
+                UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: { 
+                    self.view.layoutIfNeeded()
+                }, completion: { (completed) in
+                    
+                })
+                
+            }
+        }
+    }
+
+
     //Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //Appearance of Back btn
@@ -42,32 +71,55 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //end editing
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 + countForEnableCell
+        
+        switch section {
+        case listSectionType.content.hashValue:
+            return countForEnableCell
+        case listSectionType.add.hashValue:
+            return 1
+        default:
+            return 0
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = listTableView.dequeueReusableCell(withIdentifier: Identifier.listCell.rawValue, for: indexPath)
-//        let cell = Bundle.main.loadNibNamed(Identifier.listCell.rawValue, owner: self, options: nil)?.first as? UITableViewCell
+        guard let dequeCell = cell as? ListTableViewCell else {
+            return UITableViewCell()
+        }
         
-        if let dequeCell = cell as? ListTableViewCell {
+        switch indexPath.section {
+        case listSectionType.content.hashValue:
             
             dequeCell.viewDetailBtn.addTarget(self, action: #selector(viewChangeToDetailPage), for: .touchUpInside)
             dequeCell.textView.tag = indexPath.row
-            //enable add function first item
-            if indexPath.row == 0 {
-                dequeCell.emptyView.removeFromSuperview()
-            }
+            dequeCell.coveredAddItemView.alpha = 0
+
+            return dequeCell
+            
+        case listSectionType.add.hashValue:
+            
+            dequeCell.textView.tag = countForEnableCell
+            dequeCell.coveredAddItemView.alpha = 1
             
             return dequeCell
+            
+        default:
+            return cell
         }
         
-        return cell
     }
     
     func displayHomeView() {

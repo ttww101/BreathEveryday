@@ -8,4 +8,4 @@
 
 import Foundation
 
-var countForEnableCell: Int = 1
+var countForEnableCell: Int = 0
