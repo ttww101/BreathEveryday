@@ -7,14 +7,62 @@
 //
 
 import UIKit
+import CoreData
+
+enum CustomButton {
+    
+    case alarm
+    case calender
+    case locate
+    case star
+    
+    var button: UIButton {
+        
+        guard let button = UINib(nibName: "KeyboardBarButton", bundle: nil).instantiate(withOwner: nil, options: nil).first as? UIButton else {
+            return UIButton()
+        }
+        
+        button.imageView?.contentMode = .scaleAspectFit
+        
+        switch self {
+            
+        case .alarm:
+            
+            button.setImage(#imageLiteral(resourceName: "Alarm-50"), for: .normal)
+            button.frame = CGRect(x: 0, y: 0, width: 60, height: 25)
+            
+        case .calender:
+            
+            button.setImage(#imageLiteral(resourceName: "Calendar-64"), for: .normal)
+            button.frame = CGRect(x: 0, y: 0, width: 60, height: 33)
+            
+        case .locate:
+            
+            button.setImage(#imageLiteral(resourceName: "Worldwide Location Filled-50"), for: .normal)
+            button.frame = CGRect(x: 0, y: 0, width: 60, height: 27)
+            
+        case .star:
+            
+            button.setImage(#imageLiteral(resourceName: "Star-48"), for: .normal)
+            button.frame = CGRect(x: 0, y: 0, width: 60, height: 26)
+            
+        }
+        
+        return button
+        
+    }
+    
+}
+
 
 class ListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var viewDetailImage: UIImageView!
-    let viewDetailBtn = UIButton()
+    var viewDetailBtn = UIButton()
     let coveredAddItemView = UIView()
-//    let emptyView = UIView()
+    let moc = UIApplication.shared.delegate as! AppDelegate
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -43,19 +91,26 @@ class ListTableViewCell: UITableViewCell {
         
         let toolBar = UIToolbar()
         
-        let starBtn = UIBarButtonItem(customView: createButtonWithImage(image: #imageLiteral(resourceName: "Star-48"), scale: 1.1, action: #selector(btnStarToolBar)))
-        
-        let locateBtn = UIBarButtonItem(customView: createButtonWithImage(image: #imageLiteral(resourceName: "Worldwide Location Filled-50"), scale: 1.1 , action: #selector(btnLocateToolBar)))
-        
-        let calendarBtn = UIBarButtonItem(customView: createButtonWithImage(image: #imageLiteral(resourceName: "Calendar Filled-50"), scale: 1.05, action: #selector(btnCalendarToolBar)))
-        
-        let alarmBtn = UIBarButtonItem(customView: createButtonWithImage(image: #imageLiteral(resourceName: "Alarm-50"), scale: 1, action: #selector(btnAlarmToolBar)))
+        let alarmBtn = CustomButton.alarm.button
+        alarmBtn.addTarget(self, action: #selector(btnAlarmToolBar), for: .touchUpInside)
+        let calendarBtn = CustomButton.calender.button
+        calendarBtn.addTarget(self, action: #selector(btnCalendarToolBar), for: .touchUpInside)
+        let locateBtn = CustomButton.locate.button
+        locateBtn.addTarget(self, action: #selector(btnLocateToolBar), for: .touchUpInside)
+        let starBtn = CustomButton.star.button
+        starBtn.addTarget(self, action: #selector(btnStarToolBar), for: .touchUpInside)
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         
         let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(dismissKeyboard))
         
-        toolBar.setItems([starBtn, locateBtn, calendarBtn, alarmBtn, flexibleSpace, doneBtn], animated: false)
+        toolBar.setItems([UIBarButtonItem(customView: starBtn),
+                          UIBarButtonItem(customView: locateBtn),
+                          UIBarButtonItem(customView: calendarBtn),
+                          UIBarButtonItem(customView: alarmBtn),
+                          flexibleSpace,
+                          doneBtn]
+                        , animated: false)
         toolBar.sizeToFit()
         textView.inputAccessoryView = toolBar
         
@@ -91,7 +146,13 @@ class ListTableViewCell: UITableViewCell {
     }
     
     func dismissKeyboard() {
+        
+        //end edit
         contentView.endEditing(true)
+        
+        //update content
+        updateSingleData(row: self.textView.tag, content: "")
+        
     }
 // Toolbar end
 //------------------------------------------
@@ -104,16 +165,17 @@ class ListTableViewCell: UITableViewCell {
         countForEnableCell += 1
         let newIndexPath = IndexPath(row: countForEnableCell - 1, section: listSectionType.content.hashValue)
         
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: 0.4, animations: {
             //insert a row
             tableView.beginUpdates()
             //insert
             tableView.insertRows(at: [newIndexPath], with: .none)
             tableView.endUpdates()
+            //core data
+            self.addSingleData(row: newIndexPath.row, content: "")
             //removing animation
-//            self.coveredAddItemView.frame = CGRect(x: self.coveredAddItemView.frame.maxX , y: self.coveredAddItemView.frame.minY, width: self.coveredAddItemView.frame.width, height: self.coveredAddItemView.frame.height)
+//            self.contentView.frame = CGRect(x: self.contentView.frame.minX, y: self.contentView.frame.maxY, width: self.contentView.frame.width, height: 0)
         }, completion: { (_) in
-            
             //allow new added row to see
             tableView.scrollToRow(at: newIndexPath,
                                   at: .bottom,
@@ -139,6 +201,8 @@ class ListTableViewCell: UITableViewCell {
 extension ListTableViewCell: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
+        
+        //saveContents
         _ = textView.text
         //you can do something here when editing is ended
         
@@ -155,11 +219,6 @@ extension ListTableViewCell: UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        //allow to see while begining
-        guard let tableView = textView.superview?.superview?.superview?.superview as? UITableView else {
-            return
-        }
-        print(textView.tag)
         
     }
     
@@ -179,15 +238,46 @@ extension ListTableViewCell: UITextViewDelegate {
             tableView.endUpdates()
             UIView.setAnimationsEnabled(true)
         }
-        //allow to see while typing
-//        let indexPath = IndexPath(row: 0, section: 1)
-//        tableView.scrollToRow(at: indexPath,
-//                              at: .bottom,
-//                              animated: false)
+        
     }
     
     
 }
+
+//For CoreData
+//-----------------------------------
+extension ListTableViewCell {
+    
+    func addSingleData(row: Int, content: String) {
+    
+        guard let entityDescription = NSEntityDescription.entity(forEntityName: "Content", in: moc.persistentContainer.viewContext) else { return }
+        print(NSPersistentContainer.defaultDirectoryURL())
+        let insertObject = Content(entity: entityDescription, insertInto: moc.persistentContainer.viewContext)
+        insertObject.content = content
+        insertObject.row = Int32(row)
+        moc.saveContext()
+        
+    }
+    
+    func updateSingleData(row: Int, content: String) {
+        
+        let managedContext = moc.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Content")
+        do {
+            guard let results = try managedContext.fetch(request) as? [Content] else {
+                return
+            }
+            results[row].content = content
+            moc.saveContext()
+        } catch {
+            fatalError("\(error)")
+        }
+        
+    }
+    
+}
+
+
 
 //For Appearance
 //------------------------------------

@@ -7,5 +7,13 @@
 //
 
 import Foundation
+import CoreData
 
 var countForEnableCell: Int = 0
+
+class ListManager {
+    
+    func saveData() {
+        
+    }
+}

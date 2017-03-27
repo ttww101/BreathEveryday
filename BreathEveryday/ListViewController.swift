@@ -12,6 +12,7 @@ enum listSectionType {
 
 
 import UIKit
+import CoreData
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -20,6 +21,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         displayHomeView()
     }
     var tableViewBottomConstraint: NSLayoutConstraint?
+    let moc = UIApplication.shared.delegate as! AppDelegate
+    let arrContent: [Content] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +37,66 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         view.addConstraint(tableViewBottomConstraint!)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        //Coredata
+        requestDeleteData()
+        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        requestGetData()
+        
+    }
+    
+    
+    //delete coreData
+    func requestDeleteData() {
+        
+        let managedContext = moc.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Content")
+        
+        do {
+            
+            guard let results = try managedContext.fetch(request) as? [Content] else {
+                return
+            }
+            
+            for result in results {
+                managedContext.delete(result)
+            }
+            
+            moc.saveContext()
+            
+        } catch {
+            fatalError("\(error)")
+        }
+    }
+    
+    
+    //get content
+    func requestGetData() {
+        
+        let managedContext = moc.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Content")
+        do {
+            guard let results = try managedContext.fetch(request) as? [Content] else {
+                return
+            }
+            
+            results.forEach({ (result) in
+                
+                print(result)
+                
+            })
+            
+        } catch {
+            fatalError("Failed to fetch data: \(error)")
+        }
+    }
+    
     
     func handleKeyboardNotification(notification: NSNotification) {
         
@@ -47,7 +109,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
                 UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: { 
                     self.view.layoutIfNeeded()
                 }, completion: { (completed) in
-                    
+                    UIView.animate(withDuration: 0.35, animations: {
+                        
+                        if let firstCell = self.listTableView.cellForRow(at: IndexPath(row: 1, section: listSectionType.add.hashValue)) as? ListTableViewCell {
+                            firstCell.contentView.frame = CGRect(x: firstCell.contentView.frame.minX , y: firstCell.contentView.frame.minY, width: firstCell.contentView.frame.width, height: firstCell.contentView.frame.height)
+                        }
+                        
+                    })
                 })
                 
             }
