@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F4B2A5801E88EE4200CAECEE /* ContentModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A57E1E88EE4200CAECEE /* ContentModel.xcdatamodeld */; };
-		F4B2A5871E88F1A600CAECEE /* Content+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A5851E88F1A600CAECEE /* Content+CoreDataClass.swift */; };
-		F4B2A5881E88F1A600CAECEE /* Content+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A5861E88F1A600CAECEE /* Content+CoreDataProperties.swift */; };
+		F4B2A5B91E8D2F2700CAECEE /* Content+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A5B71E8D2F2700CAECEE /* Content+CoreDataClass.swift */; };
+		F4B2A5BA1E8D2F2700CAECEE /* Content+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A5B81E8D2F2700CAECEE /* Content+CoreDataProperties.swift */; };
 		F4F4D66F1E82584B00D7EFBA /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F4D66E1E82584B00D7EFBA /* ListManager.swift */; };
 		F4F4D6711E828EAC00D7EFBA /* KeyboardBarButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F4D6701E828EAC00D7EFBA /* KeyboardBarButton.xib */; };
 		F4F4D6751E82909E00D7EFBA /* KeyboardBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F4D6741E82909E00D7EFBA /* KeyboardBarButton.swift */; };
@@ -27,8 +27,8 @@
 
 /* Begin PBXFileReference section */
 		F4B2A57F1E88EE4200CAECEE /* ContentModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContentModel.xcdatamodel; sourceTree = "<group>"; };
-		F4B2A5851E88F1A600CAECEE /* Content+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Content+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F4B2A5861E88F1A600CAECEE /* Content+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Content+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F4B2A5B71E8D2F2700CAECEE /* Content+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Content+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F4B2A5B81E8D2F2700CAECEE /* Content+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Content+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F4F4D66E1E82584B00D7EFBA /* ListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
 		F4F4D6701E828EAC00D7EFBA /* KeyboardBarButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardBarButton.xib; sourceTree = "<group>"; };
 		F4F4D6741E82909E00D7EFBA /* KeyboardBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardBarButton.swift; sourceTree = "<group>"; };
@@ -71,8 +71,8 @@
 		F4FA6A8E1E7FB0F100C2E46E = {
 			isa = PBXGroup;
 			children = (
-				F4B2A5851E88F1A600CAECEE /* Content+CoreDataClass.swift */,
-				F4B2A5861E88F1A600CAECEE /* Content+CoreDataProperties.swift */,
+				F4B2A5B71E8D2F2700CAECEE /* Content+CoreDataClass.swift */,
+				F4B2A5B81E8D2F2700CAECEE /* Content+CoreDataProperties.swift */,
 				F4FA6A991E7FB0F100C2E46E /* BreathEveryday */,
 				F4FA6A981E7FB0F100C2E46E /* Products */,
 			);
@@ -184,13 +184,13 @@
 				F4FA6A9B1E7FB0F100C2E46E /* AppDelegate.swift in Sources */,
 				F4FA6AAF1E7FCD0D00C2E46E /* IndentifierModel.swift in Sources */,
 				F4F4D6751E82909E00D7EFBA /* KeyboardBarButton.swift in Sources */,
-				F4B2A5881E88F1A600CAECEE /* Content+CoreDataProperties.swift in Sources */,
+				F4B2A5BA1E8D2F2700CAECEE /* Content+CoreDataProperties.swift in Sources */,
 				F4F4D66F1E82584B00D7EFBA /* ListManager.swift in Sources */,
 				F4FA6AB71E7FD8F100C2E46E /* DetailViewController.swift in Sources */,
 				F4B2A5801E88EE4200CAECEE /* ContentModel.xcdatamodeld in Sources */,
 				F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */,
 				F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */,
-				F4B2A5871E88F1A600CAECEE /* Content+CoreDataClass.swift in Sources */,
+				F4B2A5B91E8D2F2700CAECEE /* Content+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

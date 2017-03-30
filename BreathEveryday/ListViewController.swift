@@ -14,19 +14,20 @@ enum listSectionType {
 import UIKit
 import CoreData
 
-class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ListViewController: UIViewController {
 
     @IBOutlet weak var listTableView: UITableView!
     @IBAction func homeBtn(_ sender: Any) {
         displayHomeView()
     }
     var tableViewBottomConstraint: NSLayoutConstraint?
-    let moc = UIApplication.shared.delegate as! AppDelegate
     let arrContent: [Content] = []
+    var fetchedResultsController: NSFetchedResultsController<Content>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //tableView
         listTableView.delegate = self
         listTableView.dataSource = self
         listTableView.rowHeight = UITableViewAutomaticDimension
@@ -34,69 +35,18 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         listTableView.allowsSelection = false
         listTableView.register(UINib(nibName: Identifier.listCell.rawValue, bundle: nil), forCellReuseIdentifier: Identifier.listCell.rawValue)
         tableViewBottomConstraint = NSLayoutConstraint(item: listTableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        
+        //constraints
         view.addConstraint(tableViewBottomConstraint!)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        //Coredata
-        requestDeleteData()
+        //add first Coredata
+        AddFirstData()
+        
+        attemptFetchCoreDataResult()
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        requestGetData()
-        
-    }
-    
-    
-    //delete coreData
-    func requestDeleteData() {
-        
-        let managedContext = moc.persistentContainer.viewContext
-        
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Content")
-        
-        do {
-            
-            guard let results = try managedContext.fetch(request) as? [Content] else {
-                return
-            }
-            
-            for result in results {
-                managedContext.delete(result)
-            }
-            
-            moc.saveContext()
-            
-        } catch {
-            fatalError("\(error)")
-        }
-    }
-    
-    
-    //get content
-    func requestGetData() {
-        
-        let managedContext = moc.persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Content")
-        do {
-            guard let results = try managedContext.fetch(request) as? [Content] else {
-                return
-            }
-            
-            results.forEach({ (result) in
-                
-                print(result)
-                
-            })
-            
-        } catch {
-            fatalError("Failed to fetch data: \(error)")
-        }
-    }
-    
     
     func handleKeyboardNotification(notification: NSNotification) {
         
@@ -139,25 +89,172 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+}
+
+extension ListViewController: NSFetchedResultsControllerDelegate {
+    
+    func attemptFetchCoreDataResult() {
         
-        //end editing
+        
+        let fetchRequest: NSFetchRequest<Content> = Content.fetchRequest()
+        //sort by
+        let dateSort = NSSortDescriptor(key: "createDate", ascending: true)
+        fetchRequest.sortDescriptors = [dateSort]
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: appDelegate.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        do {
+            
+            try fetchedResultsController.performFetch()
+            
+        } catch {
+            
+            let error = error as NSError
+            print(error)
+            
+        }
+        
+    }
+
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+        listTableView.beginUpdates()
+        
     }
     
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+        listTableView.endUpdates()
+        
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+            
+        case .insert:
+            
+            if let indexPath = newIndexPath {
+                
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.listTableView.insertRows(at: [indexPath], with: .fade)
+                } , completion: { (_) in
+                    
+                    //allow new added row to see
+                    self.listTableView.scrollToRow(at: indexPath,
+                                                   at: .bottom,
+                                                   animated: false)
+                    
+                    //get add cell and ready to type
+                    if let addCell = self.listTableView.cellForRow(at: indexPath) as? ListTableViewCell {
+                        addCell.textView.becomeFirstResponder()
+                    }
+                    
+                })
+                
+                
+            }
+            
+        case .delete:
+            
+            if let indexPath = indexPath {
+                listTableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            
+        case .update:
+            
+            if let indexPath = indexPath {
+//                let dequeCell = listTableView.cellForRow(at: indexPath) as! ListTableViewCell
+//                    dequeCell.configureCell(Content: fetchedResultsController.object(at: indexPath))
+                
+            }
+            
+        case .move:
+            
+            if let indexPath = indexPath {
+                listTableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            if let indexPath = newIndexPath {
+                listTableView.insertRows(at: [indexPath], with: .fade)
+            }
+            
+        }
+        
+    }
+    
+    //delete coreData
+    func requestDeleteData() {
+        
+        let moc = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Content")
+        
+        do {
+            
+            guard let results = try moc.fetch(request) as? [Content] else {
+                return
+            }
+            
+            for result in results {
+                moc.delete(result)
+            }
+            
+            appDelegate.saveContext()
+            
+        } catch {
+            fatalError("\(error)")
+        }
+    }
+    
+    
+    func AddFirstData() {
+        
+        let moc = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Content")
+        do {
+            
+            guard let results = try moc.fetch(request) as? [Content] else {
+                return
+            }
+            if results.count == 0 {
+                
+                guard let entityDescription = NSEntityDescription.entity(forEntityName: "Content", in: moc) else { return }
+                print(NSPersistentContainer.defaultDirectoryURL())
+                let _ = Content(entity: entityDescription, insertInto: moc)
+                
+            }
+            
+        } catch {
+            fatalError("Failed to fetch data: \(error)")
+        }
+    }
+    
+}
+
+extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        
+        if let sections = fetchedResultsController.sections {
+            return sections.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        switch section {
-        case listSectionType.content.hashValue:
-            return countForEnableCell
-        case listSectionType.add.hashValue:
-            return 1
-        default:
-            return 0
+        
+        if let sections = fetchedResultsController.sections  {
+            
+            let sectionInfo = sections[0]
+            return sectionInfo.numberOfObjects
+            
         }
+        
+        return 0
         
     }
     
@@ -168,25 +265,37 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             return UITableViewCell()
         }
         
-        switch indexPath.section {
-        case listSectionType.content.hashValue:
-            
-            dequeCell.viewDetailBtn.addTarget(self, action: #selector(viewChangeToDetailPage), for: .touchUpInside)
-            dequeCell.textView.tag = indexPath.row
+        dequeCell.viewDetailBtn.addTarget(self, action: #selector(viewChangeToDetailPage), for: .touchUpInside)
+        dequeCell.textView.tag = indexPath.row
+        if indexPath.row != 0 {
             dequeCell.coveredAddItemView.alpha = 0
-
-            return dequeCell
-            
-        case listSectionType.add.hashValue:
-            
-            dequeCell.textView.tag = countForEnableCell
+        } else {
             dequeCell.coveredAddItemView.alpha = 1
-            
-            return dequeCell
-            
-        default:
-            return cell
         }
+        //sync data
+        dequeCell.configureCell(Content: fetchedResultsController.object(at: indexPath))
+        return dequeCell
+        //        switch indexPath.section {
+        //        case listSectionType.content.hashValue:
+        //
+        //            dequeCell.viewDetailBtn.addTarget(self, action: #selector(viewChangeToDetailPage), for: .touchUpInside)
+        //            dequeCell.textView.tag = indexPath.row
+        //            dequeCell.coveredAddItemView.alpha = 0
+        //            //sync data
+        //            dequeCell.configureCell(Content: fetchedResultsController.object(at: indexPath))
+        //
+        //            return dequeCell
+        //
+        //        case listSectionType.add.hashValue:
+        //
+        //            dequeCell.textView.tag = countForEnableCell
+        //            dequeCell.coveredAddItemView.alpha = 1
+        //
+        //            return dequeCell
+        //
+        //        default:
+        //            return cell
+        //        }
         
     }
     

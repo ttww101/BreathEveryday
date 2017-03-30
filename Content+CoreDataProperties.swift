@@ -2,7 +2,7 @@
 //  Content+CoreDataProperties.swift
 //  BreathEveryday
 //
-//  Created by Lucy on 2017/3/27.
+//  Created by Lucy on 2017/3/30.
 //  Copyright © 2017年 Bomi. All rights reserved.
 //
 
@@ -19,5 +19,6 @@ extension Content {
     @NSManaged public var content: String?
     @NSManaged public var detail: String?
     @NSManaged public var row: Int32
+    @NSManaged public var createDate: NSDate?
 
 }

@@ -61,8 +61,6 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var viewDetailImage: UIImageView!
     var viewDetailBtn = UIButton()
     let coveredAddItemView = UIView()
-    let moc = UIApplication.shared.delegate as! AppDelegate
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -82,6 +80,12 @@ class ListTableViewCell: UITableViewCell {
         } else {
             textView?.resignFirstResponder()
         }
+        
+    }
+    
+    func configureCell(Content: Content) {
+        
+        textView.text = Content.content
         
     }
     
@@ -151,52 +155,17 @@ class ListTableViewCell: UITableViewCell {
         contentView.endEditing(true)
         
         //update content
-        updateSingleData(row: self.textView.tag, content: "")
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.updateSingleData(row: self.textView.tag, content: self.textView.text)
+        }
         
     }
+    
 // Toolbar end
 //------------------------------------------
     
-    func addNewRowsForList() {
-        
-        guard let tableView = self.textView.superview?.superview?.superview?.superview as? UITableView else {
-            return
-        }
-        countForEnableCell += 1
-        let newIndexPath = IndexPath(row: countForEnableCell - 1, section: listSectionType.content.hashValue)
-        
-        UIView.animate(withDuration: 0.4, animations: {
-            //insert a row
-            tableView.beginUpdates()
-            //insert
-            tableView.insertRows(at: [newIndexPath], with: .none)
-            tableView.endUpdates()
-            //core data
-            self.addSingleData(row: newIndexPath.row, content: "")
-            //removing animation
-//            self.contentView.frame = CGRect(x: self.contentView.frame.minX, y: self.contentView.frame.maxY, width: self.contentView.frame.width, height: 0)
-        }, completion: { (_) in
-            //allow new added row to see
-            tableView.scrollToRow(at: newIndexPath,
-                                  at: .bottom,
-                                  animated: false)
-            //get add cell and ready to type
-            guard let addCell = tableView.cellForRow(at: IndexPath(row: countForEnableCell - 1, section: listSectionType.content.hashValue)) as? ListTableViewCell else {
-                return
-            }
-            addCell.textView.becomeFirstResponder()
-            
-            
-//            //remove next emptyview
-//            if let nextCell = tableView.cellForRow(at: IndexPath(row: self.textView.tag + 1, section: 0)) as? ListTableViewCell {
-//                nextCell.emptyView.removeFromSuperview()
-//            }
-//            remove coveredAddItemView
-//            self.coveredAddItemView.removeFromSuperview()
-        })
-    }
-    
 }
+
 
 extension ListTableViewCell: UITextViewDelegate {
     
@@ -239,6 +208,11 @@ extension ListTableViewCell: UITextViewDelegate {
             UIView.setAnimationsEnabled(true)
         }
         
+        //update content
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.updateSingleData(row: self.textView.tag, content: self.textView.text)
+        }
+        
     }
     
     
@@ -248,27 +222,27 @@ extension ListTableViewCell: UITextViewDelegate {
 //-----------------------------------
 extension ListTableViewCell {
     
-    func addSingleData(row: Int, content: String) {
+    func addSingleEmptyData() {
     
-        guard let entityDescription = NSEntityDescription.entity(forEntityName: "Content", in: moc.persistentContainer.viewContext) else { return }
+        let moc = appDelegate.persistentContainer.viewContext
+        guard let entityDescription = NSEntityDescription.entity(forEntityName: "Content", in: moc) else { return }
         print(NSPersistentContainer.defaultDirectoryURL())
-        let insertObject = Content(entity: entityDescription, insertInto: moc.persistentContainer.viewContext)
-        insertObject.content = content
-        insertObject.row = Int32(row)
-        moc.saveContext()
+        let insertObject = Content(entity: entityDescription, insertInto: moc)
+        insertObject.row = Int32(textView.tag)
+        appDelegate.saveContext()
         
     }
     
     func updateSingleData(row: Int, content: String) {
         
-        let managedContext = moc.persistentContainer.viewContext
+        let moc = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Content")
         do {
-            guard let results = try managedContext.fetch(request) as? [Content] else {
+            guard let results = try moc.fetch(request) as? [Content] else {
                 return
             }
             results[row].content = content
-            moc.saveContext()
+            appDelegate.saveContext()
         } catch {
             fatalError("\(error)")
         }
@@ -278,19 +252,21 @@ extension ListTableViewCell {
 }
 
 
-
 //For Appearance
 //------------------------------------
 extension ListTableViewCell {
     
     //Default set up
     func addDetailBtn() {
+        
         viewDetailBtn.layer.frame = CGRect(x: 0, y: 0, width: viewDetailImage.frame.width, height: viewDetailImage.frame.height)
         viewDetailBtn.alpha = 0.1
         viewDetailImage.addSubview(viewDetailBtn)
+        
     }
     
     func addCoveredView() {
+        
         //coveredView
         contentView.addSubview(coveredAddItemView)
         coveredAddItemView.backgroundColor = contentView.backgroundColor
@@ -299,7 +275,7 @@ extension ListTableViewCell {
         coveredAddItemView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
         coveredAddItemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
         coveredAddItemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
-        coveredAddItemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addNewRowsForList)))
+        coveredAddItemView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(addSingleEmptyData)))
         //plusImageView
         let plusImageView = UIImageView()
         plusImageView.contentMode = .scaleAspectFit
@@ -313,14 +289,6 @@ extension ListTableViewCell {
         plusImageView.leadingAnchor.constraint(equalTo: coveredAddItemView.leadingAnchor, constant: 10).isActive = true
         plusImageView.trailingAnchor.constraint(equalTo: coveredAddItemView.leadingAnchor, constant: 40).isActive = true
         
-        //CoveredEmtyView
-//        emptyView.backgroundColor = contentView.backgroundColor
-//        contentView.addSubview(emptyView)
-//        emptyView.translatesAutoresizingMaskIntoConstraints = false
-//        emptyView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-//        emptyView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-//        emptyView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
-//        emptyView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
     }
 
 }
