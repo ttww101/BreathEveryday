@@ -8,9 +8,10 @@
 
 import UIKit
 import CoreData
+import JTAppleCalendar
 
 class ListTableViewCell: UITableViewCell {
-
+    
     //appearance
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var viewDetailImage: UIImageView!
@@ -18,6 +19,7 @@ class ListTableViewCell: UITableViewCell {
     var starBtn: UIButton!
     lazy var alarmView = UIView()
     let calendarView = UIView()
+    @IBOutlet weak var JTcalendarView: JTAppleCalendarView!
     let locationView = UIView()
     //event info
     var indexRow: Int = 0
@@ -398,6 +400,41 @@ extension ListTableViewCell {
         
     }
 }
+
+//JTCalendar
+//-----------------------------------
+//extension UITableViewCell: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
+
+//    public func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy MM dd"
+//        
+//        let startDate = formatter.date(from: "2016 02 01")! // You can use date generated from a formatter
+//        let endDate = Date()                                // You can also use dates created from this function
+//        let parameters = ConfigurationParameters(startDate: startDate,
+//                                                 endDate: endDate,
+//                                                 numberOfRows: 6, // Only 1, 2, 3, & 6 are allowed
+//            calendar: Calendar.current,
+//            generateInDates: .forAllMonths,
+//            generateOutDates: .tillEndOfGrid,
+//            firstDayOfWeek: .sunday)
+//        return parameters
+//    }
+//    
+//    func calendar(_ calendar: JTAppleCalendarView, willDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
+//        let myCustomCell = cell as! CellView
+//        
+//        // Setup Cell text
+//        myCustomCell.dayLabel.text = cellState.text
+//        
+//        // Setup text color
+//        if cellState.dateBelongsTo == .thisMonth {
+//            myCustomCell.dayLabel.textColor = UIColor.black
+//        } else {
+//            myCustomCell.dayLabel.textColor = UIColor.gray
+//        }
+//    }
+//}
 
 // Appearance
 //------------------------------------
