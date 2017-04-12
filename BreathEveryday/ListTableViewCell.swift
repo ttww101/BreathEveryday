@@ -22,9 +22,9 @@ class ListTableViewCell: UITableViewCell {
     //event info
     var indexRow: Int = 0
     var isSetNotification: Bool = false
-    var alarmPicker : UIPickerView!
+    var alarmPicker = UIPickerView()
     var eventID: NSManagedObjectID?
-    var alarmDate: Date?
+    var dateAlarmSet: Date?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,7 +54,7 @@ class ListTableViewCell: UITableViewCell {
         
         isSetNotification = event.isSetNotification
         
-        alarmDate = event.alarmStartTime as Date?
+        dateAlarmSet = event.alarmStartTime as Date?
         
     }
     
@@ -144,11 +144,12 @@ extension ListTableViewCell: UITextViewDelegate {
         //save contents
         print("End Editing")
         saveContent()
+        
         if isSetNotification {
-//            saveRemindData()
+            saveRemindData()
         }
         
-//        EventManager.shared.appDelegate.saveContext()
+        EventManager.shared.appDelegate.saveContext()
         
     }
     
@@ -162,6 +163,15 @@ extension ListTableViewCell: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         print("Begin Editing")
+        
+        print(isSetNotification)
+        //set tool bar status
+        if isSetNotification {
+            starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+            setSelectedDate()
+        } else {
+            starBtn.setImage(#imageLiteral(resourceName: "Star-48"), for: .normal)
+        }
         
         // TODO: Read Remind Data
 //        readRemindData()
@@ -202,7 +212,7 @@ extension ListTableViewCell {
                                    detail: nil,
                                    calendarEvent: nil,
                                    alarmDate: nil,
-                                   isSetNotification: nil)
+                                   isSetNotification: isSetNotification)
         
     }
     
@@ -210,20 +220,17 @@ extension ListTableViewCell {
     
         // TODO: Set the alarm & store data
         
-        
-        
-        if let picker = self.alarmPicker {
-        
         guard let date = self.transferStringToDate(year: 2017,
                                                    month: 4,
-                                                   day: 12,
-                                                   hr: picker.selectedRow(inComponent: 0) + 1,
-                                                   min: picker.selectedRow(inComponent: 1),
-                                                   ampm: picker.selectedRow(inComponent: 2))
+                                                   day: 11,
+                                                   hr: alarmPicker.selectedRow(inComponent: 0),
+                                                   min: alarmPicker.selectedRow(inComponent: 2))
             else {
                 print("wrong time!!!")
                 return
             }
+        
+        dateAlarmSet = date
         
         //get ex event, remove ex calendarevent
         if let id = self.eventID,
@@ -246,7 +253,7 @@ extension ListTableViewCell {
                                            isSetNotification: isSetNotification)
             }
         }
-        }
+        
         
         // TODO: Display the setup info of the event
         
@@ -288,19 +295,6 @@ extension ListTableViewCell {
         toolBar.sizeToFit()
         textView.inputAccessoryView = toolBar
         
-    }
-
-    func createButtonWithImage(image: UIImage, scale: CGFloat, action: Selector) -> UIButton {
-        
-        let keyboardBtn = UINib(nibName: "KeyboardBarButton", bundle: nil).instantiate(withOwner: nil, options: nil).first
-        guard let returnBtn = keyboardBtn as? UIButton else {
-            return UIButton()
-        }
-        returnBtn.addTarget(self, action: action, for: .touchUpInside)
-        returnBtn.setImage(image, for: .normal)
-        returnBtn.frame = CGRect(x: 0, y: 0, width: 60, height: scale * 26)
-        
-        return returnBtn
     }
 
     func btnStarToolBar(sender: UIButton) {
@@ -395,17 +389,11 @@ extension ListTableViewCell {
         
     }
 
-    func transferStringToDate(year: Int, month: Int, day: Int, hr: Int, min: Int, ampm: Int) -> Date? {
-        
+    func transferStringToDate(year: Int, month: Int, day: Int, hr: Int, min: Int) -> Date? {
+        //note: 2400 == 0000
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
-        var transferedHR = hr
-        if ampm != 0 && transferedHR != 12 {
-            transferedHR += 12
-        } else if transferedHR == 12 && ampm == 0 {
-            transferedHR = 0
-        }
-        let date = dateFormatter.date(from: "\(year)-\(month)-\(day) \(transferedHR):\(min):00")
+        let date = dateFormatter.date(from: "\(year)-\(month)-\(day) \(hr):\(min):00")
         return date
         
     }
@@ -414,6 +402,20 @@ extension ListTableViewCell {
 // Appearance
 //------------------------------------
 extension ListTableViewCell {
+    
+    func setSelectedDate() {
+        
+        if let date = dateAlarmSet {
+            let calendar = Calendar.current
+            let hour = calendar.component(.hour, from: date)
+            print(hour)
+            alarmPicker.selectRow(hour, inComponent: 0, animated: true)
+            let min = calendar.component(.minute, from: date)
+            print(min)
+            alarmPicker.selectRow(min, inComponent: 2, animated: true)
+        }
+        
+    }
     
     func createAlarmPopView(xPos: CGFloat) {
         
@@ -436,31 +438,23 @@ extension ListTableViewCell {
         alarmView.widthAnchor.constraint(equalToConstant: width).isActive = true
         
         //pickerView
-        alarmPicker = UIPickerView()
         alarmPicker.delegate = self
         alarmPicker.dataSource = self
         alarmView.addSubview(alarmPicker)
         //set current time
-        // TODO: if have set, set the picker of save time
-        if let date = alarmDate {
-            
-            let calendar = Calendar.current
-            let hour = calendar.component(.hour, from: date)
-            alarmPicker.selectRow(hour, inComponent: 0, animated: true)
-            let min = calendar.component(.minute, from: date)
-            alarmPicker.selectRow(min, inComponent: 2, animated: true)
-            
-        } else {
-            
+        if dateAlarmSet == nil {
             let date = Date()
             let calendar = Calendar.current
-            let hour = calendar.component(.hour, from: date)
-            alarmPicker.selectRow(hour % 12, inComponent: 0, animated: true)
-            if hour > 12 {
-                alarmPicker.selectRow(1, inComponent: 2, animated: true)
+            var hour = calendar.component(.hour, from: date)
+            if hour + 1 >= 24 {
+                hour = 0
             }
-            
+            alarmPicker.selectRow(hour + 1, inComponent: 0, animated: true)
+        } else {
+            setSelectedDate()
         }
+        
+        
         
         //constraints
         alarmPicker.translatesAutoresizingMaskIntoConstraints = false

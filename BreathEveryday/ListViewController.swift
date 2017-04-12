@@ -25,7 +25,6 @@ class ListViewController: UIViewController {
         
         displayHomeView()
         
-//        EventManager.shared.deleteAll()
         //note: after saveContext the ID will totoally different
         EventManager.shared.appDelegate.saveContext()
     }
