@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -68,16 +69,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="njh-bq-OPJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="548"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eEF-qO-fEy">
+                                <rect key="frame" x="10" y="72" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0Uj-Me-kA0"/>
+                                    <constraint firstAttribute="width" constant="30" id="mdN-bs-7Sb"/>
+                                </constraints>
+                                <state key="normal" image="Plus-50"/>
+                                <connections>
+                                    <action selector="addEventBtn:" destination="MfH-Ey-e3f" eventType="touchUpInside" id="1xl-gg-1sm"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="njh-bq-OPJ">
+                                <rect key="frame" x="0.0" y="130" width="375" height="437"/>
                                 <color key="backgroundColor" red="1" green="0.93725490199999995" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <sections/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.93725490199999995" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="njh-bq-OPJ" firstAttribute="top" secondItem="9gx-tE-fxp" secondAttribute="bottom" constant="-64" id="cLx-kT-w41"/>
+                            <constraint firstItem="eEF-qO-fEy" firstAttribute="leading" secondItem="0Ei-1J-oEG" secondAttribute="leadingMargin" constant="-6" id="Vqi-Re-lyE"/>
                             <constraint firstAttribute="trailing" secondItem="njh-bq-OPJ" secondAttribute="trailing" id="cet-F8-jdh"/>
+                            <constraint firstItem="eEF-qO-fEy" firstAttribute="top" secondItem="9gx-tE-fxp" secondAttribute="bottom" constant="8" id="gUO-Z0-oXX"/>
+                            <constraint firstItem="njh-bq-OPJ" firstAttribute="top" secondItem="eEF-qO-fEy" secondAttribute="bottom" constant="5" id="kJI-n3-EzF"/>
                             <constraint firstItem="njh-bq-OPJ" firstAttribute="leading" secondItem="0Ei-1J-oEG" secondAttribute="leading" id="yOB-hd-WDv"/>
                         </constraints>
                     </view>
@@ -146,6 +160,7 @@
         <image name="Home-50" width="50" height="50"/>
         <image name="Men-100" width="100" height="100"/>
         <image name="Message-50" width="50" height="50"/>
+        <image name="Plus-50" width="50" height="50"/>
         <image name="Sun-48" width="48" height="48"/>
     </resources>
 </document>

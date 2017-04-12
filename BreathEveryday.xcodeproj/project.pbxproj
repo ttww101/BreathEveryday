@@ -7,31 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F4B2A5801E88EE4200CAECEE /* ContentModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A57E1E88EE4200CAECEE /* ContentModel.xcdatamodeld */; };
-		F4B2A5B91E8D2F2700CAECEE /* Content+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A5B71E8D2F2700CAECEE /* Content+CoreDataClass.swift */; };
-		F4B2A5BA1E8D2F2700CAECEE /* Content+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A5B81E8D2F2700CAECEE /* Content+CoreDataProperties.swift */; };
-		F4F4D66F1E82584B00D7EFBA /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F4D66E1E82584B00D7EFBA /* ListManager.swift */; };
+		F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */; };
+		F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A21F981E9C6E4200C24517 /* EventManager.swift */; };
+		F4B2A5801E88EE4200CAECEE /* EventModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A57E1E88EE4200CAECEE /* EventModel.xcdatamodeld */; };
+		F4E301481E9DC7E500846EBF /* KeyboardButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E301471E9DC7E500846EBF /* KeyboardButtonModel.swift */; };
 		F4F4D6711E828EAC00D7EFBA /* KeyboardBarButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F4D6701E828EAC00D7EFBA /* KeyboardBarButton.xib */; };
-		F4F4D6751E82909E00D7EFBA /* KeyboardBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F4D6741E82909E00D7EFBA /* KeyboardBarButton.swift */; };
 		F4FA6A9B1E7FB0F100C2E46E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */; };
 		F4FA6A9D1E7FB0F100C2E46E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */; };
 		F4FA6AA01E7FB0F100C2E46E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6A9E1E7FB0F100C2E46E /* Main.storyboard */; };
 		F4FA6AA21E7FB0F100C2E46E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6AA11E7FB0F100C2E46E /* Assets.xcassets */; };
 		F4FA6AA51E7FB0F100C2E46E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6AA31E7FB0F100C2E46E /* LaunchScreen.storyboard */; };
 		F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AAC1E7FC24700C2E46E /* ListViewController.swift */; };
-		F4FA6AAF1E7FCD0D00C2E46E /* IndentifierModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AAE1E7FCD0D00C2E46E /* IndentifierModel.swift */; };
+		F4FA6AAF1E7FCD0D00C2E46E /* IdentifierModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */; };
 		F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AB01E7FD3DD00C2E46E /* ListTableViewCell.swift */; };
 		F4FA6AB31E7FD3DD00C2E46E /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */; };
 		F4FA6AB71E7FD8F100C2E46E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F4B2A57F1E88EE4200CAECEE /* ContentModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ContentModel.xcdatamodel; sourceTree = "<group>"; };
-		F4B2A5B71E8D2F2700CAECEE /* Content+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Content+CoreDataClass.swift"; sourceTree = "<group>"; };
-		F4B2A5B81E8D2F2700CAECEE /* Content+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Content+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		F4F4D66E1E82584B00D7EFBA /* ListManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
+		F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
+		F4A21F981E9C6E4200C24517 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		F4B2A57F1E88EE4200CAECEE /* EventModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventModel.xcdatamodel; sourceTree = "<group>"; };
+		F4E301471E9DC7E500846EBF /* KeyboardButtonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardButtonModel.swift; sourceTree = "<group>"; };
 		F4F4D6701E828EAC00D7EFBA /* KeyboardBarButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardBarButton.xib; sourceTree = "<group>"; };
-		F4F4D6741E82909E00D7EFBA /* KeyboardBarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardBarButton.swift; sourceTree = "<group>"; };
 		F4FA6A971E7FB0F100C2E46E /* BreathEveryday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreathEveryday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -40,7 +38,7 @@
 		F4FA6AA41E7FB0F100C2E46E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4FA6AA61E7FB0F100C2E46E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4FA6AAC1E7FC24700C2E46E /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		F4FA6AAE1E7FCD0D00C2E46E /* IndentifierModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndentifierModel.swift; sourceTree = "<group>"; };
+		F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifierModel.swift; sourceTree = "<group>"; };
 		F4FA6AB01E7FD3DD00C2E46E /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -57,22 +55,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F4F4D6731E828F9000D7EFBA /* Xib */ = {
+		F4E301491E9DC86400846EBF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				F4FA6AB01E7FD3DD00C2E46E /* ListTableViewCell.swift */,
 				F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */,
-				F4F4D6741E82909E00D7EFBA /* KeyboardBarButton.swift */,
+				F4E301471E9DC7E500846EBF /* KeyboardButtonModel.swift */,
 				F4F4D6701E828EAC00D7EFBA /* KeyboardBarButton.xib */,
+				F4A21F981E9C6E4200C24517 /* EventManager.swift */,
+				F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */,
 			);
-			name = Xib;
+			name = Cell;
 			sourceTree = "<group>";
 		};
 		F4FA6A8E1E7FB0F100C2E46E = {
 			isa = PBXGroup;
 			children = (
-				F4B2A5B71E8D2F2700CAECEE /* Content+CoreDataClass.swift */,
-				F4B2A5B81E8D2F2700CAECEE /* Content+CoreDataProperties.swift */,
 				F4FA6A991E7FB0F100C2E46E /* BreathEveryday */,
 				F4FA6A981E7FB0F100C2E46E /* Products */,
 			);
@@ -90,17 +88,16 @@
 			isa = PBXGroup;
 			children = (
 				F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */,
-				F4FA6AAE1E7FCD0D00C2E46E /* IndentifierModel.swift */,
+				F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */,
 				F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */,
 				F4FA6AAC1E7FC24700C2E46E /* ListViewController.swift */,
-				F4F4D66E1E82584B00D7EFBA /* ListManager.swift */,
 				F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */,
+				F4E301491E9DC86400846EBF /* Cell */,
 				F4FA6A9E1E7FB0F100C2E46E /* Main.storyboard */,
 				F4FA6AA11E7FB0F100C2E46E /* Assets.xcassets */,
 				F4FA6AA31E7FB0F100C2E46E /* LaunchScreen.storyboard */,
 				F4FA6AA61E7FB0F100C2E46E /* Info.plist */,
-				F4F4D6731E828F9000D7EFBA /* Xib */,
-				F4B2A57E1E88EE4200CAECEE /* ContentModel.xcdatamodeld */,
+				F4B2A57E1E88EE4200CAECEE /* EventModel.xcdatamodeld */,
 			);
 			path = BreathEveryday;
 			sourceTree = "<group>";
@@ -181,16 +178,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FA6A9D1E7FB0F100C2E46E /* HomeViewController.swift in Sources */,
+				F4E301481E9DC7E500846EBF /* KeyboardButtonModel.swift in Sources */,
+				F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */,
 				F4FA6A9B1E7FB0F100C2E46E /* AppDelegate.swift in Sources */,
-				F4FA6AAF1E7FCD0D00C2E46E /* IndentifierModel.swift in Sources */,
-				F4F4D6751E82909E00D7EFBA /* KeyboardBarButton.swift in Sources */,
-				F4B2A5BA1E8D2F2700CAECEE /* Content+CoreDataProperties.swift in Sources */,
-				F4F4D66F1E82584B00D7EFBA /* ListManager.swift in Sources */,
+				F4FA6AAF1E7FCD0D00C2E46E /* IdentifierModel.swift in Sources */,
+				F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */,
 				F4FA6AB71E7FD8F100C2E46E /* DetailViewController.swift in Sources */,
-				F4B2A5801E88EE4200CAECEE /* ContentModel.xcdatamodeld in Sources */,
+				F4B2A5801E88EE4200CAECEE /* EventModel.xcdatamodeld in Sources */,
 				F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */,
 				F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */,
-				F4B2A5B91E8D2F2700CAECEE /* Content+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,13 +358,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F4B2A57E1E88EE4200CAECEE /* ContentModel.xcdatamodeld */ = {
+		F4B2A57E1E88EE4200CAECEE /* EventModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F4B2A57F1E88EE4200CAECEE /* ContentModel.xcdatamodel */,
+				F4B2A57F1E88EE4200CAECEE /* EventModel.xcdatamodel */,
 			);
-			currentVersion = F4B2A57F1E88EE4200CAECEE /* ContentModel.xcdatamodel */;
-			path = ContentModel.xcdatamodeld;
+			currentVersion = F4B2A57F1E88EE4200CAECEE /* EventModel.xcdatamodel */;
+			path = EventModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

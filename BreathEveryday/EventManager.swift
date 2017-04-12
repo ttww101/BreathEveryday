@@ -16,57 +16,59 @@
 import CoreData
 import UIKit
 
-class ContentManager {
+class EventManager {
     
-    static let shared = ContentManager()
+    static let shared = EventManager()
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ContentMO")
+    var request = NSFetchRequest<NSFetchRequestResult>(entityName: "EventMO")
+    
+    let sortDescriptor = NSSortDescriptor(key: "createdDate", ascending: true)
     
     //C
     func create(calendarEvent: String?, content: String?, detail: String?) {
         
         let moc = appDelegate.persistentContainer.viewContext
         
-        guard let entityDescription = NSEntityDescription.entity(forEntityName: "ContentMO", in: moc) else {
+        guard let entityDescription = NSEntityDescription.entity(forEntityName: "EventMO", in: moc) else {
             
             return
             
         }
         
-        let contentMO = ContentMO(entity: entityDescription, insertInto: moc)
+        let event = EventMO(entity: entityDescription, insertInto: moc)
         
         if let calendarEvent = calendarEvent {
-            contentMO.calendarEvent = calendarEvent
+            event.calendarEventID = calendarEvent
         }
         
         if let content = content {
-            contentMO.content = content
+            event.content = content
         }
         
         if let detail = detail {
-            contentMO.detail = detail
+            event.detail = detail
         }
         
-        contentMO.createdDate = NSDate()
+        event.createdDate = NSDate()
         
     }
     
     //R
-    func read(id: NSManagedObjectID) -> ContentMO? {
+    func read(id: NSManagedObjectID) -> EventMO? {
         
         let moc = appDelegate.persistentContainer.viewContext
         
         do {
             
-            let content = try moc.existingObject(with: id)
+            let event = try moc.existingObject(with: id)
             
-            guard let contentMO = content as? ContentMO else {
+            guard let eventMO = event as? EventMO else {
                 return nil
             }
             
-            return contentMO
+            return eventMO
             
         } catch {
             
@@ -75,13 +77,13 @@ class ContentManager {
         
     }
     
-    func readAll() -> [ContentMO]? {
+    func readAll() -> [EventMO]? {
         
         let moc = appDelegate.persistentContainer.viewContext
         
         do {
             
-            guard let results = try moc.fetch(request) as? [ContentMO] else {
+            guard let results = try moc.fetch(request) as? [EventMO] else {
                 return nil
             }
             
@@ -95,31 +97,78 @@ class ContentManager {
     }
     
     //U
-    func update(id: NSManagedObjectID, calendarEvent: String?, content: String?, detail: String?) {
+    func update(id: NSManagedObjectID, content: String?, detail: String?, calendarEvent: String?, alarmDate: NSDate?, isSetNotification: Bool?) {
         
         let moc = appDelegate.persistentContainer.viewContext
         
         do {
             
-            let article = try moc.existingObject(with: id)
+            let event = try moc.existingObject(with: id)
             
-            guard let contentMO = article as? ContentMO else {
+            guard let eventMO = event as? EventMO else {
                 return
             }
             
             if let calendarEvent = calendarEvent {
-                contentMO.calendarEvent = calendarEvent
+                eventMO.calendarEventID = calendarEvent
             }
             
             if let content = content {
-                contentMO.content = content
+                eventMO.content = content
             }
             
             if let detail = detail {
-                contentMO.detail = detail
+                eventMO.detail = detail
             }
             
-            appDelegate.saveContext()
+            if let alarmDate = alarmDate {
+                eventMO.alarmStartTime = alarmDate
+            }
+            
+            if let isSetNotification = isSetNotification {
+                eventMO.isSetNotification = isSetNotification
+            }
+            
+        } catch {
+            
+            fatalError("\(error)")
+        }
+        
+    }
+    
+    func update(row: Int, content: String?, detail: String?, calendarEvent: String?, alarmDate: NSDate?, isSetNotification: Bool?) {
+        
+        let moc = appDelegate.persistentContainer.viewContext
+        
+        request.sortDescriptors = [sortDescriptor]
+        
+        do {
+            
+            guard let results = try moc.fetch(request) as? [EventMO] else {
+                return
+            }
+            
+            let event = results[row]
+            
+            if let calendarEvent = calendarEvent {
+                event.calendarEventID = calendarEvent
+            }
+            
+            if let content = content {
+                event.content = content
+            }
+            
+            if let detail = detail {
+                event.detail = detail
+            }
+            
+            if let alarmDate = alarmDate {
+                event.alarmStartTime = alarmDate
+            }
+            
+            if let isSetNotification = isSetNotification {
+                event.isSetNotification = isSetNotification
+            }
             
         } catch {
             
@@ -135,9 +184,9 @@ class ContentManager {
         
         do {
             
-            let content = try moc.existingObject(with: id)
+            let event = try moc.existingObject(with: id)
             
-            moc.delete(content)
+            moc.delete(event)
             
         } catch {
             
@@ -152,7 +201,7 @@ class ContentManager {
         
         do {
             
-            guard let results = try moc.fetch(request) as? [ContentMO] else {
+            guard let results = try moc.fetch(request) as? [EventMO] else {
                 return
             }
             
