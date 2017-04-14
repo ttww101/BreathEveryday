@@ -12,7 +12,10 @@ import JTAppleCalendar
 class CalendarViewController: UIViewController {
 
     @IBOutlet weak var calendarView: JTAppleCalendarView!
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var monthLabel: UILabel!
     let formatter = DateFormatter()
+    var dateAlarmSet: Date? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,30 +24,33 @@ class CalendarViewController: UIViewController {
     }
     
     func setupCalendarView() {
+        //spacing
         calendarView.minimumLineSpacing = 0
         calendarView.minimumInteritemSpacing = 0
+        //year & month label
+        calendarView.visibleDates { (visibleDate) in
+            self.setupYearMonthOfCalendar(from: visibleDate)
+        }
+        //set initial date
+        if let dateSet = dateAlarmSet {
+            calendarView.selectDates([dateSet])
+            calendarView.scrollToDate(dateSet)
+        } else {
+            let date = Date()
+            calendarView.selectDates([date])
+            calendarView.scrollToDate(date)
+            
+        }
+        
     }
     
-}
-
-extension CalendarViewController: JTAppleCalendarViewDataSource {
-    
-    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+    func setupYearMonthOfCalendar(from visibleDates: DateSegmentInfo) {
         
-        formatter.dateFormat = "yyyy MM dd"
-        formatter.timeZone = Calendar.current.timeZone
-        formatter.locale = Calendar.current.locale
-        
-        let startDate = formatter.date(from: "2017 01 01")! // You can use date generated from a formatter
-        let endDate = formatter.date(from: "2017 12 31")!                                // You can also use dates created from this function
-        let parameters = ConfigurationParameters(startDate: startDate,
-                                                 endDate: endDate,
-                                                 numberOfRows: 6, // Only 1, 2, 3, & 6 are allowed
-            calendar: Calendar.current,
-            generateInDates: .forAllMonths,
-            generateOutDates: .tillEndOfGrid,
-            firstDayOfWeek: .sunday)
-        return parameters
+        let date = visibleDates.monthDates.first!.date
+        formatter.dateFormat = "yyyy"
+        yearLabel.text = formatter.string(from: date)
+        formatter.dateFormat = "MMMM"
+        monthLabel.text = formatter.string(from: date)
         
     }
     
@@ -65,7 +71,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource {
         guard let cell = cell as? CalendarCell else { return }
         
         if cellState.isSelected {
-            cell.dateLabel.textColor = .red
+            cell.dateLabel.textColor = UIColor(colorLiteralRed: 145/255, green: 160/255, blue: 145/255, alpha: 1.0)
         } else {
             if cellState.dateBelongsTo == .thisMonth {
                 cell.dateLabel.textColor = .white
@@ -73,6 +79,31 @@ extension CalendarViewController: JTAppleCalendarViewDataSource {
                 cell.dateLabel.textColor = .lightGray
             }
         }
+        
+    }
+    
+}
+
+extension CalendarViewController: JTAppleCalendarViewDataSource {
+    
+    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+        
+        formatter.dateFormat = "yyyy MM dd"
+        formatter.timeZone = Calendar.current.timeZone
+        formatter.locale = Calendar.current.locale
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: Date())
+        let startDate = formatter.date(from: "\(year - 1) 01 01")! // You can use date generated from a formatter
+        let endDate = formatter.date(from: "\(year + 1) 12 31")!                                // You can also use dates created from this function
+        
+        let parameters = ConfigurationParameters(startDate: startDate,
+                                                 endDate: endDate,
+                                                 numberOfRows: 6, // Only 1, 2, 3, & 6 are allowed
+            calendar: Calendar.current,
+            generateInDates: .forAllMonths,
+            generateOutDates: .tillEndOfGrid,
+            firstDayOfWeek: .sunday)
+        return parameters
         
     }
 
@@ -97,12 +128,17 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     
     func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelectedColor(cell: cell, cellState: cellState)
+        handleCellTextColor(cell: cell, cellState: cellState)
     }
     
     func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
         handleCellSelectedColor(cell: cell, cellState: cellState)
+        handleCellTextColor(cell: cell, cellState: cellState)
     }
     
+    func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+        setupYearMonthOfCalendar(from: visibleDates)
+    }
     
 }
 

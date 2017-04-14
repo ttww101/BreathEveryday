@@ -43,6 +43,13 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        self.navigationController?.navigationBar.barTintColor = .clear
+        self.navigationController?.navigationBar.isTranslucent = true
+        
         //tableView
         listTableView.delegate = self
         listTableView.dataSource = self
@@ -50,15 +57,13 @@ class ListViewController: UIViewController {
         listTableView.estimatedRowHeight = 77
         listTableView.allowsSelection = false
         listTableView.register(UINib(nibName: Identifier.listCell.rawValue, bundle: nil), forCellReuseIdentifier: Identifier.listCell.rawValue)
-        tableViewBottomConstraint = NSLayoutConstraint(item: listTableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
         //swipe
-        let leftSwipe = UIPanGestureRecognizer(target: self, action: #selector(handleLeftSwipe))
+//        let leftSwipe = UIPanGestureRecognizer(target: self, action: #selector(handleLeftSwipe))
 //        view.addGestureRecognizer(leftSwipe)
         
-        //constraints
+        //notification for constraints
+        tableViewBottomConstraint = NSLayoutConstraint(item: listTableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
         view.addConstraint(tableViewBottomConstraint!)
-        
-        //notification
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
@@ -73,8 +78,8 @@ class ListViewController: UIViewController {
     
     func askCalendarAuthorized() {
         switch EKEventStore.authorizationStatus(for: EKEntityType.event) {
-        case .authorized: print("Access agreeed")
-        case .denied: print("Access denied")
+        case .authorized: break
+        case .denied: break
         case .notDetermined:
             
             eventStore.requestAccess(to: .event, completion: { (granted, error) -> Void in
@@ -88,6 +93,17 @@ class ListViewController: UIViewController {
         
     //Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destinationVC = segue.destination as? DetailViewController {
+            guard let sender = sender as? UIButton else { return }
+            if let event = EventManager.shared.read(row: sender.tag) {
+                destinationVC.entryRow = sender.tag
+                if let detailData = event.detail {
+                    destinationVC.strDetail = detailData
+                }
+            }
+        }
+        
         //Appearance of Back btn
         let backItem = UIBarButtonItem()
         backItem.title = ""
@@ -96,10 +112,38 @@ class ListViewController: UIViewController {
     }
     
     func viewChangeToDetailPage(sender: UIButton) {
+        performSegue(withIdentifier: Identifier.detailView.rawValue, sender: sender)
+    }
+    
+    //Notification Center
+    func handleKeyboardNotification(notification: NSNotification) {
         
-        guard let cell = sender.superview?.superview?.superview as? ListTableViewCell else { return }
-        performSegue(withIdentifier: Identifier.detailView.rawValue, sender: cell)
         
+        if let userInfo = notification.userInfo {
+            if let rectInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+                
+                //get rect
+                let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+                tableViewBottomConstraint?.constant = isKeyboardShowing ? -rectInfo.height : 0
+                heightOfKeyboard = isKeyboardShowing ? rectInfo.height : 0
+                
+                isTyping = isKeyboardShowing ? true : false
+                
+                UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+                    self.view.layoutIfNeeded()
+                    
+                }, completion: { (completed) in
+                    UIView.animate(withDuration: 0.35, animations: {
+                        
+                        if let firstCell = self.listTableView.cellForRow(at: IndexPath(row: 1, section: listSectionType.add.hashValue)) as? ListTableViewCell {
+                            firstCell.contentView.frame = CGRect(x: firstCell.contentView.frame.minX , y: firstCell.contentView.frame.minY, width: firstCell.contentView.frame.width, height: firstCell.contentView.frame.height)
+                        }
+                        
+                    })
+                })
+                
+            }
+        }
     }
     
     //Gesture
@@ -127,7 +171,7 @@ class ListViewController: UIViewController {
                         //TODO: collection of O2
                         
                     }
-
+                    
                     //animation : reveal delete mark
                 }
             default:
@@ -143,37 +187,6 @@ class ListViewController: UIViewController {
             
         }
         
-    }
-    
-    //Notification Center
-    func handleKeyboardNotification(notification: NSNotification) {
-        
-        
-        if let userInfo = notification.userInfo {
-            if let rectInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
-                
-                //get rect
-                let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
-                tableViewBottomConstraint?.constant = isKeyboardShowing ? -rectInfo.height : 0
-                heightOfKeyboard = isKeyboardShowing ? rectInfo.height : 0
-                
-                isTyping = isKeyboardShowing ? true : false
-                
-                UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: {
-                    self.view.layoutIfNeeded()
-                    
-                }, completion: { (completed) in
-                    UIView.animate(withDuration: 0.35, animations: {
-                        
-                        if let firstCell = self.listTableView.cellForRow(at: IndexPath(row: 1, section: listSectionType.add.hashValue)) as? ListTableViewCell {
-                            firstCell.contentView.frame = CGRect(x: firstCell.contentView.frame.minX , y: firstCell.contentView.frame.minY, width: firstCell.contentView.frame.width, height: firstCell.contentView.frame.height)
-                        }
-                        
-                    })
-                })
-                
-            }
-        }
     }
     
 }
@@ -242,6 +255,7 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
                         
                     }, completion: { (_) in
                         // ?? can't work
+                        
                         if let addCell = self.listTableView.cellForRow(at: indexPath) as? ListTableViewCell {
                             addCell.textView.becomeFirstResponder()
                         }
@@ -284,6 +298,22 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
 // TableView
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell {
+            cell.detailBtnLeadingConstraint?.constant = 200
+            cell.contentView.layoutIfNeeded()
+        }
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
+        
+        guard let indexPath = indexPath else { return }
+        if let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell {
+            cell.detailBtnLeadingConstraint?.constant = cell.numDetailImageToTextView
+        }
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if !isTyping {
@@ -293,7 +323,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 EventManager.shared.delete(id: objectID)
                 
-                print("1")
+            }
+        } else {
+            if let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell {
+//                cell.textView.endEditing(true)
             }
         }
         
@@ -333,7 +366,11 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         
         dequeCell.indexRow = indexPath.row
         
+        dequeCell.viewDetailBtn.tag = indexPath.row
+        
         dequeCell.configureCell(event: fetchedResultsController.object(at: indexPath))
+        
+        dequeCell.calendarPopupViewDelegate = self
         
         return dequeCell
         
@@ -358,8 +395,21 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    
 }
+
+
+extension ListViewController: calendarPopupViewProtocol {
+    
+    func addViewControllerAsChild(viewController: CalendarViewController) {
+        self.addChildViewController(viewController)
+    }
+}
+
+
+
+
+
+
 
 
 

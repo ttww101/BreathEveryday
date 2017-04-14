@@ -56,23 +56,21 @@ class EventManager {
     }
     
     //R
-    func read(id: NSManagedObjectID) -> EventMO? {
+    func read(row: Int) -> EventMO? {
         
         let moc = appDelegate.persistentContainer.viewContext
         
         do {
             
-            let event = try moc.existingObject(with: id)
-            
-            guard let eventMO = event as? EventMO else {
+            guard let results = try moc.fetch(request) as? [EventMO] else {
                 return nil
             }
             
-            return eventMO
+            return results[row]
             
         } catch {
             
-            fatalError("\(error)")
+            fatalError("Core Data Read: \(error)")
         }
         
     }
@@ -91,7 +89,7 @@ class EventManager {
             
         } catch {
             
-            fatalError("\(error)")
+            fatalError("Core Data Read: \(error)")
         }
         
     }
@@ -131,7 +129,7 @@ class EventManager {
             
         } catch {
             
-            fatalError("\(error)")
+            fatalError("Core Data Update: \(error)")
         }
         
     }
@@ -172,7 +170,7 @@ class EventManager {
             
         } catch {
             
-            fatalError("\(error)")
+            fatalError("Core Data Update: \(error)")
         }
         
     }
@@ -190,7 +188,7 @@ class EventManager {
             
         } catch {
             
-            fatalError("\(error)")
+            fatalError("Core Data Delete: \(error)")
         }
         
     }
@@ -215,7 +213,7 @@ class EventManager {
             
         } catch {
             
-            fatalError("\(error)")
+            fatalError("Core Data Delete: \(error)")
         }
         
     }

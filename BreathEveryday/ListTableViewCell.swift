@@ -10,21 +10,34 @@ import UIKit
 import CoreData
 import JTAppleCalendar
 
+protocol calendarPopupViewProtocol: class {
+    func addViewControllerAsChild(viewController :CalendarViewController)
+}
+
 class ListTableViewCell: UITableViewCell {
     
     //appearance
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var viewDetailImage: UIImageView!
     var viewDetailBtn = UIButton()
+    var textViewLeadingConstraint: NSLayoutConstraint?
+    var textViewTrailingConstraint: NSLayoutConstraint?
+    var detailBtnLeadingConstraint: NSLayoutConstraint?
+    let numTextViewLeftConstant:CGFloat = 40
+    let numTextViewRightConstant:CGFloat = -20
+    let numTextViewMoveLeftConstant:CGFloat = 25
+    let numDetailImageToTextView: CGFloat = 25
+    //toolBar
     var starBtn: UIButton!
     lazy var alarmView = UIView()
-    let calendarView = UIView()
-    @IBOutlet weak var JTcalendarView: JTAppleCalendarView!
-    let locationView = UIView()
+    lazy var alarmPicker = UIPickerView()
+    lazy var calendarView = UIView()
+    var calendarJTVC: CalendarViewController? = nil
+    weak var calendarPopupViewDelegate:calendarPopupViewProtocol?
+    lazy var locationView = UIView()
     //event info
     var indexRow: Int = 0
     var isSetNotification: Bool = false
-    var alarmPicker = UIPickerView()
     var eventID: NSManagedObjectID?
     var dateAlarmSet: Date?
     
@@ -34,7 +47,13 @@ class ListTableViewCell: UITableViewCell {
         textView.delegate = self
         addDetailBtn()
         addToolBarOnKeyboard()
-        
+        textViewLeadingConstraint = NSLayoutConstraint(item: textView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: numTextViewLeftConstant)
+        textViewTrailingConstraint = NSLayoutConstraint(item: textView, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailing, multiplier: 1, constant: numTextViewRightConstant)
+        detailBtnLeadingConstraint = NSLayoutConstraint(item: viewDetailImage, attribute: .leading, relatedBy: .equal, toItem: textView, attribute: .trailing, multiplier: 1, constant: numDetailImageToTextView)
+
+        contentView.addConstraint(textViewLeadingConstraint!)
+        contentView.addConstraint(textViewTrailingConstraint!)
+        contentView.addConstraint(detailBtnLeadingConstraint!)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -62,21 +81,9 @@ class ListTableViewCell: UITableViewCell {
     
 }
 
-// PickerView
+// Mark: PickerView
 //-----------------------------------
 extension ListTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-//        switch component {
-//            
-//        case 0:
-//            
-//            
-//            
-//        }
-        
-    }
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         if component == 1 {
@@ -131,6 +138,14 @@ extension ListTableViewCell: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         
+        //constraints change
+        textViewLeadingConstraint?.constant = numTextViewLeftConstant
+        textViewTrailingConstraint?.constant = numTextViewRightConstant
+        detailBtnLeadingConstraint?.constant = numDetailImageToTextView
+//        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+//            self.contentView.layoutIfNeeded()
+//        }, completion: { (completed) in })
+        
         //disappear toolbar
         if !self.locationView.isHidden {
             self.locationView.isHidden = true
@@ -166,17 +181,24 @@ extension ListTableViewCell: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         print("Begin Editing")
         
-        print(isSetNotification)
+        //constraints change
+        textViewLeadingConstraint?.constant = numTextViewLeftConstant - numTextViewMoveLeftConstant
+        textViewTrailingConstraint?.constant = numTextViewRightConstant - numTextViewMoveLeftConstant
+        detailBtnLeadingConstraint?.constant = 5
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+            self.contentView.layoutIfNeeded()
+        }, completion: { (completed) in })
+
+        
         //set tool bar status
         if isSetNotification {
             starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
-            setSelectedDate()
+            setupSelectedTime()
         } else {
             starBtn.setImage(#imageLiteral(resourceName: "Star-48"), for: .normal)
         }
         
-        // TODO: Read Remind Data
-//        readRemindData()
+        //Read Remind Data?
         
     }
     
@@ -220,13 +242,32 @@ extension ListTableViewCell {
     
     func saveRemindData() {
     
-        // TODO: Set the alarm & store data
+        var year = 0
+        var month = 0
+        var day = 0
+        let hour = alarmPicker.selectedRow(inComponent: 0)
+        let minutes = alarmPicker.selectedRow(inComponent: 2)
         
-        guard let date = self.transferStringToDate(year: 2017,
-                                                   month: 4,
-                                                   day: 11,
-                                                   hr: alarmPicker.selectedRow(inComponent: 0),
-                                                   min: alarmPicker.selectedRow(inComponent: 2))
+        // TODO: Set the alarm & store data
+        if let jtvc = calendarJTVC {
+            let selectedDate = jtvc.calendarView.selectedDates[0]
+            let calendar = Calendar.current
+            year = calendar.component(.year, from: selectedDate)
+            month = calendar.component(.month, from: selectedDate)
+            day = calendar.component(.day, from: selectedDate)
+        } else {
+            let currentDate = Date()
+            let calendar = Calendar.current
+            year = calendar.component(.year, from: currentDate)
+            month = calendar.component(.month, from: currentDate)
+            day = calendar.component(.day, from: currentDate)
+        }
+        
+        guard let date = self.transferStringToDate(year: year,
+                                                   month: month,
+                                                   day: day,
+                                                   hr: hour,
+                                                   min: minutes)
             else {
                 print("wrong time!!!")
                 return
@@ -236,7 +277,7 @@ extension ListTableViewCell {
         
         //get ex event, remove ex calendarevent
         if let id = self.eventID,
-            let event = EventManager.shared.read(id: id),
+            let event = EventManager.shared.read(row: indexRow),
             let calendarEventID = event.calendarEventID {
             removeEvent(identifier: calendarEventID)
         }
@@ -258,10 +299,6 @@ extension ListTableViewCell {
         
         
         // TODO: Display the setup info of the event
-        
-    }
-    
-    func readRemindData() {
         
     }
     
@@ -401,54 +438,17 @@ extension ListTableViewCell {
     }
 }
 
-//JTCalendar
-//-----------------------------------
-//extension UITableViewCell: JTAppleCalendarViewDataSource, JTAppleCalendarViewDelegate {
-
-//    public func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy MM dd"
-//        
-//        let startDate = formatter.date(from: "2016 02 01")! // You can use date generated from a formatter
-//        let endDate = Date()                                // You can also use dates created from this function
-//        let parameters = ConfigurationParameters(startDate: startDate,
-//                                                 endDate: endDate,
-//                                                 numberOfRows: 6, // Only 1, 2, 3, & 6 are allowed
-//            calendar: Calendar.current,
-//            generateInDates: .forAllMonths,
-//            generateOutDates: .tillEndOfGrid,
-//            firstDayOfWeek: .sunday)
-//        return parameters
-//    }
-//    
-//    func calendar(_ calendar: JTAppleCalendarView, willDisplayCell cell: JTAppleDayCellView, date: Date, cellState: CellState) {
-//        let myCustomCell = cell as! CellView
-//        
-//        // Setup Cell text
-//        myCustomCell.dayLabel.text = cellState.text
-//        
-//        // Setup text color
-//        if cellState.dateBelongsTo == .thisMonth {
-//            myCustomCell.dayLabel.textColor = UIColor.black
-//        } else {
-//            myCustomCell.dayLabel.textColor = UIColor.gray
-//        }
-//    }
-//}
-
-// Appearance
+// MARK: Appearance
 //------------------------------------
 extension ListTableViewCell {
     
-    func setSelectedDate() {
+    func setupSelectedTime() {
         
         if let date = dateAlarmSet {
             let calendar = Calendar.current
             let hour = calendar.component(.hour, from: date)
-            print(hour)
             alarmPicker.selectRow(hour, inComponent: 0, animated: true)
             let min = calendar.component(.minute, from: date)
-            print(min)
             alarmPicker.selectRow(min, inComponent: 2, animated: true)
         }
         
@@ -488,10 +488,8 @@ extension ListTableViewCell {
             }
             alarmPicker.selectRow(hour + 1, inComponent: 0, animated: true)
         } else {
-            setSelectedDate()
+            setupSelectedTime()
         }
-        
-        
         
         //constraints
         alarmPicker.translatesAutoresizingMaskIntoConstraints = false
@@ -513,13 +511,24 @@ extension ListTableViewCell {
         calendarView.layer.cornerRadius = 10
         calendarView.layer.masksToBounds = true
         calendarView.isHidden = false
-        let width: CGFloat = 250
+        let width: CGFloat = 295
         superView.addSubview(calendarView)
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         calendarView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
         calendarView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: xPos - (width - 60) / 2).isActive = true
         calendarView.heightAnchor.constraint(equalToConstant: width).isActive = true
         calendarView.widthAnchor.constraint(equalToConstant: width).isActive = true
+        
+        //initial calendrView
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
+        calendarJTVC = vc
+        vc.dateAlarmSet = dateAlarmSet
+        vc.view.frame = self.calendarView.bounds
+        calendarView.addSubview(vc.view)
+        if self.calendarPopupViewDelegate != nil {
+            self.calendarPopupViewDelegate?.addViewControllerAsChild(viewController: vc)
+        }
         
     }
     

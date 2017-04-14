@@ -9,10 +9,92 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
+    var entryRow: Int = 0
+    var strDetail: String = ""
+    @IBOutlet weak var textView: UITextView!
+    var textViewBottomConstraint: NSLayoutConstraint?
+    var isTyping = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        textView.delegate = self
+        textView.text = strDetail
+        //notification for constraints
+        textViewBottomConstraint = NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -10)
+        view.addConstraint(textViewBottomConstraint!)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-
+    
+    //Notification Center
+    func handleKeyboardNotification(notification: NSNotification) {
+        
+        
+        if let userInfo = notification.userInfo {
+            if let rectInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+                
+                //get rect
+                let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+                
+                textViewBottomConstraint?.constant = isKeyboardShowing ? -rectInfo.height : -10
+                
+                isTyping = isKeyboardShowing ? true : false
+                
+                UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: {
+                    self.view.layoutIfNeeded()
+                    
+                }, completion: { (completed) in
+                    UIView.animate(withDuration: 0.35, animations: {
+                        
+//                        if let firstCell = self.listTableView.cellForRow(at: IndexPath(row: 1, section: listSectionType.add.hashValue)) as? ListTableViewCell {
+//                            firstCell.contentView.frame = CGRect(x: firstCell.contentView.frame.minX , y: firstCell.contentView.frame.minY, width: firstCell.contentView.frame.width, height: firstCell.contentView.frame.height)
+//                        }
+                        
+                    })
+                })
+                
+            }
+        }
+    }
+    
 }
+
+
+extension DetailViewController: UITextViewDelegate {
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        EventManager.shared.update(row: entryRow, content: nil, detail: textView.text, calendarEvent: nil, alarmDate: nil, isSetNotification: nil)
+        EventManager.shared.appDelegate.saveContext()
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,
+                  replacementText text: String) -> Bool {
+        
+        return true
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
