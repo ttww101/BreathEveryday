@@ -54,6 +54,7 @@ class ListTableViewCell: UITableViewCell {
         contentView.addConstraint(textViewLeadingConstraint!)
         contentView.addConstraint(textViewTrailingConstraint!)
         contentView.addConstraint(detailBtnLeadingConstraint!)
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -276,8 +277,7 @@ extension ListTableViewCell {
         dateAlarmSet = date
         
         //get ex event, remove ex calendarevent
-        if let id = self.eventID,
-            let event = EventManager.shared.read(row: indexRow),
+        if let event = EventManager.shared.read(row: indexRow),
             let calendarEventID = event.calendarEventID {
             removeEvent(identifier: calendarEventID)
         }
@@ -287,17 +287,15 @@ extension ListTableViewCell {
         
         //TODO: store event identifier
         if let calendarIdentifier = calendarIdentifier {
-            if let id = self.eventID {
-                EventManager.shared.update(id: id,
-                                           content: nil,
-                                           detail: nil,
-                                           calendarEvent: calendarIdentifier,
-                                           alarmDate: date as NSDate,
-                                           isSetNotification: isSetNotification)
-            }
+            
+            EventManager.shared.update(row: indexRow,
+                                       content: nil,
+                                       detail: nil,
+                                       calendarEvent: calendarIdentifier,
+                                       alarmDate: date as NSDate,
+                                       isSetNotification: isSetNotification)
+            
         }
-        
-        
         // TODO: Display the setup info of the event
         
     }

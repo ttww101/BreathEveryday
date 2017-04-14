@@ -130,15 +130,12 @@ class ListViewController: UIViewController {
                 isTyping = isKeyboardShowing ? true : false
                 
                 UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+                    
                     self.view.layoutIfNeeded()
                     
                 }, completion: { (completed) in
-                    UIView.animate(withDuration: 0.35, animations: {
-                        
-                        if let firstCell = self.listTableView.cellForRow(at: IndexPath(row: 1, section: listSectionType.add.hashValue)) as? ListTableViewCell {
-                            firstCell.contentView.frame = CGRect(x: firstCell.contentView.frame.minX , y: firstCell.contentView.frame.minY, width: firstCell.contentView.frame.width, height: firstCell.contentView.frame.height)
-                        }
-                        
+                    UIView.animate(withDuration: 0, animations: {
+                                                
                     })
                 })
                 
@@ -239,24 +236,25 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
             
         case .insert:
             
-            if let indexPath = newIndexPath {
+            if let newIndexPath = newIndexPath {
                 
                 UIView.animate(withDuration: 0, animations: {
                     
-                    self.listTableView.insertRows(at: [indexPath], with: .fade)
-                    
+                    self.listTableView.beginUpdates()
+                    self.listTableView.insertRows(at: [newIndexPath], with: .fade)
+                    self.listTableView.endUpdates()
                 } , completion: { (_) in
                     
-                    UIView.animate(withDuration: 0.4, animations: {
-                        self.listTableView.scrollToRow(at: indexPath,
+                    UIView.animate(withDuration: 0.1, animations: {
+                        
+                        self.listTableView.scrollToRow(at: newIndexPath,
                                                        at: .bottom,
                                                        animated: false)
-                        
                         
                     }, completion: { (_) in
                         // ?? can't work
                         
-                        if let addCell = self.listTableView.cellForRow(at: indexPath) as? ListTableViewCell {
+                        if let addCell = self.listTableView.cellForRow(at: newIndexPath) as? ListTableViewCell {
                             addCell.textView.becomeFirstResponder()
                         }
                         
@@ -270,22 +268,30 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
         case .delete:
             
             if let indexPath = indexPath {
+                listTableView.beginUpdates()
                 listTableView.deleteRows(at: [indexPath], with: .fade)
+                listTableView.endUpdates()
             }
             
         case .update:
             
             if let indexPath = indexPath {
+                listTableView.beginUpdates()
                 listTableView.reloadRows(at: [indexPath], with: .fade)
+                listTableView.endUpdates()
             }
             
         case .move:
             
             if let indexPath = indexPath {
+                listTableView.beginUpdates()
                 listTableView.deleteRows(at: [indexPath], with: .fade)
+                listTableView.endUpdates()
             }
             if let indexPath = newIndexPath {
+                listTableView.beginUpdates()
                 listTableView.insertRows(at: [indexPath], with: .fade)
+                listTableView.endUpdates()
             }
             
         }
@@ -299,6 +305,11 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        
+//        if isTyping {
+//            tableView.
+//        }
+        
         if let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell {
             cell.detailBtnLeadingConstraint?.constant = 200
             cell.contentView.layoutIfNeeded()
@@ -314,6 +325,15 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        
+        if isTyping {
+            return .none
+        } else {
+            return .delete
+        }
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if !isTyping {
@@ -322,11 +342,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
                 guard let objectID = fetchedResultsController.fetchedObjects?[indexPath.row].objectID else { return }
                 
                 EventManager.shared.delete(id: objectID)
-                
-            }
-        } else {
-            if let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell {
-//                cell.textView.endEditing(true)
+                if let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell {
+                    cell.detailBtnLeadingConstraint?.constant = view.frame.width + 100
+                    cell.contentView.layoutIfNeeded()
+                }
             }
         }
         
