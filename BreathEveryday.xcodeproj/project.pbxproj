@@ -11,6 +11,10 @@
 		F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */; };
 		F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A21F981E9C6E4200C24517 /* EventManager.swift */; };
 		F4B2A5801E88EE4200CAECEE /* EventModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A57E1E88EE4200CAECEE /* EventModel.xcdatamodeld */; };
+		F4D6BD961EA4743500A93E46 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BD941EA4743500A93E46 /* CategoryCollectionViewCell.swift */; };
+		F4D6BD971EA4743500A93E46 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6BD951EA4743500A93E46 /* CategoryCollectionViewCell.xib */; };
+		F4D6BD991EA493D600A93E46 /* HomeViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BD981EA493D600A93E46 /* HomeViewManager.swift */; };
+		F4D6BD9B1EA4960600A93E46 /* BubbleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6BD9A1EA4960600A93E46 /* BubbleButton.xib */; };
 		F4E301481E9DC7E500846EBF /* KeyboardButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E301471E9DC7E500846EBF /* KeyboardButtonModel.swift */; };
 		F4E3014E1E9E17CC00846EBF /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3014D1E9E17CC00846EBF /* CalendarCell.swift */; };
 		F4E301501E9E1B1500846EBF /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3014F1E9E1B1500846EBF /* CalendarViewController.swift */; };
@@ -34,6 +38,10 @@
 		F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
 		F4A21F981E9C6E4200C24517 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		F4B2A57F1E88EE4200CAECEE /* EventModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventModel.xcdatamodel; sourceTree = "<group>"; };
+		F4D6BD941EA4743500A93E46 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		F4D6BD951EA4743500A93E46 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
+		F4D6BD981EA493D600A93E46 /* HomeViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewManager.swift; sourceTree = "<group>"; };
+		F4D6BD9A1EA4960600A93E46 /* BubbleButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BubbleButton.xib; sourceTree = "<group>"; };
 		F4E301471E9DC7E500846EBF /* KeyboardButtonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardButtonModel.swift; sourceTree = "<group>"; };
 		F4E3014D1E9E17CC00846EBF /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		F4E3014F1E9E1B1500846EBF /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +87,15 @@
 				52DDEAA6C3601664D4687571 /* Pods-BreathEveryday.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		F4D6BD931EA4740300A93E46 /* CategoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				F4D6BD941EA4743500A93E46 /* CategoryCollectionViewCell.swift */,
+				F4D6BD951EA4743500A93E46 /* CategoryCollectionViewCell.xib */,
+			);
+			name = CategoryCell;
 			sourceTree = "<group>";
 		};
 		F4E301491E9DC86400846EBF /* ListCell */ = {
@@ -128,6 +145,9 @@
 				F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */,
 				F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */,
 				F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */,
+				F4D6BD981EA493D600A93E46 /* HomeViewManager.swift */,
+				F4D6BD9A1EA4960600A93E46 /* BubbleButton.xib */,
+				F4D6BD931EA4740300A93E46 /* CategoryCell */,
 				F4FA6AAC1E7FC24700C2E46E /* ListViewController.swift */,
 				F4E301491E9DC86400846EBF /* ListCell */,
 				F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */,
@@ -203,8 +223,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D6BD971EA4743500A93E46 /* CategoryCollectionViewCell.xib in Resources */,
 				F4F4D6711E828EAC00D7EFBA /* KeyboardBarButton.xib in Resources */,
 				F4FA6AA51E7FB0F100C2E46E /* LaunchScreen.storyboard in Resources */,
+				F4D6BD9B1EA4960600A93E46 /* BubbleButton.xib in Resources */,
 				F4FA6AB31E7FD3DD00C2E46E /* ListTableViewCell.xib in Resources */,
 				F4FA6AA21E7FB0F100C2E46E /* Assets.xcassets in Resources */,
 				F4FA6AA01E7FB0F100C2E46E /* Main.storyboard in Resources */,
@@ -272,8 +294,10 @@
 				F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */,
 				F4FA6A9B1E7FB0F100C2E46E /* AppDelegate.swift in Sources */,
 				F4FA6AAF1E7FCD0D00C2E46E /* IdentifierModel.swift in Sources */,
+				F4D6BD961EA4743500A93E46 /* CategoryCollectionViewCell.swift in Sources */,
 				F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */,
 				F4E3014E1E9E17CC00846EBF /* CalendarCell.swift in Sources */,
+				F4D6BD991EA493D600A93E46 /* HomeViewManager.swift in Sources */,
 				F4FA6AB71E7FD8F100C2E46E /* DetailViewController.swift in Sources */,
 				F4B2A5801E88EE4200CAECEE /* EventModel.xcdatamodeld in Sources */,
 				F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */,

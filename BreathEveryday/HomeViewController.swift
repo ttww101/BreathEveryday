@@ -8,8 +8,14 @@
 
 import UIKit
 
+enum Mode {
+    case normal
+    case setup
+}
+
 class HomeViewController: UIViewController {
     
+    let button1 = UIButton()
     @IBOutlet weak var quoteButton: UIButton!
     @IBOutlet weak var quoteView: UIView!
     @IBOutlet weak var menuButton: UIButton!
@@ -20,14 +26,23 @@ class HomeViewController: UIViewController {
     var isAnimating: Bool = false
     var bubblesBtn: [UIButton] = []
     var bubblesImage: [UIImageView] = []
+    let blackTransparentView = UIView()
+    @IBOutlet weak var categorysCollectionView: UICollectionView!
+    var categoryScrollViewConstraint: NSLayoutConstraint?
+    @IBOutlet weak var categoryDoneBtn: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        categoryScrollViewConstraint = NSLayoutConstraint(item: categorysCollectionView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        view.addConstraint(categoryScrollViewConstraint!)
+        
         createBubble()
-        setupView()
+        controllerSetup()
     }
     
-    func setupView() {
+    func controllerSetup() {
         
         //quote
         quoteViewBottomConstraint = NSLayoutConstraint(item: quoteView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 25)
@@ -53,11 +68,25 @@ class HomeViewController: UIViewController {
         menuButton.addTarget(self, action: #selector(btnMenuBtn), for: .touchUpInside)
         settingButton.addTarget(self, action: #selector(btnSettingBtn), for: .touchUpInside)
         shopBtton.addTarget(self, action: #selector(btnShopBtn), for: .touchUpInside)
+        
+        //category
+        image = #imageLiteral(resourceName: "Checkmark Filled-50").withRenderingMode(.alwaysTemplate)
+        categoryDoneBtn.tintColor = .white
+        categoryDoneBtn.setImage(image, for: .normal)
+        categoryDoneBtn.imageEdgeInsets = UIEdgeInsetsMake(15, 15, 0, 15)
+        categoryDoneBtn.imageView?.contentMode = .scaleAspectFit
+        categoryDoneBtn.addTarget(self, action: #selector(btnDone), for: .touchUpInside)
+//        categoryDoneBtn.layer.borderWidth = 1
+//        categoryDoneBtn.layer.borderColor = UIColor.white.cgColor
+        
+        categorysCollectionView.delegate = self
+        categorysCollectionView.dataSource = self
+        categorysCollectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCollectionViewCell")
+        
     }
     
     func createBubble() {
         
-        let button1 = UIButton()
         let image1 = UIImageView()
         bubblesBtn.append(button1)
         bubblesImage.append(image1)
@@ -66,41 +95,150 @@ class HomeViewController: UIViewController {
         button1.layer.frame = CGRect(x: 100, y: 200, width: 100, height: 100)
         button1.layer.masksToBounds = true
         button1.layer.cornerRadius = 50
-        button1.backgroundColor = UIColor.lightGray
+        button1.backgroundColor = UIColor(colorLiteralRed: 255/255, green: 239/255, blue: 214/255, alpha: 1.0)
         button1.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
         view.addSubview(button1)
 
         //image1
-        image1.image = #imageLiteral(resourceName: "Shopping Cart-50")
+        image1.image = #imageLiteral(resourceName: "Shopping Cart-50").withRenderingMode(.alwaysTemplate)
+        image1.tintColor = UIColor.white
         image1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(displayListView)))
         image1.layer.frame = CGRect(x: 20, y: 20, width: button1.frame.width - 40, height: button1.frame.height - 40)
         button1.addSubview(image1)
         
-        view.sendSubview(toBack: button1)
-        view.sendSubview(toBack: image1)
+        let a = bubbleButton.bubble.button
+        a.frame = CGRect(x: 300, y: 0, width: 300, height: 300)
+        view.addSubview(a)
+        
     }
     
     func btnMenuBtn() {
         
         if !menuButton.isSelected {
             menuButton.isEnabled = false
+            shopBtton.isEnabled = false
+            settingButton.isEnabled = false
             menuButton.isSelected = true
-            settingButton.isHidden = false
-            shopBtton.isHidden = false
-            menuButton.isEnabled = true
+            let settingBtnFrame = settingButton.frame
+            let shopBtnFrame = shopBtton.frame
+            settingButton.frame = CGRect(x: menuButton.frame.minX, y: menuButton.frame.minY, width: 0, height: 0)
+            shopBtton.frame = CGRect(x: menuButton.frame.minX, y: menuButton.frame.minY, width: 0, height: 0)
+            UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+                self.settingButton.isHidden = false
+                self.shopBtton.isHidden = false
+                self.settingButton.frame = settingBtnFrame
+                self.shopBtton.frame = shopBtnFrame
+            }, completion: { (_) in
+                self.menuButton.isEnabled = true
+                self.settingButton.isEnabled = true
+                self.shopBtton.isEnabled = true
+            })
         } else {
-            menuButton.isEnabled = false
-            menuButton.isSelected = false
-            settingButton.isHidden = true
-            shopBtton.isHidden = true
-            menuButton.isEnabled = true
+            shrinkMenu()
         }
+        
+    }
+    
+    func shrinkMenu() {
+        
+        menuButton.isEnabled = false
+        settingButton.isEnabled = false
+        shopBtton.isEnabled = false
+        let settingBtnFrame = settingButton.frame
+        let shopBtnFrame = shopBtton.frame
+        UIView.animate(withDuration: 0.25, animations: {
+            self.settingButton.frame = CGRect(x: self.menuButton.frame.midX, y: self.menuButton.frame.midY, width: 0, height: 0)
+            self.shopBtton.frame = CGRect(x: self.menuButton.frame.midX, y: self.menuButton.frame.midY, width: 0, height: 0)
+        }, completion: { (_) in
+            self.settingButton.frame = settingBtnFrame
+            self.shopBtton.frame = shopBtnFrame
+            self.menuButton.isSelected = false
+            self.settingButton.isHidden = true
+            self.shopBtton.isHidden = true
+            self.menuButton.isEnabled = true
+        })
         
     }
     
     func btnSettingBtn() {
         
+        self.menuButton.isSelected = false
+        self.settingButton.isHidden = true
+        self.shopBtton.isHidden = true
+        
+        //add black view to view
+        blackTransparentView.alpha = 0.8
+        blackTransparentView.backgroundColor = .black
+        view.addSubview(blackTransparentView)
+        blackTransparentView.translatesAutoresizingMaskIntoConstraints = false
+        blackTransparentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        blackTransparentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        blackTransparentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        blackTransparentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        
+        //send views to front
+        view.bringSubview(toFront: button1)
+        view.bringSubview(toFront: quoteButton)
+        view.bringSubview(toFront: categorysCollectionView)
+        view.bringSubview(toFront: categoryDoneBtn)
+        
+        //button action & appearance change
+        swichMode(to: .setup)
+        
+        
     }
+    
+    func swichMode(to mode: Mode) {
+        
+        switch mode {
+            
+        case .normal:
+            button1.removeTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
+            button1.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
+            
+            let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
+            quoteButton.setImage(image, for: .normal)
+            quoteButton.tintColor = .black
+            quoteButton.removeTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
+            quoteButton.addTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
+            
+        case .setup:
+            button1.removeTarget(self, action: #selector(displayListView), for: .touchUpInside)
+            button1.addTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
+            
+            let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
+            quoteButton.setImage(image, for: .normal)
+            quoteButton.tintColor = .white
+            quoteButton.removeTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
+            quoteButton.addTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
+            
+        }
+    }
+    
+    func displayCategoryScrollView() {
+        
+        let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
+        quoteButton.setImage(image, for: .normal)
+        quoteButton.tintColor = .black
+        quoteButton.removeTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
+        categoryScrollViewConstraint?.constant = -100
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: { (completed) in
+            
+        })
+    }
+    
+    func btnQuoteBtnSettingMode() {
+        btnDone()
+    }
+    
+    func btnDone() {
+        blackTransparentView.removeFromSuperview()
+        swichMode(to: .normal)
+        categoryScrollViewConstraint?.constant = 0
+    }
+    
     func btnShopBtn() {
         
     }
@@ -189,39 +327,30 @@ class HomeViewController: UIViewController {
     }
 }
 
-var numberOfQuote = 0
-let quotes:[String] = ["Steve Jobs - \nIf today was the last day of my life would I want to do what I’m about to do today?",
-                       "Kobe Bryant - \nI don't talk trash often, but when I do, I go for the jugular.",
-                       "William James - \nBe not afraid of life. Believe that life is worth living, and your belief will help create the fact.",
-                       "Erma Bombeck - \nWhen I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.",
-                       "Mark Twain - \nThe secret of getting ahead is getting started.",
-                       "Benjamin Disraeli - \nNurture your mind with great thoughts. To believe in the heroic makes heroes.",
-                       "Ray Kroc - \nLuck is a dividend of sweat. The more you sweat, the luckier you get.",
-                       "Carol Burnett - \nOnly I can change my life. No one can do it for me.",
-                       "George Sand - \nThere is only one happiness in this life, to love and be loved.",
-                       "Charles R. Swindoll - \nLife is 10% what happens to you and 90% how you react to it.",
-                       "English Proverb - \nYou may find the worst enemy or best friend in yourself.",
-                       "Vincent Van Gogh - \nWhoever loves much, performs much, and can accomplish much, and what is done in love is done well.",
-                       "Winston Churchill - \nCourage is the first of human qualities because it is the quality which guarantees all others.",
-                       "Oliver Wendell Holmes - The great thing in this world is not so much where you stand, as in what direction you are moving.",
-                       "Arthur Schopenhauer - \nEvery truth passes through three stages before it is recognized. In the first, it is ridiculed. In the second, it is opposed. In the third, it is regarded as self evident.",
-                       "Jim Rohn - \nEither you run the day, or the day runs you.",
-                       "Vince Lombardi - \nThe difference between a successful person and others is not lack of strength not a lack of knowledge but rather a lack of will.",
-                       "John F. Kennedy - \nIf not us, who? If not now, when?",
-                       "Carl Bard - \nThough no one can go back and make a brand new start, anyone can start from now and make a brand new ending.",
-                       "George Bernard Shaw - \nSome men see things as they are and say why – I dream things that never were and say why not.",
-                       "William Shakespeare - \nSpeak less than you know; have more than you show.",
-                       "Thomas Edison - \nMany of life’s failures are experienced by people who did not realize how close they were to success when they gave up.",
-                       "Joe Clark - \nDefeat is not bitter unless you swallow it.",
-                       "Larry Winget - Nobody ever wrote down a plan to be broke, fat, lazy, or stupid. Those things are what happen when you don’t have a plan.",
-                       "Bomi Chen - Do what makes you happy. :)",
-                       "Joshua J. Marine - \nChallenges are what make life interesting and overcoming them is what makes life meaningful.",
-                       "Mark Twain - \nKeep away from people who try to belittle your ambitions. Small people always do that, but the really great makes you feel that you, too, can become great.",
-                       "Albert Einstein - \nI am thankful for all of those who said NO to me. Its because of them I’m doing it myself.",
-                       "Bruce Lee - \nI fear not the man who has practiced 10,000 kicks once, but I fear the man who has practiced one kick 10,000 times.",
-                       "John Lennon - \nWhen I was 5 years old, my mother always told me that happiness was the key to life. When I went to school, they asked me what I wanted to be when I grew up. I wrote down ‘happy’. They told me I didn’t understand the assignment, and I told them they didn’t understand life.",
-                       "Walt Disney - \nThere is more treasure in books than in all the pirate’s loot on Treasure Island."]
-
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return categoryArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = categorysCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
+        cell.label.text = categoryArray[indexPath.row]
+        let image = imageArray[indexPath.row].withRenderingMode(.alwaysTemplate)
+        cell.imageView.image = image
+        
+        return cell
+    }
+    
+}
 
 
 

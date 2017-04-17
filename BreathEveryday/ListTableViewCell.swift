@@ -143,9 +143,9 @@ extension ListTableViewCell: UITextViewDelegate {
         textViewLeadingConstraint?.constant = numTextViewLeftConstant
         textViewTrailingConstraint?.constant = numTextViewRightConstant
         detailBtnLeadingConstraint?.constant = numDetailImageToTextView
-//        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
-//            self.contentView.layoutIfNeeded()
-//        }, completion: { (completed) in })
+        UIView.animate(withDuration: 0.1, delay: 0, options: .curveEaseIn, animations: {
+            self.contentView.layoutIfNeeded()
+        }, completion: { (completed) in })
         
         //disappear toolbar
         if !self.locationView.isHidden {
