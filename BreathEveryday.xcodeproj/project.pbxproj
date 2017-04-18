@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		C78B464447E5B301489AF85C /* Pods_BreathEveryday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035937D110347F617E50F288 /* Pods_BreathEveryday.framework */; };
+		F408C5D71EA51B3B00F29A67 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */; };
 		F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */; };
 		F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A21F981E9C6E4200C24517 /* EventManager.swift */; };
-		F4B2A5801E88EE4200CAECEE /* EventModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A57E1E88EE4200CAECEE /* EventModel.xcdatamodeld */; };
+		F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A57E1E88EE4200CAECEE /* CoreDataModel.xcdatamodeld */; };
 		F4D6BD961EA4743500A93E46 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BD941EA4743500A93E46 /* CategoryCollectionViewCell.swift */; };
 		F4D6BD971EA4743500A93E46 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6BD951EA4743500A93E46 /* CategoryCollectionViewCell.xib */; };
-		F4D6BD991EA493D600A93E46 /* HomeViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BD981EA493D600A93E46 /* HomeViewManager.swift */; };
+		F4D6BD991EA493D600A93E46 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BD981EA493D600A93E46 /* HomeViewModel.swift */; };
 		F4D6BD9B1EA4960600A93E46 /* BubbleButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6BD9A1EA4960600A93E46 /* BubbleButton.xib */; };
 		F4E301481E9DC7E500846EBF /* KeyboardButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E301471E9DC7E500846EBF /* KeyboardButtonModel.swift */; };
 		F4E3014E1E9E17CC00846EBF /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3014D1E9E17CC00846EBF /* CalendarCell.swift */; };
@@ -35,12 +36,13 @@
 		035937D110347F617E50F288 /* Pods_BreathEveryday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreathEveryday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DDEAA6C3601664D4687571 /* Pods-BreathEveryday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreathEveryday.release.xcconfig"; path = "Pods/Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.release.xcconfig"; sourceTree = "<group>"; };
 		6AF2EE35D2892DEE60B9D142 /* Pods-BreathEveryday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreathEveryday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.debug.xcconfig"; sourceTree = "<group>"; };
+		F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
 		F4A21F981E9C6E4200C24517 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
-		F4B2A57F1E88EE4200CAECEE /* EventModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventModel.xcdatamodel; sourceTree = "<group>"; };
+		F4B2A57F1E88EE4200CAECEE /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		F4D6BD941EA4743500A93E46 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		F4D6BD951EA4743500A93E46 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
-		F4D6BD981EA493D600A93E46 /* HomeViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewManager.swift; sourceTree = "<group>"; };
+		F4D6BD981EA493D600A93E46 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F4D6BD9A1EA4960600A93E46 /* BubbleButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BubbleButton.xib; sourceTree = "<group>"; };
 		F4E301471E9DC7E500846EBF /* KeyboardButtonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardButtonModel.swift; sourceTree = "<group>"; };
 		F4E3014D1E9E17CC00846EBF /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
@@ -142,10 +144,12 @@
 		F4FA6A991E7FB0F100C2E46E /* BreathEveryday */ = {
 			isa = PBXGroup;
 			children = (
+				F4B2A57E1E88EE4200CAECEE /* CoreDataModel.xcdatamodeld */,
 				F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */,
 				F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */,
 				F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */,
-				F4D6BD981EA493D600A93E46 /* HomeViewManager.swift */,
+				F4D6BD981EA493D600A93E46 /* HomeViewModel.swift */,
+				F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */,
 				F4D6BD9A1EA4960600A93E46 /* BubbleButton.xib */,
 				F4D6BD931EA4740300A93E46 /* CategoryCell */,
 				F4FA6AAC1E7FC24700C2E46E /* ListViewController.swift */,
@@ -155,7 +159,6 @@
 				F4FA6AA11E7FB0F100C2E46E /* Assets.xcassets */,
 				F4FA6AA31E7FB0F100C2E46E /* LaunchScreen.storyboard */,
 				F4FA6AA61E7FB0F100C2E46E /* Info.plist */,
-				F4B2A57E1E88EE4200CAECEE /* EventModel.xcdatamodeld */,
 			);
 			path = BreathEveryday;
 			sourceTree = "<group>";
@@ -293,13 +296,14 @@
 				F4E301481E9DC7E500846EBF /* KeyboardButtonModel.swift in Sources */,
 				F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */,
 				F4FA6A9B1E7FB0F100C2E46E /* AppDelegate.swift in Sources */,
+				F408C5D71EA51B3B00F29A67 /* CategoryManager.swift in Sources */,
 				F4FA6AAF1E7FCD0D00C2E46E /* IdentifierModel.swift in Sources */,
 				F4D6BD961EA4743500A93E46 /* CategoryCollectionViewCell.swift in Sources */,
 				F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */,
 				F4E3014E1E9E17CC00846EBF /* CalendarCell.swift in Sources */,
-				F4D6BD991EA493D600A93E46 /* HomeViewManager.swift in Sources */,
+				F4D6BD991EA493D600A93E46 /* HomeViewModel.swift in Sources */,
 				F4FA6AB71E7FD8F100C2E46E /* DetailViewController.swift in Sources */,
-				F4B2A5801E88EE4200CAECEE /* EventModel.xcdatamodeld in Sources */,
+				F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */,
 				F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */,
 				F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */,
 			);
@@ -475,13 +479,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		F4B2A57E1E88EE4200CAECEE /* EventModel.xcdatamodeld */ = {
+		F4B2A57E1E88EE4200CAECEE /* CoreDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				F4B2A57F1E88EE4200CAECEE /* EventModel.xcdatamodel */,
+				F4B2A57F1E88EE4200CAECEE /* CoreDataModel.xcdatamodel */,
 			);
-			currentVersion = F4B2A57F1E88EE4200CAECEE /* EventModel.xcdatamodel */;
-			path = EventModel.xcdatamodeld;
+			currentVersion = F4B2A57F1E88EE4200CAECEE /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

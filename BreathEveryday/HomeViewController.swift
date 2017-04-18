@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 enum Mode {
     case normal
@@ -24,12 +25,11 @@ class HomeViewController: UIViewController {
     var quoteViewBottomConstraint: NSLayoutConstraint?
     let quoteLbl = UILabel()
     var isAnimating: Bool = false
-    var bubblesBtn: [UIButton] = []
-    var bubblesImage: [UIImageView] = []
     let blackTransparentView = UIView()
     @IBOutlet weak var categorysCollectionView: UICollectionView!
     var categoryScrollViewConstraint: NSLayoutConstraint?
     @IBOutlet weak var categoryDoneBtn: UIButton!
+    var categoryDataArr: [Category] = []
     
     
     override func viewDidLoad() {
@@ -38,7 +38,6 @@ class HomeViewController: UIViewController {
         categoryScrollViewConstraint = NSLayoutConstraint(item: categorysCollectionView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
         view.addConstraint(categoryScrollViewConstraint!)
         
-        createBubble()
         controllerSetup()
     }
     
@@ -53,6 +52,7 @@ class HomeViewController: UIViewController {
         quoteLbl.adjustsFontSizeToFitWidth = true
         quoteButton.addTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
         quoteView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissQuote)))
+        
         //menu
         menuButton.alpha = 0.75
         shopBtton.alpha = 0.75
@@ -71,45 +71,119 @@ class HomeViewController: UIViewController {
         
         //category
         image = #imageLiteral(resourceName: "Checkmark Filled-50").withRenderingMode(.alwaysTemplate)
-        categoryDoneBtn.tintColor = .white
         categoryDoneBtn.setImage(image, for: .normal)
         categoryDoneBtn.imageEdgeInsets = UIEdgeInsetsMake(15, 15, 0, 15)
         categoryDoneBtn.imageView?.contentMode = .scaleAspectFit
         categoryDoneBtn.addTarget(self, action: #selector(btnDone), for: .touchUpInside)
-//        categoryDoneBtn.layer.borderWidth = 1
-//        categoryDoneBtn.layer.borderColor = UIColor.white.cgColor
+        categoryDoneBtn.layer.borderWidth = 1
+        categoryDoneBtn.layer.borderColor = UIColor.green.cgColor
         
         categorysCollectionView.delegate = self
         categorysCollectionView.dataSource = self
         categorysCollectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCollectionViewCell")
         
+        
+        //bubbles
+        var frame = CGRect()
+        
+        for i in 0...categoryStringArray.count - 1 {
+            
+            var isCreated = false
+            var createButton = UIButton()
+            let name = categoryStringArray[i]
+            let image = categoryImageArray[i].withRenderingMode(.alwaysTemplate)
+            
+            //MARK: find existing data
+            
+            if let category = CategoryManager.shared.read(name: name) {
+                
+                //transfer data needed
+                isCreated = category.isCreated
+                frame = CGRect(x: CGFloat(category.posX),
+                               y: CGFloat(category.posY),
+                               width: CGFloat(category.width),
+                               height: CGFloat(category.height))
+                createButton = createRandomBubble(with: image, in: frame)
+                createButton.tag = i // to display name
+                createButton.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
+                view.addSubview(createButton)
+            }
+            
+            let category = Category.init(name: name,
+                                         image: image,
+                                         button: createButton,
+                                         isCreated: isCreated,
+                                         frame: frame)
+            categoryDataArr.append(category)
+            
+        }
+        
+        //handle set up mode
+        var willShowSetupMode = true
+        for category in categoryDataArr {
+            if category.isCreated == true {
+                willShowSetupMode = false
+                break
+            }
+        }
+        if willShowSetupMode {
+            showupFirstTime()
+        }
+        
     }
     
-    func createBubble() {
+    func showupFirstTime() {
+        //add black view to view
+        blackTransparentView.alpha = 0.8
+        blackTransparentView.backgroundColor = .black
+        view.addSubview(blackTransparentView)
+        blackTransparentView.translatesAutoresizingMaskIntoConstraints = false
+        blackTransparentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        blackTransparentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        blackTransparentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        blackTransparentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: { (completed) in
+            
+        })
+        //send views to front
+        view.bringSubview(toFront: categorysCollectionView)
+        view.bringSubview(toFront: categoryDoneBtn)
         
-        let image1 = UIImageView()
-        bubblesBtn.append(button1)
-        bubblesImage.append(image1)
+        //button action & appearance change
+        swichMode(to: .setup)
+        
+        categoryScrollViewConstraint?.constant = -100
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: { (completed) in
+            
+        })
+
+    }
+    
+    func createRandomBubble(with image: UIImage, in frame: CGRect?) -> UIButton {
         
         //button1
-        button1.layer.frame = CGRect(x: 100, y: 200, width: 100, height: 100)
-        button1.layer.masksToBounds = true
-        button1.layer.cornerRadius = 50
-        button1.backgroundColor = UIColor(colorLiteralRed: 255/255, green: 239/255, blue: 214/255, alpha: 1.0)
-        button1.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
-        view.addSubview(button1)
-
+        let button = UIButton()
+        if let frame = frame {
+            button.layer.frame = frame
+        } else {
+            let xPos = arc4random_uniform(UInt32(view.frame.width) - 100)
+            let yPos = arc4random_uniform(UInt32(categorysCollectionView.frame.minY) - 100 - UInt32(quoteButton.frame.maxY)) + UInt32(quoteButton.frame.maxY)
+            button.layer.frame = CGRect(x: Int(xPos), y: Int(yPos), width: 80, height: 80)
+        }
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 40
+        button.backgroundColor = UIColor.lightGray
+        
         //image1
-        image1.image = #imageLiteral(resourceName: "Shopping Cart-50").withRenderingMode(.alwaysTemplate)
-        image1.tintColor = UIColor.white
-        image1.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(displayListView)))
-        image1.layer.frame = CGRect(x: 20, y: 20, width: button1.frame.width - 40, height: button1.frame.height - 40)
-        button1.addSubview(image1)
-        
-        let a = bubbleButton.bubble.button
-        a.frame = CGRect(x: 300, y: 0, width: 300, height: 300)
-        view.addSubview(a)
-        
+        let imageRendered = image.withRenderingMode(.alwaysTemplate)
+        button.tintColor = UIColor.white
+        button.setImage(imageRendered, for: .normal)
+        button.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+        return button
     }
     
     func btnMenuBtn() {
@@ -181,10 +255,14 @@ class HomeViewController: UIViewController {
         view.bringSubview(toFront: quoteButton)
         view.bringSubview(toFront: categorysCollectionView)
         view.bringSubview(toFront: categoryDoneBtn)
+        for category in categoryDataArr {
+            if category.isCreated {
+                view.bringSubview(toFront: category.button)
+            }
+        }
         
         //button action & appearance change
         swichMode(to: .setup)
-        
         
     }
     
@@ -193,6 +271,11 @@ class HomeViewController: UIViewController {
         switch mode {
             
         case .normal:
+            //button targets
+            for category in categoryDataArr {
+                category.button.removeTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
+                category.button.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
+            }
             button1.removeTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
             button1.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
             
@@ -203,6 +286,11 @@ class HomeViewController: UIViewController {
             quoteButton.addTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
             
         case .setup:
+            //button targets
+            for category in categoryDataArr {
+                category.button.removeTarget(self, action: #selector(displayListView), for: .touchUpInside)
+                category.button.addTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
+            }
             button1.removeTarget(self, action: #selector(displayListView), for: .touchUpInside)
             button1.addTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
             
@@ -215,7 +303,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func displayCategoryScrollView() {
+    func displayCategoryScrollView(sender: UIButton) {
         
         let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
         quoteButton.setImage(image, for: .normal)
@@ -225,7 +313,9 @@ class HomeViewController: UIViewController {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
-            
+            self.categorysCollectionView.scrollToItem(at: IndexPath(row: sender.tag, section: 0),
+                                                 at: .centeredHorizontally,
+                                                 animated: true)
         })
     }
     
@@ -234,9 +324,77 @@ class HomeViewController: UIViewController {
     }
     
     func btnDone() {
-        blackTransparentView.removeFromSuperview()
-        swichMode(to: .normal)
-        categoryScrollViewConstraint?.constant = 0
+        //calculate count
+        var count = 0
+        for category in categoryDataArr {
+            if category.isCreated {
+                count += 1
+            }
+        }
+        //check if more than one selected
+        if count > 0 {
+            blackTransparentView.removeFromSuperview()
+            swichMode(to: .normal)
+            categoryScrollViewConstraint?.constant = 0
+            
+            //MARK: Core data save
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            let moc = appDelegate.persistentContainer.viewContext
+            
+            do {
+                
+                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CategoryMO")
+                
+                guard let results = try moc.fetch(request) as? [CategoryMO] else {
+                    return
+                }
+                
+                for result in results {
+                    
+                    moc.delete(result)
+                    
+                }
+                
+                try moc.save()
+                
+            } catch {}
+            
+            for category in categoryDataArr {
+                if category.isCreated {
+                    
+                    guard let entityDescription = NSEntityDescription.entity(forEntityName: "CategoryMO", in: moc) else {
+                        
+                        return
+                        
+                    }
+                    
+                    let cMO = CategoryMO(entity: entityDescription, insertInto: moc)
+                    
+                    cMO.name = category.name
+                    
+                    cMO.isCreated = category.isCreated
+                    
+                    let frame = category.frame
+                    cMO.posX = Float(frame.minX)
+                    cMO.posY = Float(frame.minY)
+                    cMO.width = Float(frame.width)
+                    cMO.height = Float(frame.height)
+                    
+                }
+            }
+            
+            do {
+                
+                try moc.save()
+                
+            } catch { print(error.localizedDescription) }
+            
+            
+        } else {
+            //TODO: alert nothing selected
+        }
     }
     
     func btnShopBtn() {
@@ -247,6 +405,7 @@ class HomeViewController: UIViewController {
         
         if !sender.isSelected {
             
+            view.bringSubview(toFront: quoteView)
             //change state
             sender.isSelected = true
             sender.isEnabled = false
@@ -280,7 +439,6 @@ class HomeViewController: UIViewController {
             dismissQuote()
         }
         
-        
     }
     
     func dismissQuote() {
@@ -305,17 +463,22 @@ class HomeViewController: UIViewController {
         })
     }
     
-    func displayListView() {
+    func displayListView(sender: UIButton) {
         
-        if let displayView = storyboard?.instantiateViewController(withIdentifier: Identifier.listView.rawValue) as? UINavigationController {
+        if let navigationVC = storyboard?.instantiateViewController(withIdentifier: "HomeNavigationController") as? UINavigationController {
             
+            //send value
+            guard let vc = navigationVC.childViewControllers[0] as? ListViewController else { return }
+            vc.listTitle = categoryDataArr[sender.tag].name
+            
+            //animation
             let subView = UIView()
-            subView.layer.frame = displayView.view.frame
+            subView.layer.frame = navigationVC.view.frame
             subView.backgroundColor = UIColor.white
-            displayView.view.addSubview(subView)
+            navigationVC.view.addSubview(subView)
             subView.layer.opacity = 1
             
-            self.present(displayView, animated: false, completion: {
+            self.present(navigationVC, animated: false, completion: {
                 UIView.animate(withDuration: 0.5, animations: {
                     subView.layer.opacity = 0.0
                 }, completion: { (_) in
@@ -331,21 +494,38 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
         
+        if !cell.isCreated {
+            //MARK: CREAT BUBBLE
+            cell.isCreated = true
+            categoryDataArr[indexPath.row].isCreated = true
+            let createBtn = createRandomBubble(with: categoryImageArray[indexPath.row], in: nil)
+            createBtn.tag = indexPath.row
+            categoryDataArr[indexPath.row].button = createBtn
+            categoryDataArr[indexPath.row].frame = createBtn.frame
+            view.addSubview(createBtn)
+        } else {
+            let getCategory = categoryDataArr[indexPath.row]
+            getCategory.button.removeFromSuperview()
+            cell.isCreated = false
+            categoryDataArr[indexPath.row].isCreated = false
+        }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return categoryArray.count
+        return categoryDataArr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = categorysCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
-        cell.label.text = categoryArray[indexPath.row]
-        let image = imageArray[indexPath.row].withRenderingMode(.alwaysTemplate)
+        cell.label.text = categoryDataArr[indexPath.row].name
+        let image = categoryDataArr[indexPath.row].image
         cell.imageView.image = image
+        cell.isCreated = categoryDataArr[indexPath.row].isCreated
         
         return cell
     }

@@ -1,74 +1,77 @@
 //
-//  ContentManager.swift
+//  CategoryManager.swift
 //  BreathEveryday
 //
-//  Created by Lucy on 2017/4/11.
-//  Copyright © 2017年 Bomi. All rights reserved.
-//
-//
-//  ArticleManager.swift
-//  DemoCoreData
-//
-//  Created by Lucy on 2017/4/10.
+//  Created by Lucy on 2017/4/17.
 //  Copyright © 2017年 Bomi. All rights reserved.
 //
 
 import CoreData
 import UIKit
 
-class EventManager {
+class CategoryManager {
     
-    static let shared = EventManager()
+    static let shared = CategoryManager()
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    var request = NSFetchRequest<NSFetchRequestResult>(entityName: "EventMO")
+    var request = NSFetchRequest<NSFetchRequestResult>(entityName: "CategoryMO")
     
-    let sortDescriptor = NSSortDescriptor(key: "createdDate", ascending: true)
+    let sortDescriptor = NSSortDescriptor(key: "isCreated", ascending: false)
     
     //C
-    func create(calendarEvent: String?, content: String?, detail: String?, category: String) {
+    func create(name: String?, isCreated: Bool?, frame: CGRect?) {
         
         let moc = appDelegate.persistentContainer.viewContext
         
-        guard let entityDescription = NSEntityDescription.entity(forEntityName: "EventMO", in: moc) else {
+        guard let entityDescription = NSEntityDescription.entity(forEntityName: "CategoryMO", in: moc) else {
             
             return
             
         }
         
-        let event = EventMO(entity: entityDescription, insertInto: moc)
+        let category = CategoryMO(entity: entityDescription, insertInto: moc)
         
-        if let calendarEvent = calendarEvent {
-            event.calendarEventID = calendarEvent
+        if let name = name {
+            category.name = name
         }
         
-        if let content = content {
-            event.content = content
+        if let isCreated = isCreated {
+            category.isCreated = isCreated
         }
         
-        if let detail = detail {
-            event.detail = detail
+        if let frame = frame {
+            category.posX = Float(frame.minX)
+            category.posY = Float(frame.minY)
+            category.width = Float(frame.width)
+            category.height = Float(frame.height)
         }
         
-        event.createdDate = NSDate()
-        
-        event.category = category
         
     }
     
     //R
-    func read(row: Int) -> EventMO? {
+    func read(name: String) -> CategoryMO? {
         
         let moc = appDelegate.persistentContainer.viewContext
         
+        request.predicate = NSPredicate(format: "name == %@", name)
+        
         do {
             
-            guard let results = try moc.fetch(request) as? [EventMO] else {
+            guard let results = try moc.fetch(request) as? [CategoryMO] else {
                 return nil
             }
             
-            return results[row]
+            if results.count > 0 {
+                
+                return results[0]
+                
+            } else {
+                
+                return nil
+                
+            }
             
         } catch {
             
@@ -77,15 +80,17 @@ class EventManager {
         
     }
     
-    func readAll() -> [EventMO]? {
+    func readAll() -> [CategoryMO]? {
         
         let moc = appDelegate.persistentContainer.viewContext
         
         do {
             
-            guard let results = try moc.fetch(request) as? [EventMO] else {
+            guard let results = try moc.fetch(request) as? [CategoryMO] else {
                 return nil
             }
+            
+            print(results)
             
             return results
             
@@ -105,28 +110,8 @@ class EventManager {
             
             let event = try moc.existingObject(with: id)
             
-            guard let eventMO = event as? EventMO else {
+            guard let CategoryMO = event as? CategoryMO else {
                 return
-            }
-            
-            if let calendarEvent = calendarEvent {
-                eventMO.calendarEventID = calendarEvent
-            }
-            
-            if let content = content {
-                eventMO.content = content
-            }
-            
-            if let detail = detail {
-                eventMO.detail = detail
-            }
-            
-            if let alarmDate = alarmDate {
-                eventMO.alarmStartTime = alarmDate
-            }
-            
-            if let isSetNotification = isSetNotification {
-                eventMO.isSetNotification = isSetNotification
             }
             
         } catch {
@@ -144,31 +129,11 @@ class EventManager {
         
         do {
             
-            guard let results = try moc.fetch(request) as? [EventMO] else {
+            guard let results = try moc.fetch(request) as? [CategoryMO] else {
                 return
             }
             
             let event = results[row]
-            
-            if let calendarEvent = calendarEvent {
-                event.calendarEventID = calendarEvent
-            }
-            
-            if let content = content {
-                event.content = content
-            }
-            
-            if let detail = detail {
-                event.detail = detail
-            }
-            
-            if let alarmDate = alarmDate {
-                event.alarmStartTime = alarmDate
-            }
-            
-            if let isSetNotification = isSetNotification {
-                event.isSetNotification = isSetNotification
-            }
             
         } catch {
             
@@ -201,9 +166,10 @@ class EventManager {
         
         do {
             
-            guard let results = try moc.fetch(request) as? [EventMO] else {
+            guard let results = try moc.fetch(request) as? [CategoryMO] else {
                 return
             }
+            print(results)
             
             for result in results {
                 
@@ -211,7 +177,7 @@ class EventManager {
                 
             }
             
-            appDelegate.saveContext()
+//            appDelegate.saveContext()
             
         } catch {
             

@@ -12,6 +12,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
+    var isCreated: Bool = false
+    var numberOfArr: Int = 0
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -24,14 +24,13 @@ class ListViewController: UIViewController {
     @IBAction func homeBtn(_ sender: Any) {
         
         displayHomeView()
-        
         //note: after saveContext the ID will totoally different
         EventManager.shared.appDelegate.saveContext()
     }
     
     @IBAction func addEventBtn(_ sender: Any) {
         
-        EventManager.shared.create(calendarEvent: nil, content: nil, detail: nil)
+        EventManager.shared.create(calendarEvent: nil, content: nil, detail: nil, category: listTitle)
         
         EventManager.shared.appDelegate.saveContext()
     }
@@ -39,6 +38,7 @@ class ListViewController: UIViewController {
     var tableViewBottomConstraint: NSLayoutConstraint?
     var fetchedResultsController: NSFetchedResultsController<EventMO>!
     var isTyping = false
+    var listTitle = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +49,7 @@ class ListViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.barTintColor = .clear
         self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.topItem?.title = listTitle
         
         //tableView
         listTableView.delegate = self
@@ -195,6 +196,8 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
         
         let fetchRequest: NSFetchRequest<EventMO> = EventMO.fetchRequest()
         //sort by
+        EventManager.shared.request.predicate = NSPredicate(format: "category == %@", listTitle)
+        fetchRequest.predicate = NSPredicate(format: "category == %@", listTitle)
         let dateSort = NSSortDescriptor(key: "createdDate", ascending: true)
         fetchRequest.sortDescriptors = [dateSort]
         fetchedResultsController = NSFetchedResultsController(

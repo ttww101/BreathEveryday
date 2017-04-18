@@ -10,7 +10,20 @@ import Foundation
 import UIKit
 
 
-let categoryArray: [String] = ["Love",
+struct Category {
+    
+    var name: String = ""
+    
+    var image: UIImage = UIImage()
+    
+    var button: UIButton = UIButton()
+    
+    var isCreated: Bool = false
+    
+    var frame: CGRect = CGRect()
+}
+
+let categoryStringArray: [String] = ["Love",
                                "Family",
                                "Couple",
                                "Friend",
@@ -33,15 +46,15 @@ let categoryArray: [String] = ["Love",
                                "Religion",
                                "Mind"]
 
-let imageArray: [UIImage] = [#imageLiteral(resourceName: "Like-48"),
+let categoryImageArray: [UIImage] = [#imageLiteral(resourceName: "Like-48"),
                              #imageLiteral(resourceName: "Family Man Woman-48"),
                              #imageLiteral(resourceName: "Date Man Woman-48"),
                              #imageLiteral(resourceName: "Meeting-50"),
                              #imageLiteral(resourceName: "Cat Footprint"),
                              #imageLiteral(resourceName: "Business-50"),
                              #imageLiteral(resourceName: "Students-50"),
-                             #imageLiteral(resourceName: "Date To-50"),
                              #imageLiteral(resourceName: "Magazine-50"),
+                             #imageLiteral(resourceName: "Date To-50"),
                              #imageLiteral(resourceName: "Music-64"),
                              #imageLiteral(resourceName: "Restaurant-50"),
                              #imageLiteral(resourceName: "Movie-50"),
