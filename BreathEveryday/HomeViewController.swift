@@ -34,6 +34,9 @@ class HomeViewController: UIViewController {
     var categoryDataArr: [Category] = []
     var colorPickerView: ColorPickerView!
     var selectedCatogoryRow: Int = 0
+    var bubbleAnimator: UIViewPropertyAnimator! // bubble drag gesture
+    let animationDuration:Double = 1.0 //
+    var circleCenter: CGPoint! // record for bubble circle center
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,10 +102,11 @@ class HomeViewController: UIViewController {
         colorPickerViewConstraint = NSLayoutConstraint(item: colorPickerView, attribute: .top, relatedBy: .equal, toItem: categorysCollectionView, attribute: .top, multiplier: 1, constant: 0)
         view.addConstraint(colorPickerViewConstraint!)
         
-        
-        //bubbles
+        //Bubbles
+        //drag animation
+        bubbleAnimator = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut, animations: { })
+        //read data & create & transfer data
         var frame = CGRect()
-        
         for i in 0...categoryStringArray.count - 1 {
             
             var isCreated = false
@@ -177,13 +181,10 @@ class HomeViewController: UIViewController {
         
         //button action & appearance change
         swichMode(to: .setup)
-        
         categoryScrollViewConstraint?.constant = -100
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
-        }, completion: { (completed) in
-            
-        })
+        }, completion: { (completed) in })
 
     }
     
@@ -201,14 +202,55 @@ class HomeViewController: UIViewController {
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 40
         button.backgroundColor = color
-        button.layer.opacity = 0.65
+        button.layer.opacity = 0.45
         
         //image1
         let imageRendered = image.withRenderingMode(.alwaysTemplate)
         button.tintColor = UIColor.white
         button.setImage(imageRendered, for: .normal)
         button.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+        
+        //gesture
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(dragCircle))
+        button.addGestureRecognizer(gesture)
+        
         return button
+    }
+    
+    func dragCircle(gesture: UIPanGestureRecognizer) {
+        let target = gesture.view!
+        
+        switch gesture.state {
+        case .began:
+            
+            if bubbleAnimator.state == .active {
+                bubbleAnimator.stopAnimation(true)
+            }
+            circleCenter = target.center
+            bubbleAnimator.addAnimations {
+                    target.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            }
+            bubbleAnimator.startAnimation()
+            
+        case .changed:
+            let translation = gesture.translation(in: self.view)
+            target.center = CGPoint(x: circleCenter.x + translation.x,
+                                    y: circleCenter.y + translation.y)
+            
+        case .ended:
+            
+            if bubbleAnimator.state == .active {
+                bubbleAnimator.stopAnimation(true)
+            }
+            bubbleAnimator.addAnimations {
+                target.transform = CGAffineTransform.identity
+            }
+            bubbleAnimator.startAnimation()
+            
+        default:
+            break
+        }
+        
     }
     
     func btnMenuBtn() {
