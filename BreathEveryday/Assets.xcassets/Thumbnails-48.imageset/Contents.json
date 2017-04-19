@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Thumbnails-48.png",
+      "filename" : "Thumbnails-64.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Thumbnails-96-2.png",
       "scale" : "2x"
     },
     {
