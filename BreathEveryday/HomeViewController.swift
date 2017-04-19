@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import IGColorPicker
+import Spring
 
 enum Mode {
     case normal
@@ -18,7 +19,8 @@ enum Mode {
 class HomeViewController: UIViewController {
     
     let button1 = UIButton()
-    @IBOutlet weak var quoteButton: UIButton!
+    @IBOutlet weak var quoteButton: SpringButton!
+    @IBOutlet weak var weatherImageView: SpringImageView!
     @IBOutlet weak var quoteView: UIView!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var shopBtton: UIButton!
@@ -43,6 +45,14 @@ class HomeViewController: UIViewController {
         
         
         controllerSetup()
+        quoteButton.animation = "flash"
+        quoteButton.animate()
+        weatherImageView.animation = "morph"
+        weatherImageView.animate()
+//        weatherImageView.animateNext {
+//            self.weatherImageView.animation = "morph"
+//            self.weatherImageView.animate()
+//        }
     }
     
     func controllerSetup() {
@@ -191,7 +201,7 @@ class HomeViewController: UIViewController {
     func createRandomBubble(with image: UIImage, in frame: CGRect?, color: UIColor) -> UIButton {
         
         //button1
-        let button = UIButton()
+        let button = SpringButton()
         if let frame = frame {
             button.layer.frame = frame
         } else {

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Spring
+//import SpriteKit
 
 class DetailViewController: UIViewController {
     
@@ -29,9 +31,8 @@ class DetailViewController: UIViewController {
         view.addConstraint(textViewBottomConstraint!)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
     }
-    
-    
     
     //Notification Center
     func handleKeyboardNotification(notification: NSNotification) {
