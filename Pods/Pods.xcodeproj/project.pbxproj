@@ -7,30 +7,81 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0383A13C6B7C59A3D8EA592B545DABA0 /* JTAppleCalendarDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC66C102B205CBD32AE11FC7B1898CC /* JTAppleCalendarDelegateProtocol.swift */; };
-		18904C96207EA9E40B4E71F855201AD8 /* JTAppleCalendarVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD700D3B0789B5D6058C82605E3D7E61 /* JTAppleCalendarVariables.swift */; };
-		21A3A4A6EF95F8704DC18E4E5F509D07 /* JTAppleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A219E5B365AE60E57986CC406FFB0417 /* JTAppleCollectionReusableView.swift */; };
-		2856845AB8FCE3B1D319091061F593EF /* UserInteractionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133A2DF18E9D0554FA3B75276443712E /* UserInteractionFunctions.swift */; };
-		42F0A3DBCAC670C336C5C988F6609D98 /* UICollectionViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7580EDE0B2AC3CFC4AABF8402BEEF508 /* UICollectionViewDelegates.swift */; };
-		53D7D34D0142A101314ABFA663AC9D08 /* JTAppleCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193581E11F8EE172B6021717954214FB /* JTAppleCalendarView.swift */; };
-		6DE7D8CE614DBA55D744EDE81C632AD8 /* CalendarStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E08C454EBC5103266D8071E7B40005 /* CalendarStructs.swift */; };
-		6E8E4422AA0E96DCBB9D329BDFFB881A /* GlobalFunctionsAndExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D3AC1CF2BB01506E468192E831B88 /* GlobalFunctionsAndExtensions.swift */; };
-		76E2D6A75D9E7BF425DBEC5045A92010 /* Pods-BreathEveryday-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA2856292A1F545C670FF2091E3AEB6 /* Pods-BreathEveryday-dummy.m */; };
-		78DFCCE06D39FBD517AE15642152FCFA /* Pods-BreathEveryday-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E3DB80ABE1AB8BA88EB0C8C5FE7D1A09 /* Pods-BreathEveryday-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7BE39092951B492E5954D8012747BFD0 /* JTAppleCalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF4EE1116070B3D8E0BA4BA4D38DDB1 /* JTAppleCalendarLayout.swift */; };
-		87329FA016F0D57803855BCE3E90EC82 /* JTCalendarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 604F54833F62AD42772FFEA600F26E29 /* JTCalendarProtocols.swift */; };
-		AD07BFC6787F19F9D7CADB48C114FDB7 /* JTAppleCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2907EECD1285656229F2F6B9A569A0E2 /* JTAppleCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B815F6A8C0E87E87871758E6EAD46D89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		E10E15A8A65DB167DE5046915870021A /* JTAppleCalendarLayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1704EFE03AC26C1B4711418AA7D2F19 /* JTAppleCalendarLayoutProtocol.swift */; };
-		E1CF59B57CC636FECACC39325231B177 /* CalendarEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C80B7AB321B3EF5EB2240D9B8C6C67 /* CalendarEnums.swift */; };
-		E4E19B08166BF4E9E368134D68E9C7DE /* JTAppleCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 62CA2977B3127FFA4BD59356AE6ADC0C /* JTAppleCalendar-dummy.m */; };
-		F2BB49EF903A70B7B68565CCE233FB83 /* JTAppleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEB19846CE756D12622CADACA6BCD5A /* JTAppleCell.swift */; };
-		F57EAB050D21DC9254C39320453D198E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		F963037A1450F74FAE911C248EED47CE /* UIScrollViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7052B4FFF9E6381DD4E629FDDA238E /* UIScrollViewDelegates.swift */; };
+		0343287FF635188F4043E2E68947295B /* M13CheckboxDotPathPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33006BC280841B42A2E071AB943250C5 /* M13CheckboxDotPathPresets.swift */; };
+		0383A13C6B7C59A3D8EA592B545DABA0 /* JTAppleCalendarDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CDBB84CF6B0A9C53D93B528D89958E /* JTAppleCalendarDelegateProtocol.swift */; };
+		05D0115D539656C363B06A9C28F942EF /* M13CheckboxPathPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAF163E4B8BE8A50FFA7F9CFD8BD63A /* M13CheckboxPathPresets.swift */; };
+		08CD44C73194293FAA140BF0798DC282 /* M13CheckboxSpiralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550996E75D142B862D6A7CE8B0A33E65 /* M13CheckboxSpiralManager.swift */; };
+		0BE3D90A3B6C38105903077F8C19E8D9 /* ColorPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609C7ADDB0DD6C896E17E77B451238DA /* ColorPickerCell.swift */; };
+		18904C96207EA9E40B4E71F855201AD8 /* JTAppleCalendarVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B5044F4B3157B00023127226762B6C /* JTAppleCalendarVariables.swift */; };
+		1CA2DD7ADA87DC14D6067162B2DEEB6E /* M13CheckboxStrokeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F02809C0809B05BD5E385E3C34F62F9 /* M13CheckboxStrokeManager.swift */; };
+		21A3A4A6EF95F8704DC18E4E5F509D07 /* JTAppleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5D457FB251D3899D529C7128170430 /* JTAppleCollectionReusableView.swift */; };
+		24FDB9E17DBFA624458FE0313A3B17FE /* M13Checkbox-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F73E6F9EFF029C99705E3DC44FAFB5C8 /* M13Checkbox-dummy.m */; };
+		2856845AB8FCE3B1D319091061F593EF /* UserInteractionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA22FDE68BF1404DC2ED35F7D40E06E /* UserInteractionFunctions.swift */; };
+		4096C7E438D6CC8E6D9A7B875CAEC222 /* M13Checkbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E33B003B983F4784598B5D9CB44CB5 /* M13Checkbox.framework */; };
+		42F0A3DBCAC670C336C5C988F6609D98 /* UICollectionViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A16F73368580F7FA6E2AC7B9C478AB /* UICollectionViewDelegates.swift */; };
+		4710146914872E8358E731D0B0C3BBFF /* M13Checkbox-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F093188A448A5239613B172B8B9FE36 /* M13Checkbox-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48E7B1563029EA408263344D06F2891E /* M13CheckboxDotManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB62B8B181D0CB4149A5419AEE60C3D /* M13CheckboxDotManager.swift */; };
+		4C22E81BA941B63CF58337CF85D2BBC1 /* M13CheckboxFlatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3995CC9DAD652E83445357DA341375 /* M13CheckboxFlatManager.swift */; };
+		53D7D34D0142A101314ABFA663AC9D08 /* JTAppleCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA21A35FD9B1D7D685A6E6675ABEDD5 /* JTAppleCalendarView.swift */; };
+		5D39E1DD24B74D813B6CD2F02BC28396 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222A38F6430118CCA379547F774C40E3 /* Foundation.framework */; };
+		5E005F088D4B90D43855F0C10D7F6C2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333C9658E9C5EEDE16037DC50F3DF7E1 /* CoreGraphics.framework */; };
+		67341F0034FE12E41C69B937A650FB1C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222A38F6430118CCA379547F774C40E3 /* Foundation.framework */; };
+		6DE7D8CE614DBA55D744EDE81C632AD8 /* CalendarStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDA6141D5D6A641C1BD4320BE045E86 /* CalendarStructs.swift */; };
+		6E8E4422AA0E96DCBB9D329BDFFB881A /* GlobalFunctionsAndExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB83F792F2615B6D2896527B3140A3B /* GlobalFunctionsAndExtensions.swift */; };
+		7BE39092951B492E5954D8012747BFD0 /* JTAppleCalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE776B659439B2C50BD78BBC00B4861B /* JTAppleCalendarLayout.swift */; };
+		84AF94DE42CCCCEE5C49845B0BCD06E3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41609458554F376FB593C121A3CCC599 /* UIColor+Extension.swift */; };
+		86642ABFFABB236149CB655079194673 /* IGColorPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D85AD66BBBE844D949868D74A747551 /* IGColorPicker-dummy.m */; };
+		87329FA016F0D57803855BCE3E90EC82 /* JTCalendarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421C299ACD1D758CBEA1DD2F2D6C92A /* JTCalendarProtocols.swift */; };
+		8E8CE978BAF6AEB9BAD44B323703E84F /* ColorPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BC416BEEB044C33A60E8A98098A164 /* ColorPickerViewDelegate.swift */; };
+		8FAE3D536097B50C51A8A88EAA99B6E5 /* M13CheckboxFillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B1BC2B6128973C88E42EB63945499 /* M13CheckboxFillManager.swift */; };
+		90A3F1E1EAC8D102D8453C363D85BBCE /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0AB71859F3654854D2EC41BD674517 /* M13Checkbox+IB.swift */; };
+		971E3B7AD0A4479041714EEE70A051AC /* M13CheckboxExpandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F6E13EA245E8E3FA465886E7D24375 /* M13CheckboxExpandManager.swift */; };
+		981263265564D915450FF9F089CACBE6 /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F14677E07DA0AFCB8D657E8F72C038 /* M13Checkbox.swift */; };
+		9A0FD81957DFDFEEF24052A8CA2B7CF9 /* M13CheckboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF2F7E185F5F2E714A847069D800BD0 /* M13CheckboxManager.swift */; };
+		AD07BFC6787F19F9D7CADB48C114FDB7 /* JTAppleCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F481C69B99BE5848681E9B0654198A6 /* JTAppleCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B73FA05046998F6BB9E4E6D2FF2C996D /* M13CheckboxBounceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11139DE76CB514E56181A0061C939FB3 /* M13CheckboxBounceManager.swift */; };
+		B815F6A8C0E87E87871758E6EAD46D89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222A38F6430118CCA379547F774C40E3 /* Foundation.framework */; };
+		C5C625CD8624C6287B5A79F7F844B9DE /* M13CheckboxAnimationPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2831FB04A4411D3071A6A88099EA942 /* M13CheckboxAnimationPresets.swift */; };
+		C8CAA5CC154D261A704AD0ADD4084F01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D9E6997F6B77D974201677EE244695 /* UIKit.framework */; };
+		DA1BA6B30C28CF2A20E872B882448DDC /* IGColorPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AAF16A3F50A0755142D5F47FF2A5D051 /* IGColorPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAA2B2D68984C395214881C040A6D270 /* M13CheckboxFadeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1373F014687F1C63581598F0A3AA3A32 /* M13CheckboxFadeManager.swift */; };
+		E10E15A8A65DB167DE5046915870021A /* JTAppleCalendarLayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E4729E44BDE8E472F4C605184480B1 /* JTAppleCalendarLayoutProtocol.swift */; };
+		E1CF59B57CC636FECACC39325231B177 /* CalendarEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA3EC6AC0BE71FAB234F91412953683 /* CalendarEnums.swift */; };
+		E4E19B08166BF4E9E368134D68E9C7DE /* JTAppleCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 82BBE878A8F125A1FB0DA71C09CD7ADE /* JTAppleCalendar-dummy.m */; };
+		EA6F8E61D39DD684DE5D5929218BCBDE /* Pods-BreathEveryday-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E3DB80ABE1AB8BA88EB0C8C5FE7D1A09 /* Pods-BreathEveryday-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ECF2DF7F7F1A7FCCFF1B9F66D4B4982C /* M13CheckboxGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CB9C9CC3F41527E471CFD3AD8AF2D6 /* M13CheckboxGestureRecognizer.swift */; };
+		ED1A0E3E9B02DB42B5E8AC9AC440AEED /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D26E16541611E58E8C8E46CB2ED9DD6 /* ColorPickerView.swift */; };
+		F2BB49EF903A70B7B68565CCE233FB83 /* JTAppleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F51161996AAE81E3502F317F0FF7F41 /* JTAppleCell.swift */; };
+		F5504DBD4B90B899DF9FFAB53DFFBD0F /* ColorPickerViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0B9C80B5E05DB4BC1DC2EF0DB29542 /* ColorPickerViewDelegateFlowLayout.swift */; };
+		F82768BF772F89DB56E5C6CAF848815F /* Pods-BreathEveryday-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA2856292A1F545C670FF2091E3AEB6 /* Pods-BreathEveryday-dummy.m */; };
+		F963037A1450F74FAE911C248EED47CE /* UIScrollViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = C070313960EA2556D4A6F9F4A110A80B /* UIScrollViewDelegates.swift */; };
+		FD67042DDEE36FD743BD88D15DF35D08 /* M13CheckboxSpiralPathPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8EE959990DD097F267E78592AC157F /* M13CheckboxSpiralPathPresets.swift */; };
+		FE327549C60DE724940CB8947590A577 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222A38F6430118CCA379547F774C40E3 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B13156610AB54BC010A292574121FD0D /* PBXContainerItemProxy */ = {
+		0B3B16A8EE4928744547644E62B64416 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5F46CF08B487F1A01310C58918CF783;
+			remoteInfo = M13Checkbox;
+		};
+		6C8FD66E02BEE475E7348B97AE093FD2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A500FF32F75F1ADE59F5A82E68CF63A5;
+			remoteInfo = IGColorPicker;
+		};
+		AA6C2DBDC5DEFD87A6593BDB3B32088A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E5F46CF08B487F1A01310C58918CF783;
+			remoteInfo = M13Checkbox;
+		};
+		D732C01C1633839A8D651B6EBC1A0A0D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
@@ -40,40 +91,78 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0085309B77941953192E60F3E5827010 /* JTAppleCalendar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTAppleCalendar-prefix.pch"; sourceTree = "<group>"; };
+		03E1BCBCA172821289C63CDE985AFD3C /* JTAppleCalendar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JTAppleCalendar.xcconfig; sourceTree = "<group>"; };
+		05691FBEF46B264E781485A90F834C63 /* M13Checkbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = M13Checkbox.xcconfig; sourceTree = "<group>"; };
+		081F21DA3A1FE0DC78D2ED57440CE64F /* JTAppleCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = JTAppleCalendar.modulemap; sourceTree = "<group>"; };
 		098967B4F0D96FF0B0A49BEA4B3D89B9 /* Pods-BreathEveryday-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BreathEveryday-acknowledgements.markdown"; sourceTree = "<group>"; };
-		12AAB8160D15B1045CAF4ABAFE9DDEA8 /* JTAppleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JTAppleCalendar.framework; path = JTAppleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		133A2DF18E9D0554FA3B75276443712E /* UserInteractionFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserInteractionFunctions.swift; path = Sources/UserInteractionFunctions.swift; sourceTree = "<group>"; };
+		0F51161996AAE81E3502F317F0FF7F41 /* JTAppleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCell.swift; path = Sources/JTAppleCell.swift; sourceTree = "<group>"; };
+		11139DE76CB514E56181A0061C939FB3 /* M13CheckboxBounceManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxBounceManager.swift; path = Sources/Managers/M13CheckboxBounceManager.swift; sourceTree = "<group>"; };
+		11B5044F4B3157B00023127226762B6C /* JTAppleCalendarVariables.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarVariables.swift; path = Sources/JTAppleCalendarVariables.swift; sourceTree = "<group>"; };
+		1373F014687F1C63581598F0A3AA3A32 /* M13CheckboxFadeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFadeManager.swift; path = Sources/Managers/M13CheckboxFadeManager.swift; sourceTree = "<group>"; };
 		1403B16C0FD6D52E71953B6EEEEEC1F5 /* Pods-BreathEveryday-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BreathEveryday-resources.sh"; sourceTree = "<group>"; };
+		15A16F73368580F7FA6E2AC7B9C478AB /* UICollectionViewDelegates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UICollectionViewDelegates.swift; path = Sources/UICollectionViewDelegates.swift; sourceTree = "<group>"; };
 		167C6E10B80152A004D948F0DC072F9B /* Pods-BreathEveryday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BreathEveryday.debug.xcconfig"; sourceTree = "<group>"; };
-		193581E11F8EE172B6021717954214FB /* JTAppleCalendarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarView.swift; path = Sources/JTAppleCalendarView.swift; sourceTree = "<group>"; };
+		17E4729E44BDE8E472F4C605184480B1 /* JTAppleCalendarLayoutProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarLayoutProtocol.swift; path = Sources/JTAppleCalendarLayoutProtocol.swift; sourceTree = "<group>"; };
+		1B0AB71859F3654854D2EC41BD674517 /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "M13Checkbox+IB.swift"; path = "Sources/M13Checkbox+IB.swift"; sourceTree = "<group>"; };
+		1D26E16541611E58E8C8E46CB2ED9DD6 /* ColorPickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerView.swift; path = IGColorPicker/Classes/ColorPickerView.swift; sourceTree = "<group>"; };
 		1F6AF6B404E3056CD4CA02AE141B3CA3 /* Pods-BreathEveryday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BreathEveryday.release.xcconfig"; sourceTree = "<group>"; };
-		2907EECD1285656229F2F6B9A569A0E2 /* JTAppleCalendar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTAppleCalendar-umbrella.h"; sourceTree = "<group>"; };
-		2A0A198FACC40E259F5FEFB46C2DFC6A /* JTAppleCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = JTAppleCalendar.modulemap; sourceTree = "<group>"; };
-		3AEB19846CE756D12622CADACA6BCD5A /* JTAppleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCell.swift; path = Sources/JTAppleCell.swift; sourceTree = "<group>"; };
+		222A38F6430118CCA379547F774C40E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		2AA21A35FD9B1D7D685A6E6675ABEDD5 /* JTAppleCalendarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarView.swift; path = Sources/JTAppleCalendarView.swift; sourceTree = "<group>"; };
+		33006BC280841B42A2E071AB943250C5 /* M13CheckboxDotPathPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDotPathPresets.swift; path = Sources/Presets/M13CheckboxDotPathPresets.swift; sourceTree = "<group>"; };
+		333C9658E9C5EEDE16037DC50F3DF7E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
+		3694B5FA4BE86555138985A949E08DAD /* M13Checkbox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = M13Checkbox.modulemap; sourceTree = "<group>"; };
+		37CB9C9CC3F41527E471CFD3AD8AF2D6 /* M13CheckboxGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxGestureRecognizer.swift; path = Sources/M13CheckboxGestureRecognizer.swift; sourceTree = "<group>"; };
+		3ABD923D5B8B2ECA49F38D487A4B13F4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B5D457FB251D3899D529C7128170430 /* JTAppleCollectionReusableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCollectionReusableView.swift; path = Sources/JTAppleCollectionReusableView.swift; sourceTree = "<group>"; };
+		3B712FCA9DCE9AB1F74085051C4E62CC /* JTAppleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JTAppleCalendar.framework; path = JTAppleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D3995CC9DAD652E83445357DA341375 /* M13CheckboxFlatManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFlatManager.swift; path = Sources/Managers/M13CheckboxFlatManager.swift; sourceTree = "<group>"; };
 		3F36C3282719046CA3ABCF13001E4B7C /* Pods-BreathEveryday-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BreathEveryday-acknowledgements.plist"; sourceTree = "<group>"; };
-		46E08C454EBC5103266D8071E7B40005 /* CalendarStructs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CalendarStructs.swift; path = Sources/CalendarStructs.swift; sourceTree = "<group>"; };
+		3F481C69B99BE5848681E9B0654198A6 /* JTAppleCalendar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTAppleCalendar-umbrella.h"; sourceTree = "<group>"; };
+		41609458554F376FB593C121A3CCC599 /* UIColor+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Extension.swift"; path = "IGColorPicker/Classes/UIColor+Extension.swift"; sourceTree = "<group>"; };
+		4393BF03A87328E6C4F9FEF194A7018B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EAF163E4B8BE8A50FFA7F9CFD8BD63A /* M13CheckboxPathPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxPathPresets.swift; path = Sources/M13CheckboxPathPresets.swift; sourceTree = "<group>"; };
+		4F093188A448A5239613B172B8B9FE36 /* M13Checkbox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-umbrella.h"; sourceTree = "<group>"; };
+		53F14677E07DA0AFCB8D657E8F72C038 /* M13Checkbox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13Checkbox.swift; path = Sources/M13Checkbox.swift; sourceTree = "<group>"; };
+		550996E75D142B862D6A7CE8B0A33E65 /* M13CheckboxSpiralManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxSpiralManager.swift; path = Sources/Managers/M13CheckboxSpiralManager.swift; sourceTree = "<group>"; };
 		57583A1671CF3FFA3C3C26B3129E39B1 /* Pods-BreathEveryday.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-BreathEveryday.modulemap"; sourceTree = "<group>"; };
-		604F54833F62AD42772FFEA600F26E29 /* JTCalendarProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTCalendarProtocols.swift; path = Sources/JTCalendarProtocols.swift; sourceTree = "<group>"; };
-		62CA2977B3127FFA4BD59356AE6ADC0C /* JTAppleCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JTAppleCalendar-dummy.m"; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7580EDE0B2AC3CFC4AABF8402BEEF508 /* UICollectionViewDelegates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UICollectionViewDelegates.swift; path = Sources/UICollectionViewDelegates.swift; sourceTree = "<group>"; };
-		7AF4EE1116070B3D8E0BA4BA4D38DDB1 /* JTAppleCalendarLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarLayout.swift; path = Sources/JTAppleCalendarLayout.swift; sourceTree = "<group>"; };
-		7B7052B4FFF9E6381DD4E629FDDA238E /* UIScrollViewDelegates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIScrollViewDelegates.swift; path = Sources/UIScrollViewDelegates.swift; sourceTree = "<group>"; };
-		824621895A181F7A112FB0C03CA6B382 /* JTAppleCalendar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JTAppleCalendar.xcconfig; sourceTree = "<group>"; };
-		8BF70087A0545703490B43F2B388D635 /* Pods_BreathEveryday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BreathEveryday.framework; path = "Pods-BreathEveryday.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5BB83F792F2615B6D2896527B3140A3B /* GlobalFunctionsAndExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlobalFunctionsAndExtensions.swift; path = Sources/GlobalFunctionsAndExtensions.swift; sourceTree = "<group>"; };
+		5BCECE59426DBDD9B3A79D0DC255997A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		609C7ADDB0DD6C896E17E77B451238DA /* ColorPickerCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerCell.swift; path = IGColorPicker/Classes/ColorPickerCell.swift; sourceTree = "<group>"; };
+		60F6E13EA245E8E3FA465886E7D24375 /* M13CheckboxExpandManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxExpandManager.swift; path = Sources/Managers/M13CheckboxExpandManager.swift; sourceTree = "<group>"; };
+		6A26928663961C8C465458EFDAB89A95 /* M13Checkbox-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-prefix.pch"; sourceTree = "<group>"; };
+		6BDA6141D5D6A641C1BD4320BE045E86 /* CalendarStructs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CalendarStructs.swift; path = Sources/CalendarStructs.swift; sourceTree = "<group>"; };
+		6F02809C0809B05BD5E385E3C34F62F9 /* M13CheckboxStrokeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxStrokeManager.swift; path = Sources/Managers/M13CheckboxStrokeManager.swift; sourceTree = "<group>"; };
+		7CAA7B09D8F35B197DEF250C4C8BFBFC /* IGColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IGColorPicker.framework; path = IGColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82BBE878A8F125A1FB0DA71C09CD7ADE /* JTAppleCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JTAppleCalendar-dummy.m"; sourceTree = "<group>"; };
+		89CDBB84CF6B0A9C53D93B528D89958E /* JTAppleCalendarDelegateProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarDelegateProtocol.swift; path = Sources/JTAppleCalendarDelegateProtocol.swift; sourceTree = "<group>"; };
+		8B6B1BC2B6128973C88E42EB63945499 /* M13CheckboxFillManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFillManager.swift; path = Sources/Managers/M13CheckboxFillManager.swift; sourceTree = "<group>"; };
+		8D85AD66BBBE844D949868D74A747551 /* IGColorPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IGColorPicker-dummy.m"; sourceTree = "<group>"; };
+		8EA22FDE68BF1404DC2ED35F7D40E06E /* UserInteractionFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserInteractionFunctions.swift; path = Sources/UserInteractionFunctions.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A219E5B365AE60E57986CC406FFB0417 /* JTAppleCollectionReusableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCollectionReusableView.swift; path = Sources/JTAppleCollectionReusableView.swift; sourceTree = "<group>"; };
-		CA5988C6D0E3DD107EBC818B83E30B79 /* JTAppleCalendar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTAppleCalendar-prefix.pch"; sourceTree = "<group>"; };
-		D42D3AC1CF2BB01506E468192E831B88 /* GlobalFunctionsAndExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlobalFunctionsAndExtensions.swift; path = Sources/GlobalFunctionsAndExtensions.swift; sourceTree = "<group>"; };
-		E1704EFE03AC26C1B4711418AA7D2F19 /* JTAppleCalendarLayoutProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarLayoutProtocol.swift; path = Sources/JTAppleCalendarLayoutProtocol.swift; sourceTree = "<group>"; };
-		E3C80B7AB321B3EF5EB2240D9B8C6C67 /* CalendarEnums.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CalendarEnums.swift; path = Sources/CalendarEnums.swift; sourceTree = "<group>"; };
+		9421C299ACD1D758CBEA1DD2F2D6C92A /* JTCalendarProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTCalendarProtocols.swift; path = Sources/JTCalendarProtocols.swift; sourceTree = "<group>"; };
+		A04A3BF67504040467798DE2879200FA /* IGColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IGColorPicker-prefix.pch"; sourceTree = "<group>"; };
+		AAF16A3F50A0755142D5F47FF2A5D051 /* IGColorPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IGColorPicker-umbrella.h"; sourceTree = "<group>"; };
+		B3BC416BEEB044C33A60E8A98098A164 /* ColorPickerViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerViewDelegate.swift; path = IGColorPicker/Classes/ColorPickerViewDelegate.swift; sourceTree = "<group>"; };
+		B9E33B003B983F4784598B5D9CB44CB5 /* M13Checkbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = M13Checkbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAA3EC6AC0BE71FAB234F91412953683 /* CalendarEnums.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CalendarEnums.swift; path = Sources/CalendarEnums.swift; sourceTree = "<group>"; };
+		BAF2F7E185F5F2E714A847069D800BD0 /* M13CheckboxManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxManager.swift; path = Sources/M13CheckboxManager.swift; sourceTree = "<group>"; };
+		BE776B659439B2C50BD78BBC00B4861B /* JTAppleCalendarLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarLayout.swift; path = Sources/JTAppleCalendarLayout.swift; sourceTree = "<group>"; };
+		C070313960EA2556D4A6F9F4A110A80B /* UIScrollViewDelegates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIScrollViewDelegates.swift; path = Sources/UIScrollViewDelegates.swift; sourceTree = "<group>"; };
+		C2831FB04A4411D3071A6A88099EA942 /* M13CheckboxAnimationPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxAnimationPresets.swift; path = Sources/M13CheckboxAnimationPresets.swift; sourceTree = "<group>"; };
+		D0ECF212C68465B3E5EAB243841122AA /* M13Checkbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = M13Checkbox.framework; path = M13Checkbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4D9E6997F6B77D974201677EE244695 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		DFEE3D0A65610B90A5DD501785271630 /* IGColorPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IGColorPicker.xcconfig; sourceTree = "<group>"; };
+		E0614662ED1B56BD36DD067DAD56779E /* Pods_BreathEveryday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BreathEveryday.framework; path = "Pods-BreathEveryday.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3DB80ABE1AB8BA88EB0C8C5FE7D1A09 /* Pods-BreathEveryday-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BreathEveryday-umbrella.h"; sourceTree = "<group>"; };
-		E507D58A30EB521DC1D6D7D7828E8C54 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE8EE959990DD097F267E78592AC157F /* M13CheckboxSpiralPathPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxSpiralPathPresets.swift; path = Sources/Presets/M13CheckboxSpiralPathPresets.swift; sourceTree = "<group>"; };
 		EECBC3629140FF004753889DFA97FA61 /* Pods-BreathEveryday-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BreathEveryday-frameworks.sh"; sourceTree = "<group>"; };
-		FAC66C102B205CBD32AE11FC7B1898CC /* JTAppleCalendarDelegateProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarDelegateProtocol.swift; path = Sources/JTAppleCalendarDelegateProtocol.swift; sourceTree = "<group>"; };
+		F73E6F9EFF029C99705E3DC44FAFB5C8 /* M13Checkbox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "M13Checkbox-dummy.m"; sourceTree = "<group>"; };
+		F9BCB76F4AB0E98DA59DC75093DBE00C /* IGColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = IGColorPicker.modulemap; sourceTree = "<group>"; };
 		FBA2856292A1F545C670FF2091E3AEB6 /* Pods-BreathEveryday-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BreathEveryday-dummy.m"; sourceTree = "<group>"; };
 		FC846EE762B4B99AB8361E397FF2CB10 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FD700D3B0789B5D6058C82605E3D7E61 /* JTAppleCalendarVariables.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarVariables.swift; path = Sources/JTAppleCalendarVariables.swift; sourceTree = "<group>"; };
+		FD0B9C80B5E05DB4BC1DC2EF0DB29542 /* ColorPickerViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerViewDelegateFlowLayout.swift; path = IGColorPicker/Classes/ColorPickerViewDelegateFlowLayout.swift; sourceTree = "<group>"; };
+		FFB62B8B181D0CB4149A5419AEE60C3D /* M13CheckboxDotManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDotManager.swift; path = Sources/Managers/M13CheckboxDotManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,17 +174,46 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5F93E87C82F7F58155FA42D2929C0620 /* Frameworks */ = {
+		76290D3D560B2F16780C1F2E4BD7E231 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F57EAB050D21DC9254C39320453D198E /* Foundation.framework in Frameworks */,
+				67341F0034FE12E41C69B937A650FB1C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9577943D0C536DF0610F879A6805DC8D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D39E1DD24B74D813B6CD2F02BC28396 /* Foundation.framework in Frameworks */,
+				4096C7E438D6CC8E6D9A7B875CAEC222 /* M13Checkbox.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B037FED37577CFA57F1C94E31D727D9C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E005F088D4B90D43855F0C10D7F6C2F /* CoreGraphics.framework in Frameworks */,
+				FE327549C60DE724940CB8947590A577 /* Foundation.framework in Frameworks */,
+				C8CAA5CC154D261A704AD0ADD4084F01 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24A0C0FBDB4A3AB138B02A782274D8F1 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				333C9658E9C5EEDE16037DC50F3DF7E1 /* CoreGraphics.framework */,
+				222A38F6430118CCA379547F774C40E3 /* Foundation.framework */,
+				D4D9E6997F6B77D974201677EE244695 /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		3758CBF830D474469F65E89BB90E36C5 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,41 +222,42 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		4595D2C1418612DB053E1647AA42A2AE /* JTAppleCalendar */ = {
+		37DC722AEB57EC0F3BDD2BD6B7B0EC4B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E3C80B7AB321B3EF5EB2240D9B8C6C67 /* CalendarEnums.swift */,
-				46E08C454EBC5103266D8071E7B40005 /* CalendarStructs.swift */,
-				D42D3AC1CF2BB01506E468192E831B88 /* GlobalFunctionsAndExtensions.swift */,
-				FAC66C102B205CBD32AE11FC7B1898CC /* JTAppleCalendarDelegateProtocol.swift */,
-				7AF4EE1116070B3D8E0BA4BA4D38DDB1 /* JTAppleCalendarLayout.swift */,
-				E1704EFE03AC26C1B4711418AA7D2F19 /* JTAppleCalendarLayoutProtocol.swift */,
-				FD700D3B0789B5D6058C82605E3D7E61 /* JTAppleCalendarVariables.swift */,
-				193581E11F8EE172B6021717954214FB /* JTAppleCalendarView.swift */,
-				3AEB19846CE756D12622CADACA6BCD5A /* JTAppleCell.swift */,
-				A219E5B365AE60E57986CC406FFB0417 /* JTAppleCollectionReusableView.swift */,
-				604F54833F62AD42772FFEA600F26E29 /* JTCalendarProtocols.swift */,
-				7580EDE0B2AC3CFC4AABF8402BEEF508 /* UICollectionViewDelegates.swift */,
-				7B7052B4FFF9E6381DD4E629FDDA238E /* UIScrollViewDelegates.swift */,
-				133A2DF18E9D0554FA3B75276443712E /* UserInteractionFunctions.swift */,
-				53BF9057FA31EF23A64316BBB1DA0262 /* Support Files */,
+				5676F8A295E3C280E2AA889EC4CE6C38 /* IGColorPicker */,
+				A2784C8A8EB38CD452480291D78FAD63 /* JTAppleCalendar */,
+				F86B736C69B9E1BCE7880A5C90214B18 /* M13Checkbox */,
 			);
-			name = JTAppleCalendar;
-			path = JTAppleCalendar;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		53BF9057FA31EF23A64316BBB1DA0262 /* Support Files */ = {
+		4293CA36A09CE74061CFD157A68CFC73 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				E507D58A30EB521DC1D6D7D7828E8C54 /* Info.plist */,
-				2A0A198FACC40E259F5FEFB46C2DFC6A /* JTAppleCalendar.modulemap */,
-				824621895A181F7A112FB0C03CA6B382 /* JTAppleCalendar.xcconfig */,
-				62CA2977B3127FFA4BD59356AE6ADC0C /* JTAppleCalendar-dummy.m */,
-				CA5988C6D0E3DD107EBC818B83E30B79 /* JTAppleCalendar-prefix.pch */,
-				2907EECD1285656229F2F6B9A569A0E2 /* JTAppleCalendar-umbrella.h */,
+				3ABD923D5B8B2ECA49F38D487A4B13F4 /* Info.plist */,
+				3694B5FA4BE86555138985A949E08DAD /* M13Checkbox.modulemap */,
+				05691FBEF46B264E781485A90F834C63 /* M13Checkbox.xcconfig */,
+				F73E6F9EFF029C99705E3DC44FAFB5C8 /* M13Checkbox-dummy.m */,
+				6A26928663961C8C465458EFDAB89A95 /* M13Checkbox-prefix.pch */,
+				4F093188A448A5239613B172B8B9FE36 /* M13Checkbox-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/JTAppleCalendar";
+			path = "../Target Support Files/M13Checkbox";
+			sourceTree = "<group>";
+		};
+		5676F8A295E3C280E2AA889EC4CE6C38 /* IGColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				609C7ADDB0DD6C896E17E77B451238DA /* ColorPickerCell.swift */,
+				1D26E16541611E58E8C8E46CB2ED9DD6 /* ColorPickerView.swift */,
+				B3BC416BEEB044C33A60E8A98098A164 /* ColorPickerViewDelegate.swift */,
+				FD0B9C80B5E05DB4BC1DC2EF0DB29542 /* ColorPickerViewDelegateFlowLayout.swift */,
+				41609458554F376FB593C121A3CCC599 /* UIColor+Extension.swift */,
+				A6AD68A26CBD5BB56E8AE6AF06796792 /* Support Files */,
+			);
+			name = IGColorPicker;
+			path = IGColorPicker;
 			sourceTree = "<group>";
 		};
 		65B884C749B06DEA5D855D0E2444E3F6 /* Pods-BreathEveryday */ = {
@@ -163,54 +282,133 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				C2F3A455691BDD1AABE40419672B21A4 /* Pods */,
-				E61EA20D0EEFE0D3EB7168610ED3E648 /* Products */,
+				C327AD006FAD3CCF5A3B4CE00C982699 /* Frameworks */,
+				37DC722AEB57EC0F3BDD2BD6B7B0EC4B /* Pods */,
+				9B6F452E152D8EE34C971D6D6193373F /* Products */,
 				3758CBF830D474469F65E89BB90E36C5 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		9B6F452E152D8EE34C971D6D6193373F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+				7CAA7B09D8F35B197DEF250C4C8BFBFC /* IGColorPicker.framework */,
+				3B712FCA9DCE9AB1F74085051C4E62CC /* JTAppleCalendar.framework */,
+				D0ECF212C68465B3E5EAB243841122AA /* M13Checkbox.framework */,
+				E0614662ED1B56BD36DD067DAD56779E /* Pods_BreathEveryday.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A11D24F4E99D4196C4FFA487A58814F6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4393BF03A87328E6C4F9FEF194A7018B /* Info.plist */,
+				081F21DA3A1FE0DC78D2ED57440CE64F /* JTAppleCalendar.modulemap */,
+				03E1BCBCA172821289C63CDE985AFD3C /* JTAppleCalendar.xcconfig */,
+				82BBE878A8F125A1FB0DA71C09CD7ADE /* JTAppleCalendar-dummy.m */,
+				0085309B77941953192E60F3E5827010 /* JTAppleCalendar-prefix.pch */,
+				3F481C69B99BE5848681E9B0654198A6 /* JTAppleCalendar-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/JTAppleCalendar";
+			sourceTree = "<group>";
+		};
+		A2784C8A8EB38CD452480291D78FAD63 /* JTAppleCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				BAA3EC6AC0BE71FAB234F91412953683 /* CalendarEnums.swift */,
+				6BDA6141D5D6A641C1BD4320BE045E86 /* CalendarStructs.swift */,
+				5BB83F792F2615B6D2896527B3140A3B /* GlobalFunctionsAndExtensions.swift */,
+				89CDBB84CF6B0A9C53D93B528D89958E /* JTAppleCalendarDelegateProtocol.swift */,
+				BE776B659439B2C50BD78BBC00B4861B /* JTAppleCalendarLayout.swift */,
+				17E4729E44BDE8E472F4C605184480B1 /* JTAppleCalendarLayoutProtocol.swift */,
+				11B5044F4B3157B00023127226762B6C /* JTAppleCalendarVariables.swift */,
+				2AA21A35FD9B1D7D685A6E6675ABEDD5 /* JTAppleCalendarView.swift */,
+				0F51161996AAE81E3502F317F0FF7F41 /* JTAppleCell.swift */,
+				3B5D457FB251D3899D529C7128170430 /* JTAppleCollectionReusableView.swift */,
+				9421C299ACD1D758CBEA1DD2F2D6C92A /* JTCalendarProtocols.swift */,
+				15A16F73368580F7FA6E2AC7B9C478AB /* UICollectionViewDelegates.swift */,
+				C070313960EA2556D4A6F9F4A110A80B /* UIScrollViewDelegates.swift */,
+				8EA22FDE68BF1404DC2ED35F7D40E06E /* UserInteractionFunctions.swift */,
+				A11D24F4E99D4196C4FFA487A58814F6 /* Support Files */,
+			);
+			name = JTAppleCalendar;
+			path = JTAppleCalendar;
+			sourceTree = "<group>";
+		};
+		A6AD68A26CBD5BB56E8AE6AF06796792 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F9BCB76F4AB0E98DA59DC75093DBE00C /* IGColorPicker.modulemap */,
+				DFEE3D0A65610B90A5DD501785271630 /* IGColorPicker.xcconfig */,
+				8D85AD66BBBE844D949868D74A747551 /* IGColorPicker-dummy.m */,
+				A04A3BF67504040467798DE2879200FA /* IGColorPicker-prefix.pch */,
+				AAF16A3F50A0755142D5F47FF2A5D051 /* IGColorPicker-umbrella.h */,
+				5BCECE59426DBDD9B3A79D0DC255997A /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/IGColorPicker";
+			sourceTree = "<group>";
+		};
+		C327AD006FAD3CCF5A3B4CE00C982699 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9E33B003B983F4784598B5D9CB44CB5 /* M13Checkbox.framework */,
+				24A0C0FBDB4A3AB138B02A782274D8F1 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C2F3A455691BDD1AABE40419672B21A4 /* Pods */ = {
+		F86B736C69B9E1BCE7880A5C90214B18 /* M13Checkbox */ = {
 			isa = PBXGroup;
 			children = (
-				4595D2C1418612DB053E1647AA42A2AE /* JTAppleCalendar */,
+				53F14677E07DA0AFCB8D657E8F72C038 /* M13Checkbox.swift */,
+				1B0AB71859F3654854D2EC41BD674517 /* M13Checkbox+IB.swift */,
+				C2831FB04A4411D3071A6A88099EA942 /* M13CheckboxAnimationPresets.swift */,
+				11139DE76CB514E56181A0061C939FB3 /* M13CheckboxBounceManager.swift */,
+				FFB62B8B181D0CB4149A5419AEE60C3D /* M13CheckboxDotManager.swift */,
+				33006BC280841B42A2E071AB943250C5 /* M13CheckboxDotPathPresets.swift */,
+				60F6E13EA245E8E3FA465886E7D24375 /* M13CheckboxExpandManager.swift */,
+				1373F014687F1C63581598F0A3AA3A32 /* M13CheckboxFadeManager.swift */,
+				8B6B1BC2B6128973C88E42EB63945499 /* M13CheckboxFillManager.swift */,
+				3D3995CC9DAD652E83445357DA341375 /* M13CheckboxFlatManager.swift */,
+				37CB9C9CC3F41527E471CFD3AD8AF2D6 /* M13CheckboxGestureRecognizer.swift */,
+				BAF2F7E185F5F2E714A847069D800BD0 /* M13CheckboxManager.swift */,
+				4EAF163E4B8BE8A50FFA7F9CFD8BD63A /* M13CheckboxPathPresets.swift */,
+				550996E75D142B862D6A7CE8B0A33E65 /* M13CheckboxSpiralManager.swift */,
+				EE8EE959990DD097F267E78592AC157F /* M13CheckboxSpiralPathPresets.swift */,
+				6F02809C0809B05BD5E385E3C34F62F9 /* M13CheckboxStrokeManager.swift */,
+				4293CA36A09CE74061CFD157A68CFC73 /* Support Files */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		E61EA20D0EEFE0D3EB7168610ED3E648 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				12AAB8160D15B1045CAF4ABAFE9DDEA8 /* JTAppleCalendar.framework */,
-				8BF70087A0545703490B43F2B388D635 /* Pods_BreathEveryday.framework */,
-			);
-			name = Products;
+			name = M13Checkbox;
+			path = M13Checkbox;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		5A7B3B360D452B6455E83BD1E75051EA /* Headers */ = {
+		5141C2001301829EF46892555EBE4AC6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78DFCCE06D39FBD517AE15642152FCFA /* Pods-BreathEveryday-umbrella.h in Headers */,
+				EA6F8E61D39DD684DE5D5929218BCBDE /* Pods-BreathEveryday-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E6145B2971C9011D73675D8274F1C05 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA1BA6B30C28CF2A20E872B882448DDC /* IGColorPicker-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAA5796047F8FA4F80CD6163C9939C40 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4710146914872E8358E731D0B0C3BBFF /* M13Checkbox-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +423,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		A500FF32F75F1ADE59F5A82E68CF63A5 /* IGColorPicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9E9641840942FB631AE2EAF43913ACB /* Build configuration list for PBXNativeTarget "IGColorPicker" */;
+			buildPhases = (
+				A2947DDBE718CB1F1215BCB4F8287760 /* Sources */,
+				9577943D0C536DF0610F879A6805DC8D /* Frameworks */,
+				5E6145B2971C9011D73675D8274F1C05 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C4BA948BA1A77B442752AFC98C4EA2A8 /* PBXTargetDependency */,
+			);
+			name = IGColorPicker;
+			productName = IGColorPicker;
+			productReference = 7CAA7B09D8F35B197DEF250C4C8BFBFC /* IGColorPicker.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		BFED2E29E95E065400F8846E0231A970 /* JTAppleCalendar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 851CF7150444685C470082788BA7AD96 /* Build configuration list for PBXNativeTarget "JTAppleCalendar" */;
@@ -239,25 +455,44 @@
 			);
 			name = JTAppleCalendar;
 			productName = JTAppleCalendar;
-			productReference = 12AAB8160D15B1045CAF4ABAFE9DDEA8 /* JTAppleCalendar.framework */;
+			productReference = 3B712FCA9DCE9AB1F74085051C4E62CC /* JTAppleCalendar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C46C89ADD3F31CAF57E37DE512719899 /* Pods-BreathEveryday */ = {
+		D3C9D21CCB0BF796A03D728A0167E0D5 /* Pods-BreathEveryday */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6D37AEAB299E01A0E60BD413AC75413F /* Build configuration list for PBXNativeTarget "Pods-BreathEveryday" */;
+			buildConfigurationList = 9678CA2CF30CAF26A845F4441F3BBB72 /* Build configuration list for PBXNativeTarget "Pods-BreathEveryday" */;
 			buildPhases = (
-				549C1AB60E8B80ABD4888825C1576C1D /* Sources */,
-				5F93E87C82F7F58155FA42D2929C0620 /* Frameworks */,
-				5A7B3B360D452B6455E83BD1E75051EA /* Headers */,
+				C1A7358A2887D8F35529227EE346EA14 /* Sources */,
+				76290D3D560B2F16780C1F2E4BD7E231 /* Frameworks */,
+				5141C2001301829EF46892555EBE4AC6 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				5B79139AC8A1AF30F884C87DEA3BF3DF /* PBXTargetDependency */,
+				D0A403F2C33328F1F7ECFEC90B219D2D /* PBXTargetDependency */,
+				B59F527E2D57F3CFD4317B5E8CCE60EA /* PBXTargetDependency */,
+				DF2C1E174C0BDAA1260CDFD23D970F51 /* PBXTargetDependency */,
 			);
 			name = "Pods-BreathEveryday";
 			productName = "Pods-BreathEveryday";
-			productReference = 8BF70087A0545703490B43F2B388D635 /* Pods_BreathEveryday.framework */;
+			productReference = E0614662ED1B56BD36DD067DAD56779E /* Pods_BreathEveryday.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E5F46CF08B487F1A01310C58918CF783 /* M13Checkbox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6144EAEC71D0AD8F68022B20F7F4DE20 /* Build configuration list for PBXNativeTarget "M13Checkbox" */;
+			buildPhases = (
+				682884E333191F708DE1ED394CAB51F9 /* Sources */,
+				B037FED37577CFA57F1C94E31D727D9C /* Frameworks */,
+				CAA5796047F8FA4F80CD6163C9939C40 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = M13Checkbox;
+			productName = M13Checkbox;
+			productReference = D0ECF212C68465B3E5EAB243841122AA /* M13Checkbox.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -277,25 +512,19 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = E61EA20D0EEFE0D3EB7168610ED3E648 /* Products */;
+			productRefGroup = 9B6F452E152D8EE34C971D6D6193373F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				A500FF32F75F1ADE59F5A82E68CF63A5 /* IGColorPicker */,
 				BFED2E29E95E065400F8846E0231A970 /* JTAppleCalendar */,
-				C46C89ADD3F31CAF57E37DE512719899 /* Pods-BreathEveryday */,
+				E5F46CF08B487F1A01310C58918CF783 /* M13Checkbox */,
+				D3C9D21CCB0BF796A03D728A0167E0D5 /* Pods-BreathEveryday */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		549C1AB60E8B80ABD4888825C1576C1D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				76E2D6A75D9E7BF425DBEC5045A92010 /* Pods-BreathEveryday-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5D5AC0418099BE9EFEA67AA7EF8A9423 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,18 +547,116 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		682884E333191F708DE1ED394CAB51F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90A3F1E1EAC8D102D8453C363D85BBCE /* M13Checkbox+IB.swift in Sources */,
+				24FDB9E17DBFA624458FE0313A3B17FE /* M13Checkbox-dummy.m in Sources */,
+				981263265564D915450FF9F089CACBE6 /* M13Checkbox.swift in Sources */,
+				C5C625CD8624C6287B5A79F7F844B9DE /* M13CheckboxAnimationPresets.swift in Sources */,
+				B73FA05046998F6BB9E4E6D2FF2C996D /* M13CheckboxBounceManager.swift in Sources */,
+				48E7B1563029EA408263344D06F2891E /* M13CheckboxDotManager.swift in Sources */,
+				0343287FF635188F4043E2E68947295B /* M13CheckboxDotPathPresets.swift in Sources */,
+				971E3B7AD0A4479041714EEE70A051AC /* M13CheckboxExpandManager.swift in Sources */,
+				DAA2B2D68984C395214881C040A6D270 /* M13CheckboxFadeManager.swift in Sources */,
+				8FAE3D536097B50C51A8A88EAA99B6E5 /* M13CheckboxFillManager.swift in Sources */,
+				4C22E81BA941B63CF58337CF85D2BBC1 /* M13CheckboxFlatManager.swift in Sources */,
+				ECF2DF7F7F1A7FCCFF1B9F66D4B4982C /* M13CheckboxGestureRecognizer.swift in Sources */,
+				9A0FD81957DFDFEEF24052A8CA2B7CF9 /* M13CheckboxManager.swift in Sources */,
+				05D0115D539656C363B06A9C28F942EF /* M13CheckboxPathPresets.swift in Sources */,
+				08CD44C73194293FAA140BF0798DC282 /* M13CheckboxSpiralManager.swift in Sources */,
+				FD67042DDEE36FD743BD88D15DF35D08 /* M13CheckboxSpiralPathPresets.swift in Sources */,
+				1CA2DD7ADA87DC14D6067162B2DEEB6E /* M13CheckboxStrokeManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2947DDBE718CB1F1215BCB4F8287760 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BE3D90A3B6C38105903077F8C19E8D9 /* ColorPickerCell.swift in Sources */,
+				ED1A0E3E9B02DB42B5E8AC9AC440AEED /* ColorPickerView.swift in Sources */,
+				8E8CE978BAF6AEB9BAD44B323703E84F /* ColorPickerViewDelegate.swift in Sources */,
+				F5504DBD4B90B899DF9FFAB53DFFBD0F /* ColorPickerViewDelegateFlowLayout.swift in Sources */,
+				86642ABFFABB236149CB655079194673 /* IGColorPicker-dummy.m in Sources */,
+				84AF94DE42CCCCEE5C49845B0BCD06E3 /* UIColor+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1A7358A2887D8F35529227EE346EA14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F82768BF772F89DB56E5C6CAF848815F /* Pods-BreathEveryday-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5B79139AC8A1AF30F884C87DEA3BF3DF /* PBXTargetDependency */ = {
+		B59F527E2D57F3CFD4317B5E8CCE60EA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = JTAppleCalendar;
 			target = BFED2E29E95E065400F8846E0231A970 /* JTAppleCalendar */;
-			targetProxy = B13156610AB54BC010A292574121FD0D /* PBXContainerItemProxy */;
+			targetProxy = D732C01C1633839A8D651B6EBC1A0A0D /* PBXContainerItemProxy */;
+		};
+		C4BA948BA1A77B442752AFC98C4EA2A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = M13Checkbox;
+			target = E5F46CF08B487F1A01310C58918CF783 /* M13Checkbox */;
+			targetProxy = 0B3B16A8EE4928744547644E62B64416 /* PBXContainerItemProxy */;
+		};
+		D0A403F2C33328F1F7ECFEC90B219D2D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IGColorPicker;
+			target = A500FF32F75F1ADE59F5A82E68CF63A5 /* IGColorPicker */;
+			targetProxy = 6C8FD66E02BEE475E7348B97AE093FD2 /* PBXContainerItemProxy */;
+		};
+		DF2C1E174C0BDAA1260CDFD23D970F51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = M13Checkbox;
+			target = E5F46CF08B487F1A01310C58918CF783 /* M13Checkbox */;
+			targetProxy = AA6C2DBDC5DEFD87A6593BDB3B32088A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		06902EAC20D5219EBCDC8944DF9C1053 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFEE3D0A65610B90A5DD501785271630 /* IGColorPicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/IGColorPicker/IGColorPicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IGColorPicker/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IGColorPicker/IGColorPicker.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = IGColorPicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		166E2CAC58E8608AD59A6F0B71C9C3E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -380,7 +707,7 @@
 		};
 		313891CC7F1018511F289523D81B84AD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 824621895A181F7A112FB0C03CA6B382 /* JTAppleCalendar.xcconfig */;
+			baseConfigurationReference = 03E1BCBCA172821289C63CDE985AFD3C /* JTAppleCalendar.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -413,86 +740,9 @@
 			};
 			name = Debug;
 		};
-		46C6A09450B2CB0E7B5223FC5777A0C2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 167C6E10B80152A004D948F0DC072F9B /* Pods-BreathEveryday.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-BreathEveryday/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_BreathEveryday;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		78B9E83867CD3CC693446EC1B8301060 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F6AF6B404E3056CD4CA02AE141B3CA3 /* Pods-BreathEveryday.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-BreathEveryday/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_BreathEveryday;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		A1B3830997A51E88D8F8ADB0AA20F877 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 824621895A181F7A112FB0C03CA6B382 /* JTAppleCalendar.xcconfig */;
+			baseConfigurationReference = 03E1BCBCA172821289C63CDE985AFD3C /* JTAppleCalendar.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -568,6 +818,186 @@
 			};
 			name = Release;
 		};
+		B282350619451A3B4B5D279A9F3C4D5D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 167C6E10B80152A004D948F0DC072F9B /* Pods-BreathEveryday.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-BreathEveryday/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_BreathEveryday;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BBED38560E22A8DF15C969CB66135339 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05691FBEF46B264E781485A90F834C63 /* M13Checkbox.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/M13Checkbox/M13Checkbox-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/M13Checkbox/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/M13Checkbox/M13Checkbox.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = M13Checkbox;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C1F479D2DBB06A9159EB43D5CC75225C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFEE3D0A65610B90A5DD501785271630 /* IGColorPicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/IGColorPicker/IGColorPicker-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/IGColorPicker/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/IGColorPicker/IGColorPicker.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = IGColorPicker;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E6D11672766A07961D778E9CD7E9EB95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F6AF6B404E3056CD4CA02AE141B3CA3 /* Pods-BreathEveryday.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-BreathEveryday/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_BreathEveryday;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F2B45FC948D937CB40A3BAC8ED952F7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05691FBEF46B264E781485A90F834C63 /* M13Checkbox.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/M13Checkbox/M13Checkbox-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/M13Checkbox/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/M13Checkbox/M13Checkbox.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = M13Checkbox;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -580,11 +1010,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6D37AEAB299E01A0E60BD413AC75413F /* Build configuration list for PBXNativeTarget "Pods-BreathEveryday" */ = {
+		6144EAEC71D0AD8F68022B20F7F4DE20 /* Build configuration list for PBXNativeTarget "M13Checkbox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				46C6A09450B2CB0E7B5223FC5777A0C2 /* Debug */,
-				78B9E83867CD3CC693446EC1B8301060 /* Release */,
+				BBED38560E22A8DF15C969CB66135339 /* Debug */,
+				F2B45FC948D937CB40A3BAC8ED952F7F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -594,6 +1024,24 @@
 			buildConfigurations = (
 				313891CC7F1018511F289523D81B84AD /* Debug */,
 				A1B3830997A51E88D8F8ADB0AA20F877 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9678CA2CF30CAF26A845F4441F3BBB72 /* Build configuration list for PBXNativeTarget "Pods-BreathEveryday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B282350619451A3B4B5D279A9F3C4D5D /* Debug */,
+				E6D11672766A07961D778E9CD7E9EB95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9E9641840942FB631AE2EAF43913ACB /* Build configuration list for PBXNativeTarget "IGColorPicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06902EAC20D5219EBCDC8944DF9C1053 /* Debug */,
+				C1F479D2DBB06A9159EB43D5CC75225C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

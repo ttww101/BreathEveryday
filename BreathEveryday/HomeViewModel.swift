@@ -9,6 +9,29 @@
 import Foundation
 import UIKit
 
+let colorDarkPurple = UIColor(colorLiteralRed: 61/255,
+                            green: 57/255,
+                            blue: 66/255,
+                            alpha: 1)
+
+extension UIColor {
+    class func color(withData data:Data) -> UIColor {
+        return NSKeyedUnarchiver.unarchiveObject(with: data) as! UIColor
+    }
+    
+    func encode()-> Data {
+        return NSKeyedArchiver.archivedData(withRootObject: self)
+    }
+    
+    func randomColor()-> UIColor {
+        let red = Float(arc4random_uniform(255))
+        let green = Float(arc4random_uniform(255))
+        let blue = Float(arc4random_uniform(255))
+        let color = UIColor(colorLiteralRed: red/255, green: green/255, blue: blue/255, alpha: 1)
+//        print(color)
+        return color
+    }
+}
 
 struct Category {
     
@@ -21,11 +44,12 @@ struct Category {
     var isCreated: Bool = false
     
     var frame: CGRect = CGRect()
+    
+    var color: UIColor = .lightGray
 }
 
 let categoryStringArray: [String] = ["Love",
                                "Family",
-                               "Couple",
                                "Friend",
                                "Pet",
                                "Work",
@@ -35,6 +59,7 @@ let categoryStringArray: [String] = ["Love",
                                "Music",
                                "Restaurant",
                                "Movie",
+                               "Photograph",
                                "Exercise",
                                "Fitness",
                                "Travel",
@@ -44,12 +69,18 @@ let categoryStringArray: [String] = ["Love",
                                "Credit Card",
                                "Shopping",
                                "Religion",
-                               "Mind"]
+                               "Mind",
+                               "App",
+                               "Smile",
+                               "Sun",
+                               "Night",
+                               "Alcohol",
+                               "Rocket",
+                               "Fuck"]
 
 let categoryImageArray: [UIImage] = [#imageLiteral(resourceName: "Like-48"),
-                             #imageLiteral(resourceName: "Family Man Woman-48"),
-                             #imageLiteral(resourceName: "Date Man Woman-48"),
-                             #imageLiteral(resourceName: "Meeting-50"),
+                             #imageLiteral(resourceName: "Family"),
+                             #imageLiteral(resourceName: "together"),
                              #imageLiteral(resourceName: "Cat Footprint"),
                              #imageLiteral(resourceName: "Business-50"),
                              #imageLiteral(resourceName: "Students-50"),
@@ -58,6 +89,7 @@ let categoryImageArray: [UIImage] = [#imageLiteral(resourceName: "Like-48"),
                              #imageLiteral(resourceName: "Music-64"),
                              #imageLiteral(resourceName: "Restaurant-50"),
                              #imageLiteral(resourceName: "Movie-50"),
+                             #imageLiteral(resourceName: "Photography"),
                              #imageLiteral(resourceName: "Exercise-50"),
                              #imageLiteral(resourceName: "Weightlifting-50"),
                              #imageLiteral(resourceName: "Airport-50"),
@@ -67,7 +99,14 @@ let categoryImageArray: [UIImage] = [#imageLiteral(resourceName: "Like-48"),
                              #imageLiteral(resourceName: "POS Terminal-50"),
                              #imageLiteral(resourceName: "Shopping Cart-50"),
                              #imageLiteral(resourceName: "Pray Filled-50"),
-                             #imageLiteral(resourceName: "Mental State-50"),]
+                             #imageLiteral(resourceName: "Mental State-50"),
+                             #imageLiteral(resourceName: "Apple App Store-100"),
+                             #imageLiteral(resourceName: "Smile"),
+                             #imageLiteral(resourceName: "SunQ"),
+                             #imageLiteral(resourceName: "Bat-50"),
+                             #imageLiteral(resourceName: "Alcoholic Beverage Licensing-50"),
+                             #imageLiteral(resourceName: "Rocket"),
+                             #imageLiteral(resourceName: "fuck")]
 
 var numberOfQuote = 0
 let quotes:[String] = ["Steve Jobs - \nIf today was the last day of my life would I want to do what I’m about to do today?",

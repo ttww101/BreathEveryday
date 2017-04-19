@@ -18,8 +18,12 @@ import EventKit
 class ListViewController: UIViewController {
     
     let eventStore = EKEventStore()
-    
     @IBOutlet weak var listTableView: UITableView!
+    var tableViewBottomConstraint: NSLayoutConstraint?
+    var fetchedResultsController: NSFetchedResultsController<EventMO>!
+    var isTyping = false
+    var listTitle = ""
+    var bubbleSyncColor: UIColor = .white
     
     @IBAction func homeBtn(_ sender: Any) {
         
@@ -35,21 +39,17 @@ class ListViewController: UIViewController {
         EventManager.shared.appDelegate.saveContext()
     }
     
-    var tableViewBottomConstraint: NSLayoutConstraint?
-    var fetchedResultsController: NSFetchedResultsController<EventMO>!
-    var isTyping = false
-    var listTitle = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //
+        
+        //sync to bubble
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.tintColor = UIColor.black
         self.navigationController?.navigationBar.barTintColor = .clear
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.topItem?.title = listTitle
+        listTableView.backgroundColor = bubbleSyncColor
         
         //tableView
         listTableView.delegate = self
@@ -95,25 +95,49 @@ class ListViewController: UIViewController {
     //Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let destinationVC = segue.destination as? DetailViewController {
-            guard let sender = sender as? UIButton else { return }
-            if let event = EventManager.shared.read(row: sender.tag) {
-                destinationVC.entryRow = sender.tag
-                if let detailData = event.detail {
-                    destinationVC.strDetail = detailData
-                }
-            }
-        }
-        
-        //Appearance of Back btn
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        navigationItem.backBarButtonItem = backItem
+//        if let destinationVC = segue.destination as? DetailViewController {
+//            destinationVC.bubbleSyncColor = bubbleSyncColor
+//            guard let sender = sender as? UIButton else { return }
+//            if let event = EventManager.shared.read(row: sender.tag) {
+//                destinationVC.entryRow = sender.tag
+//                if let detailData = event.detail {
+//                    destinationVC.strDetail = detailData
+//                }
+//            }
+//        }
+//        
+//        //Appearance of Back btn
+//        let backItem = UIBarButtonItem()
+//        backItem.title = ""
+//        self.navigationController?.navigationBar.tintColor = UIColor.black
+//        navigationItem.backBarButtonItem = backItem
     }
     
     func viewChangeToDetailPage(sender: UIButton) {
-        performSegue(withIdentifier: Identifier.detailView.rawValue, sender: sender)
+        if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
+            
+            UIView.animate(withDuration: 1, animations: {
+                //nav
+                let backItem = UIBarButtonItem()
+                backItem.title = ""
+                viewController.navigationController?.navigationBar.tintColor = UIColor.black
+                self.navigationItem.backBarButtonItem = backItem
+                
+                //attributes
+                viewController.bubbleSyncColor = self.bubbleSyncColor
+                if let event = EventManager.shared.read(row: sender.tag) {
+                    viewController.entryRow = sender.tag
+                    if let detailData = event.detail {
+                        viewController.strDetail = detailData
+                    }
+                }
+            }, completion: { (_) in
+                if let navigator = self.navigationController {
+                    navigator.pushViewController(viewController, animated: true)
+                }
+            })
+
+        }
     }
     
     //Notification Center
@@ -393,6 +417,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         dequeCell.configureCell(event: fetchedResultsController.object(at: indexPath))
         
         dequeCell.calendarPopupViewDelegate = self
+        
+        dequeCell.backgroundColor = bubbleSyncColor
         
         return dequeCell
         

@@ -1,12 +1,18 @@
 PODS:
+  - IGColorPicker (0.2.1):
+    - M13Checkbox (~> 2.2.0)
   - JTAppleCalendar (7.0.1)
+  - M13Checkbox (2.2.6)
 
 DEPENDENCIES:
+  - IGColorPicker
   - JTAppleCalendar (~> 7.0.1)
 
 SPEC CHECKSUMS:
+  IGColorPicker: a6ed1bf42cccf9e260e24d33faec5263310b4cef
   JTAppleCalendar: 7c8cba3e06fd6fdfed72382eeeb87c304e727ddb
+  M13Checkbox: 9989b7e275f18493bd33b960dc68374c47d0027b
 
-PODFILE CHECKSUM: 76c8cb30000fe264a94315714766a661629b8045
+PODFILE CHECKSUM: c845aa72126c8704ff642694f9bb17bc1961f7fe
 
 COCOAPODS: 1.2.1

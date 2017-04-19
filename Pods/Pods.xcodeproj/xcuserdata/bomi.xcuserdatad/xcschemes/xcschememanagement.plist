@@ -4,7 +4,17 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>IGColorPicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JTAppleCalendar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>M13Checkbox.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>A500FF32F75F1ADE59F5A82E68CF63A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BFED2E29E95E065400F8846E0231A970</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C46C89ADD3F31CAF57E37DE512719899</key>
+		<key>D3C9D21CCB0BF796A03D728A0167E0D5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E5F46CF08B487F1A01310C58918CF783</key>
 		<dict>
 			<key>primary</key>
 			<true/>

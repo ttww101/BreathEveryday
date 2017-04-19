@@ -15,9 +15,12 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     var textViewBottomConstraint: NSLayoutConstraint?
     var isTyping = false
+    var bubbleSyncColor = UIColor.white
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = self.bubbleSyncColor
         
         textView.delegate = self
         textView.text = strDetail
@@ -27,6 +30,8 @@ class DetailViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
+    
+    
     
     //Notification Center
     func handleKeyboardNotification(notification: NSNotification) {

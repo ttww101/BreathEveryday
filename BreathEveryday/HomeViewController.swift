@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import IGColorPicker
 
 enum Mode {
     case normal
@@ -28,15 +29,15 @@ class HomeViewController: UIViewController {
     let blackTransparentView = UIView()
     @IBOutlet weak var categorysCollectionView: UICollectionView!
     var categoryScrollViewConstraint: NSLayoutConstraint?
+    var colorPickerViewConstraint: NSLayoutConstraint?
     @IBOutlet weak var categoryDoneBtn: UIButton!
     var categoryDataArr: [Category] = []
-    
+    var colorPickerView: ColorPickerView!
+    var selectedCatogoryRow: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        categoryScrollViewConstraint = NSLayoutConstraint(item: categorysCollectionView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-        view.addConstraint(categoryScrollViewConstraint!)
         
         controllerSetup()
     }
@@ -75,12 +76,28 @@ class HomeViewController: UIViewController {
         categoryDoneBtn.imageEdgeInsets = UIEdgeInsetsMake(15, 15, 0, 15)
         categoryDoneBtn.imageView?.contentMode = .scaleAspectFit
         categoryDoneBtn.addTarget(self, action: #selector(btnDone), for: .touchUpInside)
-        categoryDoneBtn.layer.borderWidth = 1
-        categoryDoneBtn.layer.borderColor = UIColor.green.cgColor
+        categorysCollectionView.allowsMultipleSelection = true
         
         categorysCollectionView.delegate = self
         categorysCollectionView.dataSource = self
         categorysCollectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCollectionViewCell")
+        categoryScrollViewConstraint = NSLayoutConstraint(item: categorysCollectionView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
+        view.addConstraint(categoryScrollViewConstraint!)
+        
+        //color picker
+        colorPickerView = ColorPickerView()
+        colorPickerView.delegate = self
+        colorPickerView.layoutDelegate = self
+        colorPickerView.backgroundColor = colorDarkPurple
+        colorPickerView.selectionStyle = .check
+        view.addSubview(colorPickerView)
+        colorPickerView.translatesAutoresizingMaskIntoConstraints = false
+        colorPickerView.topAnchor.constraint(equalTo: categorysCollectionView.topAnchor, constant: 300).isActive = true
+        colorPickerView.bottomAnchor.constraint(equalTo: categorysCollectionView.topAnchor, constant: 0).isActive = true
+        colorPickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        colorPickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        colorPickerViewConstraint = NSLayoutConstraint(item: colorPickerView, attribute: .top, relatedBy: .equal, toItem: categorysCollectionView, attribute: .top, multiplier: 1, constant: 0)
+        view.addConstraint(colorPickerViewConstraint!)
         
         
         //bubbles
@@ -92,18 +109,23 @@ class HomeViewController: UIViewController {
             var createButton = UIButton()
             let name = categoryStringArray[i]
             let image = categoryImageArray[i].withRenderingMode(.alwaysTemplate)
-            
+            var color = UIColor.lightGray
             //MARK: find existing data
             
             if let category = CategoryManager.shared.read(name: name) {
-                
+                //TODO: read saved color
                 //transfer data needed
                 isCreated = category.isCreated
+                if let colorData = category.color as Data? {
+                    color = UIColor.color(withData: colorData)
+                }
                 frame = CGRect(x: CGFloat(category.posX),
                                y: CGFloat(category.posY),
                                width: CGFloat(category.width),
                                height: CGFloat(category.height))
-                createButton = createRandomBubble(with: image, in: frame)
+                createButton = createRandomBubble(with: image,
+                                                  in: frame,
+                                                  color: color)
                 createButton.tag = i // to display name
                 createButton.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
                 view.addSubview(createButton)
@@ -113,7 +135,8 @@ class HomeViewController: UIViewController {
                                          image: image,
                                          button: createButton,
                                          isCreated: isCreated,
-                                         frame: frame)
+                                         frame: frame,
+                                         color: color)
             categoryDataArr.append(category)
             
         }
@@ -149,6 +172,7 @@ class HomeViewController: UIViewController {
         })
         //send views to front
         view.bringSubview(toFront: categorysCollectionView)
+        view.bringSubview(toFront: colorPickerView)
         view.bringSubview(toFront: categoryDoneBtn)
         
         //button action & appearance change
@@ -163,7 +187,7 @@ class HomeViewController: UIViewController {
 
     }
     
-    func createRandomBubble(with image: UIImage, in frame: CGRect?) -> UIButton {
+    func createRandomBubble(with image: UIImage, in frame: CGRect?, color: UIColor) -> UIButton {
         
         //button1
         let button = UIButton()
@@ -171,12 +195,13 @@ class HomeViewController: UIViewController {
             button.layer.frame = frame
         } else {
             let xPos = arc4random_uniform(UInt32(view.frame.width) - 100)
-            let yPos = arc4random_uniform(UInt32(categorysCollectionView.frame.minY) - 100 - UInt32(quoteButton.frame.maxY)) + UInt32(quoteButton.frame.maxY)
+            let yPos = arc4random_uniform(UInt32(colorPickerView.frame.minY) - 100 - UInt32(quoteButton.frame.maxY)) + UInt32(quoteButton.frame.maxY)
             button.layer.frame = CGRect(x: Int(xPos), y: Int(yPos), width: 80, height: 80)
         }
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 40
-        button.backgroundColor = UIColor.lightGray
+        button.backgroundColor = color
+        button.layer.opacity = 0.65
         
         //image1
         let imageRendered = image.withRenderingMode(.alwaysTemplate)
@@ -254,6 +279,7 @@ class HomeViewController: UIViewController {
         view.bringSubview(toFront: button1)
         view.bringSubview(toFront: quoteButton)
         view.bringSubview(toFront: categorysCollectionView)
+        view.bringSubview(toFront: colorPickerView)
         view.bringSubview(toFront: categoryDoneBtn)
         for category in categoryDataArr {
             if category.isCreated {
@@ -310,12 +336,30 @@ class HomeViewController: UIViewController {
         quoteButton.tintColor = .black
         quoteButton.removeTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
         categoryScrollViewConstraint?.constant = -100
+        colorPickerViewConstraint?.constant = -50
+        selectedCatogoryRow = sender.tag
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
-            self.categorysCollectionView.scrollToItem(at: IndexPath(row: sender.tag, section: 0),
-                                                 at: .centeredHorizontally,
-                                                 animated: true)
+            
+            //change color
+            let clickedIndexPath = IndexPath(row: sender.tag, section: 0)
+            //selected color
+//            if let cell = self.categorysCollectionView.cellForItem(at: clickedIndexPath) as? CategoryCollectionViewCell {
+//                cell.colorBK = sender.backgroundColor!
+//            }
+            //selec created items
+            for category in self.categoryDataArr {
+                if category.isCreated {
+                    self.categorysCollectionView.selectItem(
+                        at: IndexPath(row: category.button.tag, section: 0),
+                        animated: false,
+                        scrollPosition: UICollectionViewScrollPosition.centeredHorizontally)
+                }
+            }
+            
+            self.categorysCollectionView.scrollToItem(at: clickedIndexPath, at: .centeredHorizontally, animated: true)
+            
         })
     }
     
@@ -336,6 +380,7 @@ class HomeViewController: UIViewController {
             blackTransparentView.removeFromSuperview()
             swichMode(to: .normal)
             categoryScrollViewConstraint?.constant = 0
+            colorPickerViewConstraint?.constant = 0
             
             //MARK: Core data save
             
@@ -381,7 +426,7 @@ class HomeViewController: UIViewController {
                     cMO.posY = Float(frame.minY)
                     cMO.width = Float(frame.width)
                     cMO.height = Float(frame.height)
-                    
+                    cMO.color = category.color.encode() as NSData
                 }
             }
             
@@ -470,6 +515,7 @@ class HomeViewController: UIViewController {
             //send value
             guard let vc = navigationVC.childViewControllers[0] as? ListViewController else { return }
             vc.listTitle = categoryDataArr[sender.tag].name
+            vc.bubbleSyncColor = categoryDataArr[sender.tag].color
             
             //animation
             let subView = UIView()
@@ -496,22 +542,30 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
         
-        if !cell.isCreated {
-            //MARK: CREAT BUBBLE
-            cell.isCreated = true
-            categoryDataArr[indexPath.row].isCreated = true
-            let createBtn = createRandomBubble(with: categoryImageArray[indexPath.row], in: nil)
-            createBtn.tag = indexPath.row
-            categoryDataArr[indexPath.row].button = createBtn
-            categoryDataArr[indexPath.row].frame = createBtn.frame
-            view.addSubview(createBtn)
-        } else {
-            let getCategory = categoryDataArr[indexPath.row]
-            getCategory.button.removeFromSuperview()
-            cell.isCreated = false
-            categoryDataArr[indexPath.row].isCreated = false
-        }
+        cell.isCreated = true
+        let createColor = UIColor().randomColor()
+        categoryDataArr[indexPath.row].isCreated = true
+        let createBtn = createRandomBubble(with: categoryImageArray[indexPath.row],
+                                           in: nil,
+                                           color: createColor)
+        createBtn.addTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
+        createBtn.tag = indexPath.row
+        selectedCatogoryRow = indexPath.row
+        categoryDataArr[indexPath.row].button = createBtn
+        categoryDataArr[indexPath.row].frame = createBtn.frame
+        categoryDataArr[indexPath.row].color = createColor
+        view.addSubview(createBtn)
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
+        
+        let getCategory = categoryDataArr[indexPath.row]
+        getCategory.button.removeFromSuperview()
+        cell.isCreated = false
+        categoryDataArr[indexPath.row].isCreated = false
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -522,6 +576,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = categorysCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
+//        cell.colorBK = categoryDataArr[indexPath.row].color
+        cell.configureCell()
         cell.label.text = categoryDataArr[indexPath.row].name
         let image = categoryDataArr[indexPath.row].image
         cell.imageView.image = image
@@ -532,6 +588,58 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
 }
 
+extension HomeViewController: ColorPickerViewDelegate {
+    
+    func colorPickerView(_ colorPickerView: ColorPickerView, didSelectItemAt indexPath: IndexPath) {
+        
+        // A color has been selected
+        //category selected
+//        let catIndexPath = IndexPath(row: selectedCatogoryRow, section: 0)
+//        categorysCollectionView.cellForItem(at: catIndexPath)?.contentView.backgroundColor = colorPickerView.colors[indexPath.row]
+        //bubble selected
+        categoryDataArr[selectedCatogoryRow].button.backgroundColor = colorPickerView.colors[indexPath.row]
+        
+        //TODO: save color
+        categoryDataArr[selectedCatogoryRow].color = colorPickerView.colors[indexPath.row]
+        
+    }
+    
+    // This is an optional method
+    func colorPickerView(_ colorPickerView: ColorPickerView, didDeselectItemAt indexPath: IndexPath) {
+        // A color has been deselected
+        
+    }
+    
+}
+
+extension HomeViewController: ColorPickerViewDelegateFlowLayout {
+    
+    // ------------------------------------------------------------------
+    // All these methods are optionals, your are not to implement them 🖖🏻
+    // ------------------------------------------------------------------
+    
+    func colorPickerView(_ colorPickerView: ColorPickerView, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // The size for each cell
+        // 👉🏻 WIDTH AND HEIGHT MUST BE EQUALS!
+        return CGSize(width: 30, height: 30)
+    }
+    
+    func colorPickerView(_ colorPickerView: ColorPickerView, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        // Space between cells
+        return 10
+    }
+    
+    func colorPickerView(_ colorPickerView: ColorPickerView, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        // Space between rows
+        return 10
+    }
+    
+    func colorPickerView(_ colorPickerView: ColorPickerView, insetForSectionAt section: Int) -> UIEdgeInsets {
+        // Inset used aroud the view
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+}
 
 
 

@@ -314,7 +314,7 @@ extension ListTableViewCell {
         let calendarBtn = CustomButton.calender.button
         calendarBtn.addTarget(self, action: #selector(btnCalendarToolBar), for: .touchUpInside)
         let locateBtn = CustomButton.locate.button
-        locateBtn.addTarget(self, action: #selector(btnLocateToolBar), for: .touchUpInside)
+//        locateBtn.addTarget(self, action: #selector(btnLocateToolBar), for: .touchUpInside)
         starBtn = CustomButton.star.button
         starBtn.addTarget(self, action: #selector(btnStarToolBar), for: .touchUpInside)
         

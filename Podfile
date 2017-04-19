@@ -6,6 +6,7 @@ target 'BreathEveryday' do
   use_frameworks!
 
   pod 'JTAppleCalendar', '~> 7.0.1’
+  pod 'IGColorPicker'
 
   # Pods for BreathEveryday
 end

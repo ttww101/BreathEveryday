@@ -20,9 +20,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="464" height="77.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btv-sX-qwG">
+                        <rect key="frame" x="0.0" y="0.0" width="464" height="78"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" scrollEnabled="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="enX-Wp-eca">
                         <rect key="frame" x="91" y="11" width="305" height="58.5"/>
-                        <color key="backgroundColor" red="1" green="0.93725490199999995" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="18"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                     </textView>
@@ -34,7 +37,7 @@
                         </constraints>
                         <state key="normal" image="Circle Filled-50"/>
                     </button>
-                    <imageView alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Details-50" translatesAutoresizingMaskIntoConstraints="NO" id="l7n-4o-6gC">
+                    <imageView alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="WriteNotes" translatesAutoresizingMaskIntoConstraints="NO" id="l7n-4o-6gC">
                         <rect key="frame" x="404" y="11" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="1Li-Yl-MtD"/>
@@ -42,16 +45,19 @@
                         </constraints>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" red="1" green="0.93725490199999995" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="l7n-4o-6gC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="6FB-qV-9fw"/>
+                    <constraint firstItem="btv-sX-qwG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ayg-tI-GzE"/>
                     <constraint firstAttribute="bottomMargin" secondItem="enX-Wp-eca" secondAttribute="bottom" id="MUB-g7-aqk"/>
                     <constraint firstItem="ANe-ck-yiF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerYWithinMargins" constant="3" id="QZl-Wk-Ktm"/>
+                    <constraint firstAttribute="bottom" secondItem="btv-sX-qwG" secondAttribute="bottom" id="T8Q-yN-NbN"/>
+                    <constraint firstItem="btv-sX-qwG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Uc9-ce-S43"/>
                     <constraint firstItem="enX-Wp-eca" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="jOg-dH-gkw"/>
                     <constraint firstItem="enX-Wp-eca" firstAttribute="leading" secondItem="ANe-ck-yiF" secondAttribute="trailing" constant="15" id="kdf-oB-57v"/>
+                    <constraint firstAttribute="trailing" secondItem="btv-sX-qwG" secondAttribute="trailing" id="s2o-IK-M1X"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="1" green="0.93725490199999995" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="1" green="0.93725490199999995" blue="0.83921568629999999" alpha="0.5" colorSpace="calibratedRGB"/>
             <connections>
                 <outlet property="textView" destination="enX-Wp-eca" id="atN-At-e3S"/>
                 <outlet property="viewDetailImage" destination="l7n-4o-6gC" id="tG9-3c-VWW"/>
@@ -61,6 +67,6 @@
     </objects>
     <resources>
         <image name="Circle Filled-50" width="50" height="50"/>
-        <image name="Details-50" width="50" height="50"/>
+        <image name="WriteNotes" width="128" height="128"/>
     </resources>
 </document>
