@@ -333,10 +333,6 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
         
-//        if isTyping {
-//            tableView.
-//        }
-        
         if let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell {
             cell.detailBtnLeadingConstraint?.constant = 200
             cell.contentView.layoutIfNeeded()

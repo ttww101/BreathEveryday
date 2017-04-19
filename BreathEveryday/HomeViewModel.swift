@@ -24,9 +24,9 @@ extension UIColor {
     }
     
     func randomColor()-> UIColor {
-        let red = Float(arc4random_uniform(255))
-        let green = Float(arc4random_uniform(255))
-        let blue = Float(arc4random_uniform(255))
+        let red = Float(arc4random_uniform(90)) + 130
+        let green = Float(arc4random_uniform(90)) + 130
+        let blue = Float(arc4random_uniform(90)) + 130
         let color = UIColor(colorLiteralRed: red/255, green: green/255, blue: blue/255, alpha: 1)
 //        print(color)
         return color

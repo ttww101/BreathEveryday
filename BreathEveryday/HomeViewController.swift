@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var quoteButton: SpringButton!
     @IBOutlet weak var weatherImageView: SpringImageView!
     @IBOutlet weak var quoteView: UIView!
-    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var menuButton: SpringButton!
     @IBOutlet weak var shopBtton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
     var quoteViewBottomConstraint: NSLayoutConstraint?
@@ -36,13 +36,12 @@ class HomeViewController: UIViewController {
     var categoryDataArr: [Category] = []
     var colorPickerView: ColorPickerView!
     var selectedCatogoryRow: Int = 0
-    var bubbleAnimator: UIViewPropertyAnimator! // bubble drag gesture
-    let animationDuration:Double = 1.0 //
     var circleCenter: CGPoint! // record for bubble circle center
+    var currentMode: Mode = .normal //record for distinguish drag out of view action
+    var dragAnimatorArray: [UIViewPropertyAnimator] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         controllerSetup()
         weatherImageView.animation = "morph"
@@ -125,8 +124,6 @@ class HomeViewController: UIViewController {
         view.addConstraint(colorPickerViewConstraint!)
         
         //Bubbles
-        //drag animation
-        bubbleAnimator = UIViewPropertyAnimator(duration: animationDuration, curve: .easeInOut, animations: { })
         //read data & create & transfer data
         var frame = CGRect()
         for i in 0...categoryStringArray.count - 1 {
@@ -168,14 +165,14 @@ class HomeViewController: UIViewController {
         }
         
         //handle set up mode
-        var willShowSetupMode = true
+        var willShowFirstSetup = true
         for category in categoryDataArr {
             if category.isCreated == true {
-                willShowSetupMode = false
+                willShowFirstSetup = false
                 break
             }
         }
-        if willShowSetupMode {
+        if willShowFirstSetup {
             showupFirstTime()
         }
         
@@ -199,18 +196,18 @@ class HomeViewController: UIViewController {
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
             
+            //send views to front
+            self.view.bringSubview(toFront: self.categorysCollectionView)
+            self.view.bringSubview(toFront: self.colorPickerView)
+            self.view.bringSubview(toFront: self.categoryDoneBtn)
+            
+            //button action & appearance change
+            self.swichMode(to: .setup)
+            self.categoryScrollViewConstraint?.constant = -100
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: { (completed) in })
         })
-        //send views to front
-        view.bringSubview(toFront: categorysCollectionView)
-        view.bringSubview(toFront: colorPickerView)
-        view.bringSubview(toFront: categoryDoneBtn)
-        
-        //button action & appearance change
-        swichMode(to: .setup)
-        categoryScrollViewConstraint?.constant = -100
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: { (completed) in })
 
     }
     
@@ -223,12 +220,12 @@ class HomeViewController: UIViewController {
         } else {
             let xPos = arc4random_uniform(UInt32(view.frame.width) - 100)
             let yPos = arc4random_uniform(UInt32(colorPickerView.frame.minY) - 100 - UInt32(quoteButton.frame.maxY)) + UInt32(quoteButton.frame.maxY)
-            button.layer.frame = CGRect(x: Int(xPos), y: Int(yPos), width: 80, height: 80)
+            button.layer.frame = CGRect(x: Int(xPos), y: Int(yPos), width: 84, height: 84)
         }
         button.layer.masksToBounds = true
-        button.layer.cornerRadius = 40
+        button.layer.cornerRadius = button.frame.width / 2
         button.backgroundColor = color
-        button.layer.opacity = 0.45
+        button.layer.opacity = 0.6
         
         //image1
         let imageRendered = image.withRenderingMode(.alwaysTemplate)
@@ -246,6 +243,9 @@ class HomeViewController: UIViewController {
     func dragCircle(gesture: UIPanGestureRecognizer) {
         let target = gesture.view!
         
+        var bubbleAnimator = UIViewPropertyAnimator(duration: 1.0, curve: .easeInOut, animations: { })
+//        dragAnimatorArray.append(bubbleAnimator)
+        
         switch gesture.state {
         case .began:
             
@@ -254,7 +254,7 @@ class HomeViewController: UIViewController {
             }
             circleCenter = target.center
             bubbleAnimator.addAnimations {
-                    target.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+                target.transform = CGAffineTransform(scaleX: 1.6, y: 1.6)
             }
             bubbleAnimator.startAnimation()
             
@@ -264,15 +264,71 @@ class HomeViewController: UIViewController {
                                     y: circleCenter.y + translation.y)
             
         case .ended:
-            
+            //shrink bubble
             if bubbleAnimator.state == .active {
                 bubbleAnimator.stopAnimation(true)
             }
+            //deceleration
+            let velocity = gesture.velocity(in: view)
+            let cgVelocity = CGVector(dx: velocity.x / 500, dy: velocity.y / 500)
+//            let springParameters = UISpringTimingParameters(mass: 5, stiffness: 70, damping: 30, initialVelocity: cgVelocity)
+            let springParameters = UISpringTimingParameters(mass: 2.5, stiffness: 30, damping: 20, initialVelocity: cgVelocity)
+            bubbleAnimator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springParameters) // original 2.5, 70, 55)
+            var stopPoint_X = target.center.x + velocity.x * 0.05
+            var stopPoint_Y = target.center.y + velocity.y * 0.05
+            
             bubbleAnimator.addAnimations {
-                target.transform = CGAffineTransform.identity
+                
+                switch self.currentMode {
+                    
+                case .normal:
+                    
+                    if 50 <= stopPoint_X && stopPoint_X <= self.view.frame.maxX - 50 &&
+                       80 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 50 {
+                        
+                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
+                        target.transform = CGAffineTransform.identity
+                        
+                    } else {
+                        
+                        if stopPoint_X < 50 { stopPoint_X = 35 }
+                        if stopPoint_X > self.view.frame.maxX - 50 {
+                            stopPoint_X = self.view.frame.maxX - 35 }
+                        if stopPoint_Y < 80 { stopPoint_Y = 80 }
+                        if stopPoint_Y > self.view.frame.maxY - 50 {
+                            stopPoint_Y = self.view.frame.maxY - 35 }
+                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
+                        target.transform = CGAffineTransform.identity
+                        
+                    }
+                    
+                case .setup:
+                    
+                    target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
+                    target.transform = CGAffineTransform.identity
+                    
+                    if 25 <= stopPoint_X && stopPoint_X <= self.view.frame.maxX - 25 &&
+                        25 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 25 {
+                    } else {
+                        
+                        //MARK: Delete bubble data
+                        if let deleteRow = gesture.view?.tag {
+                            
+                            let indexPath = IndexPath(row: deleteRow, section: 0)
+                            DispatchQueue.main.async {
+                                self.categorysCollectionView.reloadItems(at: [indexPath])
+                            }
+                            self.categoryDataArr[deleteRow].button.removeFromSuperview()
+                            self.categoryDataArr[deleteRow].isCreated = false
+                            self.categorysCollectionView.deselectItem(at: indexPath, animated: true)
+                        }
+                        
+                    }
+                }
+                
             }
             bubbleAnimator.startAnimation()
-            
+           
         default:
             break
         }
@@ -282,6 +338,11 @@ class HomeViewController: UIViewController {
     func btnMenuBtn() {
         
         if !menuButton.isSelected {
+            menuButton.rotate = 360
+            menuButton.animation = "linear"
+            menuButton.force = 0
+            menuButton.duration = 1
+            menuButton.animate()
             menuButton.isEnabled = false
             shopBtton.isEnabled = false
             settingButton.isEnabled = false
@@ -308,6 +369,11 @@ class HomeViewController: UIViewController {
     
     func shrinkMenu() {
         
+        menuButton.rotate = -360
+        menuButton.animation = "linear"
+        menuButton.force = 0
+        menuButton.duration = 1
+        menuButton.animate()
         menuButton.isEnabled = false
         settingButton.isEnabled = false
         shopBtton.isEnabled = false
@@ -372,6 +438,7 @@ class HomeViewController: UIViewController {
             
         case .normal:
             //button targets
+            currentMode = .normal
             for category in categoryDataArr {
                 category.button.removeTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
                 category.button.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
@@ -387,6 +454,7 @@ class HomeViewController: UIViewController {
             
         case .setup:
             //button targets
+            currentMode = .setup
             for category in categoryDataArr {
                 category.button.removeTarget(self, action: #selector(displayListView), for: .touchUpInside)
                 category.button.addTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
@@ -456,64 +524,86 @@ class HomeViewController: UIViewController {
             categoryScrollViewConstraint?.constant = 0
             colorPickerViewConstraint?.constant = 0
             
+            //update categoryDataArray
+            
+            updateCategoryDataArrayFrame()
+            
             //MARK: Core data save
             
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            
-            let moc = appDelegate.persistentContainer.viewContext
-            
-            do {
-                
-                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CategoryMO")
-                
-                guard let results = try moc.fetch(request) as? [CategoryMO] else {
-                    return
-                }
-                
-                for result in results {
-                    
-                    moc.delete(result)
-                    
-                }
-                
-                try moc.save()
-                
-            } catch {}
-            
-            for category in categoryDataArr {
-                if category.isCreated {
-                    
-                    guard let entityDescription = NSEntityDescription.entity(forEntityName: "CategoryMO", in: moc) else {
-                        
-                        return
-                        
-                    }
-                    
-                    let cMO = CategoryMO(entity: entityDescription, insertInto: moc)
-                    
-                    cMO.name = category.name
-                    
-                    cMO.isCreated = category.isCreated
-                    
-                    let frame = category.frame
-                    cMO.posX = Float(frame.minX)
-                    cMO.posY = Float(frame.minY)
-                    cMO.width = Float(frame.width)
-                    cMO.height = Float(frame.height)
-                    cMO.color = category.color.encode() as NSData
-                }
-            }
-            
-            do {
-                
-                try moc.save()
-                
-            } catch { print(error.localizedDescription) }
-            
+            removeAllAndSaveCoreData()
             
         } else {
             //TODO: alert nothing selected
         }
+    }
+    
+    
+    func updateCategoryDataArrayFrame() {
+        
+        var count = 0
+        for category in categoryDataArr {
+            if category.isCreated {
+                categoryDataArr[count].frame = category.button.frame
+            }
+            count += 1
+        }
+        
+    }
+    
+    func removeAllAndSaveCoreData() {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let moc = appDelegate.persistentContainer.viewContext
+        
+        do {
+            
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CategoryMO")
+            
+            guard let results = try moc.fetch(request) as? [CategoryMO] else {
+                return
+            }
+            
+            for result in results {
+                
+                moc.delete(result)
+                
+            }
+            
+            try moc.save()
+            
+        } catch {}
+        
+        for category in categoryDataArr {
+            if category.isCreated {
+                
+                guard let entityDescription = NSEntityDescription.entity(forEntityName: "CategoryMO", in: moc) else {
+                    
+                    return
+                    
+                }
+                
+                let cMO = CategoryMO(entity: entityDescription, insertInto: moc)
+                
+                cMO.name = category.name
+                
+                cMO.isCreated = category.isCreated
+                
+                let frame = category.frame
+                cMO.posX = Float(frame.minX)
+                cMO.posY = Float(frame.minY)
+                cMO.width = Float(frame.width)
+                cMO.height = Float(frame.height)
+                cMO.color = category.color.encode() as NSData
+            }
+        }
+        
+        do {
+            
+            try moc.save()
+            
+        } catch { print(error.localizedDescription) }
+        
     }
     
     func btnShopBtn() {
@@ -586,6 +676,13 @@ class HomeViewController: UIViewController {
         
         if let navigationVC = storyboard?.instantiateViewController(withIdentifier: "HomeNavigationController") as? UINavigationController {
             
+            //save frame
+            for category in categoryDataArr {
+                category.button.layer.removeAllAnimations()
+            }
+            updateCategoryDataArrayFrame()
+            removeAllAndSaveCoreData()
+            
             //send value
             guard let vc = navigationVC.childViewControllers[0] as? ListViewController else { return }
             vc.listTitle = categoryDataArr[sender.tag].name
@@ -635,9 +732,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
         guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
-        
-        let getCategory = categoryDataArr[indexPath.row]
-        getCategory.button.removeFromSuperview()
+        categoryDataArr[indexPath.row].button.removeFromSuperview()
         cell.isCreated = false
         categoryDataArr[indexPath.row].isCreated = false
     }
