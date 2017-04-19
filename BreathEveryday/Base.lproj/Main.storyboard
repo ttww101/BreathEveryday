@@ -84,7 +84,7 @@
                                     <constraint firstAttribute="height" constant="44" id="CNG-al-ALn"/>
                                     <constraint firstAttribute="width" constant="44" id="zaL-FA-fDQ"/>
                                 </constraints>
-                                <state key="normal" image="Settings-50"/>
+                                <state key="normal" image="Settings"/>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" semanticContentAttribute="playback" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="w6o-HY-WeB">
                                 <rect key="frame" x="0.0" y="567" width="296" height="100"/>
@@ -144,10 +144,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="pUz-Wj-97L"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <color key="tintColor" red="0.16706953399999999" green="0.90724143400000001" blue="0.2008118277" alpha="0.80570419520000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="titleEdgeInsets" minX="-50" minY="70" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="15" maxX="-42" maxY="0.0"/>
-                                <state key="normal" title="Done" image="Checkmark Filled-50">
+                                <state key="normal" title="Done" image="Courses-50">
                                     <color key="titleColor" red="0.16706953399999999" green="0.90724143400000001" blue="0.2008118277" alpha="0.80570419520000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
@@ -203,24 +204,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="137.18140929535232"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="v1J-2f-sYO">
-            <objects>
-                <viewController id="9Hz-hU-b8e" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ovt-JN-id5"/>
-                        <viewControllerLayoutGuide type="bottom" id="2qU-dr-jjG"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="X17-Qg-tdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.67627179479149457" green="1" blue="0.64767804163954446" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Gx-AM-plq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="140" y="799"/>
         </scene>
         <!--Shopping List-->
         <scene sceneID="DRx-qF-MUy">
@@ -522,14 +505,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Checkmark Filled-50" width="50" height="50"/>
+        <image name="Courses-50" width="50" height="50"/>
         <image name="Grassland" width="750" height="1334"/>
         <image name="Home-50" width="50" height="50"/>
         <image name="Market Square-50" width="50" height="50"/>
         <image name="Message-50" width="50" height="50"/>
         <image name="Plus-50" width="50" height="50"/>
         <image name="ReadMessage-50" width="50" height="50"/>
-        <image name="Settings-50" width="50" height="50"/>
+        <image name="Settings" width="48" height="48"/>
         <image name="Sun-48" width="48" height="48"/>
         <image name="items" width="128" height="128"/>
     </resources>

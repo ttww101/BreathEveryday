@@ -18,7 +18,6 @@ enum Mode {
 
 class HomeViewController: UIViewController {
     
-    let button1 = UIButton()
     @IBOutlet weak var quoteButton: SpringButton!
     @IBOutlet weak var weatherImageView: SpringImageView!
     @IBOutlet weak var quoteView: UIView!
@@ -68,13 +67,13 @@ class HomeViewController: UIViewController {
         
         //menu
         menuButton.alpha = 0.75
-        shopBtton.alpha = 0.75
-        settingButton.alpha = 0.75
+        shopBtton.alpha = 0.9
+        settingButton.alpha = 0.9
         var image = #imageLiteral(resourceName: "Thumbnails-48").withRenderingMode(.alwaysTemplate)
         menuButton.setImage(image, for: .normal)
         menuButton.tintColor = .black
         menuButton.imageView?.contentMode = .scaleAspectFit
-        image = #imageLiteral(resourceName: "Settings-50").withRenderingMode(.alwaysTemplate)
+        image = #imageLiteral(resourceName: "Settings").withRenderingMode(.alwaysTemplate)
         settingButton.setImage(image, for: .normal)
         settingButton.tintColor = .black
         settingButton.imageView?.contentMode = .scaleAspectFit
@@ -204,16 +203,16 @@ class HomeViewController: UIViewController {
             //button action & appearance change
             self.swichMode(to: .setup)
             self.categoryScrollViewConstraint?.constant = -100
+            self.colorPickerViewConstraint?.constant = -44
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
                 self.view.layoutIfNeeded()
             }, completion: { (completed) in })
         })
-
+        
     }
     
     func createRandomBubble(with image: UIImage, in frame: CGRect?, color: UIColor) -> UIButton {
         
-        //button1
         let button = SpringButton()
         if let frame = frame {
             button.layer.frame = frame
@@ -416,7 +415,6 @@ class HomeViewController: UIViewController {
         blackTransparentView.alpha = 0.75
         
         //send views to front
-        view.bringSubview(toFront: button1)
         view.bringSubview(toFront: quoteButton)
         view.bringSubview(toFront: categorysCollectionView)
         view.bringSubview(toFront: colorPickerView)
@@ -443,8 +441,6 @@ class HomeViewController: UIViewController {
                 category.button.removeTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
                 category.button.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
             }
-            button1.removeTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
-            button1.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
             
             let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
             quoteButton.setImage(image, for: .normal)
@@ -459,8 +455,6 @@ class HomeViewController: UIViewController {
                 category.button.removeTarget(self, action: #selector(displayListView), for: .touchUpInside)
                 category.button.addTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
             }
-            button1.removeTarget(self, action: #selector(displayListView), for: .touchUpInside)
-            button1.addTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
             
             let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
             quoteButton.setImage(image, for: .normal)
@@ -478,7 +472,7 @@ class HomeViewController: UIViewController {
         quoteButton.tintColor = .black
         quoteButton.removeTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
         categoryScrollViewConstraint?.constant = -100
-        colorPickerViewConstraint?.constant = -50
+        colorPickerViewConstraint?.constant = -44
         selectedCatogoryRow = sender.tag
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
@@ -790,7 +784,7 @@ extension HomeViewController: ColorPickerViewDelegateFlowLayout {
     func colorPickerView(_ colorPickerView: ColorPickerView, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // The size for each cell
         // 👉🏻 WIDTH AND HEIGHT MUST BE EQUALS!
-        return CGSize(width: 30, height: 30)
+        return CGSize(width: 25, height: 25)
     }
     
     func colorPickerView(_ colorPickerView: ColorPickerView, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
