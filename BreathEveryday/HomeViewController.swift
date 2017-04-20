@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import IGColorPicker
 import Spring
+import DynamicColor
 
 enum Mode {
     case normal
@@ -39,6 +40,7 @@ class HomeViewController: UIViewController {
     var currentMode: Mode = .normal //record for distinguish drag out of view action
     var dragAnimatorArray: [UIViewPropertyAnimator] = []
     @IBOutlet weak var deleteSuccessLabel: SpringLabel!
+    var deleteLabelConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,19 +120,88 @@ class HomeViewController: UIViewController {
         colorPickerView.layoutDelegate = self
         colorPickerView.backgroundColor = colorDarkPurple
         colorPickerView.selectionStyle = .check
-        colorPickerView.colors =  [#colorLiteral(red: 1, green: 0.5411764706, blue: 0.5019607843, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1),
-                                   #colorLiteral(red: 1, green: 0.8196078431, blue: 0.5019607843, alpha: 1), #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1),
-                                   #colorLiteral(red: 1, green: 0.6196078431, blue: 0.5019607843, alpha: 1), #colorLiteral(red: 1, green: 0.2392156863, blue: 0, alpha: 1), #colorLiteral(red: 0.8666666667, green: 0.1725490196, blue: 0, alpha: 1),
-                                   #colorLiteral(red: 1, green: 1, blue: 0.5529411765, alpha: 1), #colorLiteral(red: 1, green: 0.9176470588, blue: 0, alpha: 1), #colorLiteral(red: 1, green: 0.8392156863, blue: 0, alpha: 1),
-                                   #colorLiteral(red: 0.7254901961, green: 0.9647058824, blue: 0.7921568627, alpha: 1), #colorLiteral(red: 0, green: 0.9019607843, blue: 0.462745098, alpha: 1), #colorLiteral(red: 0, green: 0.7843137255, blue: 0.3254901961, alpha: 1),
-                                   #colorLiteral(red: 0.5176470588, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 0, green: 0.8980392157, blue: 1, alpha: 1), #colorLiteral(red: 0, green: 0.7215686275, blue: 0.831372549, alpha: 1),
-                                   #colorLiteral(red: 0.5019607843, green: 0.8470588235, blue: 1, alpha: 1), #colorLiteral(red: 0, green: 0.6901960784, blue: 1, alpha: 1), #colorLiteral(red: 0, green: 0.568627451, blue: 0.9176470588, alpha: 1),
-                                   #colorLiteral(red: 0.5490196078, green: 0.6196078431, blue: 1, alpha: 1), #colorLiteral(red: 0, green: 0.6901960784, blue: 1, alpha: 1), #colorLiteral(red: 0, green: 0.568627451, blue: 0.9176470588, alpha: 1),
-                                   #colorLiteral(red: 0.9176470588, green: 0.5019607843, blue: 0.9882352941, alpha: 1), #colorLiteral(red: 0.8352941176, green: 0, blue: 0.9764705882, alpha: 1), #colorLiteral(red: 0.6666666667, green: 0, blue: 1, alpha: 1),
-                                   #colorLiteral(red: 0.7019607843, green: 0.5333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.3960784314, green: 0.1215686275, blue: 1, alpha: 1), #colorLiteral(red: 0.3843137255, green: 0, blue: 0.9176470588, alpha: 1),
-                                   #colorLiteral(red: 0.737254902, green: 0.6666666667, blue: 0.6431372549, alpha: 1), #colorLiteral(red: 0.4745098039, green: 0.3333333333, blue: 0.2823529412, alpha: 1), #colorLiteral(red: 0.3058823529, green: 0.2039215686, blue: 0.1803921569, alpha: 1),
-                                   #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1), #colorLiteral(red: 0.3803921569, green: 0.3803921569, blue: 0.3803921569, alpha: 1), #colorLiteral(red: 0.1294117647, green: 0.1294117647, blue: 0.1294117647, alpha: 1)]
         
+//        colorPickerView.colors = [#colorLiteral(red: 1, green: 0.5411764706, blue: 0.5019607843, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1),
+//                                  #colorLiteral(red: 1, green: 0.8196078431, blue: 0.5019607843, alpha: 1), #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1),
+//                                  #colorLiteral(red: 1, green: 0.6196078431, blue: 0.5019607843, alpha: 1), #colorLiteral(red: 1, green: 0.2392156863, blue: 0, alpha: 1), #colorLiteral(red: 0.8666666667, green: 0.1725490196, blue: 0, alpha: 1),
+//                                  #colorLiteral(red: 1, green: 1, blue: 0.5529411765, alpha: 1), #colorLiteral(red: 1, green: 0.9176470588, blue: 0, alpha: 1), #colorLiteral(red: 1, green: 0.8392156863, blue: 0, alpha: 1),
+//                                  #colorLiteral(red: 0.7254901961, green: 0.9647058824, blue: 0.7921568627, alpha: 1), #colorLiteral(red: 0, green: 0.9019607843, blue: 0.462745098, alpha: 1), #colorLiteral(red: 0, green: 0.7843137255, blue: 0.3254901961, alpha: 1),
+//                                  #colorLiteral(red: 0.5176470588, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 0, green: 0.8980392157, blue: 1, alpha: 1), #colorLiteral(red: 0, green: 0.7215686275, blue: 0.831372549, alpha: 1),
+//                                  #colorLiteral(red: 0.5019607843, green: 0.8470588235, blue: 1, alpha: 1), #colorLiteral(red: 0, green: 0.6901960784, blue: 1, alpha: 1), #colorLiteral(red: 0, green: 0.568627451, blue: 0.9176470588, alpha: 1),
+//                                  #colorLiteral(red: 0.5490196078, green: 0.6196078431, blue: 1, alpha: 1), #colorLiteral(red: 0, green: 0.6901960784, blue: 1, alpha: 1), #colorLiteral(red: 0, green: 0.568627451, blue: 0.9176470588, alpha: 1),
+//                                  #colorLiteral(red: 0.9176470588, green: 0.5019607843, blue: 0.9882352941, alpha: 1), #colorLiteral(red: 0.8352941176, green: 0, blue: 0.9764705882, alpha: 1), #colorLiteral(red: 0.6666666667, green: 0, blue: 1, alpha: 1),
+//                                  #colorLiteral(red: 0.7019607843, green: 0.5333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.3960784314, green: 0.1215686275, blue: 1, alpha: 1), #colorLiteral(red: 0.3843137255, green: 0, blue: 0.9176470588, alpha: 1),
+//                                  #colorLiteral(red: 0.737254902, green: 0.6666666667, blue: 0.6431372549, alpha: 1), #colorLiteral(red: 0.4745098039, green: 0.3333333333, blue: 0.2823529412, alpha: 1), #colorLiteral(red: 0.3058823529, green: 0.2039215686, blue: 0.1803921569, alpha: 1),
+//                                  #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1), #colorLiteral(red: 0.3803921569, green: 0.3803921569, blue: 0.3803921569, alpha: 1), #colorLiteral(red: 0.1294117647, green: 0.1294117647, blue: 0.1294117647, alpha: 1)]
+        
+        colorPickerView.colors = [#colorLiteral(red: 1, green: 0.7176470588, blue: 0.8666666667, alpha: 1), #colorLiteral(red: 1, green: 0.8, blue: 0.8, alpha: 1), #colorLiteral(red: 1, green: 0.7843137255, blue: 0.7058823529, alpha: 1),
+                                  #colorLiteral(red: 1, green: 0.8666666667, blue: 0.6666666667, alpha: 1), #colorLiteral(red: 1, green: 0.9333333333, blue: 0.6, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 0.7333333333, alpha: 1),
+                                  #colorLiteral(red: 0.9333333333, green: 1, blue: 0.7333333333, alpha: 1), #colorLiteral(red: 0.8, green: 1, blue: 0.6, alpha: 1), #colorLiteral(red: 0.6, green: 1, blue: 0.6, alpha: 1),
+                                  #colorLiteral(red: 0.7333333333, green: 1, blue: 0.9333333333, alpha: 1), #colorLiteral(red: 0.6666666667, green: 1, blue: 0.9333333333, alpha: 1), #colorLiteral(red: 0.6, green: 1, blue: 1, alpha: 1),
+                                  #colorLiteral(red: 0.8, green: 0.9333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.8, green: 0.8666666667, blue: 1, alpha: 1), #colorLiteral(red: 0.8, green: 0.8, blue: 1, alpha: 1),
+                                  #colorLiteral(red: 0.8, green: 0.7333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.8196078431, green: 0.7333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.9098039216, green: 0.8, blue: 1, alpha: 1),
+                                  #colorLiteral(red: 0.9411764706, green: 0.7333333333, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.7019607843, blue: 1, alpha: 1)]
+        
+        colorPickerView.colors.append(contentsOf: [#colorLiteral(red: 1, green: 0.8705882353, blue: 0.9490196078, alpha: 1), #colorLiteral(red: 1, green: 0.8549019608, blue: 0.8549019608, alpha: 1), #colorLiteral(red: 1, green: 0.9254901961, blue: 0.8117647059, alpha: 1), #colorLiteral(red: 0.9764705882, green: 1, blue: 0.8549019608, alpha: 1), #colorLiteral(red: 0.8431372549, green: 0.9960784314, blue: 1, alpha: 1)])
+        colorPickerView.colors.append(contentsOf: [#colorLiteral(red: 0.6588235294, green: 0.9058823529, blue: 0.8117647059, alpha: 1), #colorLiteral(red: 0.8549019608, green: 0.9176470588, blue: 0.7568627451, alpha: 1), #colorLiteral(red: 1, green: 0.8235294118, blue: 0.7019607843, alpha: 1), #colorLiteral(red: 1, green: 0.6588235294, blue: 0.6431372549, alpha: 1), #colorLiteral(red: 1, green: 0.5490196078, blue: 0.5803921569, alpha: 1)])
+        colorPickerView.colors.append(contentsOf: [#colorLiteral(red: 1, green: 0.8470588235, blue: 0.9843137255, alpha: 1), #colorLiteral(red: 1, green: 0.8156862745, blue: 0.8156862745, alpha: 1), #colorLiteral(red: 1, green: 0.9019607843, blue: 0.7882352941, alpha: 1), #colorLiteral(red: 0.8862745098, green: 1, blue: 0.8431372549, alpha: 1), #colorLiteral(red: 0.9098039216, green: 0.9254901961, blue: 1, alpha: 1)])
+        colorPickerView.colors.append(contentsOf: [#colorLiteral(red: 0.7843137255, green: 0.8980392157, blue: 1, alpha: 1), #colorLiteral(red: 0.768627451, green: 1, blue: 0.7960784314, alpha: 1), #colorLiteral(red: 0.9960784314, green: 1, blue: 0.7215686275, alpha: 1), #colorLiteral(red: 1, green: 0.9294117647, blue: 0.7568627451, alpha: 1), #colorLiteral(red: 1, green: 0.7921568627, blue: 0.7921568627, alpha: 1)])
+        
+        colorPickerView.colors.append(contentsOf: [#colorLiteral(red: 1, green: 0.5333333333, blue: 0.7607843137, alpha: 1), #colorLiteral(red: 1, green: 0.5333333333, blue: 0.5333333333, alpha: 1), #colorLiteral(red: 1, green: 0.6431372549, blue: 0.5333333333, alpha: 1),
+                                                   #colorLiteral(red: 1, green: 0.7333333333, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.8666666667, blue: 0.3333333333, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 0.4666666667, alpha: 1),
+                                                   #colorLiteral(red: 0.8666666667, green: 1, blue: 0.4666666667, alpha: 1), #colorLiteral(red: 0.7333333333, green: 1, blue: 0.4, alpha: 1), #colorLiteral(red: 0.4, green: 1, blue: 0.4, alpha: 1),
+                                                   #colorLiteral(red: 0.4666666667, green: 1, blue: 0.8, alpha: 1), #colorLiteral(red: 0.4666666667, green: 1, blue: 0.9333333333, alpha: 1), #colorLiteral(red: 0.4, green: 1, blue: 1, alpha: 1),
+                                                   #colorLiteral(red: 0.4666666667, green: 0.8666666667, blue: 1, alpha: 1), #colorLiteral(red: 0.6, green: 0.7333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.6, green: 0.6, blue: 1, alpha: 1),
+                                                   #colorLiteral(red: 0.6235294118, green: 0.5333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.6901960784, green: 0.5333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.8235294118, green: 0.5568627451, blue: 1, alpha: 1),
+                                                   #colorLiteral(red: 0.8901960784, green: 0.5568627451, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.4666666667, blue: 1, alpha: 1)])
+        
+        colorPickerView.colors.append(contentsOf: [#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1), #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1), #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1), #colorLiteral(red: 0.7450980392, green: 0.7450980392, blue: 0.7450980392, alpha: 1)])
+        colorPickerView.colors.append(contentsOf: [#colorLiteral(red: 0.6784313725, green: 0.6784313725, blue: 0.6784313725, alpha: 1), #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5568627451, alpha: 1), #colorLiteral(red: 0.4235294118, green: 0.4235294118, blue: 0.4235294118, alpha: 1), #colorLiteral(red: 0.3098039216, green: 0.3098039216, blue: 0.3098039216, alpha: 1), #colorLiteral(red: 0.1529411765, green: 0.1529411765, blue: 0.1529411765, alpha: 1)])
+        
+//        , DynamicColor(hex: "#DDDDDD"), DynamicColor(hex: "#DDDDDD"), DynamicColor(hex: "#DDDDDD"), DynamicColor(hex: "#DDDDDD"), DynamicColor(hex: "#DDDDDD"), DynamicColor(hex: "#DDDDDD"), DynamicColor(hex: "#DDDDDD"), DynamicColor(hex: "#DDDDDD"), DynamicColor(hex: "#DDDDDD"), DynamicColor(hex: "#DDDDDD"), DynamicColor(hex: "#DDDDDD"), DynamicColor(hex: "#DDDDDD"), DynamicColor(hex: "#DDDDDD")]
+//        DynamicColor(hex: "#AAAAAA"),
+//        DynamicColor(hex: "#888888"),
+//        DynamicColor(hex: "#666666"),
+//        DynamicColor(hex: "#444444"),
+//        DynamicColor(hex: "#000000"),
+//        DynamicColor(hex: "#FFB7DD"),
+//        DynamicColor(hex: "#FF88C2"),
+//        DynamicColor(hex: "#FF44AA"),
+//        DynamicColor(hex: "#FF0088"),
+//        DynamicColor(hex: "#C10066"),
+//        DynamicColor(hex: "#A20055"),
+//        DynamicColor(hex: "#8C0044"),
+//        DynamicColor(hex: "#FFCCCC"),
+//        DynamicColor(hex: "#FF8888"),
+//        DynamicColor(hex: "#FF3333"),
+//        DynamicColor(hex: "#FF0000"),
+//        DynamicColor(hex: "#CC0000"),
+//        DynamicColor(hex: "#AA0000"),
+//        DynamicColor(hex: "#880000"),
+//        DynamicColor(hex: "#FFC8B4"),
+//        DynamicColor(hex: "#FFA488"),
+//        DynamicColor(hex: "#FF7744"),
+//        DynamicColor(hex: "#FF5511"),
+//        DynamicColor(hex: "#E63F00"),
+//        DynamicColor(hex: "#C63300"),
+//        DynamicColor(hex: "#A42D00")]
+//        #FFDDAA	#FFBB66	#FFAA33	#FF8800	#EE7700	#CC6600	#BB5500
+//        #FFEE99	#FFDD55	#FFCC22	#FFBB00	#DDAA00	#AA7700	#886600
+//        #FFFFBB	#FFFF77	#FFFF33	#FFFF00	#EEEE00	#BBBB00	#888800
+//        #EEFFBB	#DDFF77	#CCFF33	#BBFF00	#99DD00	#88AA00	#668800
+//        #CCFF99	#BBFF66	#99FF33	#77FF00	#66DD00	#55AA00	#227700
+//        #99FF99	#66FF66	#33FF33	#00FF00	#00DD00	#00AA00	#008800
+//        #BBFFEE	#77FFCC	#33FFAA	#00FF99	#00DD77	#00AA55	#008844
+//        #AAFFEE	#77FFEE	#33FFDD	#00FFCC	#00DDAA	#00AA88	#008866
+//        #99FFFF	#66FFFF	#33FFFF	#00FFFF	#00DDDD	#00AAAA	#008888
+//        #CCEEFF	#77DDFF	#33CCFF	#00BBFF	#009FCC	#0088A8	#007799
+//        #CCDDFF	#99BBFF	#5599FF	#0066FF	#0044BB	#003C9D	#003377
+//        #CCCCFF	#9999FF	#5555FF	#0000FF	#0000CC	#0000AA	#000088
+//        #CCBBFF	#9F88FF	#7744FF	#5500FF	#4400CC	#2200AA	#220088
+//        #D1BBFF	#B088FF	#9955FF	#7700FF	#5500DD	#4400B3	#3A0088
+//        #E8CCFF	#D28EFF	#B94FFF	#9900FF	#7700BB	#66009D	#550088
+//        #F0BBFF	#E38EFF	#E93EFF	#CC00FF	#A500CC	#7A0099	#660077
+//        #FFB3FF	#FF77FF	#FF3EFF	#FF00FF	#CC00CC	#990099	#770077
         
         view.addSubview(colorPickerView)
         colorPickerView.translatesAutoresizingMaskIntoConstraints = false
@@ -196,11 +267,13 @@ class HomeViewController: UIViewController {
         
         //deleteLabel
         deleteSuccessLabel.translatesAutoresizingMaskIntoConstraints = false
-        deleteSuccessLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        deleteSuccessLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        deleteSuccessLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         deleteSuccessLabel.bottomAnchor.constraint(equalTo: colorPickerView.topAnchor, constant: 0).isActive = true
         deleteSuccessLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
+        deleteSuccessLabel.layer.borderWidth = 1.5
+        deleteSuccessLabel.layer.borderColor = UIColor.red.cgColor
+        deleteLabelConstraint = NSLayoutConstraint(item: deleteSuccessLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
+        view.addConstraint(deleteLabelConstraint!)
     }
     
     func showupFirstTime() {
@@ -221,7 +294,7 @@ class HomeViewController: UIViewController {
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
             
-            //send views to front
+            //bring views to front
             self.view.bringSubview(toFront: self.categorysCollectionView)
             self.view.bringSubview(toFront: self.colorPickerView)
             self.view.bringSubview(toFront: self.categoryDoneBtn)
@@ -397,31 +470,18 @@ class HomeViewController: UIViewController {
         
         //delete animation
         if isDeleteSuccess {
+            let maxSize = CGSize(width: quoteView.frame.width - 10, height: view.frame.maxY)
+            let size = deleteSuccessLabel.sizeThatFits(maxSize)
+            deleteLabelConstraint?.constant = size.width + 50
+            view.layoutIfNeeded()
             deleteSuccessLabel.isHidden = false
             deleteSuccessLabel.animation = "fadeIn"
             deleteSuccessLabel.animateNext {
+                self.deleteSuccessLabel.animation = "fadeOut"
+                self.deleteSuccessLabel.animate()
                 self.deleteSuccessLabel.isHidden = true
             }
         }
-    }
-    
-    func flip(with firstView: UIView) {
-        let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
-        
-        let secondView = firstView
-        view.addSubview(secondView)
-        
-        UIView.transition(with: firstView, duration: 1.0, options: transitionOptions, animations: {
-            firstView.isHidden = true
-        })
-        
-        UIView.transition(with: secondView, duration: 1.0, options: transitionOptions, animations: {
-            secondView.isHidden = false
-        })
-    }
-    
-    func flipAction() {
-        
     }
     
     func btnMenuBtn() {
@@ -504,7 +564,7 @@ class HomeViewController: UIViewController {
         blackTransparentView.animate()
         blackTransparentView.alpha = 0.75
         
-        //send views to front
+        //bring views to front
         view.bringSubview(toFront: quoteButton)
         view.bringSubview(toFront: categorysCollectionView)
         view.bringSubview(toFront: colorPickerView)
@@ -535,7 +595,7 @@ class HomeViewController: UIViewController {
             
             let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
             quoteButton.setImage(image, for: .normal)
-            quoteButton.tintColor = .black
+            quoteButton.tintColor = .white
             quoteButton.removeTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
             quoteButton.addTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
             
@@ -560,7 +620,7 @@ class HomeViewController: UIViewController {
         
         let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
         quoteButton.setImage(image, for: .normal)
-        quoteButton.tintColor = .black
+        quoteButton.tintColor = .white
         quoteButton.removeTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
         categoryScrollViewConstraint?.constant = -100
         colorPickerViewConstraint?.constant = -44
@@ -621,11 +681,15 @@ class HomeViewController: UIViewController {
             //TODO: alert nothing selected
             //alsert animation
             deleteSuccessLabel.text = "please choose an category"
+            let maxSize = CGSize(width: quoteView.frame.width - 10, height: view.frame.maxY)
+            let size = deleteSuccessLabel.sizeThatFits(maxSize)
+            deleteLabelConstraint?.constant = size.width + 50
+            view.layoutIfNeeded()
             deleteSuccessLabel.isHidden = false
             deleteSuccessLabel.animation = "fadeIn"
             deleteSuccessLabel.animateNext {
                 self.deleteSuccessLabel.isHidden = true
-                self.deleteSuccessLabel.text = "delete success"
+                self.deleteSuccessLabel.text = "Deleted"
             }
         }
     }

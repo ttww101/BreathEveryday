@@ -71,7 +71,7 @@ let categoryStringArray: [String] = ["Love",
                                "Music",
                                "Restaurant",
                                "Movie",
-                               "Photograph",
+                               "Photography",
                                "Exercise",
                                "Fitness",
                                "Travel",
@@ -88,7 +88,7 @@ let categoryStringArray: [String] = ["Love",
                                "Night",
                                "Alcohol",
                                "Rocket",
-                               "Fuck"]
+                               "x"]
 
 let categoryImageArray: [UIImage] = [#imageLiteral(resourceName: "Like-48"),
                              #imageLiteral(resourceName: "Family"),

@@ -27,8 +27,8 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iS5-8O-Utk">
-                        <rect key="frame" x="0.0" y="60" width="118" height="36"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="0.0" y="55" width="118" height="41"/>
+                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -36,7 +36,7 @@
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="iS5-8O-Utk" secondAttribute="trailing" id="85z-ej-kPe"/>
-                <constraint firstItem="iS5-8O-Utk" firstAttribute="top" secondItem="jMP-m0-0mP" secondAttribute="bottom" constant="10" id="B9S-FA-Jfo"/>
+                <constraint firstItem="iS5-8O-Utk" firstAttribute="top" secondItem="jMP-m0-0mP" secondAttribute="bottom" constant="5" id="B9S-FA-Jfo"/>
                 <constraint firstAttribute="centerX" secondItem="jMP-m0-0mP" secondAttribute="centerX" id="Gky-em-Ozq"/>
                 <constraint firstItem="iS5-8O-Utk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qhh-zC-QxY"/>
                 <constraint firstAttribute="bottom" secondItem="iS5-8O-Utk" secondAttribute="bottom" id="sgW-5u-kg8"/>

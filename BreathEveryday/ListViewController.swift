@@ -49,7 +49,7 @@ class ListViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = .clear
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.navigationBar.topItem?.title = listTitle
-        self.navigationController?.navigationBar.backgroundColor = bubbleSyncColor
+//        self.navigationController?.navigationBar.backgroundColor = bubbleSyncColor
         listTableView.backgroundColor = bubbleSyncColor
         
         //tableView
