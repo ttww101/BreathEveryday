@@ -38,6 +38,7 @@ class HomeViewController: UIViewController {
     var circleCenter: CGPoint! // record for bubble circle center
     var currentMode: Mode = .normal //record for distinguish drag out of view action
     var dragAnimatorArray: [UIViewPropertyAnimator] = []
+    @IBOutlet weak var deleteSuccessLabel: SpringLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,27 +57,41 @@ class HomeViewController: UIViewController {
     func controllerSetup() {
         
         //quote
+        var image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
+        quoteButton.setImage(image, for: .normal)
+        quoteButton.tintColor = UIColor.white
+        image = #imageLiteral(resourceName: "Feedback-50").withRenderingMode(.alwaysTemplate)
+        quoteButton.setImage(image, for: .selected)
+        quoteButton.imageView?.contentMode = .scaleAspectFit
         quoteViewBottomConstraint = NSLayoutConstraint(item: quoteView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 25)
         view.addConstraint(quoteViewBottomConstraint!)
-        quoteView.layer.borderColor = UIColor.gray.cgColor
-        quoteView.layer.borderWidth = 3
+        quoteView.layer.borderColor = UIColor().middleGray().cgColor
+        quoteView.backgroundColor = UIColor(colorLiteralRed: 245/255, green: 245/255, blue: 250/255, alpha: 0.9)
+        quoteView.layer.borderWidth = 2
         quoteLbl.numberOfLines = 0
+        quoteLbl.font = UIFont(name: "HelveticaNeue", size: 16)
         quoteLbl.adjustsFontSizeToFitWidth = true
         quoteButton.addTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
         quoteView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissQuote)))
         
         //menu
-        menuButton.alpha = 0.75
+        menuButton.alpha = 0.9
         shopBtton.alpha = 0.9
         settingButton.alpha = 0.9
-        var image = #imageLiteral(resourceName: "Thumbnails-48").withRenderingMode(.alwaysTemplate)
+        image = #imageLiteral(resourceName: "Thumbnails-48").withRenderingMode(.alwaysTemplate)
         menuButton.setImage(image, for: .normal)
-        menuButton.tintColor = .black
+        menuButton.tintColor = UIColor(colorLiteralRed: 192/255, green: 214/255, blue: 204/255, alpha: 1.0)
         menuButton.imageView?.contentMode = .scaleAspectFit
         image = #imageLiteral(resourceName: "Settings").withRenderingMode(.alwaysTemplate)
         settingButton.setImage(image, for: .normal)
-        settingButton.tintColor = .black
+//        settingButton.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2)
+        settingButton.tintColor = UIColor.white
         settingButton.imageView?.contentMode = .scaleAspectFit
+        image = #imageLiteral(resourceName: "Shop").withRenderingMode(.alwaysTemplate)
+        shopBtton.setImage(image, for: .normal)
+        shopBtton.tintColor = UIColor.white
+        shopBtton.imageView?.contentMode = .scaleAspectFit
+        shopBtton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         menuButton.addTarget(self, action: #selector(btnMenuBtn), for: .touchUpInside)
         settingButton.addTarget(self, action: #selector(btnSettingBtn), for: .touchUpInside)
         shopBtton.addTarget(self, action: #selector(btnShopBtn), for: .touchUpInside)
@@ -87,6 +102,8 @@ class HomeViewController: UIViewController {
         categoryDoneBtn.imageEdgeInsets = UIEdgeInsetsMake(15, 15, 0, 15)
         categoryDoneBtn.imageView?.contentMode = .scaleAspectFit
         categoryDoneBtn.addTarget(self, action: #selector(btnDone), for: .touchUpInside)
+        categoryDoneBtn.tintColor = UIColor().greenAirwaves()
+        categoryDoneBtn.setTitleColor(UIColor().greenAirwaves(), for: .normal)
         categorysCollectionView.allowsMultipleSelection = true
         
         categorysCollectionView.delegate = self
@@ -101,8 +118,8 @@ class HomeViewController: UIViewController {
         colorPickerView.layoutDelegate = self
         colorPickerView.backgroundColor = colorDarkPurple
         colorPickerView.selectionStyle = .check
-        colorPickerView.colors =  [#colorLiteral(red: 1, green: 0.5411764706, blue: 0.5019607843, alpha: 1), #colorLiteral(red: 1, green: 0.09019607843, blue: 0.2666666667, alpha: 1), #colorLiteral(red: 0.8352941176, green: 0, blue: 0, alpha: 1),
-                                   #colorLiteral(red: 1, green: 0.8196078431, blue: 0.5019607843, alpha: 1), #colorLiteral(red: 1, green: 0.568627451, blue: 0, alpha: 1), #colorLiteral(red: 1, green: 0.4274509804, blue: 0, alpha: 1),
+        colorPickerView.colors =  [#colorLiteral(red: 1, green: 0.5411764706, blue: 0.5019607843, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1),
+                                   #colorLiteral(red: 1, green: 0.8196078431, blue: 0.5019607843, alpha: 1), #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1), #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1),
                                    #colorLiteral(red: 1, green: 0.6196078431, blue: 0.5019607843, alpha: 1), #colorLiteral(red: 1, green: 0.2392156863, blue: 0, alpha: 1), #colorLiteral(red: 0.8666666667, green: 0.1725490196, blue: 0, alpha: 1),
                                    #colorLiteral(red: 1, green: 1, blue: 0.5529411765, alpha: 1), #colorLiteral(red: 1, green: 0.9176470588, blue: 0, alpha: 1), #colorLiteral(red: 1, green: 0.8392156863, blue: 0, alpha: 1),
                                    #colorLiteral(red: 0.7254901961, green: 0.9647058824, blue: 0.7921568627, alpha: 1), #colorLiteral(red: 0, green: 0.9019607843, blue: 0.462745098, alpha: 1), #colorLiteral(red: 0, green: 0.7843137255, blue: 0.3254901961, alpha: 1),
@@ -113,6 +130,8 @@ class HomeViewController: UIViewController {
                                    #colorLiteral(red: 0.7019607843, green: 0.5333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.3960784314, green: 0.1215686275, blue: 1, alpha: 1), #colorLiteral(red: 0.3843137255, green: 0, blue: 0.9176470588, alpha: 1),
                                    #colorLiteral(red: 0.737254902, green: 0.6666666667, blue: 0.6431372549, alpha: 1), #colorLiteral(red: 0.4745098039, green: 0.3333333333, blue: 0.2823529412, alpha: 1), #colorLiteral(red: 0.3058823529, green: 0.2039215686, blue: 0.1803921569, alpha: 1),
                                    #colorLiteral(red: 0.7411764706, green: 0.7411764706, blue: 0.7411764706, alpha: 1), #colorLiteral(red: 0.3803921569, green: 0.3803921569, blue: 0.3803921569, alpha: 1), #colorLiteral(red: 0.1294117647, green: 0.1294117647, blue: 0.1294117647, alpha: 1)]
+        
+        
         view.addSubview(colorPickerView)
         colorPickerView.translatesAutoresizingMaskIntoConstraints = false
         colorPickerView.topAnchor.constraint(equalTo: categorysCollectionView.topAnchor, constant: 300).isActive = true
@@ -175,6 +194,13 @@ class HomeViewController: UIViewController {
             showupFirstTime()
         }
         
+        //deleteLabel
+        deleteSuccessLabel.translatesAutoresizingMaskIntoConstraints = false
+        deleteSuccessLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        deleteSuccessLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        deleteSuccessLabel.bottomAnchor.constraint(equalTo: colorPickerView.topAnchor, constant: 0).isActive = true
+        deleteSuccessLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
     }
     
     func showupFirstTime() {
@@ -199,6 +225,7 @@ class HomeViewController: UIViewController {
             self.view.bringSubview(toFront: self.categorysCollectionView)
             self.view.bringSubview(toFront: self.colorPickerView)
             self.view.bringSubview(toFront: self.categoryDoneBtn)
+            self.view.bringSubview(toFront: self.deleteSuccessLabel)
             
             //button action & appearance change
             self.swichMode(to: .setup)
@@ -241,6 +268,7 @@ class HomeViewController: UIViewController {
     
     func dragCircle(gesture: UIPanGestureRecognizer) {
         let target = gesture.view!
+        var isDeleteSuccess = false
         
         var bubbleAnimator = UIViewPropertyAnimator(duration: 1.0, curve: .easeInOut, animations: { })
 //        dragAnimatorArray.append(bubbleAnimator)
@@ -271,7 +299,7 @@ class HomeViewController: UIViewController {
             let velocity = gesture.velocity(in: view)
             let cgVelocity = CGVector(dx: velocity.x / 500, dy: velocity.y / 500)
 //            let springParameters = UISpringTimingParameters(mass: 5, stiffness: 70, damping: 30, initialVelocity: cgVelocity)
-            let springParameters = UISpringTimingParameters(mass: 2.5, stiffness: 30, damping: 20, initialVelocity: cgVelocity)
+            let springParameters = UISpringTimingParameters(mass: 2.5, stiffness: 50, damping: 25, initialVelocity: cgVelocity)
             bubbleAnimator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springParameters) // original 2.5, 70, 55)
             var stopPoint_X = target.center.x + velocity.x * 0.05
             var stopPoint_Y = target.center.y + velocity.y * 0.05
@@ -310,34 +338,96 @@ class HomeViewController: UIViewController {
                         25 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 25 {
                     } else {
                         
-                        //MARK: Delete bubble data
-                        if let deleteRow = gesture.view?.tag {
-                            
-                            let indexPath = IndexPath(row: deleteRow, section: 0)
-                            DispatchQueue.main.async {
-                                self.categorysCollectionView.reloadItems(at: [indexPath])
+                        var countForCreated = 0
+                        var isLastBubble = true
+                        for category in self.categoryDataArr {
+                            if category.isCreated {
+                                countForCreated += 1
                             }
-                            self.categoryDataArr[deleteRow].button.removeFromSuperview()
-                            self.categoryDataArr[deleteRow].isCreated = false
-                            self.categorysCollectionView.deselectItem(at: indexPath, animated: true)
+                            if countForCreated > 1 {
+                                isLastBubble = false
+                                break
+                            }
                         }
-                        
+                        //MARK: Delete bubble data
+                        if !isLastBubble {
+                            if let deleteRow = gesture.view?.tag {
+                                
+                                isDeleteSuccess = true
+                                
+                                let indexPath = IndexPath(row: deleteRow, section: 0)
+                                DispatchQueue.main.async {
+                                    self.categorysCollectionView.reloadItems(at: [indexPath])
+                                }
+                                self.categoryDataArr[deleteRow].button.removeFromSuperview()
+                                self.categoryDataArr[deleteRow].isCreated = false
+                                self.categorysCollectionView.deselectItem(at: indexPath, animated: true)
+                            }
+                        } else {
+                            if stopPoint_X < 50 { stopPoint_X = 35 }
+                            if stopPoint_X > self.view.frame.maxX - 50 {
+                                stopPoint_X = self.view.frame.maxX - 35 }
+                            if stopPoint_Y < 80 { stopPoint_Y = 80 }
+                            if stopPoint_Y > self.view.frame.maxY - 50 {
+                                stopPoint_Y = self.view.frame.maxY - 35 }
+                            target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
+                            target.transform = CGAffineTransform.identity
+                        }
                     }
                 }
                 
             }
             bubbleAnimator.startAnimation()
-           
+            if let target = target as? SpringButton {
+                target.animation = "swing"
+                target.curve = "easeInCubic"
+                target.damping = 50
+                target.velocity = 0.1
+                target.force = 0.2
+                target.scaleX = 0.85
+                target.scaleY = 0.85
+                target.duration = 2.5
+                target.animate()
+                target.layer.opacity = 0.6 //
+            }
+            
         default:
             break
         }
+        
+        //delete animation
+        if isDeleteSuccess {
+            deleteSuccessLabel.isHidden = false
+            deleteSuccessLabel.animation = "fadeIn"
+            deleteSuccessLabel.animateNext {
+                self.deleteSuccessLabel.isHidden = true
+            }
+        }
+    }
+    
+    func flip(with firstView: UIView) {
+        let transitionOptions: UIViewAnimationOptions = [.transitionFlipFromRight, .showHideTransitionViews]
+        
+        let secondView = firstView
+        view.addSubview(secondView)
+        
+        UIView.transition(with: firstView, duration: 1.0, options: transitionOptions, animations: {
+            firstView.isHidden = true
+        })
+        
+        UIView.transition(with: secondView, duration: 1.0, options: transitionOptions, animations: {
+            secondView.isHidden = false
+        })
+    }
+    
+    func flipAction() {
         
     }
     
     func btnMenuBtn() {
         
         if !menuButton.isSelected {
-            menuButton.rotate = 360
+            menuButton.rotate = 720
             menuButton.animation = "linear"
             menuButton.force = 0
             menuButton.duration = 1
@@ -368,7 +458,7 @@ class HomeViewController: UIViewController {
     
     func shrinkMenu() {
         
-        menuButton.rotate = -360
+        menuButton.rotate = -720
         menuButton.animation = "linear"
         menuButton.force = 0
         menuButton.duration = 1
@@ -419,6 +509,7 @@ class HomeViewController: UIViewController {
         view.bringSubview(toFront: categorysCollectionView)
         view.bringSubview(toFront: colorPickerView)
         view.bringSubview(toFront: categoryDoneBtn)
+        view.bringSubview(toFront: deleteSuccessLabel)
         for category in categoryDataArr {
             if category.isCreated {
                 view.bringSubview(toFront: category.button)
@@ -528,6 +619,14 @@ class HomeViewController: UIViewController {
             
         } else {
             //TODO: alert nothing selected
+            //alsert animation
+            deleteSuccessLabel.text = "please choose an category"
+            deleteSuccessLabel.isHidden = false
+            deleteSuccessLabel.animation = "fadeIn"
+            deleteSuccessLabel.animateNext {
+                self.deleteSuccessLabel.isHidden = true
+                self.deleteSuccessLabel.text = "delete success"
+            }
         }
     }
     

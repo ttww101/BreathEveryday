@@ -45,10 +45,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xm5-RR-JRL" customClass="SpringButton" customModule="Spring">
-                                <rect key="frame" x="16" y="30" width="35" height="35"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xm5-RR-JRL" customClass="SpringButton" customModule="Spring">
+                                <rect key="frame" x="16" y="30" width="40" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="35" id="T35-8m-P1Z"/>
+                                    <constraint firstAttribute="width" constant="40" id="T35-8m-P1Z"/>
                                     <constraint firstAttribute="height" constant="35" id="zFf-5h-qbX"/>
                                 </constraints>
                                 <state key="normal" image="Message-50"/>
@@ -71,15 +71,15 @@
                                 <state key="normal" image="items"/>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2n-UU-Y66">
-                                <rect key="frame" x="315" y="495" width="44" height="44"/>
+                                <rect key="frame" x="315" y="505" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="UBy-60-iSS"/>
                                     <constraint firstAttribute="height" constant="44" id="nCZ-dP-kpD"/>
                                 </constraints>
-                                <state key="normal" image="Market Square-50"/>
+                                <state key="normal" image="Shop"/>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASp-IK-9Wr">
-                                <rect key="frame" x="315" y="554" width="44" height="44"/>
+                                <rect key="frame" x="315" y="559" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="CNG-al-ALn"/>
                                     <constraint firstAttribute="width" constant="44" id="zaL-FA-fDQ"/>
@@ -139,12 +139,12 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ca-ex-v6o">
-                                <rect key="frame" x="179" y="459" width="80" height="100"/>
+                                <rect key="frame" x="295" y="567" width="80" height="100"/>
                                 <color key="backgroundColor" red="0.23921568630000001" green="0.22352941179999999" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="pUz-Wj-97L"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
                                 <color key="tintColor" red="0.16706953399999999" green="0.90724143400000001" blue="0.2008118277" alpha="0.80570419520000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="titleEdgeInsets" minX="-50" minY="70" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="15" maxX="-42" maxY="0.0"/>
@@ -159,6 +159,22 @@
                                     <constraint firstAttribute="width" constant="300" id="uUV-mq-vB3"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="delete success" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Me-1e-Ezf" customClass="SpringLabel" customModule="Spring">
+                                <rect key="frame" x="90" y="438" width="163" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                <color key="textColor" red="0.93725490196078431" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="delay">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -174,8 +190,8 @@
                             <constraint firstItem="iKL-Bq-tfO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="OV7-ir-oZt"/>
                             <constraint firstItem="fdS-4w-R4o" firstAttribute="leading" secondItem="Xm5-RR-JRL" secondAttribute="trailing" constant="5" id="VH6-wN-cDf"/>
                             <constraint firstItem="P5I-yd-5aA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Vvs-sa-791"/>
-                            <constraint firstItem="X4R-1p-azy" firstAttribute="top" secondItem="ASp-IK-9Wr" secondAttribute="bottom" constant="15" id="X97-y2-Yh4"/>
-                            <constraint firstItem="ASp-IK-9Wr" firstAttribute="top" secondItem="m2n-UU-Y66" secondAttribute="bottom" constant="15" id="Y8K-06-oNS"/>
+                            <constraint firstItem="X4R-1p-azy" firstAttribute="top" secondItem="ASp-IK-9Wr" secondAttribute="bottom" constant="10" id="X97-y2-Yh4"/>
+                            <constraint firstItem="ASp-IK-9Wr" firstAttribute="top" secondItem="m2n-UU-Y66" secondAttribute="bottom" constant="10" id="Y8K-06-oNS"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4ca-ex-v6o" secondAttribute="bottom" id="h0d-Du-1qG"/>
                             <constraint firstItem="Xm5-RR-JRL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="ihg-Vr-Aiz"/>
                             <constraint firstItem="Xm5-RR-JRL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="jHl-o6-BMM"/>
@@ -193,6 +209,7 @@
                     <connections>
                         <outlet property="categoryDoneBtn" destination="4ca-ex-v6o" id="YkO-jb-VSZ"/>
                         <outlet property="categorysCollectionView" destination="w6o-HY-WeB" id="LtE-cb-ZgT"/>
+                        <outlet property="deleteSuccessLabel" destination="4Me-1e-Ezf" id="pFQ-PK-D4S"/>
                         <outlet property="menuButton" destination="X4R-1p-azy" id="o97-uO-UIv"/>
                         <outlet property="quoteButton" destination="Xm5-RR-JRL" id="eCn-Vo-xrD"/>
                         <outlet property="quoteView" destination="fdS-4w-R4o" id="E5Z-9t-fs7"/>
@@ -204,6 +221,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="137.18140929535232"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8dB-1u-z7C">
+            <objects>
+                <viewController id="4Fa-bv-St5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fNY-O3-Un4"/>
+                        <viewControllerLayoutGuide type="bottom" id="R9y-kT-2JG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9nQ-j3-ond">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.70798196231617638" green="0.76078431372549016" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jAs-Ae-ksT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="245" y="859"/>
         </scene>
         <!--Shopping List-->
         <scene sceneID="DRx-qF-MUy">
@@ -490,7 +525,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="NGL-vu-iaR" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3Cl-Xh-U5x">
+                    <navigationBar key="navigationBar" alpha="0.29999999999999999" contentMode="scaleToFill" misplaced="YES" id="3Cl-Xh-U5x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -508,11 +543,11 @@
         <image name="Courses-50" width="50" height="50"/>
         <image name="Grassland" width="750" height="1334"/>
         <image name="Home-50" width="50" height="50"/>
-        <image name="Market Square-50" width="50" height="50"/>
         <image name="Message-50" width="50" height="50"/>
         <image name="Plus-50" width="50" height="50"/>
         <image name="ReadMessage-50" width="50" height="50"/>
         <image name="Settings" width="48" height="48"/>
+        <image name="Shop" width="48" height="48"/>
         <image name="Sun-48" width="48" height="48"/>
         <image name="items" width="128" height="128"/>
     </resources>
