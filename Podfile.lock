@@ -1,4 +1,5 @@
 PODS:
+  - DynamicColor (3.3)
   - IGColorPicker (0.2.1):
     - M13Checkbox (~> 2.2.0)
   - JTAppleCalendar (7.0.1)
@@ -6,6 +7,7 @@ PODS:
   - Spring (1.0.3)
 
 DEPENDENCIES:
+  - DynamicColor (~> 3.3)
   - IGColorPicker
   - JTAppleCalendar (~> 7.0.1)
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
@@ -21,11 +23,12 @@ CHECKOUT OPTIONS:
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
+  DynamicColor: 3cdaa1e01c16e93ba744e0630f768373e0fc7a7d
   IGColorPicker: a6ed1bf42cccf9e260e24d33faec5263310b4cef
   JTAppleCalendar: 7c8cba3e06fd6fdfed72382eeeb87c304e727ddb
   M13Checkbox: 9989b7e275f18493bd33b960dc68374c47d0027b
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
 
-PODFILE CHECKSUM: 93bc281cdf1513b095677943897d106ec162378f
+PODFILE CHECKSUM: de20286cdd6469d930033c6ab6c37fede358c1e8
 
 COCOAPODS: 1.2.1

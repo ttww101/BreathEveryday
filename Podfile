@@ -8,6 +8,7 @@ target 'BreathEveryday' do
   pod 'JTAppleCalendar', '~> 7.0.1’
   pod 'IGColorPicker'
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
+  pod 'DynamicColor', '~> 3.3'
 
   # Pods for BreathEveryday
 end
