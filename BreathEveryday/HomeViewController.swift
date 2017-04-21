@@ -182,7 +182,7 @@ class HomeViewController: UIViewController {
                                                   color: color)
                 createButton.tag = i // to display name
                 createButton.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
-                view.addSubview(createButton)
+//                view.addSubview(createButton)
             }
             
             let category = Category.init(name: name,
@@ -216,6 +216,46 @@ class HomeViewController: UIViewController {
         deleteSuccessLabel.layer.borderColor = UIColor.red.cgColor
         deleteLabelConstraint = NSLayoutConstraint(item: deleteSuccessLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
         view.addConstraint(deleteLabelConstraint!)
+        
+        //animation
+        var bubbleButtonShowedArr:[SpringButton] = []
+        for category in categoryDataArr {
+            if category.isCreated {
+                category.button.layer.opacity = 0
+                view.addSubview(category.button)
+                if let button = category.button as? SpringButton {
+                    bubbleButtonShowedArr.append(button)
+                }
+            }
+        }
+        self.bubbleShowUpAnimation(sender: bubbleButtonShowedArr, fromCount: bubbleButtonShowedArr.count)
+
+        
+    }
+    
+    func bubbleShowUpAnimation(sender: [SpringButton], fromCount: Int) {
+        sender[sender.count - fromCount].animation = "fadeInUp"
+        sender[sender.count - fromCount].curve = "easeInOut"
+        sender[sender.count - fromCount].duration = 2.5
+        sender[sender.count - fromCount].damping = 10
+        sender[sender.count - fromCount].velocity = 0.1
+        sender[sender.count - fromCount].animate()
+        sender[sender.count - fromCount].opacity = 0.6
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (_) in
+            if fromCount - 1 > 0 {
+                DispatchQueue.main.async {
+                    self.bubbleShowUpAnimation(sender: sender, fromCount: fromCount - 1)
+                }
+            } else {
+                sender[sender.count - fromCount].animation = "fadeInUp"
+                sender[sender.count - fromCount].curve = "easeInOut"
+                sender[sender.count - fromCount].duration = 2.5
+                sender[sender.count - fromCount].damping = 10
+                sender[sender.count - fromCount].velocity = 0.1
+                sender[sender.count - fromCount].animate()
+                sender[sender.count - fromCount].opacity = 0.6
+            }
+        }
     }
     
     func showupFirstTime() {
@@ -393,6 +433,7 @@ class HomeViewController: UIViewController {
                 
             }
             bubbleAnimator.startAnimation()
+            //swing animation
             if let target = target as? SpringButton {
                 target.animation = "swing"
                 target.curve = "easeInCubic"
