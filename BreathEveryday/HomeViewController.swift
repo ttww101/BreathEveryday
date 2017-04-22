@@ -182,7 +182,7 @@ class HomeViewController: UIViewController {
                                                   color: color)
                 createButton.tag = i // to display name
                 createButton.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
-//                view.addSubview(createButton)
+                view.addSubview(createButton)
             }
             
             let category = Category.init(name: name,
@@ -217,30 +217,34 @@ class HomeViewController: UIViewController {
         deleteLabelConstraint = NSLayoutConstraint(item: deleteSuccessLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
         view.addConstraint(deleteLabelConstraint!)
         
-        //animation
-        var bubbleButtonShowedArr:[SpringButton] = []
-        for category in categoryDataArr {
-            if category.isCreated {
-                category.button.layer.opacity = 0
-                view.addSubview(category.button)
-                if let button = category.button as? SpringButton {
-                    bubbleButtonShowedArr.append(button)
-                }
-            }
-        }
-        self.bubbleShowUpAnimation(sender: bubbleButtonShowedArr, fromCount: bubbleButtonShowedArr.count)
-
+        //nest animation
+//        var bubbleButtonShowedArr:[SpringButton] = []
+//        for category in categoryDataArr {
+//            if category.isCreated {
+//                category.button.layer.opacity = 0
+//                view.addSubview(category.button)
+//                if let button = category.button as? SpringButton {
+//                    bubbleButtonShowedArr.append(button)
+//                }
+//            }
+//        }
+//        if bubbleButtonShowedArr.count > 0 {
+//            self.bubbleShowUpAnimation(sender: bubbleButtonShowedArr, fromCount: bubbleButtonShowedArr.count)
+//        }
         
     }
     
     func bubbleShowUpAnimation(sender: [SpringButton], fromCount: Int) {
+        
+        //TODO: disable button
         sender[sender.count - fromCount].animation = "fadeInUp"
         sender[sender.count - fromCount].curve = "easeInOut"
         sender[sender.count - fromCount].duration = 2.5
         sender[sender.count - fromCount].damping = 10
         sender[sender.count - fromCount].velocity = 0.1
         sender[sender.count - fromCount].animate()
-        sender[sender.count - fromCount].opacity = 0.6
+        sender[sender.count - fromCount].layer.opacity = 0.6
+        
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (_) in
             if fromCount - 1 > 0 {
                 DispatchQueue.main.async {
@@ -253,7 +257,7 @@ class HomeViewController: UIViewController {
                 sender[sender.count - fromCount].damping = 10
                 sender[sender.count - fromCount].velocity = 0.1
                 sender[sender.count - fromCount].animate()
-                sender[sender.count - fromCount].opacity = 0.6
+                sender[sender.count - fromCount].layer.opacity = 0.6
             }
         }
     }
@@ -305,18 +309,30 @@ class HomeViewController: UIViewController {
         }
         button.layer.masksToBounds = true
         button.layer.cornerRadius = button.frame.width / 2
-        button.backgroundColor = color
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = button.bounds
+        let dynamicGradient = DynamicGradient(colors: [UIColor.white, color])
+        gradientLayer.colors = [dynamicGradient.pickColorAt(scale: 0.1).cgColor, color.cgColor, color.darkened().cgColor]
+        button.layer.insertSublayer(gradientLayer, below: button.imageView?.layer)
         button.layer.opacity = 0.6
         
-        //image1
+        //image
         let imageRendered = image.withRenderingMode(.alwaysTemplate)
         button.tintColor = UIColor.white
         button.setImage(imageRendered, for: .normal)
         button.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
         
-        //gesture
+        //drag gesture
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(dragCircle))
         button.addGestureRecognizer(gesture)
+        
+        //shadow
+        button.layer.shadowColor = button.backgroundColor?.shaded().cgColor
+        button.layer.shadowOpacity = 1
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.shadowRadius = 3
+        button.layer.shadowPath = UIBezierPath(rect: button.bounds).cgPath
+        button.layer.shouldRasterize = false
         
         return button
     }
@@ -865,7 +881,18 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         categoryDataArr[indexPath.row].button = createBtn
         categoryDataArr[indexPath.row].frame = createBtn.frame
         categoryDataArr[indexPath.row].color = createColor
+        createBtn.layer.opacity = 0
         view.addSubview(createBtn)
+        //float in animation
+        if let springBtn = createBtn as? SpringButton {
+            springBtn.animation = "fadeInUp"
+            springBtn.curve = "easeInOut"
+            springBtn.duration = 2.5
+            springBtn.damping = 10
+            springBtn.velocity = 0.1
+            springBtn.animate()
+            springBtn.layer.opacity = 0.6
+        }
         
     }
     
