@@ -15,6 +15,7 @@ import DynamicColor
 enum Mode {
     case normal
     case setup
+    case setupCategory
 }
 
 class HomeViewController: UIViewController {
@@ -276,6 +277,7 @@ class HomeViewController: UIViewController {
         blackTransparentView.duration = 1
         blackTransparentView.animate()
         blackTransparentView.alpha = 0.75
+        
         UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
@@ -287,11 +289,13 @@ class HomeViewController: UIViewController {
             self.view.bringSubview(toFront: self.deleteSuccessLabel)
             
             //button action & appearance change
-            self.swichMode(to: .setup)
+            self.switchMode(to: .setup)
+            self.switchMode(to: .setupCategory)
             self.categoryScrollViewConstraint?.constant = -100
             self.colorPickerViewConstraint?.constant = -44
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
                 self.view.layoutIfNeeded()
+                self.alertLabel(replaceString: "please choose a category", isHidden: false)
             }, completion: { (completed) in })
         })
         
@@ -309,12 +313,6 @@ class HomeViewController: UIViewController {
         }
         button.layer.masksToBounds = true
         button.layer.cornerRadius = button.frame.width / 2
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = button.bounds
-        let dynamicGradient = DynamicGradient(colors: [UIColor.white, color])
-        gradientLayer.colors = [dynamicGradient.pickColorAt(scale: 0.1).cgColor, color.cgColor, color.darkened().cgColor]
-        button.layer.insertSublayer(gradientLayer, below: button.imageView?.layer)
-        button.layer.opacity = 0.6
         
         //image
         let imageRendered = image.withRenderingMode(.alwaysTemplate)
@@ -326,6 +324,20 @@ class HomeViewController: UIViewController {
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(dragCircle))
         button.addGestureRecognizer(gesture)
         
+        setBubbleColor(for: button, with: color)
+        
+        return button
+    }
+    
+    func setBubbleColor(for button: UIButton, with color: UIColor) {
+        //color
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = button.bounds
+        let dynamicGradient = DynamicGradient(colors: [UIColor.white, color, color.darkened()])
+        gradientLayer.colors = [dynamicGradient.pickColorAt(scale: 0).cgColor, color.cgColor, dynamicGradient.pickColorAt(scale: 0.6).cgColor]
+        button.layer.insertSublayer(gradientLayer, below: button.imageView?.layer)
+        button.layer.opacity = 0.6
+        
         //shadow
         button.layer.shadowColor = button.backgroundColor?.shaded().cgColor
         button.layer.shadowOpacity = 1
@@ -333,8 +345,6 @@ class HomeViewController: UIViewController {
         button.layer.shadowRadius = 3
         button.layer.shadowPath = UIBezierPath(rect: button.bounds).cgPath
         button.layer.shouldRasterize = false
-        
-        return button
     }
     
     func dragCircle(gesture: UIPanGestureRecognizer) {
@@ -402,6 +412,27 @@ class HomeViewController: UIViewController {
                     
                 case .setup:
                     
+                    if 50 <= stopPoint_X && stopPoint_X <= self.view.frame.maxX - 50 &&
+                        80 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 50 {
+                        
+                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
+                        target.transform = CGAffineTransform.identity
+                        
+                    } else {
+                        
+                        if stopPoint_X < 50 { stopPoint_X = 35 }
+                        if stopPoint_X > self.view.frame.maxX - 50 {
+                            stopPoint_X = self.view.frame.maxX - 35 }
+                        if stopPoint_Y < 80 { stopPoint_Y = 80 }
+                        if stopPoint_Y > self.view.frame.maxY - 50 {
+                            stopPoint_Y = self.view.frame.maxY - 35 }
+                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
+                        target.transform = CGAffineTransform.identity
+                        
+                    }
+                    
+                case .setupCategory:
+                    
                     target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
                     target.transform = CGAffineTransform.identity
                     
@@ -409,40 +440,18 @@ class HomeViewController: UIViewController {
                         25 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 25 {
                     } else {
                         
-                        var countForCreated = 0
-                        var isLastBubble = true
-                        for category in self.categoryDataArr {
-                            if category.isCreated {
-                                countForCreated += 1
+                        //delete bubble data
+                        if let deleteRow = gesture.view?.tag {
+                            
+                            isDeleteSuccess = true
+                            
+                            let indexPath = IndexPath(row: deleteRow, section: 0)
+                            DispatchQueue.main.async {
+                                self.categorysCollectionView.reloadItems(at: [indexPath])
                             }
-                            if countForCreated > 1 {
-                                isLastBubble = false
-                                break
-                            }
-                        }
-                        //MARK: Delete bubble data
-                        if !isLastBubble {
-                            if let deleteRow = gesture.view?.tag {
-                                
-                                isDeleteSuccess = true
-                                
-                                let indexPath = IndexPath(row: deleteRow, section: 0)
-                                DispatchQueue.main.async {
-                                    self.categorysCollectionView.reloadItems(at: [indexPath])
-                                }
-                                self.categoryDataArr[deleteRow].button.removeFromSuperview()
-                                self.categoryDataArr[deleteRow].isCreated = false
-                                self.categorysCollectionView.deselectItem(at: indexPath, animated: true)
-                            }
-                        } else {
-                            if stopPoint_X < 50 { stopPoint_X = 35 }
-                            if stopPoint_X > self.view.frame.maxX - 50 {
-                                stopPoint_X = self.view.frame.maxX - 35 }
-                            if stopPoint_Y < 80 { stopPoint_Y = 80 }
-                            if stopPoint_Y > self.view.frame.maxY - 50 {
-                                stopPoint_Y = self.view.frame.maxY - 35 }
-                            target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
-                            target.transform = CGAffineTransform.identity
+                            self.categoryDataArr[deleteRow].button.removeFromSuperview()
+                            self.categoryDataArr[deleteRow].isCreated = false
+                            self.categorysCollectionView.deselectItem(at: indexPath, animated: true)
                         }
                     }
                 }
@@ -469,17 +478,7 @@ class HomeViewController: UIViewController {
         
         //delete animation
         if isDeleteSuccess {
-            let maxSize = CGSize(width: quoteView.frame.width - 10, height: view.frame.maxY)
-            let size = deleteSuccessLabel.sizeThatFits(maxSize)
-            deleteLabelConstraint?.constant = size.width + 50
-            view.layoutIfNeeded()
-            deleteSuccessLabel.isHidden = false
-            deleteSuccessLabel.animation = "fadeIn"
-            deleteSuccessLabel.animateNext {
-                self.deleteSuccessLabel.animation = "fadeOut"
-                self.deleteSuccessLabel.animate()
-                self.deleteSuccessLabel.isHidden = true
-            }
+            alertLabel(replaceString: "Deleted", isHidden: true)
         }
     }
     
@@ -565,9 +564,6 @@ class HomeViewController: UIViewController {
         
         //bring views to front
         view.bringSubview(toFront: quoteButton)
-        view.bringSubview(toFront: categorysCollectionView)
-        view.bringSubview(toFront: colorPickerView)
-        view.bringSubview(toFront: categoryDoneBtn)
         view.bringSubview(toFront: deleteSuccessLabel)
         for category in categoryDataArr {
             if category.isCreated {
@@ -576,11 +572,11 @@ class HomeViewController: UIViewController {
         }
         
         //button action & appearance change
-        swichMode(to: .setup)
+        switchMode(to: .setup)
         
     }
     
-    func swichMode(to mode: Mode) {
+    func switchMode(to mode: Mode) {
         
         switch mode {
             
@@ -588,7 +584,7 @@ class HomeViewController: UIViewController {
             //button targets
             currentMode = .normal
             for category in categoryDataArr {
-                category.button.removeTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
+                category.button.removeTarget(self, action: #selector(setBubbleCategory), for: .touchUpInside)
                 category.button.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
             }
             
@@ -603,7 +599,7 @@ class HomeViewController: UIViewController {
             currentMode = .setup
             for category in categoryDataArr {
                 category.button.removeTarget(self, action: #selector(displayListView), for: .touchUpInside)
-                category.button.addTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
+                category.button.addTarget(self, action: #selector(setBubbleCategory), for: .touchUpInside)
             }
             
             let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
@@ -612,14 +608,26 @@ class HomeViewController: UIViewController {
             quoteButton.removeTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
             quoteButton.addTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
             
+        case .setupCategory:
+            currentMode = .setupCategory
+            
         }
     }
     
-    func displayCategoryScrollView(sender: UIButton) {
+    func setBubbleCategory(sender: UIButton) {
         
+        currentMode = .setupCategory
         let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
         quoteButton.setImage(image, for: .normal)
         quoteButton.tintColor = .white
+        view.bringSubview(toFront: blackTransparentView)
+        view.bringSubview(toFront: categorysCollectionView)
+        view.bringSubview(toFront: colorPickerView)
+        view.bringSubview(toFront: categoryDoneBtn)
+        view.bringSubview(toFront: deleteSuccessLabel)
+        for category in categoryDataArr {
+            view.bringSubview(toFront: category.button)
+        }
         quoteButton.removeTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
         categoryScrollViewConstraint?.constant = -100
         colorPickerViewConstraint?.constant = -44
@@ -664,9 +672,10 @@ class HomeViewController: UIViewController {
         //check if more than one selected
         if count > 0 {
             blackTransparentView.removeFromSuperview()
-            swichMode(to: .normal)
+            switchMode(to: .normal)
             categoryScrollViewConstraint?.constant = 0
             colorPickerViewConstraint?.constant = 0
+            deleteLabelConstraint?.constant = 0
             
             //update categoryDataArray
             
@@ -677,19 +686,22 @@ class HomeViewController: UIViewController {
             removeAllAndSaveCoreData()
             
         } else {
-            //TODO: alert nothing selected
-            //alsert animation
-            deleteSuccessLabel.text = "please choose an category"
-            let maxSize = CGSize(width: quoteView.frame.width - 10, height: view.frame.maxY)
-            let size = deleteSuccessLabel.sizeThatFits(maxSize)
-            deleteLabelConstraint?.constant = size.width + 50
-            view.layoutIfNeeded()
-            deleteSuccessLabel.isHidden = false
-            deleteSuccessLabel.animation = "fadeIn"
-            deleteSuccessLabel.animateNext {
-                self.deleteSuccessLabel.isHidden = true
-                self.deleteSuccessLabel.text = "Deleted"
-            }
+            alertLabel(replaceString: "please choose a category", isHidden: true)
+        }
+    }
+    
+    func alertLabel(replaceString: String, isHidden: Bool) {
+        deleteSuccessLabel.text = replaceString
+        let maxSize = CGSize(width: quoteView.frame.width - 10, height: view.frame.maxY)
+        let size = deleteSuccessLabel.sizeThatFits(maxSize)
+        deleteLabelConstraint?.constant = size.width + 50
+        view.layoutIfNeeded()
+        deleteSuccessLabel.isHidden = false
+        deleteSuccessLabel.animation = "fadeIn"
+        deleteSuccessLabel.animateNext {
+//            self.deleteSuccessLabel.animation = "fadeOut"
+//            self.deleteSuccessLabel.animate()
+            self.deleteSuccessLabel.isHidden = isHidden
         }
     }
     
@@ -875,7 +887,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let createBtn = createRandomBubble(with: categoryImageArray[indexPath.row],
                                            in: nil,
                                            color: createColor)
-        createBtn.addTarget(self, action: #selector(displayCategoryScrollView), for: .touchUpInside)
+        createBtn.addTarget(self, action: #selector(setBubbleCategory), for: .touchUpInside)
         createBtn.tag = indexPath.row
         selectedCatogoryRow = indexPath.row
         categoryDataArr[indexPath.row].button = createBtn
@@ -883,6 +895,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         categoryDataArr[indexPath.row].color = createColor
         createBtn.layer.opacity = 0
         view.addSubview(createBtn)
+        
         //float in animation
         if let springBtn = createBtn as? SpringButton {
             springBtn.animation = "fadeInUp"
@@ -933,7 +946,7 @@ extension HomeViewController: ColorPickerViewDelegate {
 //        let catIndexPath = IndexPath(row: selectedCatogoryRow, section: 0)
 //        categorysCollectionView.cellForItem(at: catIndexPath)?.contentView.backgroundColor = colorPickerView.colors[indexPath.row]
         //bubble selected
-        categoryDataArr[selectedCatogoryRow].button.backgroundColor = colorPickerView.colors[indexPath.row]
+        setBubbleColor(for: categoryDataArr[selectedCatogoryRow].button, with: colorPickerView.colors[indexPath.row])
         
         //TODO: save color
         categoryDataArr[selectedCatogoryRow].color = colorPickerView.colors[indexPath.row]
