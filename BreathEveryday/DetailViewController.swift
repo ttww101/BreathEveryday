@@ -13,7 +13,7 @@ import Spring
 class DetailViewController: UIViewController {
     
     var entryRow: Int = 0
-    var strDetail: String = ""
+    var noteData: String = ""
     @IBOutlet weak var textView: UITextView!
     var textViewBottomConstraint: NSLayoutConstraint?
     var isTyping = false
@@ -25,7 +25,7 @@ class DetailViewController: UIViewController {
         self.view.backgroundColor = self.bubbleSyncColor
         
         textView.delegate = self
-        textView.text = strDetail
+        textView.text = noteData
         //notification for constraints
         textViewBottomConstraint = NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -10)
         view.addConstraint(textViewBottomConstraint!)
@@ -72,7 +72,7 @@ extension DetailViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         
-        EventManager.shared.update(row: entryRow, content: nil, detail: textView.text, calendarEvent: nil, alarmDate: nil, isSetNotification: nil)
+        EventManager.shared.update(row: entryRow, content: nil, note: textView.text,calendarEvent: nil, alarmDate: nil, isSetNotification: nil)
         EventManager.shared.appDelegate.saveContext()
     }
     

@@ -39,7 +39,6 @@ class CalendarViewController: UIViewController {
             let date = Date()
             calendarView.selectDates([date])
             calendarView.scrollToDate(date)
-            
         }
         
     }

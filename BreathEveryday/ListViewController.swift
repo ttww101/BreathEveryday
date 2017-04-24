@@ -34,7 +34,7 @@ class ListViewController: UIViewController {
     
     @IBAction func addEventBtn(_ sender: Any) {
         
-        EventManager.shared.create(calendarEvent: nil, content: nil, detail: nil, category: listTitle)
+        EventManager.shared.create(calendarEvent: nil, content: nil, note: nil, category: listTitle)
         
         EventManager.shared.appDelegate.saveContext()
     }
@@ -93,25 +93,6 @@ class ListViewController: UIViewController {
     }
         
     //Segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-//        if let destinationVC = segue.destination as? DetailViewController {
-//            destinationVC.bubbleSyncColor = bubbleSyncColor
-//            guard let sender = sender as? UIButton else { return }
-//            if let event = EventManager.shared.read(row: sender.tag) {
-//                destinationVC.entryRow = sender.tag
-//                if let detailData = event.detail {
-//                    destinationVC.strDetail = detailData
-//                }
-//            }
-//        }
-//        
-//        //Appearance of Back btn
-//        let backItem = UIBarButtonItem()
-//        backItem.title = ""
-//        self.navigationController?.navigationBar.tintColor = UIColor.black
-//        navigationItem.backBarButtonItem = backItem
-    }
     
     func viewChangeToDetailPage(sender: UIButton) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
@@ -127,8 +108,8 @@ class ListViewController: UIViewController {
                 viewController.bubbleSyncColor = self.bubbleSyncColor
                 if let event = EventManager.shared.read(row: sender.tag) {
                     viewController.entryRow = sender.tag
-                    if let detailData = event.detail {
-                        viewController.strDetail = detailData
+                    if let noteData = event.note {
+                        viewController.noteData = noteData
                     }
                 }
             }, completion: { (_) in

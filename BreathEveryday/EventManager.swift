@@ -27,7 +27,7 @@ class EventManager {
     let sortDescriptor = NSSortDescriptor(key: "createdDate", ascending: true)
     
     //C
-    func create(calendarEvent: String?, content: String?, detail: String?, category: String) {
+    func create(calendarEvent: String?, content: String?, note: String?, category: String) {
         
         let moc = appDelegate.persistentContainer.viewContext
         
@@ -47,8 +47,8 @@ class EventManager {
             event.content = content
         }
         
-        if let detail = detail {
-            event.detail = detail
+        if let note = note {
+            event.note = note
         }
         
         event.createdDate = NSDate()
@@ -97,7 +97,7 @@ class EventManager {
     }
     
     //U
-    func update(id: NSManagedObjectID, content: String?, detail: String?, calendarEvent: String?, alarmDate: NSDate?, isSetNotification: Bool?) {
+    func update(id: NSManagedObjectID, content: String?, note: String?, calendarEvent: String?, alarmDate: NSDate?, isSetNotification: Bool?) {
         
         let moc = appDelegate.persistentContainer.viewContext
         
@@ -117,8 +117,8 @@ class EventManager {
                 eventMO.content = content
             }
             
-            if let detail = detail {
-                eventMO.detail = detail
+            if let note = note {
+                eventMO.note = note
             }
             
             if let alarmDate = alarmDate {
@@ -136,7 +136,7 @@ class EventManager {
         
     }
     
-    func update(row: Int, content: String?, detail: String?, calendarEvent: String?, alarmDate: NSDate?, isSetNotification: Bool?) {
+    func update(row: Int, content: String?, note: String?, calendarEvent: String?, alarmDate: NSDate?, isSetNotification: Bool?) {
         
         let moc = appDelegate.persistentContainer.viewContext
         
@@ -158,8 +158,8 @@ class EventManager {
                 event.content = content
             }
             
-            if let detail = detail {
-                event.detail = detail
+            if let note = note {
+                event.note = note
             }
             
             if let alarmDate = alarmDate {

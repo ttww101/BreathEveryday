@@ -295,7 +295,7 @@ class HomeViewController: UIViewController {
             self.colorPickerViewConstraint?.constant = -44
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
                 self.view.layoutIfNeeded()
-                self.alertLabel(replaceString: "please choose a category", isHidden: false)
+                self.alertLabel(replaceString: "Please choose a category", isHidden: false)
             }, completion: { (completed) in })
         })
         
@@ -574,6 +574,7 @@ class HomeViewController: UIViewController {
         //button action & appearance change
         switchMode(to: .setup)
         
+        alertLabel(replaceString: "Please select an item", isHidden: false)
     }
     
     func switchMode(to mode: Mode) {
@@ -616,6 +617,7 @@ class HomeViewController: UIViewController {
     
     func setBubbleCategory(sender: UIButton) {
         
+        self.deleteLabelConstraint?.constant = 0
         currentMode = .setupCategory
         let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
         quoteButton.setImage(image, for: .normal)

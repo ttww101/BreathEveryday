@@ -14,6 +14,7 @@ enum CustomButton {
     case calender
     case locate
     case star
+    case remindTime
     
     var button: UIButton {
         
@@ -28,7 +29,12 @@ enum CustomButton {
         case .alarm:
             
             button.setImage(#imageLiteral(resourceName: "Alarm-50"), for: .normal)
-            button.frame = CGRect(x: 0, y: 0, width: 60, height: 25)
+            button.frame = CGRect(x: 0, y: 0, width: 60, height: 24)
+            
+        case .remindTime:
+            
+            button.setImage(#imageLiteral(resourceName: "Timer-48"), for: .normal)
+            button.frame = CGRect(x: 0, y: 0, width: 60, height: 31)
             
         case .calender:
             
@@ -51,6 +57,10 @@ enum CustomButton {
         
     }
     
+}
+
+func adjustFrame(button: UIButton, width: CGFloat, height: CGFloat, image: UIImage?) {
+    button.frame = CGRect(x: 0, y: 0, width: width, height: height)
 }
 
 let grayBlueColor = UIColor(colorLiteralRed: 148/255, green: 163/255, blue: 169/255, alpha: 1)

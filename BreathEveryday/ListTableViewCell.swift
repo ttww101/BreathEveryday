@@ -30,6 +30,7 @@ class ListTableViewCell: UITableViewCell {
     //toolBar
     var starBtn: UIButton!
     lazy var alarmView = UIView()
+    lazy var remindtimeView = UIView()
     lazy var alarmPicker = UIPickerView()
     lazy var calendarView = UIView()
     var calendarJTVC: CalendarViewController? = nil
@@ -148,13 +149,12 @@ extension ListTableViewCell: UITextViewDelegate {
         }, completion: { (completed) in })
         
         //disappear toolbar
-        if !self.locationView.isHidden {
-            self.locationView.isHidden = true
+        if !self.remindtimeView.isHidden {
+            self.remindtimeView.isHidden = true
         }
         if !self.calendarView.isHidden {
             self.calendarView.isHidden = true
         }
-        
         if !self.alarmView.isHidden {
             self.alarmView.isHidden = true
         }
@@ -234,7 +234,7 @@ extension ListTableViewCell {
 
         EventManager.shared.update(row: indexRow,
                                    content: self.textView.text,
-                                   detail: nil,
+                                   note: nil,
                                    calendarEvent: nil,
                                    alarmDate: nil,
                                    isSetNotification: isSetNotification)
@@ -276,21 +276,31 @@ extension ListTableViewCell {
         
         dateAlarmSet = date
         
-        //get ex event, remove ex calendarevent
-        if let event = EventManager.shared.read(row: indexRow),
-            let calendarEventID = event.calendarEventID {
-            removeEvent(identifier: calendarEventID)
+        var savedNote = ""
+        
+        if let event = EventManager.shared.read(row: indexRow) {
+            
+            //get ex event, remove ex calendarevent
+            if let calendarEventID = event.calendarEventID {
+                removeEvent(identifier: calendarEventID)
+            }
+            
+            //get saved note
+            if let note = event.note {
+                savedNote = note
+            }
+            
         }
         
         //insert event
-        let calendarIdentifier = insertEvent(title: textView.text, notes: "", startDate: date, EndDate: date)
+        let calendarIdentifier = insertEvent(title: textView.text, notes: savedNote, startDate: date, EndDate: date)
         
         //TODO: store event identifier
         if let calendarIdentifier = calendarIdentifier {
             
             EventManager.shared.update(row: indexRow,
                                        content: nil,
-                                       detail: nil,
+                                       note: nil,
                                        calendarEvent: calendarIdentifier,
                                        alarmDate: date as NSDate,
                                        isSetNotification: isSetNotification)
@@ -311,21 +321,26 @@ extension ListTableViewCell {
         
         let alarmBtn = CustomButton.alarm.button
         alarmBtn.addTarget(self, action: #selector(btnAlarmToolBar), for: .touchUpInside)
+        adjustFrame(button: alarmBtn, width: UIScreen.main.bounds.width/6, height: alarmBtn.frame.height, image: nil)
+        let remindTimeBtn = CustomButton.remindTime.button
+        remindTimeBtn.addTarget(self, action: #selector(btnRemindTimeToolBar), for: .touchUpInside)
+        adjustFrame(button: remindTimeBtn, width: UIScreen.main.bounds.width/6, height: remindTimeBtn.frame.height, image: nil)
+
         let calendarBtn = CustomButton.calender.button
         calendarBtn.addTarget(self, action: #selector(btnCalendarToolBar), for: .touchUpInside)
-        let locateBtn = CustomButton.locate.button
-//        locateBtn.addTarget(self, action: #selector(btnLocateToolBar), for: .touchUpInside)
+        adjustFrame(button: calendarBtn, width: UIScreen.main.bounds.width/6, height: calendarBtn.frame.height, image: nil)
+        
         starBtn = CustomButton.star.button
         starBtn.addTarget(self, action: #selector(btnStarToolBar), for: .touchUpInside)
-        
+        adjustFrame(button: starBtn, width: UIScreen.main.bounds.width/6, height: starBtn.frame.height, image: nil)
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         
         let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(dismissKeyboard))
         
         toolBar.setItems([UIBarButtonItem(customView: starBtn),
-                          UIBarButtonItem(customView: locateBtn),
                           UIBarButtonItem(customView: calendarBtn),
                           UIBarButtonItem(customView: alarmBtn),
+                          UIBarButtonItem(customView: remindTimeBtn),
                           flexibleSpace,
                           doneBtn]
             , animated: false)
@@ -346,31 +361,6 @@ extension ListTableViewCell {
         
     }
 
-    func btnLocateToolBar(sender: UIButton) {
-        
-        //        if !isSetNotification {
-        //            isSetNotification = true
-        //            starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
-        //        }
-        
-        if locationView.superview == nil {
-            createLocationPopView(xPos: sender.frame.minX)
-        } else {
-            if locationView.isHidden {
-                locationView.isHidden = false
-            } else {
-                locationView.isHidden = true
-            }
-        }
-        
-        if !alarmView.isHidden {
-            alarmView.isHidden = true
-        }
-        if !calendarView.isHidden {
-            calendarView.isHidden = true
-        }
-    }
-
     func btnCalendarToolBar(sender: UIButton) {
         
         //        if !isSetNotification {
@@ -379,7 +369,7 @@ extension ListTableViewCell {
         //        }
         
         if calendarView.superview == nil {
-            createCalendarPopView(xPos: sender.frame.minX)
+            createCalendarPopView(xPos: sender.frame.midX)
         } else {
             if calendarView.isHidden {
                 calendarView.isHidden = false
@@ -391,32 +381,49 @@ extension ListTableViewCell {
         if !alarmView.isHidden {
             alarmView.isHidden = true
         }
-        if !locationView.isHidden {
-            locationView.isHidden = true
+        if !remindtimeView.isHidden {
+            remindtimeView.isHidden = true
         }
+        
     }
 
     func btnAlarmToolBar(sender: UIButton) {
         
         if alarmView.superview == nil {
-            createAlarmPopView(xPos: sender.frame.minX)
+            createAlarmPopView(xPos: sender.frame.midX)
         } else {
             if alarmView.isHidden { //display
                 alarmView.isHidden = false
-            } else { //disappear
+            } else {
                 alarmView.isHidden = true
-                //                if !isSetNotification {
-                //                    isSetNotification = true
-                //                    starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
-                //                }
             }
         }
         
-        if !locationView.isHidden {
-            locationView.isHidden = true
-        }
         if !calendarView.isHidden {
             calendarView.isHidden = true
+        }
+        if !remindtimeView.isHidden {
+            remindtimeView.isHidden = true
+        }
+    }
+    
+    func btnRemindTimeToolBar(sender: UIButton) {
+        
+        if remindtimeView.superview == nil {
+//            createRemindTimePopView(midXPos: sender.frame.midX)
+        } else {
+            if remindtimeView.isHidden { //display
+                remindtimeView.isHidden = false
+            } else {
+                remindtimeView.isHidden = true
+            }
+        }
+        
+        if !calendarView.isHidden {
+            calendarView.isHidden = true
+        }
+        if !alarmView.isHidden {
+            alarmView.isHidden = true
         }
     }
 
@@ -468,7 +475,7 @@ extension ListTableViewCell {
         superView.addSubview(alarmView)
         alarmView.translatesAutoresizingMaskIntoConstraints = false
         alarmView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
-        alarmView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: xPos - (width - 60) / 2).isActive = true
+        alarmView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: xPos - center.x).isActive = true
         alarmView.heightAnchor.constraint(equalToConstant: 100).isActive = true
         alarmView.widthAnchor.constraint(equalToConstant: width).isActive = true
         
@@ -498,6 +505,29 @@ extension ListTableViewCell {
         
     }
     
+    func createRemindTimePopView(midXPos: CGFloat) {
+        
+        guard let superView = textView.superview?.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview?.superview else {
+            return
+        }
+        
+        //view
+        remindtimeView.backgroundColor = grayBlueColor
+        remindtimeView.alpha = 0.96
+        remindtimeView.layer.cornerRadius = 10
+        remindtimeView.layer.masksToBounds = true
+        remindtimeView.isHidden = false
+        let width: CGFloat = 160
+        superView.addSubview(remindtimeView)
+        remindtimeView.translatesAutoresizingMaskIntoConstraints = false
+        remindtimeView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
+        remindtimeView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: midXPos - center.x).isActive = true
+        remindtimeView.heightAnchor.constraint(equalToConstant: width).isActive = true
+        remindtimeView.widthAnchor.constraint(equalToConstant: width).isActive = true
+        
+    }
+    
+    
     func createCalendarPopView(xPos: CGFloat) {
         
         guard let superView = textView.superview?.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview?.superview else {
@@ -513,8 +543,8 @@ extension ListTableViewCell {
         superView.addSubview(calendarView)
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         calendarView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
-        calendarView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: xPos - (width - 60) / 2).isActive = true
-        calendarView.heightAnchor.constraint(equalToConstant: width).isActive = true
+        calendarView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 2).isActive = true
+        calendarView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -300).isActive = true
         calendarView.widthAnchor.constraint(equalToConstant: width).isActive = true
         
         //initial calendrView
@@ -527,27 +557,6 @@ extension ListTableViewCell {
         if self.calendarPopupViewDelegate != nil {
             self.calendarPopupViewDelegate?.addViewControllerAsChild(viewController: vc)
         }
-        
-    }
-    
-    func createLocationPopView(xPos: CGFloat) {
-        
-        guard let superView = textView.superview?.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview?.superview else {
-            return
-        }
-        
-        locationView.backgroundColor = grayBlueColor
-        locationView.alpha = 0.98
-        locationView.layer.cornerRadius = 10
-        locationView.layer.masksToBounds = true
-        locationView.isHidden = false
-
-        superView.addSubview(locationView)
-        locationView.translatesAutoresizingMaskIntoConstraints = false
-        locationView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: -40).isActive = true
-        locationView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 10).isActive = true
-        locationView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 5).isActive = true
-        locationView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -5).isActive = true
         
     }
     
