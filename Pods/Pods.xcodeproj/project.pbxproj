@@ -7,105 +7,105 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0343287FF635188F4043E2E68947295B /* M13CheckboxDotPathPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797B4AC50CEC7FA20FFE627AA67699A5 /* M13CheckboxDotPathPresets.swift */; };
-		035A3039905C47523E4AE6C6180C7BDA /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FC1B3DEC3E43800DD83E138D747FF /* SpringAnimation.swift */; };
-		0383A13C6B7C59A3D8EA592B545DABA0 /* JTAppleCalendarDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E61F78E226DB74D2D70729CEB74A6282 /* JTAppleCalendarDelegateProtocol.swift */; };
-		05D0115D539656C363B06A9C28F942EF /* M13CheckboxPathPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770632CFE8867210B16FC97C553A2F81 /* M13CheckboxPathPresets.swift */; };
-		087E89005B1D44464CADAA83D0591656 /* SpringTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED3D69F4063E4C6B4C7A084DCA7C5A /* SpringTextView.swift */; };
-		08CD44C73194293FAA140BF0798DC282 /* M13CheckboxSpiralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3E87E6F7E937D2369E22D32F76CDA1 /* M13CheckboxSpiralManager.swift */; };
-		0BE3D90A3B6C38105903077F8C19E8D9 /* ColorPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA751D4AB48CF7611D7043FD6BD2177E /* ColorPickerCell.swift */; };
-		0D56DBB53B70D0CF2F4537126C7184E1 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A748A4F71D29734A63D19F6EBED735F /* UnwindSegue.swift */; };
+		0343287FF635188F4043E2E68947295B /* M13CheckboxDotPathPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80C37A4F6DBB3FF87BC9ADA6CDF2A5 /* M13CheckboxDotPathPresets.swift */; };
+		035A3039905C47523E4AE6C6180C7BDA /* SpringAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4363291CEC25D0BCD15986F6B1853F5F /* SpringAnimation.swift */; };
+		0383A13C6B7C59A3D8EA592B545DABA0 /* JTAppleCalendarDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3855AAD0AB7336B491918E7878884A5A /* JTAppleCalendarDelegateProtocol.swift */; };
+		05D0115D539656C363B06A9C28F942EF /* M13CheckboxPathPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988DC30A8DACF4B4562F16989960265B /* M13CheckboxPathPresets.swift */; };
+		087E89005B1D44464CADAA83D0591656 /* SpringTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285A75C8F0DED2A28A6E2EFDB9E2394F /* SpringTextView.swift */; };
+		08CD44C73194293FAA140BF0798DC282 /* M13CheckboxSpiralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F52E31F85176BD09625DF1EB0290C8C /* M13CheckboxSpiralManager.swift */; };
+		0BE3D90A3B6C38105903077F8C19E8D9 /* ColorPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B263E9AD6E438C9DB87890C11E64789 /* ColorPickerCell.swift */; };
+		0D56DBB53B70D0CF2F4537126C7184E1 /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1786E625943DCFFD2C9AEA08D5D68CF8 /* UnwindSegue.swift */; };
 		10F7A5E618B8E6BC8330C0F086B5A8E0 /* Pods-BreathEveryday-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E3DB80ABE1AB8BA88EB0C8C5FE7D1A09 /* Pods-BreathEveryday-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		13A64EFBFD04779380498D4E7B4A8FED /* ContrastDisplayContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C69CB5F39637A557DB50BB114F0DD22 /* ContrastDisplayContext.swift */; };
-		14F238EA56D5E3DC1A8D05DA781786BC /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B47241189276D8369F20E9FECE4BC01 /* BlurView.swift */; };
+		13A64EFBFD04779380498D4E7B4A8FED /* ContrastDisplayContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEACDFB64B2FAFD1081938A48CD4E744 /* ContrastDisplayContext.swift */; };
+		14F238EA56D5E3DC1A8D05DA781786BC /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCFF6AF1520D5A42419F7DCE62F18C6 /* BlurView.swift */; };
 		1712C1C628C3C01F2F5C14AA11844D5B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222A38F6430118CCA379547F774C40E3 /* Foundation.framework */; };
-		18904C96207EA9E40B4E71F855201AD8 /* JTAppleCalendarVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC29DD27BD26D9FECD0366B6F508BD7 /* JTAppleCalendarVariables.swift */; };
-		18BC048B42E116B31C759483F86580EA /* DynamicGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3D60E342D09F0AFECD65407BFADF2F /* DynamicGradient.swift */; };
-		18C300717BE7EFF2AD4E9ACD24D82786 /* DynamicColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FD5821B8EAB8A2742A8073995FBFA1 /* DynamicColor.swift */; };
-		1CA2DD7ADA87DC14D6067162B2DEEB6E /* M13CheckboxStrokeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5478D75A3D1F783DD0B4CBC528E31854 /* M13CheckboxStrokeManager.swift */; };
-		21A3A4A6EF95F8704DC18E4E5F509D07 /* JTAppleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47F9C8292103885D798C47BC8E0B4A1 /* JTAppleCollectionReusableView.swift */; };
-		22C74AC26879DAF98F79D49E0DC940DF /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A3399EE3C8EB82FD621E73B95F977D /* DesignableLabel.swift */; };
-		24FDB9E17DBFA624458FE0313A3B17FE /* M13Checkbox-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F77873EBCE2B7080EFE0CE0B84ABC2 /* M13Checkbox-dummy.m */; };
-		257147275DD1338C74BE9B972D9B7825 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41155C6DB582DB891BA55C841C8544C /* TransitionZoom.swift */; };
-		276CFB5A0A1E552071BB7B4B8166417F /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FB32321E7AEF18ABABEF41E493A104 /* DesignableTextField.swift */; };
-		2856845AB8FCE3B1D319091061F593EF /* UserInteractionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6F8D575634323C7D89B0477A41DD10 /* UserInteractionFunctions.swift */; };
-		2DDD385F3A80C4A6FFBC17C105372890 /* DynamicColor+HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBAA90E0A4B52995B252FD2394DF508 /* DynamicColor+HSL.swift */; };
-		330810FB185FD2B6D3E927A37FE3C1FE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2899703C4EFE10EB1AB71B801B26D877 /* LoadingView.swift */; };
-		33B425C3CB41E0BBD249FE67B621D086 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244065970D2AC1B5DDB9315CD42ADC29 /* DesignableTabBarController.swift */; };
+		18904C96207EA9E40B4E71F855201AD8 /* JTAppleCalendarVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F12D42C7B36F66BB11592E82F992C75 /* JTAppleCalendarVariables.swift */; };
+		18BC048B42E116B31C759483F86580EA /* DynamicGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82A3684237AEC180A7CED905AF717AD /* DynamicGradient.swift */; };
+		18C300717BE7EFF2AD4E9ACD24D82786 /* DynamicColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDA3B5959DE1F9377B61CE05A671CE3 /* DynamicColor.swift */; };
+		1CA2DD7ADA87DC14D6067162B2DEEB6E /* M13CheckboxStrokeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B44BF5470B9AF23ED0AD586CCF3E94 /* M13CheckboxStrokeManager.swift */; };
+		21A3A4A6EF95F8704DC18E4E5F509D07 /* JTAppleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30A3CDA3F5403BCD86FEFF66C4EAD52 /* JTAppleCollectionReusableView.swift */; };
+		22C74AC26879DAF98F79D49E0DC940DF /* DesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DCC986D1132D381C6B07FDBB053589 /* DesignableLabel.swift */; };
+		24FDB9E17DBFA624458FE0313A3B17FE /* M13Checkbox-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AAC9D250257AA16FDF12FCDE613F261 /* M13Checkbox-dummy.m */; };
+		257147275DD1338C74BE9B972D9B7825 /* TransitionZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FDFD72079F388001CB917E29BDDDB4C /* TransitionZoom.swift */; };
+		276CFB5A0A1E552071BB7B4B8166417F /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 024183ADEE814D3DBC4A91FE389B8E5F /* DesignableTextField.swift */; };
+		2856845AB8FCE3B1D319091061F593EF /* UserInteractionFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1594BDFF361AF68700A9D45EB81492 /* UserInteractionFunctions.swift */; };
+		2DDD385F3A80C4A6FFBC17C105372890 /* DynamicColor+HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8F278689223C384B4CD00BBDBDA139 /* DynamicColor+HSL.swift */; };
+		330810FB185FD2B6D3E927A37FE3C1FE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17454971BB00DDDD1BB80579DD1C2376 /* LoadingView.swift */; };
+		33B425C3CB41E0BBD249FE67B621D086 /* DesignableTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A238DDF75194A0844629AEF8C3384D /* DesignableTabBarController.swift */; };
 		4096C7E438D6CC8E6D9A7B875CAEC222 /* M13Checkbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E33B003B983F4784598B5D9CB44CB5 /* M13Checkbox.framework */; };
-		42F0A3DBCAC670C336C5C988F6609D98 /* UICollectionViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B991BA7436A773456E0A1B42BE501B7 /* UICollectionViewDelegates.swift */; };
-		4710146914872E8358E731D0B0C3BBFF /* M13Checkbox-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A6FC4FA9F189E6BD2C2DEF4E224EFCA3 /* M13Checkbox-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		48E7B1563029EA408263344D06F2891E /* M13CheckboxDotManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695FB10AF4B104AEE4150D7C38D4D365 /* M13CheckboxDotManager.swift */; };
-		4C22E81BA941B63CF58337CF85D2BBC1 /* M13CheckboxFlatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156201DC332CA7F99D4A835EE1B66263 /* M13CheckboxFlatManager.swift */; };
-		53D7D34D0142A101314ABFA663AC9D08 /* JTAppleCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D1D982D1FE62B4B390F931C43FADB /* JTAppleCalendarView.swift */; };
-		58E32E3338B09FFD7E765B345E08774C /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD443FCE457E233C94CA4235E6DE6792 /* KeyboardLayoutConstraint.swift */; };
-		5A162A625FD46872618AE5B1DAA0E6EC /* DesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2704E7CF1DE8029BAB48A37A63530174 /* DesignableTextView.swift */; };
+		42F0A3DBCAC670C336C5C988F6609D98 /* UICollectionViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6E664243657F2F51B35A5572E350EF /* UICollectionViewDelegates.swift */; };
+		4710146914872E8358E731D0B0C3BBFF /* M13Checkbox-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B73E34B3D50377E87FFE8B626541AFF /* M13Checkbox-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		48E7B1563029EA408263344D06F2891E /* M13CheckboxDotManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6D817F9A727FD7A8007012B038DE2F /* M13CheckboxDotManager.swift */; };
+		4C22E81BA941B63CF58337CF85D2BBC1 /* M13CheckboxFlatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CE6A866C746DC3A5C0241451CD4F1B /* M13CheckboxFlatManager.swift */; };
+		53D7D34D0142A101314ABFA663AC9D08 /* JTAppleCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DEEC028FEAA28A2463EA2A13A1F8E7 /* JTAppleCalendarView.swift */; };
+		58E32E3338B09FFD7E765B345E08774C /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E964E43AB0D83DDEDC1878355CC55E35 /* KeyboardLayoutConstraint.swift */; };
+		5A162A625FD46872618AE5B1DAA0E6EC /* DesignableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB2F5CEDAAA12C381187A321F459E60 /* DesignableTextView.swift */; };
 		5D39E1DD24B74D813B6CD2F02BC28396 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222A38F6430118CCA379547F774C40E3 /* Foundation.framework */; };
 		5E005F088D4B90D43855F0C10D7F6C2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333C9658E9C5EEDE16037DC50F3DF7E1 /* CoreGraphics.framework */; };
-		5F475039D9C32EBD6AC59923FD08058B /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCEBC9B92D5D86CB905B1372B3E9A973 /* Spring.swift */; };
+		5F475039D9C32EBD6AC59923FD08058B /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B72D6A6A382BBF6FA21B7DF256B3B5 /* Spring.swift */; };
 		62527B0FE53C50387E904BEABF834526 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222A38F6430118CCA379547F774C40E3 /* Foundation.framework */; };
 		6B6897769FCA35E0A1757E876B14804B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222A38F6430118CCA379547F774C40E3 /* Foundation.framework */; };
-		6DE7D8CE614DBA55D744EDE81C632AD8 /* CalendarStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9177303DE7F5521E1FA36B77F823 /* CalendarStructs.swift */; };
-		6E8E4422AA0E96DCBB9D329BDFFB881A /* GlobalFunctionsAndExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F07A516171DC618FE50915100D5873 /* GlobalFunctionsAndExtensions.swift */; };
-		76EAAE8034A8C99EC198BDCEC25B49DB /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE992ABC311B3E64C94E433E9E4F5EB /* SpringView.swift */; };
-		77B9E94606286AA0F18ADC59429A903C /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EC77FADB02D482B45EDE8F17033665A /* LoadingView.xib */; };
-		7838E259A7A1A1CF05037533611C82BB /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67506C498051F5581F974015EB66B1E5 /* Misc.swift */; };
-		7A19BA8BA90DDC170D585EB943537502 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271979EC16B0ECBC3F122B58615B6EE7 /* AsyncButton.swift */; };
-		7BE39092951B492E5954D8012747BFD0 /* JTAppleCalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC671F9C2A6BA4D9756AFA969DF99E98 /* JTAppleCalendarLayout.swift */; };
-		7EDE437BAB7D0A9B64D28D641AB18831 /* DynamicColor+Deriving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1177C8E8620BDF0A611908EB480EDCF6 /* DynamicColor+Deriving.swift */; };
-		7F0AAD2F8E01EAA6E6B3B1ACF7C0A4D3 /* DynamicColor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 176DF28AD28E7DBA91E785C32BA018F9 /* DynamicColor-dummy.m */; };
-		81DCCB720F3E114A001807EC68A0DAC1 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C416383EAE1B52321A9DE63BD1EAE24 /* SoundPlayer.swift */; };
-		820F3B2BFB2D7570271C7BB602BF810E /* HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDF11956A0C778FFCC61C53221C9EB3 /* HSL.swift */; };
-		84AF94DE42CCCCEE5C49845B0BCD06E3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B0DF97FCB2FB514EB3C93848593908 /* UIColor+Extension.swift */; };
-		86642ABFFABB236149CB655079194673 /* IGColorPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D85D1D4A0A34D73C6980E256D5765AD /* IGColorPicker-dummy.m */; };
-		87329FA016F0D57803855BCE3E90EC82 /* JTCalendarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CDAA795B0CAB165543FCB9EF62DEE1 /* JTCalendarProtocols.swift */; };
-		87E612C7CE2B2F5953DFFE32C0C3959B /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23A31677C14C26507FB72F7D1E49A05 /* Array.swift */; };
-		8E8CE978BAF6AEB9BAD44B323703E84F /* ColorPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E10870746D6ACFBC9966E43678B0942 /* ColorPickerViewDelegate.swift */; };
-		8F18F1A055784BBDB6E5C6D674D6E1DF /* DynamicColorSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8383E5DBDE71A41A2DDF1C4203AAB5 /* DynamicColorSpace.swift */; };
-		8FAE3D536097B50C51A8A88EAA99B6E5 /* M13CheckboxFillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167F65F44949F6F0C74983B0776A3AC2 /* M13CheckboxFillManager.swift */; };
-		90A3F1E1EAC8D102D8453C363D85BBCE /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F11136B5C808572EDA6AA410122B0B /* M13Checkbox+IB.swift */; };
+		6DE7D8CE614DBA55D744EDE81C632AD8 /* CalendarStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341041B81F4D04184D6975E914AE2A65 /* CalendarStructs.swift */; };
+		6E8E4422AA0E96DCBB9D329BDFFB881A /* GlobalFunctionsAndExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5170BFE0E83DF90FAECEDA769E7A2F /* GlobalFunctionsAndExtensions.swift */; };
+		76EAAE8034A8C99EC198BDCEC25B49DB /* SpringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67AD79632434E46C011F6DB1138091E8 /* SpringView.swift */; };
+		77B9E94606286AA0F18ADC59429A903C /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C6E2F66CCBB5DFDB06BB070E7D56493 /* LoadingView.xib */; };
+		7838E259A7A1A1CF05037533611C82BB /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6AAAAF26A3DC1BC948378D0306396C5 /* Misc.swift */; };
+		7A19BA8BA90DDC170D585EB943537502 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D418B90521FD47F44F20F3723DE8B5D9 /* AsyncButton.swift */; };
+		7BE39092951B492E5954D8012747BFD0 /* JTAppleCalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D7F87B8BF23F5DCA735C878D88AF67 /* JTAppleCalendarLayout.swift */; };
+		7EDE437BAB7D0A9B64D28D641AB18831 /* DynamicColor+Deriving.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17B2D3F370889731EE35F9A44F0589A /* DynamicColor+Deriving.swift */; };
+		7F0AAD2F8E01EAA6E6B3B1ACF7C0A4D3 /* DynamicColor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 363541C21BA691DA96BF49A5EAE210D6 /* DynamicColor-dummy.m */; };
+		81DCCB720F3E114A001807EC68A0DAC1 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19A33C450628E8691CE00D1A8C008A23 /* SoundPlayer.swift */; };
+		820F3B2BFB2D7570271C7BB602BF810E /* HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373D4E117C7DFD8823AC3D03D6867A2 /* HSL.swift */; };
+		84AF94DE42CCCCEE5C49845B0BCD06E3 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4228C2C5DF609F3BB295E36089EA6E90 /* UIColor+Extension.swift */; };
+		86642ABFFABB236149CB655079194673 /* IGColorPicker-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAEE18DBCFA14217C6531D32BD8D85 /* IGColorPicker-dummy.m */; };
+		87329FA016F0D57803855BCE3E90EC82 /* JTCalendarProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2D7D22AACC18260E740A3673AE945 /* JTCalendarProtocols.swift */; };
+		87E612C7CE2B2F5953DFFE32C0C3959B /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED62D65FD73D461456F15DB2743BABB /* Array.swift */; };
+		8E8CE978BAF6AEB9BAD44B323703E84F /* ColorPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89135C07B2165DB58F93BA073D8D2396 /* ColorPickerViewDelegate.swift */; };
+		8F18F1A055784BBDB6E5C6D674D6E1DF /* DynamicColorSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66246510AA1A592AC0AF37E6A6E9F22C /* DynamicColorSpace.swift */; };
+		8FAE3D536097B50C51A8A88EAA99B6E5 /* M13CheckboxFillManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367BDE554E63DFA7C093E5D375901BB0 /* M13CheckboxFillManager.swift */; };
+		90A3F1E1EAC8D102D8453C363D85BBCE /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13A523653A8389A9C48080E5287472E /* M13Checkbox+IB.swift */; };
 		91C0D6E3561464CCD148E4CD5B3FAC0E /* Pods-BreathEveryday-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA2856292A1F545C670FF2091E3AEB6 /* Pods-BreathEveryday-dummy.m */; };
-		92E76D825C2B1C9F4CA58DAF928ABA60 /* DesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F05264A9C73F7A8B148ABAF4DAA567 /* DesignableImageView.swift */; };
-		971E3B7AD0A4479041714EEE70A051AC /* M13CheckboxExpandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9A6B3C38094CD06FAEFB72F46CB889 /* M13CheckboxExpandManager.swift */; };
-		981263265564D915450FF9F089CACBE6 /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B5479B23B829962BA85B55F1E8DCD0 /* M13Checkbox.swift */; };
-		984171C228C5906749423D8FD46FC780 /* DynamicColor+XYZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6F5649DE56C49B40700FC245975D04 /* DynamicColor+XYZ.swift */; };
-		9A0FD81957DFDFEEF24052A8CA2B7CF9 /* M13CheckboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AB2352367380ED19526058024C97AA /* M13CheckboxManager.swift */; };
-		A2A7A90F22750AC934A4F87579990B83 /* DynamicColor+HSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB09E3061554D0A15F5FE81B516EC83 /* DynamicColor+HSB.swift */; };
-		A5BFB943657D84EC94A24756D52B1913 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4203A36014886FC80DFF6F8C4FA5B4C4 /* Utils.swift */; };
+		92E76D825C2B1C9F4CA58DAF928ABA60 /* DesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C222A22DF9EC86E57D292553345708E1 /* DesignableImageView.swift */; };
+		971E3B7AD0A4479041714EEE70A051AC /* M13CheckboxExpandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F220282DC9564540040E78BCFB9C9 /* M13CheckboxExpandManager.swift */; };
+		981263265564D915450FF9F089CACBE6 /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EF3DB7785D0065FB140EE3EA44C4CB /* M13Checkbox.swift */; };
+		984171C228C5906749423D8FD46FC780 /* DynamicColor+XYZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9D26D9FBFDA044287953CF0F235FF2 /* DynamicColor+XYZ.swift */; };
+		9A0FD81957DFDFEEF24052A8CA2B7CF9 /* M13CheckboxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E340456A25730D332EA9A7E2D1B5D1F /* M13CheckboxManager.swift */; };
+		A2A7A90F22750AC934A4F87579990B83 /* DynamicColor+HSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DE448B4CECC7210DC78BDA0D0C6B97 /* DynamicColor+HSB.swift */; };
+		A5BFB943657D84EC94A24756D52B1913 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CE6DC430F4ADED6A281FEC26D41C8 /* Utils.swift */; };
 		A7912B2C2D19CD77F5055286CD7DB0D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D9E6997F6B77D974201677EE244695 /* UIKit.framework */; };
-		AAB79A8770FE6F010A635987F39EC90A /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 294CAA78384EA9DC0304EFC2B35E3A71 /* DesignableView.swift */; };
-		AD07BFC6787F19F9D7CADB48C114FDB7 /* JTAppleCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D18FDC3ABD6A8D3DCC2DC005F77E2933 /* JTAppleCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AEC5E61937DCB2B77A74D9DCB0A41349 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C26FA696ACCD674553F23CB0DF50D5 /* ImageLoader.swift */; };
-		B2A7E699EB6714A5D132F96F7C8BAEE0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65380049274604D9FBAA646ED7F2C93D /* Images.xcassets */; };
-		B48E5E2CAD6A679B1B74C7CF17FB040C /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C6E487F62E304EE660A7006A0F92BE /* TransitionManager.swift */; };
-		B73FA05046998F6BB9E4E6D2FF2C996D /* M13CheckboxBounceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94172DADC7B1B08CBB7A6F9AD6F0FD63 /* M13CheckboxBounceManager.swift */; };
+		AAB79A8770FE6F010A635987F39EC90A /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B260D5D08ED6B1A09EAF1CB3895DB809 /* DesignableView.swift */; };
+		AD07BFC6787F19F9D7CADB48C114FDB7 /* JTAppleCalendar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BA5B475D96DD3842540A949A1669EEC /* JTAppleCalendar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEC5E61937DCB2B77A74D9DCB0A41349 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3DC3F775E9A8F96BDD78F22776DC6D /* ImageLoader.swift */; };
+		B2A7E699EB6714A5D132F96F7C8BAEE0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7933F3ADB7615648EE69ED5E588C0310 /* Images.xcassets */; };
+		B48E5E2CAD6A679B1B74C7CF17FB040C /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BEE449A1D230A0424CFDF963D78D45 /* TransitionManager.swift */; };
+		B73FA05046998F6BB9E4E6D2FF2C996D /* M13CheckboxBounceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952E6C04965818ED041291F7EA57FBEA /* M13CheckboxBounceManager.swift */; };
 		B815F6A8C0E87E87871758E6EAD46D89 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222A38F6430118CCA379547F774C40E3 /* Foundation.framework */; };
-		B98F491D173664E77CC7C45115A0D9DA /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6AAC8496ED8B7F226411C4615827DC /* AsyncImageView.swift */; };
-		BE728FABE73C7FF900808F4C5FE53A36 /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1B852CB58669DCD8933BFC9A80F26B /* SpringButton.swift */; };
-		C110183F6928750DFD39B7BC6A69EB15 /* SpringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FF6E6F2F6536E90F7773FB259FD14F /* SpringTextField.swift */; };
-		C57B5C48FCD2EF32EE37550673640BF7 /* DynamicColor+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0B7FB6A2C3B7D8F32730877F0881A6 /* DynamicColor+RGBA.swift */; };
-		C5C625CD8624C6287B5A79F7F844B9DE /* M13CheckboxAnimationPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73819EC8CFA651C32C5EBB3EFF10EDFF /* M13CheckboxAnimationPresets.swift */; };
+		B98F491D173664E77CC7C45115A0D9DA /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841D963A9545090B64EA564DC2F6124C /* AsyncImageView.swift */; };
+		BE728FABE73C7FF900808F4C5FE53A36 /* SpringButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB2788983C482D58D78F80BFCCF252A /* SpringButton.swift */; };
+		C110183F6928750DFD39B7BC6A69EB15 /* SpringTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C66B8D9FF541CD4984F8880601D35 /* SpringTextField.swift */; };
+		C57B5C48FCD2EF32EE37550673640BF7 /* DynamicColor+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71E3AA3637B6265285E79AE5ADC809A /* DynamicColor+RGBA.swift */; };
+		C5C625CD8624C6287B5A79F7F844B9DE /* M13CheckboxAnimationPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753F22E9FDD2C619E73546201682872 /* M13CheckboxAnimationPresets.swift */; };
 		C8CAA5CC154D261A704AD0ADD4084F01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D9E6997F6B77D974201677EE244695 /* UIKit.framework */; };
-		D01013CA60CE03704E2203D84F6987C5 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC281A286F645E6FCC569728243A0EBD /* SpringLabel.swift */; };
-		D3BE3A38BE1421D40D172E54870E2B6F /* Spring-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E0B745C88853200438749946399010C /* Spring-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D4A96F7FFF02407804C7FE3A26224563 /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7E4ED8ADDBF4981059BED726A48770 /* AutoTextView.swift */; };
-		D74986A41006F9E6C7C86BC11520A32F /* SpringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E656533C18B47074F08CB337AF9EEB48 /* SpringImageView.swift */; };
-		DA1BA6B30C28CF2A20E872B882448DDC /* IGColorPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 467337495DEEFA1D3801723FD78A9F00 /* IGColorPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DAA2B2D68984C395214881C040A6D270 /* M13CheckboxFadeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FBFAF10E6012FFE0B27A022F48C42E /* M13CheckboxFadeManager.swift */; };
-		E10E15A8A65DB167DE5046915870021A /* JTAppleCalendarLayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2523F4E73AEBD1CA990624D73C8DA48F /* JTAppleCalendarLayoutProtocol.swift */; };
-		E1CF59B57CC636FECACC39325231B177 /* CalendarEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2494C1EFE6D87E398E68204CDB942DDB /* CalendarEnums.swift */; };
-		E4E19B08166BF4E9E368134D68E9C7DE /* JTAppleCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 65BB53FDA4DFFA08AFCBDA8283FB1B59 /* JTAppleCalendar-dummy.m */; };
-		E51B576B12B14AA067F72990AF5A6AB8 /* DynamicColor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 878FB6DA9AFE7188C4305B8835F34796 /* DynamicColor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ECF2DF7F7F1A7FCCFF1B9F66D4B4982C /* M13CheckboxGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BF060B96433FE95A1C8911E72AC7D8 /* M13CheckboxGestureRecognizer.swift */; };
-		ED1A0E3E9B02DB42B5E8AC9AC440AEED /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4713D54FC86AE11AA6DB4D9135BCAB26 /* ColorPickerView.swift */; };
-		EE256FA5BE0F6A61C874E4F29E276276 /* Spring-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AB56EC0DA800B90D1409016EA4EDA8 /* Spring-dummy.m */; };
-		F2BB49EF903A70B7B68565CCE233FB83 /* JTAppleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DCBCD8598AC44C4346537C94E2A5F9 /* JTAppleCell.swift */; };
-		F423EF6A22FF4DE0067E577C221CFC11 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15CDE97DFB6DD4C5B829B592DC6A376 /* DesignableButton.swift */; };
-		F5504DBD4B90B899DF9FFAB53DFFBD0F /* ColorPickerViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FFD6C0FA4913107424AAF26F220BBA /* ColorPickerViewDelegateFlowLayout.swift */; };
-		F963037A1450F74FAE911C248EED47CE /* UIScrollViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0EA95F363F1DE8AC865A630CC8F8DD /* UIScrollViewDelegates.swift */; };
-		FB216869C5F0C9491C982F421540C216 /* DynamicColor+Mixing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C8203FDD3505060DD0A6791F09D856 /* DynamicColor+Mixing.swift */; };
-		FCB1A7361740F011D930D96B70BEEC8F /* DynamicColor+Lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C32DF371E7C5ABB460D0C538066C45F /* DynamicColor+Lab.swift */; };
-		FD67042DDEE36FD743BD88D15DF35D08 /* M13CheckboxSpiralPathPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEF06ECE18BF50F70D642C16CB93586 /* M13CheckboxSpiralPathPresets.swift */; };
+		D01013CA60CE03704E2203D84F6987C5 /* SpringLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90E13587D6804283D6170578D68CB2C /* SpringLabel.swift */; };
+		D3BE3A38BE1421D40D172E54870E2B6F /* Spring-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A349C2B23911B49BDE583E0F6E54B4FB /* Spring-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D4A96F7FFF02407804C7FE3A26224563 /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9326BE8F24BEC6D3CD777B6DE8B9E6E0 /* AutoTextView.swift */; };
+		D74986A41006F9E6C7C86BC11520A32F /* SpringImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5B360CFA903B7970960F81ABC8C882 /* SpringImageView.swift */; };
+		DA1BA6B30C28CF2A20E872B882448DDC /* IGColorPicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 095BBA7B0CB922FAA42ED8A3C3311A93 /* IGColorPicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DAA2B2D68984C395214881C040A6D270 /* M13CheckboxFadeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB22B9B4D5B8960A2A4A05F9DE12E1F /* M13CheckboxFadeManager.swift */; };
+		E10E15A8A65DB167DE5046915870021A /* JTAppleCalendarLayoutProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BFEFCB3A4D11E3CA0682EA1261299C /* JTAppleCalendarLayoutProtocol.swift */; };
+		E1CF59B57CC636FECACC39325231B177 /* CalendarEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C189350727825DBC5E59A212B64FF00F /* CalendarEnums.swift */; };
+		E4E19B08166BF4E9E368134D68E9C7DE /* JTAppleCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A2011BF275467E7BEE500F1440CE563 /* JTAppleCalendar-dummy.m */; };
+		E51B576B12B14AA067F72990AF5A6AB8 /* DynamicColor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7946DB0AAA4ABD8B64ACE7E8EC66BA1A /* DynamicColor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		ECF2DF7F7F1A7FCCFF1B9F66D4B4982C /* M13CheckboxGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAB56E4B83AF8F65BF6D42DEA6C9AC3 /* M13CheckboxGestureRecognizer.swift */; };
+		ED1A0E3E9B02DB42B5E8AC9AC440AEED /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E96B5C94A1A6314E3F6E795672BFAA /* ColorPickerView.swift */; };
+		EE256FA5BE0F6A61C874E4F29E276276 /* Spring-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 92281472BE0551093200306417C9A047 /* Spring-dummy.m */; };
+		F2BB49EF903A70B7B68565CCE233FB83 /* JTAppleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFC6797365D85DFEC013E7A083A83C4 /* JTAppleCell.swift */; };
+		F423EF6A22FF4DE0067E577C221CFC11 /* DesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F53B5653B643DAD5E7E7BA083FFC85B /* DesignableButton.swift */; };
+		F5504DBD4B90B899DF9FFAB53DFFBD0F /* ColorPickerViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250FAF9315DE6373A9834A5826064D20 /* ColorPickerViewDelegateFlowLayout.swift */; };
+		F963037A1450F74FAE911C248EED47CE /* UIScrollViewDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49353E1DB0BA23915A5566064690BC8F /* UIScrollViewDelegates.swift */; };
+		FB216869C5F0C9491C982F421540C216 /* DynamicColor+Mixing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E408136CB44C7E0522CE1CF2129F9E50 /* DynamicColor+Mixing.swift */; };
+		FCB1A7361740F011D930D96B70BEEC8F /* DynamicColor+Lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ABE288E38A64AAA4BB9FE57FAF14AE9 /* DynamicColor+Lab.swift */; };
+		FD67042DDEE36FD743BD88D15DF35D08 /* M13CheckboxSpiralPathPresets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A57285996D2AE4F829A0169C3BE5B2 /* M13CheckboxSpiralPathPresets.swift */; };
 		FE327549C60DE724940CB8947590A577 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 222A38F6430118CCA379547F774C40E3 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -156,134 +156,145 @@
 
 /* Begin PBXFileReference section */
 		00E52A93245CDFC040241660AE5E4282 /* Spring.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Spring.framework; path = Spring.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		03B9B3F0DB48DB0CEA7B6AC3AB246F62 /* Spring-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Spring-prefix.pch"; sourceTree = "<group>"; };
+		0118ABC082F98003F7C7705305AE06D6 /* Spring.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Spring.modulemap; sourceTree = "<group>"; };
+		024183ADEE814D3DBC4A91FE389B8E5F /* DesignableTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTextField.swift; path = Spring/DesignableTextField.swift; sourceTree = "<group>"; };
+		06B44BF5470B9AF23ED0AD586CCF3E94 /* M13CheckboxStrokeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxStrokeManager.swift; path = Sources/Managers/M13CheckboxStrokeManager.swift; sourceTree = "<group>"; };
+		06BFEFCB3A4D11E3CA0682EA1261299C /* JTAppleCalendarLayoutProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarLayoutProtocol.swift; path = Sources/JTAppleCalendarLayoutProtocol.swift; sourceTree = "<group>"; };
+		095BBA7B0CB922FAA42ED8A3C3311A93 /* IGColorPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IGColorPicker-umbrella.h"; sourceTree = "<group>"; };
 		098967B4F0D96FF0B0A49BEA4B3D89B9 /* Pods-BreathEveryday-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BreathEveryday-acknowledgements.markdown"; sourceTree = "<group>"; };
-		0C9A6B3C38094CD06FAEFB72F46CB889 /* M13CheckboxExpandManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxExpandManager.swift; path = Sources/Managers/M13CheckboxExpandManager.swift; sourceTree = "<group>"; };
-		0EBAA90E0A4B52995B252FD2394DF508 /* DynamicColor+HSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+HSL.swift"; path = "Sources/DynamicColor+HSL.swift"; sourceTree = "<group>"; };
-		1177C8E8620BDF0A611908EB480EDCF6 /* DynamicColor+Deriving.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+Deriving.swift"; path = "Sources/DynamicColor+Deriving.swift"; sourceTree = "<group>"; };
-		13CDAA795B0CAB165543FCB9EF62DEE1 /* JTCalendarProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTCalendarProtocols.swift; path = Sources/JTCalendarProtocols.swift; sourceTree = "<group>"; };
+		0BF4814E5A9169B9979915D143C3C231 /* M13Checkbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = M13Checkbox.xcconfig; sourceTree = "<group>"; };
+		0CB22B9B4D5B8960A2A4A05F9DE12E1F /* M13CheckboxFadeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFadeManager.swift; path = Sources/Managers/M13CheckboxFadeManager.swift; sourceTree = "<group>"; };
+		0CB2788983C482D58D78F80BFCCF252A /* SpringButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringButton.swift; path = Spring/SpringButton.swift; sourceTree = "<group>"; };
+		0E340456A25730D332EA9A7E2D1B5D1F /* M13CheckboxManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxManager.swift; path = Sources/M13CheckboxManager.swift; sourceTree = "<group>"; };
+		0F6D817F9A727FD7A8007012B038DE2F /* M13CheckboxDotManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDotManager.swift; path = Sources/Managers/M13CheckboxDotManager.swift; sourceTree = "<group>"; };
+		0FDFD72079F388001CB917E29BDDDB4C /* TransitionZoom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionZoom.swift; path = Spring/TransitionZoom.swift; sourceTree = "<group>"; };
+		11E96B5C94A1A6314E3F6E795672BFAA /* ColorPickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerView.swift; path = IGColorPicker/Classes/ColorPickerView.swift; sourceTree = "<group>"; };
 		1403B16C0FD6D52E71953B6EEEEEC1F5 /* Pods-BreathEveryday-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BreathEveryday-resources.sh"; sourceTree = "<group>"; };
-		156201DC332CA7F99D4A835EE1B66263 /* M13CheckboxFlatManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFlatManager.swift; path = Sources/Managers/M13CheckboxFlatManager.swift; sourceTree = "<group>"; };
 		167C6E10B80152A004D948F0DC072F9B /* Pods-BreathEveryday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BreathEveryday.debug.xcconfig"; sourceTree = "<group>"; };
-		167F65F44949F6F0C74983B0776A3AC2 /* M13CheckboxFillManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFillManager.swift; path = Sources/Managers/M13CheckboxFillManager.swift; sourceTree = "<group>"; };
-		176DF28AD28E7DBA91E785C32BA018F9 /* DynamicColor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DynamicColor-dummy.m"; sourceTree = "<group>"; };
-		18AB56EC0DA800B90D1409016EA4EDA8 /* Spring-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Spring-dummy.m"; sourceTree = "<group>"; };
+		17454971BB00DDDD1BB80579DD1C2376 /* LoadingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = Spring/LoadingView.swift; sourceTree = "<group>"; };
+		1786E625943DCFFD2C9AEA08D5D68CF8 /* UnwindSegue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UnwindSegue.swift; path = Spring/UnwindSegue.swift; sourceTree = "<group>"; };
+		17A1F17DBCD787B6E91EB730CF7B3738 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19A33C450628E8691CE00D1A8C008A23 /* SoundPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SoundPlayer.swift; path = Spring/SoundPlayer.swift; sourceTree = "<group>"; };
 		19D1655A168C523F66D5035E51E807F2 /* M13Checkbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = M13Checkbox.framework; path = M13Checkbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B991BA7436A773456E0A1B42BE501B7 /* UICollectionViewDelegates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UICollectionViewDelegates.swift; path = Sources/UICollectionViewDelegates.swift; sourceTree = "<group>"; };
-		1BB8A5FBE988F20DE6BB540FE2715C10 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1C32DF371E7C5ABB460D0C538066C45F /* DynamicColor+Lab.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+Lab.swift"; path = "Sources/DynamicColor+Lab.swift"; sourceTree = "<group>"; };
-		1C416383EAE1B52321A9DE63BD1EAE24 /* SoundPlayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SoundPlayer.swift; path = Spring/SoundPlayer.swift; sourceTree = "<group>"; };
-		1D3D60E342D09F0AFECD65407BFADF2F /* DynamicGradient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicGradient.swift; path = Sources/DynamicGradient.swift; sourceTree = "<group>"; };
+		1ABE288E38A64AAA4BB9FE57FAF14AE9 /* DynamicColor+Lab.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+Lab.swift"; path = "Sources/DynamicColor+Lab.swift"; sourceTree = "<group>"; };
+		1DA2F3EFB41B95A1A1535B0D9DA6F642 /* IGColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IGColorPicker-prefix.pch"; sourceTree = "<group>"; };
+		1ED62D65FD73D461456F15DB2743BABB /* Array.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Array.swift; path = Sources/Array.swift; sourceTree = "<group>"; };
 		1F6AF6B404E3056CD4CA02AE141B3CA3 /* Pods-BreathEveryday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BreathEveryday.release.xcconfig"; sourceTree = "<group>"; };
 		222A38F6430118CCA379547F774C40E3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		244065970D2AC1B5DDB9315CD42ADC29 /* DesignableTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTabBarController.swift; path = Spring/DesignableTabBarController.swift; sourceTree = "<group>"; };
-		2494C1EFE6D87E398E68204CDB942DDB /* CalendarEnums.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CalendarEnums.swift; path = Sources/CalendarEnums.swift; sourceTree = "<group>"; };
-		24C6E487F62E304EE660A7006A0F92BE /* TransitionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionManager.swift; path = Spring/TransitionManager.swift; sourceTree = "<group>"; };
-		2523F4E73AEBD1CA990624D73C8DA48F /* JTAppleCalendarLayoutProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarLayoutProtocol.swift; path = Sources/JTAppleCalendarLayoutProtocol.swift; sourceTree = "<group>"; };
-		2704E7CF1DE8029BAB48A37A63530174 /* DesignableTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTextView.swift; path = Spring/DesignableTextView.swift; sourceTree = "<group>"; };
-		271979EC16B0ECBC3F122B58615B6EE7 /* AsyncButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncButton.swift; path = Spring/AsyncButton.swift; sourceTree = "<group>"; };
-		2899703C4EFE10EB1AB71B801B26D877 /* LoadingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = Spring/LoadingView.swift; sourceTree = "<group>"; };
-		294CAA78384EA9DC0304EFC2B35E3A71 /* DesignableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableView.swift; path = Spring/DesignableView.swift; sourceTree = "<group>"; };
+		23AB84F5BA2712DDA0BEE2AFC3D354E3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		250FAF9315DE6373A9834A5826064D20 /* ColorPickerViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerViewDelegateFlowLayout.swift; path = IGColorPicker/Classes/ColorPickerViewDelegateFlowLayout.swift; sourceTree = "<group>"; };
+		26C81EBB6A6EC4706275FFDE6078D595 /* CLSStackFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSStackFrame.h; path = iOS/Crashlytics.framework/Headers/CLSStackFrame.h; sourceTree = "<group>"; };
+		285A75C8F0DED2A28A6E2EFDB9E2394F /* SpringTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringTextView.swift; path = Spring/SpringTextView.swift; sourceTree = "<group>"; };
 		2AC9A5E4BE4498F0AA3711ED240D8B7A /* DynamicColor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DynamicColor.framework; path = DynamicColor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2AE992ABC311B3E64C94E433E9E4F5EB /* SpringView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringView.swift; path = Spring/SpringView.swift; sourceTree = "<group>"; };
-		2B0EA95F363F1DE8AC865A630CC8F8DD /* UIScrollViewDelegates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIScrollViewDelegates.swift; path = Sources/UIScrollViewDelegates.swift; sourceTree = "<group>"; };
-		2DDF11956A0C778FFCC61C53221C9EB3 /* HSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSL.swift; path = Sources/HSL.swift; sourceTree = "<group>"; };
-		2F3EC08CDC5AB623E1E16DD6ACFAD777 /* IGColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = IGColorPicker.modulemap; sourceTree = "<group>"; };
+		2AFC6797365D85DFEC013E7A083A83C4 /* JTAppleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCell.swift; path = Sources/JTAppleCell.swift; sourceTree = "<group>"; };
+		2BD805A56A9175B9FC37E90DE07E7F53 /* CLSReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSReport.h; path = iOS/Crashlytics.framework/Headers/CLSReport.h; sourceTree = "<group>"; };
+		2DDA3B5959DE1F9377B61CE05A671CE3 /* DynamicColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicColor.swift; path = Sources/DynamicColor.swift; sourceTree = "<group>"; };
+		31A78DD5529F47211C7990683318B3E1 /* Spring.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Spring.xcconfig; sourceTree = "<group>"; };
 		333C9658E9C5EEDE16037DC50F3DF7E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
-		36B0DF97FCB2FB514EB3C93848593908 /* UIColor+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Extension.swift"; path = "IGColorPicker/Classes/UIColor+Extension.swift"; sourceTree = "<group>"; };
-		37F05264A9C73F7A8B148ABAF4DAA567 /* DesignableImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableImageView.swift; path = Spring/DesignableImageView.swift; sourceTree = "<group>"; };
-		3A6AAC8496ED8B7F226411C4615827DC /* AsyncImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncImageView.swift; path = Spring/AsyncImageView.swift; sourceTree = "<group>"; };
+		33DCC986D1132D381C6B07FDBB053589 /* DesignableLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableLabel.swift; path = Spring/DesignableLabel.swift; sourceTree = "<group>"; };
+		341041B81F4D04184D6975E914AE2A65 /* CalendarStructs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CalendarStructs.swift; path = Sources/CalendarStructs.swift; sourceTree = "<group>"; };
+		34DE448B4CECC7210DC78BDA0D0C6B97 /* DynamicColor+HSB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+HSB.swift"; path = "Sources/DynamicColor+HSB.swift"; sourceTree = "<group>"; };
+		363541C21BA691DA96BF49A5EAE210D6 /* DynamicColor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DynamicColor-dummy.m"; sourceTree = "<group>"; };
+		367BDE554E63DFA7C093E5D375901BB0 /* M13CheckboxFillManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFillManager.swift; path = Sources/Managers/M13CheckboxFillManager.swift; sourceTree = "<group>"; };
+		3855AAD0AB7336B491918E7878884A5A /* JTAppleCalendarDelegateProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarDelegateProtocol.swift; path = Sources/JTAppleCalendarDelegateProtocol.swift; sourceTree = "<group>"; };
+		3AFAEE18DBCFA14217C6531D32BD8D85 /* IGColorPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IGColorPicker-dummy.m"; sourceTree = "<group>"; };
+		3BA5B475D96DD3842540A949A1669EEC /* JTAppleCalendar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTAppleCalendar-umbrella.h"; sourceTree = "<group>"; };
+		3E5B360CFA903B7970960F81ABC8C882 /* SpringImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringImageView.swift; path = Spring/SpringImageView.swift; sourceTree = "<group>"; };
 		3F36C3282719046CA3ABCF13001E4B7C /* Pods-BreathEveryday-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BreathEveryday-acknowledgements.plist"; sourceTree = "<group>"; };
-		417DC678FE37CCF2A73C0568D4A3DA69 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		41FFD6C0FA4913107424AAF26F220BBA /* ColorPickerViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerViewDelegateFlowLayout.swift; path = IGColorPicker/Classes/ColorPickerViewDelegateFlowLayout.swift; sourceTree = "<group>"; };
-		4203A36014886FC80DFF6F8C4FA5B4C4 /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Sources/Utils.swift; sourceTree = "<group>"; };
-		467337495DEEFA1D3801723FD78A9F00 /* IGColorPicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IGColorPicker-umbrella.h"; sourceTree = "<group>"; };
-		46DCBCD8598AC44C4346537C94E2A5F9 /* JTAppleCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCell.swift; path = Sources/JTAppleCell.swift; sourceTree = "<group>"; };
-		46F07A516171DC618FE50915100D5873 /* GlobalFunctionsAndExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlobalFunctionsAndExtensions.swift; path = Sources/GlobalFunctionsAndExtensions.swift; sourceTree = "<group>"; };
-		4713D54FC86AE11AA6DB4D9135BCAB26 /* ColorPickerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerView.swift; path = IGColorPicker/Classes/ColorPickerView.swift; sourceTree = "<group>"; };
-		48F11136B5C808572EDA6AA410122B0B /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "M13Checkbox+IB.swift"; path = "Sources/M13Checkbox+IB.swift"; sourceTree = "<group>"; };
-		4A6F5649DE56C49B40700FC245975D04 /* DynamicColor+XYZ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+XYZ.swift"; path = "Sources/DynamicColor+XYZ.swift"; sourceTree = "<group>"; };
-		4BBF9177303DE7F5521E1FA36B77F823 /* CalendarStructs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CalendarStructs.swift; path = Sources/CalendarStructs.swift; sourceTree = "<group>"; };
+		3F53B5653B643DAD5E7E7BA083FFC85B /* DesignableButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableButton.swift; path = Spring/DesignableButton.swift; sourceTree = "<group>"; };
+		3FC8A60C793AC207E99D93E58EE5EB31 /* FABAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABAttributes.h; path = iOS/Fabric.framework/Headers/FABAttributes.h; sourceTree = "<group>"; };
+		4228C2C5DF609F3BB295E36089EA6E90 /* UIColor+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Extension.swift"; path = "IGColorPicker/Classes/UIColor+Extension.swift"; sourceTree = "<group>"; };
+		4363291CEC25D0BCD15986F6B1853F5F /* SpringAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringAnimation.swift; path = Spring/SpringAnimation.swift; sourceTree = "<group>"; };
+		49353E1DB0BA23915A5566064690BC8F /* UIScrollViewDelegates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIScrollViewDelegates.swift; path = Sources/UIScrollViewDelegates.swift; sourceTree = "<group>"; };
+		4A80C37A4F6DBB3FF87BC9ADA6CDF2A5 /* M13CheckboxDotPathPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDotPathPresets.swift; path = Sources/Presets/M13CheckboxDotPathPresets.swift; sourceTree = "<group>"; };
+		4B1A52FE2E647FA8F23155E9FBA29A9C /* Crashlytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Crashlytics.h; path = iOS/Crashlytics.framework/Headers/Crashlytics.h; sourceTree = "<group>"; };
+		4B263E9AD6E438C9DB87890C11E64789 /* ColorPickerCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerCell.swift; path = IGColorPicker/Classes/ColorPickerCell.swift; sourceTree = "<group>"; };
 		4E389101BEF25C06BF7F01FAD6499EFC /* IGColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IGColorPicker.framework; path = IGColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5478D75A3D1F783DD0B4CBC528E31854 /* M13CheckboxStrokeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxStrokeManager.swift; path = Sources/Managers/M13CheckboxStrokeManager.swift; sourceTree = "<group>"; };
-		54A7A294617B2FEB6908E2FC2DAEBB63 /* M13Checkbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = M13Checkbox.xcconfig; sourceTree = "<group>"; };
+		4F2E268A592763F59268E397B75B2E28 /* DynamicColor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DynamicColor-prefix.pch"; sourceTree = "<group>"; };
+		5753F22E9FDD2C619E73546201682872 /* M13CheckboxAnimationPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxAnimationPresets.swift; path = Sources/M13CheckboxAnimationPresets.swift; sourceTree = "<group>"; };
 		57583A1671CF3FFA3C3C26B3129E39B1 /* Pods-BreathEveryday.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-BreathEveryday.modulemap"; sourceTree = "<group>"; };
 		57DE7CE3251EC23F1A9AC3CD243AA1D2 /* JTAppleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JTAppleCalendar.framework; path = JTAppleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		581E20C2BC46EEC82789B2C56C9C808C /* JTAppleCalendar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JTAppleCalendar.xcconfig; sourceTree = "<group>"; };
-		5AED3D69F4063E4C6B4C7A084DCA7C5A /* SpringTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringTextView.swift; path = Spring/SpringTextView.swift; sourceTree = "<group>"; };
-		5BB11134851832EA83659013CFD6EAF1 /* M13Checkbox-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-prefix.pch"; sourceTree = "<group>"; };
-		5D85D1D4A0A34D73C6980E256D5765AD /* IGColorPicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "IGColorPicker-dummy.m"; sourceTree = "<group>"; };
-		5EC77FADB02D482B45EDE8F17033665A /* LoadingView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = LoadingView.xib; path = Spring/LoadingView.xib; sourceTree = "<group>"; };
-		62AB2352367380ED19526058024C97AA /* M13CheckboxManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxManager.swift; path = Sources/M13CheckboxManager.swift; sourceTree = "<group>"; };
-		63D3A7B8D725CBEB891C739A40205997 /* DynamicColor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DynamicColor-prefix.pch"; sourceTree = "<group>"; };
-		65380049274604D9FBAA646ED7F2C93D /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SpringApp/Images.xcassets; sourceTree = "<group>"; };
-		654E7497BB0F289B6EB343B089AFB6EE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		65BB53FDA4DFFA08AFCBDA8283FB1B59 /* JTAppleCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JTAppleCalendar-dummy.m"; sourceTree = "<group>"; };
-		67506C498051F5581F974015EB66B1E5 /* Misc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Misc.swift; path = Spring/Misc.swift; sourceTree = "<group>"; };
-		686D1D982D1FE62B4B390F931C43FADB /* JTAppleCalendarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarView.swift; path = Sources/JTAppleCalendarView.swift; sourceTree = "<group>"; };
-		695FB10AF4B104AEE4150D7C38D4D365 /* M13CheckboxDotManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDotManager.swift; path = Sources/Managers/M13CheckboxDotManager.swift; sourceTree = "<group>"; };
-		6A748A4F71D29734A63D19F6EBED735F /* UnwindSegue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UnwindSegue.swift; path = Spring/UnwindSegue.swift; sourceTree = "<group>"; };
-		6B47241189276D8369F20E9FECE4BC01 /* BlurView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlurView.swift; path = Spring/BlurView.swift; sourceTree = "<group>"; };
-		6C3E87E6F7E937D2369E22D32F76CDA1 /* M13CheckboxSpiralManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxSpiralManager.swift; path = Sources/Managers/M13CheckboxSpiralManager.swift; sourceTree = "<group>"; };
-		6D7E4ED8ADDBF4981059BED726A48770 /* AutoTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutoTextView.swift; path = Spring/AutoTextView.swift; sourceTree = "<group>"; };
-		6FB09E3061554D0A15F5FE81B516EC83 /* DynamicColor+HSB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+HSB.swift"; path = "Sources/DynamicColor+HSB.swift"; sourceTree = "<group>"; };
-		703199E2D9EAD521AC507FD21EC39908 /* IGColorPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IGColorPicker.xcconfig; sourceTree = "<group>"; };
-		73819EC8CFA651C32C5EBB3EFF10EDFF /* M13CheckboxAnimationPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxAnimationPresets.swift; path = Sources/M13CheckboxAnimationPresets.swift; sourceTree = "<group>"; };
-		76BF060B96433FE95A1C8911E72AC7D8 /* M13CheckboxGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxGestureRecognizer.swift; path = Sources/M13CheckboxGestureRecognizer.swift; sourceTree = "<group>"; };
-		770632CFE8867210B16FC97C553A2F81 /* M13CheckboxPathPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxPathPresets.swift; path = Sources/M13CheckboxPathPresets.swift; sourceTree = "<group>"; };
-		797B4AC50CEC7FA20FFE627AA67699A5 /* M13CheckboxDotPathPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxDotPathPresets.swift; path = Sources/Presets/M13CheckboxDotPathPresets.swift; sourceTree = "<group>"; };
-		79D1ABD51DA4D9B4B1E6531CA317C4BE /* DynamicColor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DynamicColor.modulemap; sourceTree = "<group>"; };
-		7E0B745C88853200438749946399010C /* Spring-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Spring-umbrella.h"; sourceTree = "<group>"; };
-		878FB6DA9AFE7188C4305B8835F34796 /* DynamicColor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DynamicColor-umbrella.h"; sourceTree = "<group>"; };
-		88F6ADF0FE48577D879D07D2A5031674 /* M13Checkbox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = M13Checkbox.modulemap; sourceTree = "<group>"; };
-		8C69CB5F39637A557DB50BB114F0DD22 /* ContrastDisplayContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContrastDisplayContext.swift; path = Sources/ContrastDisplayContext.swift; sourceTree = "<group>"; };
-		8C6F8D575634323C7D89B0477A41DD10 /* UserInteractionFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserInteractionFunctions.swift; path = Sources/UserInteractionFunctions.swift; sourceTree = "<group>"; };
-		8DD71BB639234F634952CE41F84D969B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9361EC4ACF2A3B99C8B2A59DE719A2D4 /* JTAppleCalendar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTAppleCalendar-prefix.pch"; sourceTree = "<group>"; };
+		5922C30471A7519F88C00082984860E6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AAC9D250257AA16FDF12FCDE613F261 /* M13Checkbox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "M13Checkbox-dummy.m"; sourceTree = "<group>"; };
+		5F12D42C7B36F66BB11592E82F992C75 /* JTAppleCalendarVariables.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarVariables.swift; path = Sources/JTAppleCalendarVariables.swift; sourceTree = "<group>"; };
+		5F3CE6DC430F4ADED6A281FEC26D41C8 /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Sources/Utils.swift; sourceTree = "<group>"; };
+		6373D4E117C7DFD8823AC3D03D6867A2 /* HSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSL.swift; path = Sources/HSL.swift; sourceTree = "<group>"; };
+		66246510AA1A592AC0AF37E6A6E9F22C /* DynamicColorSpace.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicColorSpace.swift; path = Sources/DynamicColorSpace.swift; sourceTree = "<group>"; };
+		67AD79632434E46C011F6DB1138091E8 /* SpringView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringView.swift; path = Spring/SpringView.swift; sourceTree = "<group>"; };
+		6C6E2F66CCBB5DFDB06BB070E7D56493 /* LoadingView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = LoadingView.xib; path = Spring/LoadingView.xib; sourceTree = "<group>"; };
+		6CEF339D632CBF35CFDC7F817061125E /* IGColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = IGColorPicker.modulemap; sourceTree = "<group>"; };
+		7484D57DB8B518865A0E1E3ACA6B15A4 /* Fabric.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Fabric.h; path = iOS/Fabric.framework/Headers/Fabric.h; sourceTree = "<group>"; };
+		76B72D6A6A382BBF6FA21B7DF256B3B5 /* Spring.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Spring.swift; path = Spring/Spring.swift; sourceTree = "<group>"; };
+		7933F3ADB7615648EE69ED5E588C0310 /* Images.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SpringApp/Images.xcassets; sourceTree = "<group>"; };
+		7946DB0AAA4ABD8B64ACE7E8EC66BA1A /* DynamicColor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DynamicColor-umbrella.h"; sourceTree = "<group>"; };
+		7985A989FA18C833BDF828E7AA0F89F0 /* JTAppleCalendar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JTAppleCalendar.xcconfig; sourceTree = "<group>"; };
+		7A3F2B7BC6D1BDA313E85C8DFDF30D20 /* CLSLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSLogging.h; path = iOS/Crashlytics.framework/Headers/CLSLogging.h; sourceTree = "<group>"; };
+		7C8DCA27B4E146EFB8EA1C12284BA255 /* JTAppleCalendar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTAppleCalendar-prefix.pch"; sourceTree = "<group>"; };
+		7F52E31F85176BD09625DF1EB0290C8C /* M13CheckboxSpiralManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxSpiralManager.swift; path = Sources/Managers/M13CheckboxSpiralManager.swift; sourceTree = "<group>"; };
+		8016F7C02BB807C01E966DEE59B4503A /* DynamicColor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DynamicColor.xcconfig; sourceTree = "<group>"; };
+		801F220282DC9564540040E78BCFB9C9 /* M13CheckboxExpandManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxExpandManager.swift; path = Sources/Managers/M13CheckboxExpandManager.swift; sourceTree = "<group>"; };
+		841D963A9545090B64EA564DC2F6124C /* AsyncImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncImageView.swift; path = Spring/AsyncImageView.swift; sourceTree = "<group>"; };
+		84BEE449A1D230A0424CFDF963D78D45 /* TransitionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionManager.swift; path = Spring/TransitionManager.swift; sourceTree = "<group>"; };
+		89135C07B2165DB58F93BA073D8D2396 /* ColorPickerViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerViewDelegate.swift; path = IGColorPicker/Classes/ColorPickerViewDelegate.swift; sourceTree = "<group>"; };
+		8A2011BF275467E7BEE500F1440CE563 /* JTAppleCalendar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JTAppleCalendar-dummy.m"; sourceTree = "<group>"; };
+		8B73E34B3D50377E87FFE8B626541AFF /* M13Checkbox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-umbrella.h"; sourceTree = "<group>"; };
+		9045115114C2843D5F950E68DC6F850E /* Answers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Answers.h; path = iOS/Crashlytics.framework/Headers/Answers.h; sourceTree = "<group>"; };
+		92281472BE0551093200306417C9A047 /* Spring-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Spring-dummy.m"; sourceTree = "<group>"; };
+		9326BE8F24BEC6D3CD777B6DE8B9E6E0 /* AutoTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AutoTextView.swift; path = Spring/AutoTextView.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		94172DADC7B1B08CBB7A6F9AD6F0FD63 /* M13CheckboxBounceManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxBounceManager.swift; path = Sources/Managers/M13CheckboxBounceManager.swift; sourceTree = "<group>"; };
-		96C8203FDD3505060DD0A6791F09D856 /* DynamicColor+Mixing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+Mixing.swift"; path = "Sources/DynamicColor+Mixing.swift"; sourceTree = "<group>"; };
-		9E10870746D6ACFBC9966E43678B0942 /* ColorPickerViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerViewDelegate.swift; path = IGColorPicker/Classes/ColorPickerViewDelegate.swift; sourceTree = "<group>"; };
-		A6FC4FA9F189E6BD2C2DEF4E224EFCA3 /* M13Checkbox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-umbrella.h"; sourceTree = "<group>"; };
-		A9B5479B23B829962BA85B55F1E8DCD0 /* M13Checkbox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13Checkbox.swift; path = Sources/M13Checkbox.swift; sourceTree = "<group>"; };
-		B3FF6E6F2F6536E90F7773FB259FD14F /* SpringTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringTextField.swift; path = Spring/SpringTextField.swift; sourceTree = "<group>"; };
-		B7EB3C46934A154E48114A81A3EAFAC0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B8FB32321E7AEF18ABABEF41E493A104 /* DesignableTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTextField.swift; path = Spring/DesignableTextField.swift; sourceTree = "<group>"; };
+		94AE1FB3DA8AEA453250ECAE79D7C8C6 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94B5905C69564C98E002AA56E6EAE27C /* ANSCompatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ANSCompatibility.h; path = iOS/Crashlytics.framework/Headers/ANSCompatibility.h; sourceTree = "<group>"; };
+		952E6C04965818ED041291F7EA57FBEA /* M13CheckboxBounceManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxBounceManager.swift; path = Sources/Managers/M13CheckboxBounceManager.swift; sourceTree = "<group>"; };
+		97A57285996D2AE4F829A0169C3BE5B2 /* M13CheckboxSpiralPathPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxSpiralPathPresets.swift; path = Sources/Presets/M13CheckboxSpiralPathPresets.swift; sourceTree = "<group>"; };
+		988DC30A8DACF4B4562F16989960265B /* M13CheckboxPathPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxPathPresets.swift; path = Sources/M13CheckboxPathPresets.swift; sourceTree = "<group>"; };
+		99A238DDF75194A0844629AEF8C3384D /* DesignableTabBarController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTabBarController.swift; path = Spring/DesignableTabBarController.swift; sourceTree = "<group>"; };
+		99D7F87B8BF23F5DCA735C878D88AF67 /* JTAppleCalendarLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarLayout.swift; path = Sources/JTAppleCalendarLayout.swift; sourceTree = "<group>"; };
+		9BCFF6AF1520D5A42419F7DCE62F18C6 /* BlurView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BlurView.swift; path = Spring/BlurView.swift; sourceTree = "<group>"; };
+		9EB07B825972D3877D7B8B0839D98054 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
+		A349C2B23911B49BDE583E0F6E54B4FB /* Spring-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Spring-umbrella.h"; sourceTree = "<group>"; };
+		A71E3AA3637B6265285E79AE5ADC809A /* DynamicColor+RGBA.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+RGBA.swift"; path = "Sources/DynamicColor+RGBA.swift"; sourceTree = "<group>"; };
+		AB6E664243657F2F51B35A5572E350EF /* UICollectionViewDelegates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UICollectionViewDelegates.swift; path = Sources/UICollectionViewDelegates.swift; sourceTree = "<group>"; };
+		AC8F278689223C384B4CD00BBDBDA139 /* DynamicColor+HSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+HSL.swift"; path = "Sources/DynamicColor+HSL.swift"; sourceTree = "<group>"; };
+		AD24D7836D4144BD54C9C7F8336DA3FD /* JTAppleCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = JTAppleCalendar.modulemap; sourceTree = "<group>"; };
+		AD5170BFE0E83DF90FAECEDA769E7A2F /* GlobalFunctionsAndExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GlobalFunctionsAndExtensions.swift; path = Sources/GlobalFunctionsAndExtensions.swift; sourceTree = "<group>"; };
+		AD9D26D9FBFDA044287953CF0F235FF2 /* DynamicColor+XYZ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+XYZ.swift"; path = "Sources/DynamicColor+XYZ.swift"; sourceTree = "<group>"; };
+		B260D5D08ED6B1A09EAF1CB3895DB809 /* DesignableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableView.swift; path = Spring/DesignableView.swift; sourceTree = "<group>"; };
+		B2C118FF7DCC422F551A4C3C78CBB033 /* IGColorPicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IGColorPicker.xcconfig; sourceTree = "<group>"; };
+		B6AAAAF26A3DC1BC948378D0306396C5 /* Misc.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Misc.swift; path = Spring/Misc.swift; sourceTree = "<group>"; };
+		B82A3684237AEC180A7CED905AF717AD /* DynamicGradient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicGradient.swift; path = Sources/DynamicGradient.swift; sourceTree = "<group>"; };
+		B8429BA7BC558F629763E8FBE37A6448 /* DynamicColor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DynamicColor.modulemap; sourceTree = "<group>"; };
 		B9E33B003B983F4784598B5D9CB44CB5 /* M13Checkbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = M13Checkbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA77D32F84B91CB631F23D390F6DC5B1 /* IGColorPicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IGColorPicker-prefix.pch"; sourceTree = "<group>"; };
-		BC671F9C2A6BA4D9756AFA969DF99E98 /* JTAppleCalendarLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarLayout.swift; path = Sources/JTAppleCalendarLayout.swift; sourceTree = "<group>"; };
-		BD1B852CB58669DCD8933BFC9A80F26B /* SpringButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringButton.swift; path = Spring/SpringButton.swift; sourceTree = "<group>"; };
-		BD443FCE457E233C94CA4235E6DE6792 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardLayoutConstraint.swift; path = Spring/KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
-		BFC675299214D3F5FBB983148A5B7A82 /* Spring.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Spring.xcconfig; sourceTree = "<group>"; };
-		C03FC1B3DEC3E43800DD83E138D747FF /* SpringAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringAnimation.swift; path = Spring/SpringAnimation.swift; sourceTree = "<group>"; };
-		C2FBFAF10E6012FFE0B27A022F48C42E /* M13CheckboxFadeManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFadeManager.swift; path = Sources/Managers/M13CheckboxFadeManager.swift; sourceTree = "<group>"; };
-		C38B98BC3F5FD0FF6551F21000DD94C7 /* Spring.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Spring.modulemap; sourceTree = "<group>"; };
-		C4E4F3F69C4BE7176D11DD80B3C4550A /* JTAppleCalendar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = JTAppleCalendar.modulemap; sourceTree = "<group>"; };
-		C6A3399EE3C8EB82FD621E73B95F977D /* DesignableLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableLabel.swift; path = Spring/DesignableLabel.swift; sourceTree = "<group>"; };
-		C8F77873EBCE2B7080EFE0CE0B84ABC2 /* M13Checkbox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "M13Checkbox-dummy.m"; sourceTree = "<group>"; };
-		CA8383E5DBDE71A41A2DDF1C4203AAB5 /* DynamicColorSpace.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicColorSpace.swift; path = Sources/DynamicColorSpace.swift; sourceTree = "<group>"; };
-		CF0B7FB6A2C3B7D8F32730877F0881A6 /* DynamicColor+RGBA.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+RGBA.swift"; path = "Sources/DynamicColor+RGBA.swift"; sourceTree = "<group>"; };
-		CFEF06ECE18BF50F70D642C16CB93586 /* M13CheckboxSpiralPathPresets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxSpiralPathPresets.swift; path = Sources/Presets/M13CheckboxSpiralPathPresets.swift; sourceTree = "<group>"; };
+		BBC407A5C9D67CACE268FD34E390A9CC /* CLSAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSAttributes.h; path = iOS/Crashlytics.framework/Headers/CLSAttributes.h; sourceTree = "<group>"; };
+		BDC2D7D22AACC18260E740A3673AE945 /* JTCalendarProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTCalendarProtocols.swift; path = Sources/JTCalendarProtocols.swift; sourceTree = "<group>"; };
+		BEB2F5CEDAAA12C381187A321F459E60 /* DesignableTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableTextView.swift; path = Spring/DesignableTextView.swift; sourceTree = "<group>"; };
+		C13A523653A8389A9C48080E5287472E /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "M13Checkbox+IB.swift"; path = "Sources/M13Checkbox+IB.swift"; sourceTree = "<group>"; };
+		C17B2D3F370889731EE35F9A44F0589A /* DynamicColor+Deriving.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+Deriving.swift"; path = "Sources/DynamicColor+Deriving.swift"; sourceTree = "<group>"; };
+		C189350727825DBC5E59A212B64FF00F /* CalendarEnums.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CalendarEnums.swift; path = Sources/CalendarEnums.swift; sourceTree = "<group>"; };
+		C222A22DF9EC86E57D292553345708E1 /* DesignableImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableImageView.swift; path = Spring/DesignableImageView.swift; sourceTree = "<group>"; };
+		C6EF3DB7785D0065FB140EE3EA44C4CB /* M13Checkbox.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13Checkbox.swift; path = Sources/M13Checkbox.swift; sourceTree = "<group>"; };
+		CD1C66B8D9FF541CD4984F8880601D35 /* SpringTextField.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringTextField.swift; path = Spring/SpringTextField.swift; sourceTree = "<group>"; };
+		CEACDFB64B2FAFD1081938A48CD4E744 /* ContrastDisplayContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContrastDisplayContext.swift; path = Sources/ContrastDisplayContext.swift; sourceTree = "<group>"; };
 		D0AE0F8CDD3737E675325B3A4C5609DF /* Pods_BreathEveryday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BreathEveryday.framework; path = "Pods-BreathEveryday.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D15CDE97DFB6DD4C5B829B592DC6A376 /* DesignableButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DesignableButton.swift; path = Spring/DesignableButton.swift; sourceTree = "<group>"; };
-		D18FDC3ABD6A8D3DCC2DC005F77E2933 /* JTAppleCalendar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JTAppleCalendar-umbrella.h"; sourceTree = "<group>"; };
-		D41155C6DB582DB891BA55C841C8544C /* TransitionZoom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransitionZoom.swift; path = Spring/TransitionZoom.swift; sourceTree = "<group>"; };
-		D47F9C8292103885D798C47BC8E0B4A1 /* JTAppleCollectionReusableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCollectionReusableView.swift; path = Sources/JTAppleCollectionReusableView.swift; sourceTree = "<group>"; };
+		D418B90521FD47F44F20F3723DE8B5D9 /* AsyncButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AsyncButton.swift; path = Spring/AsyncButton.swift; sourceTree = "<group>"; };
+		D4933625857A36A4762402EE59792CFC /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
+		D4CE6A866C746DC3A5C0241451CD4F1B /* M13CheckboxFlatManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxFlatManager.swift; path = Sources/Managers/M13CheckboxFlatManager.swift; sourceTree = "<group>"; };
 		D4D9E6997F6B77D974201677EE244695 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		E1FD5821B8EAB8A2742A8073995FBFA1 /* DynamicColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicColor.swift; path = Sources/DynamicColor.swift; sourceTree = "<group>"; };
-		E23A31677C14C26507FB72F7D1E49A05 /* Array.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Array.swift; path = Sources/Array.swift; sourceTree = "<group>"; };
+		DDFD44DB72C9CB9D59A2E21FE252CF48 /* Spring-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Spring-prefix.pch"; sourceTree = "<group>"; };
+		E2DEEC028FEAA28A2463EA2A13A1F8E7 /* JTAppleCalendarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarView.swift; path = Sources/JTAppleCalendarView.swift; sourceTree = "<group>"; };
 		E3DB80ABE1AB8BA88EB0C8C5FE7D1A09 /* Pods-BreathEveryday-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BreathEveryday-umbrella.h"; sourceTree = "<group>"; };
-		E61F78E226DB74D2D70729CEB74A6282 /* JTAppleCalendarDelegateProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarDelegateProtocol.swift; path = Sources/JTAppleCalendarDelegateProtocol.swift; sourceTree = "<group>"; };
-		E656533C18B47074F08CB337AF9EEB48 /* SpringImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringImageView.swift; path = Spring/SpringImageView.swift; sourceTree = "<group>"; };
-		EA751D4AB48CF7611D7043FD6BD2177E /* ColorPickerCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerCell.swift; path = IGColorPicker/Classes/ColorPickerCell.swift; sourceTree = "<group>"; };
-		EBD409DC3B284D996F3BBA104728466D /* DynamicColor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DynamicColor.xcconfig; sourceTree = "<group>"; };
+		E408136CB44C7E0522CE1CF2129F9E50 /* DynamicColor+Mixing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+Mixing.swift"; path = "Sources/DynamicColor+Mixing.swift"; sourceTree = "<group>"; };
+		E90E13587D6804283D6170578D68CB2C /* SpringLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringLabel.swift; path = Spring/SpringLabel.swift; sourceTree = "<group>"; };
+		E964E43AB0D83DDEDC1878355CC55E35 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyboardLayoutConstraint.swift; path = Spring/KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+		ECC71F78427662CF4DC9435F9F955A76 /* M13Checkbox-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "M13Checkbox-prefix.pch"; sourceTree = "<group>"; };
+		ED8B2BA56C810E0E67AE13DF3735CD05 /* M13Checkbox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = M13Checkbox.modulemap; sourceTree = "<group>"; };
 		EECBC3629140FF004753889DFA97FA61 /* Pods-BreathEveryday-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BreathEveryday-frameworks.sh"; sourceTree = "<group>"; };
-		F9C26FA696ACCD674553F23CB0DF50D5 /* ImageLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = Spring/ImageLoader.swift; sourceTree = "<group>"; };
+		F2ADC49F13164F024F0B6A32AE176D3C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F30A3CDA3F5403BCD86FEFF66C4EAD52 /* JTAppleCollectionReusableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCollectionReusableView.swift; path = Sources/JTAppleCollectionReusableView.swift; sourceTree = "<group>"; };
+		FB1594BDFF361AF68700A9D45EB81492 /* UserInteractionFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UserInteractionFunctions.swift; path = Sources/UserInteractionFunctions.swift; sourceTree = "<group>"; };
 		FBA2856292A1F545C670FF2091E3AEB6 /* Pods-BreathEveryday-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BreathEveryday-dummy.m"; sourceTree = "<group>"; };
-		FBC29DD27BD26D9FECD0366B6F508BD7 /* JTAppleCalendarVariables.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JTAppleCalendarVariables.swift; path = Sources/JTAppleCalendarVariables.swift; sourceTree = "<group>"; };
-		FC281A286F645E6FCC569728243A0EBD /* SpringLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpringLabel.swift; path = Spring/SpringLabel.swift; sourceTree = "<group>"; };
 		FC846EE762B4B99AB8361E397FF2CB10 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FCEBC9B92D5D86CB905B1372B3E9A973 /* Spring.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Spring.swift; path = Spring/Spring.swift; sourceTree = "<group>"; };
+		FD3DC3F775E9A8F96BDD78F22776DC6D /* ImageLoader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageLoader.swift; path = Spring/ImageLoader.swift; sourceTree = "<group>"; };
+		FFAB56E4B83AF8F65BF6D42DEA6C9AC3 /* M13CheckboxGestureRecognizer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = M13CheckboxGestureRecognizer.swift; path = Sources/M13CheckboxGestureRecognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,43 +353,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		032718DD696CE441855D0316311E13A5 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				79D1ABD51DA4D9B4B1E6531CA317C4BE /* DynamicColor.modulemap */,
-				EBD409DC3B284D996F3BBA104728466D /* DynamicColor.xcconfig */,
-				176DF28AD28E7DBA91E785C32BA018F9 /* DynamicColor-dummy.m */,
-				63D3A7B8D725CBEB891C739A40205997 /* DynamicColor-prefix.pch */,
-				878FB6DA9AFE7188C4305B8835F34796 /* DynamicColor-umbrella.h */,
-				417DC678FE37CCF2A73C0568D4A3DA69 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/DynamicColor";
-			sourceTree = "<group>";
-		};
-		05B68921734DCB6856EA0C4DD24D0074 /* JTAppleCalendar */ = {
-			isa = PBXGroup;
-			children = (
-				2494C1EFE6D87E398E68204CDB942DDB /* CalendarEnums.swift */,
-				4BBF9177303DE7F5521E1FA36B77F823 /* CalendarStructs.swift */,
-				46F07A516171DC618FE50915100D5873 /* GlobalFunctionsAndExtensions.swift */,
-				E61F78E226DB74D2D70729CEB74A6282 /* JTAppleCalendarDelegateProtocol.swift */,
-				BC671F9C2A6BA4D9756AFA969DF99E98 /* JTAppleCalendarLayout.swift */,
-				2523F4E73AEBD1CA990624D73C8DA48F /* JTAppleCalendarLayoutProtocol.swift */,
-				FBC29DD27BD26D9FECD0366B6F508BD7 /* JTAppleCalendarVariables.swift */,
-				686D1D982D1FE62B4B390F931C43FADB /* JTAppleCalendarView.swift */,
-				46DCBCD8598AC44C4346537C94E2A5F9 /* JTAppleCell.swift */,
-				D47F9C8292103885D798C47BC8E0B4A1 /* JTAppleCollectionReusableView.swift */,
-				13CDAA795B0CAB165543FCB9EF62DEE1 /* JTCalendarProtocols.swift */,
-				1B991BA7436A773456E0A1B42BE501B7 /* UICollectionViewDelegates.swift */,
-				2B0EA95F363F1DE8AC865A630CC8F8DD /* UIScrollViewDelegates.swift */,
-				8C6F8D575634323C7D89B0477A41DD10 /* UserInteractionFunctions.swift */,
-				9E8264B9BED7D659B878FBFDE8E0CBB0 /* Support Files */,
-			);
-			name = JTAppleCalendar;
-			path = JTAppleCalendar;
-			sourceTree = "<group>";
-		};
 		07C973348CDB9A3CD5213BD8B58BEBE8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +366,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		16BAFC618D477BE3BE58BDFD92B291FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9EB07B825972D3877D7B8B0839D98054 /* Fabric.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		24A0C0FBDB4A3AB138B02A782274D8F1 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,18 +384,18 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		26F17B1EE752AAC8A2F5AD3DDC5E5C06 /* Support Files */ = {
+		26123637F51024F833AF489FA7B8B4E9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				8DD71BB639234F634952CE41F84D969B /* Info.plist */,
-				C38B98BC3F5FD0FF6551F21000DD94C7 /* Spring.modulemap */,
-				BFC675299214D3F5FBB983148A5B7A82 /* Spring.xcconfig */,
-				18AB56EC0DA800B90D1409016EA4EDA8 /* Spring-dummy.m */,
-				03B9B3F0DB48DB0CEA7B6AC3AB246F62 /* Spring-prefix.pch */,
-				7E0B745C88853200438749946399010C /* Spring-umbrella.h */,
+				F2ADC49F13164F024F0B6A32AE176D3C /* Info.plist */,
+				AD24D7836D4144BD54C9C7F8336DA3FD /* JTAppleCalendar.modulemap */,
+				7985A989FA18C833BDF828E7AA0F89F0 /* JTAppleCalendar.xcconfig */,
+				8A2011BF275467E7BEE500F1440CE563 /* JTAppleCalendar-dummy.m */,
+				7C8DCA27B4E146EFB8EA1C12284BA255 /* JTAppleCalendar-prefix.pch */,
+				3BA5B475D96DD3842540A949A1669EEC /* JTAppleCalendar-umbrella.h */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/Spring";
+			path = "../Target Support Files/JTAppleCalendar";
 			sourceTree = "<group>";
 		};
 		3758CBF830D474469F65E89BB90E36C5 /* Targets Support Files */ = {
@@ -424,13 +406,69 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		4D7F4D14AA341DE72A5CA608AD8742AF /* Resources */ = {
+		3A614E2DDA9891C93490A4ABD8E698C0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				65380049274604D9FBAA646ED7F2C93D /* Images.xcassets */,
-				5EC77FADB02D482B45EDE8F17033665A /* LoadingView.xib */,
+				17A1F17DBCD787B6E91EB730CF7B3738 /* Info.plist */,
+				0118ABC082F98003F7C7705305AE06D6 /* Spring.modulemap */,
+				31A78DD5529F47211C7990683318B3E1 /* Spring.xcconfig */,
+				92281472BE0551093200306417C9A047 /* Spring-dummy.m */,
+				DDFD44DB72C9CB9D59A2E21FE252CF48 /* Spring-prefix.pch */,
+				A349C2B23911B49BDE583E0F6E54B4FB /* Spring-umbrella.h */,
 			);
-			name = Resources;
+			name = "Support Files";
+			path = "../Target Support Files/Spring";
+			sourceTree = "<group>";
+		};
+		40E722C4095E56186D8E66A5EBA14E90 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6CEF339D632CBF35CFDC7F817061125E /* IGColorPicker.modulemap */,
+				B2C118FF7DCC422F551A4C3C78CBB033 /* IGColorPicker.xcconfig */,
+				3AFAEE18DBCFA14217C6531D32BD8D85 /* IGColorPicker-dummy.m */,
+				1DA2F3EFB41B95A1A1535B0D9DA6F642 /* IGColorPicker-prefix.pch */,
+				095BBA7B0CB922FAA42ED8A3C3311A93 /* IGColorPicker-umbrella.h */,
+				94AE1FB3DA8AEA453250ECAE79D7C8C6 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/IGColorPicker";
+			sourceTree = "<group>";
+		};
+		532496AD40E82577F740A1ADFBB96530 /* Spring */ = {
+			isa = PBXGroup;
+			children = (
+				D418B90521FD47F44F20F3723DE8B5D9 /* AsyncButton.swift */,
+				841D963A9545090B64EA564DC2F6124C /* AsyncImageView.swift */,
+				9326BE8F24BEC6D3CD777B6DE8B9E6E0 /* AutoTextView.swift */,
+				9BCFF6AF1520D5A42419F7DCE62F18C6 /* BlurView.swift */,
+				3F53B5653B643DAD5E7E7BA083FFC85B /* DesignableButton.swift */,
+				C222A22DF9EC86E57D292553345708E1 /* DesignableImageView.swift */,
+				33DCC986D1132D381C6B07FDBB053589 /* DesignableLabel.swift */,
+				99A238DDF75194A0844629AEF8C3384D /* DesignableTabBarController.swift */,
+				024183ADEE814D3DBC4A91FE389B8E5F /* DesignableTextField.swift */,
+				BEB2F5CEDAAA12C381187A321F459E60 /* DesignableTextView.swift */,
+				B260D5D08ED6B1A09EAF1CB3895DB809 /* DesignableView.swift */,
+				FD3DC3F775E9A8F96BDD78F22776DC6D /* ImageLoader.swift */,
+				E964E43AB0D83DDEDC1878355CC55E35 /* KeyboardLayoutConstraint.swift */,
+				17454971BB00DDDD1BB80579DD1C2376 /* LoadingView.swift */,
+				B6AAAAF26A3DC1BC948378D0306396C5 /* Misc.swift */,
+				19A33C450628E8691CE00D1A8C008A23 /* SoundPlayer.swift */,
+				76B72D6A6A382BBF6FA21B7DF256B3B5 /* Spring.swift */,
+				4363291CEC25D0BCD15986F6B1853F5F /* SpringAnimation.swift */,
+				0CB2788983C482D58D78F80BFCCF252A /* SpringButton.swift */,
+				3E5B360CFA903B7970960F81ABC8C882 /* SpringImageView.swift */,
+				E90E13587D6804283D6170578D68CB2C /* SpringLabel.swift */,
+				CD1C66B8D9FF541CD4984F8880601D35 /* SpringTextField.swift */,
+				285A75C8F0DED2A28A6E2EFDB9E2394F /* SpringTextView.swift */,
+				67AD79632434E46C011F6DB1138091E8 /* SpringView.swift */,
+				84BEE449A1D230A0424CFDF963D78D45 /* TransitionManager.swift */,
+				0FDFD72079F388001CB917E29BDDDB4C /* TransitionZoom.swift */,
+				1786E625943DCFFD2C9AEA08D5D68CF8 /* UnwindSegue.swift */,
+				83EF77B8EC22B19AC48A6BDBBF77C1B2 /* Resources */,
+				3A614E2DDA9891C93490A4ABD8E698C0 /* Support Files */,
+			);
+			name = Spring;
+			path = Spring;
 			sourceTree = "<group>";
 		};
 		65B884C749B06DEA5D855D0E2444E3F6 /* Pods-BreathEveryday */ = {
@@ -451,55 +489,51 @@
 			path = "Target Support Files/Pods-BreathEveryday";
 			sourceTree = "<group>";
 		};
-		666DF20E9EB5D43B24F2C94817F224F6 /* Spring */ = {
+		77B9524E086FF17ED8DC3CE5A969FC9E /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				271979EC16B0ECBC3F122B58615B6EE7 /* AsyncButton.swift */,
-				3A6AAC8496ED8B7F226411C4615827DC /* AsyncImageView.swift */,
-				6D7E4ED8ADDBF4981059BED726A48770 /* AutoTextView.swift */,
-				6B47241189276D8369F20E9FECE4BC01 /* BlurView.swift */,
-				D15CDE97DFB6DD4C5B829B592DC6A376 /* DesignableButton.swift */,
-				37F05264A9C73F7A8B148ABAF4DAA567 /* DesignableImageView.swift */,
-				C6A3399EE3C8EB82FD621E73B95F977D /* DesignableLabel.swift */,
-				244065970D2AC1B5DDB9315CD42ADC29 /* DesignableTabBarController.swift */,
-				B8FB32321E7AEF18ABABEF41E493A104 /* DesignableTextField.swift */,
-				2704E7CF1DE8029BAB48A37A63530174 /* DesignableTextView.swift */,
-				294CAA78384EA9DC0304EFC2B35E3A71 /* DesignableView.swift */,
-				F9C26FA696ACCD674553F23CB0DF50D5 /* ImageLoader.swift */,
-				BD443FCE457E233C94CA4235E6DE6792 /* KeyboardLayoutConstraint.swift */,
-				2899703C4EFE10EB1AB71B801B26D877 /* LoadingView.swift */,
-				67506C498051F5581F974015EB66B1E5 /* Misc.swift */,
-				1C416383EAE1B52321A9DE63BD1EAE24 /* SoundPlayer.swift */,
-				FCEBC9B92D5D86CB905B1372B3E9A973 /* Spring.swift */,
-				C03FC1B3DEC3E43800DD83E138D747FF /* SpringAnimation.swift */,
-				BD1B852CB58669DCD8933BFC9A80F26B /* SpringButton.swift */,
-				E656533C18B47074F08CB337AF9EEB48 /* SpringImageView.swift */,
-				FC281A286F645E6FCC569728243A0EBD /* SpringLabel.swift */,
-				B3FF6E6F2F6536E90F7773FB259FD14F /* SpringTextField.swift */,
-				5AED3D69F4063E4C6B4C7A084DCA7C5A /* SpringTextView.swift */,
-				2AE992ABC311B3E64C94E433E9E4F5EB /* SpringView.swift */,
-				24C6E487F62E304EE660A7006A0F92BE /* TransitionManager.swift */,
-				D41155C6DB582DB891BA55C841C8544C /* TransitionZoom.swift */,
-				6A748A4F71D29734A63D19F6EBED735F /* UnwindSegue.swift */,
-				4D7F4D14AA341DE72A5CA608AD8742AF /* Resources */,
-				26F17B1EE752AAC8A2F5AD3DDC5E5C06 /* Support Files */,
+				B8429BA7BC558F629763E8FBE37A6448 /* DynamicColor.modulemap */,
+				8016F7C02BB807C01E966DEE59B4503A /* DynamicColor.xcconfig */,
+				363541C21BA691DA96BF49A5EAE210D6 /* DynamicColor-dummy.m */,
+				4F2E268A592763F59268E397B75B2E28 /* DynamicColor-prefix.pch */,
+				7946DB0AAA4ABD8B64ACE7E8EC66BA1A /* DynamicColor-umbrella.h */,
+				23AB84F5BA2712DDA0BEE2AFC3D354E3 /* Info.plist */,
 			);
-			name = Spring;
-			path = Spring;
+			name = "Support Files";
+			path = "../Target Support Files/DynamicColor";
 			sourceTree = "<group>";
 		};
-		6EA8F61AE7D28F18BDF0101D2A596DF0 /* IGColorPicker */ = {
+		79EBC7BB9DA00E62013C3133B2ABC920 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EA751D4AB48CF7611D7043FD6BD2177E /* ColorPickerCell.swift */,
-				4713D54FC86AE11AA6DB4D9135BCAB26 /* ColorPickerView.swift */,
-				9E10870746D6ACFBC9966E43678B0942 /* ColorPickerViewDelegate.swift */,
-				41FFD6C0FA4913107424AAF26F220BBA /* ColorPickerViewDelegateFlowLayout.swift */,
-				36B0DF97FCB2FB514EB3C93848593908 /* UIColor+Extension.swift */,
-				E8141B7D3297BC930100008595F26470 /* Support Files */,
+				D4933625857A36A4762402EE59792CFC /* Crashlytics.framework */,
 			);
-			name = IGColorPicker;
-			path = IGColorPicker;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B2365A1AA1E37D73CCE585C6910CFE7 /* M13Checkbox */ = {
+			isa = PBXGroup;
+			children = (
+				C6EF3DB7785D0065FB140EE3EA44C4CB /* M13Checkbox.swift */,
+				C13A523653A8389A9C48080E5287472E /* M13Checkbox+IB.swift */,
+				5753F22E9FDD2C619E73546201682872 /* M13CheckboxAnimationPresets.swift */,
+				952E6C04965818ED041291F7EA57FBEA /* M13CheckboxBounceManager.swift */,
+				0F6D817F9A727FD7A8007012B038DE2F /* M13CheckboxDotManager.swift */,
+				4A80C37A4F6DBB3FF87BC9ADA6CDF2A5 /* M13CheckboxDotPathPresets.swift */,
+				801F220282DC9564540040E78BCFB9C9 /* M13CheckboxExpandManager.swift */,
+				0CB22B9B4D5B8960A2A4A05F9DE12E1F /* M13CheckboxFadeManager.swift */,
+				367BDE554E63DFA7C093E5D375901BB0 /* M13CheckboxFillManager.swift */,
+				D4CE6A866C746DC3A5C0241451CD4F1B /* M13CheckboxFlatManager.swift */,
+				FFAB56E4B83AF8F65BF6D42DEA6C9AC3 /* M13CheckboxGestureRecognizer.swift */,
+				0E340456A25730D332EA9A7E2D1B5D1F /* M13CheckboxManager.swift */,
+				988DC30A8DACF4B4562F16989960265B /* M13CheckboxPathPresets.swift */,
+				7F52E31F85176BD09625DF1EB0290C8C /* M13CheckboxSpiralManager.swift */,
+				97A57285996D2AE4F829A0169C3BE5B2 /* M13CheckboxSpiralPathPresets.swift */,
+				06B44BF5470B9AF23ED0AD586CCF3E94 /* M13CheckboxStrokeManager.swift */,
+				91F50968B91ED9D3B0F9CA2C3288AA4D /* Support Files */,
+			);
+			name = M13Checkbox;
+			path = M13Checkbox;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -507,36 +541,95 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				C327AD006FAD3CCF5A3B4CE00C982699 /* Frameworks */,
-				9BCB6176D20B8D4005CFDCA3112E63FD /* Pods */,
+				B595DF37138E7FBD31A24FFFB7A86376 /* Pods */,
 				07C973348CDB9A3CD5213BD8B58BEBE8 /* Products */,
 				3758CBF830D474469F65E89BB90E36C5 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		9BCB6176D20B8D4005CFDCA3112E63FD /* Pods */ = {
+		83EF77B8EC22B19AC48A6BDBBF77C1B2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C4EF2DD38FBF99E1D51230FA61607D7F /* DynamicColor */,
-				6EA8F61AE7D28F18BDF0101D2A596DF0 /* IGColorPicker */,
-				05B68921734DCB6856EA0C4DD24D0074 /* JTAppleCalendar */,
-				FFE2BE0D7339249298CFAD8DBB732337 /* M13Checkbox */,
-				666DF20E9EB5D43B24F2C94817F224F6 /* Spring */,
+				7933F3ADB7615648EE69ED5E588C0310 /* Images.xcassets */,
+				6C6E2F66CCBB5DFDB06BB070E7D56493 /* LoadingView.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		8AA31FED82B7943A9DF081BE2D361E18 /* JTAppleCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				C189350727825DBC5E59A212B64FF00F /* CalendarEnums.swift */,
+				341041B81F4D04184D6975E914AE2A65 /* CalendarStructs.swift */,
+				AD5170BFE0E83DF90FAECEDA769E7A2F /* GlobalFunctionsAndExtensions.swift */,
+				3855AAD0AB7336B491918E7878884A5A /* JTAppleCalendarDelegateProtocol.swift */,
+				99D7F87B8BF23F5DCA735C878D88AF67 /* JTAppleCalendarLayout.swift */,
+				06BFEFCB3A4D11E3CA0682EA1261299C /* JTAppleCalendarLayoutProtocol.swift */,
+				5F12D42C7B36F66BB11592E82F992C75 /* JTAppleCalendarVariables.swift */,
+				E2DEEC028FEAA28A2463EA2A13A1F8E7 /* JTAppleCalendarView.swift */,
+				2AFC6797365D85DFEC013E7A083A83C4 /* JTAppleCell.swift */,
+				F30A3CDA3F5403BCD86FEFF66C4EAD52 /* JTAppleCollectionReusableView.swift */,
+				BDC2D7D22AACC18260E740A3673AE945 /* JTCalendarProtocols.swift */,
+				AB6E664243657F2F51B35A5572E350EF /* UICollectionViewDelegates.swift */,
+				49353E1DB0BA23915A5566064690BC8F /* UIScrollViewDelegates.swift */,
+				FB1594BDFF361AF68700A9D45EB81492 /* UserInteractionFunctions.swift */,
+				26123637F51024F833AF489FA7B8B4E9 /* Support Files */,
+			);
+			name = JTAppleCalendar;
+			path = JTAppleCalendar;
+			sourceTree = "<group>";
+		};
+		91F50968B91ED9D3B0F9CA2C3288AA4D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5922C30471A7519F88C00082984860E6 /* Info.plist */,
+				ED8B2BA56C810E0E67AE13DF3735CD05 /* M13Checkbox.modulemap */,
+				0BF4814E5A9169B9979915D143C3C231 /* M13Checkbox.xcconfig */,
+				5AAC9D250257AA16FDF12FCDE613F261 /* M13Checkbox-dummy.m */,
+				ECC71F78427662CF4DC9435F9F955A76 /* M13Checkbox-prefix.pch */,
+				8B73E34B3D50377E87FFE8B626541AFF /* M13Checkbox-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/M13Checkbox";
+			sourceTree = "<group>";
+		};
+		94B3A45A98B5AFC96C8CDD0D6BA383DC /* Fabric */ = {
+			isa = PBXGroup;
+			children = (
+				3FC8A60C793AC207E99D93E58EE5EB31 /* FABAttributes.h */,
+				7484D57DB8B518865A0E1E3ACA6B15A4 /* Fabric.h */,
+				16BAFC618D477BE3BE58BDFD92B291FC /* Frameworks */,
+			);
+			name = Fabric;
+			path = Fabric;
+			sourceTree = "<group>";
+		};
+		B595DF37138E7FBD31A24FFFB7A86376 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E91FEF43DFBE667EBD0FD3C880698C51 /* Crashlytics */,
+				DE4F4B77E8B31F60045F02D875F8EF38 /* DynamicColor */,
+				94B3A45A98B5AFC96C8CDD0D6BA383DC /* Fabric */,
+				BA6992807F351E32548705FA50074477 /* IGColorPicker */,
+				8AA31FED82B7943A9DF081BE2D361E18 /* JTAppleCalendar */,
+				7B2365A1AA1E37D73CCE585C6910CFE7 /* M13Checkbox */,
+				532496AD40E82577F740A1ADFBB96530 /* Spring */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		9E8264B9BED7D659B878FBFDE8E0CBB0 /* Support Files */ = {
+		BA6992807F351E32548705FA50074477 /* IGColorPicker */ = {
 			isa = PBXGroup;
 			children = (
-				654E7497BB0F289B6EB343B089AFB6EE /* Info.plist */,
-				C4E4F3F69C4BE7176D11DD80B3C4550A /* JTAppleCalendar.modulemap */,
-				581E20C2BC46EEC82789B2C56C9C808C /* JTAppleCalendar.xcconfig */,
-				65BB53FDA4DFFA08AFCBDA8283FB1B59 /* JTAppleCalendar-dummy.m */,
-				9361EC4ACF2A3B99C8B2A59DE719A2D4 /* JTAppleCalendar-prefix.pch */,
-				D18FDC3ABD6A8D3DCC2DC005F77E2933 /* JTAppleCalendar-umbrella.h */,
+				4B263E9AD6E438C9DB87890C11E64789 /* ColorPickerCell.swift */,
+				11E96B5C94A1A6314E3F6E795672BFAA /* ColorPickerView.swift */,
+				89135C07B2165DB58F93BA073D8D2396 /* ColorPickerViewDelegate.swift */,
+				250FAF9315DE6373A9834A5826064D20 /* ColorPickerViewDelegateFlowLayout.swift */,
+				4228C2C5DF609F3BB295E36089EA6E90 /* UIColor+Extension.swift */,
+				40E722C4095E56186D8E66A5EBA14E90 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/JTAppleCalendar";
+			name = IGColorPicker;
+			path = IGColorPicker;
 			sourceTree = "<group>";
 		};
 		C327AD006FAD3CCF5A3B4CE00C982699 /* Frameworks */ = {
@@ -548,80 +641,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C4EF2DD38FBF99E1D51230FA61607D7F /* DynamicColor */ = {
+		DE4F4B77E8B31F60045F02D875F8EF38 /* DynamicColor */ = {
 			isa = PBXGroup;
 			children = (
-				E23A31677C14C26507FB72F7D1E49A05 /* Array.swift */,
-				8C69CB5F39637A557DB50BB114F0DD22 /* ContrastDisplayContext.swift */,
-				E1FD5821B8EAB8A2742A8073995FBFA1 /* DynamicColor.swift */,
-				1177C8E8620BDF0A611908EB480EDCF6 /* DynamicColor+Deriving.swift */,
-				6FB09E3061554D0A15F5FE81B516EC83 /* DynamicColor+HSB.swift */,
-				0EBAA90E0A4B52995B252FD2394DF508 /* DynamicColor+HSL.swift */,
-				1C32DF371E7C5ABB460D0C538066C45F /* DynamicColor+Lab.swift */,
-				96C8203FDD3505060DD0A6791F09D856 /* DynamicColor+Mixing.swift */,
-				CF0B7FB6A2C3B7D8F32730877F0881A6 /* DynamicColor+RGBA.swift */,
-				4A6F5649DE56C49B40700FC245975D04 /* DynamicColor+XYZ.swift */,
-				CA8383E5DBDE71A41A2DDF1C4203AAB5 /* DynamicColorSpace.swift */,
-				1D3D60E342D09F0AFECD65407BFADF2F /* DynamicGradient.swift */,
-				2DDF11956A0C778FFCC61C53221C9EB3 /* HSL.swift */,
-				4203A36014886FC80DFF6F8C4FA5B4C4 /* Utils.swift */,
-				032718DD696CE441855D0316311E13A5 /* Support Files */,
+				1ED62D65FD73D461456F15DB2743BABB /* Array.swift */,
+				CEACDFB64B2FAFD1081938A48CD4E744 /* ContrastDisplayContext.swift */,
+				2DDA3B5959DE1F9377B61CE05A671CE3 /* DynamicColor.swift */,
+				C17B2D3F370889731EE35F9A44F0589A /* DynamicColor+Deriving.swift */,
+				34DE448B4CECC7210DC78BDA0D0C6B97 /* DynamicColor+HSB.swift */,
+				AC8F278689223C384B4CD00BBDBDA139 /* DynamicColor+HSL.swift */,
+				1ABE288E38A64AAA4BB9FE57FAF14AE9 /* DynamicColor+Lab.swift */,
+				E408136CB44C7E0522CE1CF2129F9E50 /* DynamicColor+Mixing.swift */,
+				A71E3AA3637B6265285E79AE5ADC809A /* DynamicColor+RGBA.swift */,
+				AD9D26D9FBFDA044287953CF0F235FF2 /* DynamicColor+XYZ.swift */,
+				66246510AA1A592AC0AF37E6A6E9F22C /* DynamicColorSpace.swift */,
+				B82A3684237AEC180A7CED905AF717AD /* DynamicGradient.swift */,
+				6373D4E117C7DFD8823AC3D03D6867A2 /* HSL.swift */,
+				5F3CE6DC430F4ADED6A281FEC26D41C8 /* Utils.swift */,
+				77B9524E086FF17ED8DC3CE5A969FC9E /* Support Files */,
 			);
 			name = DynamicColor;
 			path = DynamicColor;
 			sourceTree = "<group>";
 		};
-		D9DC24E33E051BAE0B82357C2513EB2B /* Support Files */ = {
+		E91FEF43DFBE667EBD0FD3C880698C51 /* Crashlytics */ = {
 			isa = PBXGroup;
 			children = (
-				1BB8A5FBE988F20DE6BB540FE2715C10 /* Info.plist */,
-				88F6ADF0FE48577D879D07D2A5031674 /* M13Checkbox.modulemap */,
-				54A7A294617B2FEB6908E2FC2DAEBB63 /* M13Checkbox.xcconfig */,
-				C8F77873EBCE2B7080EFE0CE0B84ABC2 /* M13Checkbox-dummy.m */,
-				5BB11134851832EA83659013CFD6EAF1 /* M13Checkbox-prefix.pch */,
-				A6FC4FA9F189E6BD2C2DEF4E224EFCA3 /* M13Checkbox-umbrella.h */,
+				94B5905C69564C98E002AA56E6EAE27C /* ANSCompatibility.h */,
+				9045115114C2843D5F950E68DC6F850E /* Answers.h */,
+				BBC407A5C9D67CACE268FD34E390A9CC /* CLSAttributes.h */,
+				7A3F2B7BC6D1BDA313E85C8DFDF30D20 /* CLSLogging.h */,
+				2BD805A56A9175B9FC37E90DE07E7F53 /* CLSReport.h */,
+				26C81EBB6A6EC4706275FFDE6078D595 /* CLSStackFrame.h */,
+				4B1A52FE2E647FA8F23155E9FBA29A9C /* Crashlytics.h */,
+				79EBC7BB9DA00E62013C3133B2ABC920 /* Frameworks */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/M13Checkbox";
-			sourceTree = "<group>";
-		};
-		E8141B7D3297BC930100008595F26470 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				2F3EC08CDC5AB623E1E16DD6ACFAD777 /* IGColorPicker.modulemap */,
-				703199E2D9EAD521AC507FD21EC39908 /* IGColorPicker.xcconfig */,
-				5D85D1D4A0A34D73C6980E256D5765AD /* IGColorPicker-dummy.m */,
-				BA77D32F84B91CB631F23D390F6DC5B1 /* IGColorPicker-prefix.pch */,
-				467337495DEEFA1D3801723FD78A9F00 /* IGColorPicker-umbrella.h */,
-				B7EB3C46934A154E48114A81A3EAFAC0 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/IGColorPicker";
-			sourceTree = "<group>";
-		};
-		FFE2BE0D7339249298CFAD8DBB732337 /* M13Checkbox */ = {
-			isa = PBXGroup;
-			children = (
-				A9B5479B23B829962BA85B55F1E8DCD0 /* M13Checkbox.swift */,
-				48F11136B5C808572EDA6AA410122B0B /* M13Checkbox+IB.swift */,
-				73819EC8CFA651C32C5EBB3EFF10EDFF /* M13CheckboxAnimationPresets.swift */,
-				94172DADC7B1B08CBB7A6F9AD6F0FD63 /* M13CheckboxBounceManager.swift */,
-				695FB10AF4B104AEE4150D7C38D4D365 /* M13CheckboxDotManager.swift */,
-				797B4AC50CEC7FA20FFE627AA67699A5 /* M13CheckboxDotPathPresets.swift */,
-				0C9A6B3C38094CD06FAEFB72F46CB889 /* M13CheckboxExpandManager.swift */,
-				C2FBFAF10E6012FFE0B27A022F48C42E /* M13CheckboxFadeManager.swift */,
-				167F65F44949F6F0C74983B0776A3AC2 /* M13CheckboxFillManager.swift */,
-				156201DC332CA7F99D4A835EE1B66263 /* M13CheckboxFlatManager.swift */,
-				76BF060B96433FE95A1C8911E72AC7D8 /* M13CheckboxGestureRecognizer.swift */,
-				62AB2352367380ED19526058024C97AA /* M13CheckboxManager.swift */,
-				770632CFE8867210B16FC97C553A2F81 /* M13CheckboxPathPresets.swift */,
-				6C3E87E6F7E937D2369E22D32F76CDA1 /* M13CheckboxSpiralManager.swift */,
-				CFEF06ECE18BF50F70D642C16CB93586 /* M13CheckboxSpiralPathPresets.swift */,
-				5478D75A3D1F783DD0B4CBC528E31854 /* M13CheckboxStrokeManager.swift */,
-				D9DC24E33E051BAE0B82357C2513EB2B /* Support Files */,
-			);
-			name = M13Checkbox;
-			path = M13Checkbox;
+			name = Crashlytics;
+			path = Crashlytics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -999,7 +1055,7 @@
 /* Begin XCBuildConfiguration section */
 		06902EAC20D5219EBCDC8944DF9C1053 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 703199E2D9EAD521AC507FD21EC39908 /* IGColorPicker.xcconfig */;
+			baseConfigurationReference = B2C118FF7DCC422F551A4C3C78CBB033 /* IGColorPicker.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1159,7 +1215,7 @@
 		};
 		313891CC7F1018511F289523D81B84AD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 581E20C2BC46EEC82789B2C56C9C808C /* JTAppleCalendar.xcconfig */;
+			baseConfigurationReference = 7985A989FA18C833BDF828E7AA0F89F0 /* JTAppleCalendar.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1194,7 +1250,7 @@
 		};
 		81789BBB63F757D057F44D5102C5B811 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BFC675299214D3F5FBB983148A5B7A82 /* Spring.xcconfig */;
+			baseConfigurationReference = 31A78DD5529F47211C7990683318B3E1 /* Spring.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1228,7 +1284,7 @@
 		};
 		A1B3830997A51E88D8F8ADB0AA20F877 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 581E20C2BC46EEC82789B2C56C9C808C /* JTAppleCalendar.xcconfig */;
+			baseConfigurationReference = 7985A989FA18C833BDF828E7AA0F89F0 /* JTAppleCalendar.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1306,7 +1362,7 @@
 		};
 		B5021E53B013CF2A669FE940CC9422FE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EBD409DC3B284D996F3BBA104728466D /* DynamicColor.xcconfig */;
+			baseConfigurationReference = 8016F7C02BB807C01E966DEE59B4503A /* DynamicColor.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1340,7 +1396,7 @@
 		};
 		BBED38560E22A8DF15C969CB66135339 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54A7A294617B2FEB6908E2FC2DAEBB63 /* M13Checkbox.xcconfig */;
+			baseConfigurationReference = 0BF4814E5A9169B9979915D143C3C231 /* M13Checkbox.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1375,7 +1431,7 @@
 		};
 		C1F479D2DBB06A9159EB43D5CC75225C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 703199E2D9EAD521AC507FD21EC39908 /* IGColorPicker.xcconfig */;
+			baseConfigurationReference = B2C118FF7DCC422F551A4C3C78CBB033 /* IGColorPicker.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1409,7 +1465,7 @@
 		};
 		D47E4B61F3B70062F8AC0D620CFF6D00 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EBD409DC3B284D996F3BBA104728466D /* DynamicColor.xcconfig */;
+			baseConfigurationReference = 8016F7C02BB807C01E966DEE59B4503A /* DynamicColor.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1444,7 +1500,7 @@
 		};
 		DAAD51DBB1EEA6C5DDD1AE69C08BB679 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BFC675299214D3F5FBB983148A5B7A82 /* Spring.xcconfig */;
+			baseConfigurationReference = 31A78DD5529F47211C7990683318B3E1 /* Spring.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1479,7 +1535,7 @@
 		};
 		F2B45FC948D937CB40A3BAC8ED952F7F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54A7A294617B2FEB6908E2FC2DAEBB63 /* M13Checkbox.xcconfig */;
+			baseConfigurationReference = 0BF4814E5A9169B9979915D143C3C231 /* M13Checkbox.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";

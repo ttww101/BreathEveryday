@@ -9,6 +9,8 @@ target 'BreathEveryday' do
   pod 'IGColorPicker'
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
   pod 'DynamicColor', '~> 3.3'
+  pod 'Fabric’
+  pod 'Crashlytics'
 
   # Pods for BreathEveryday
 end
