@@ -11,6 +11,7 @@ import CoreData
 import IGColorPicker
 import Spring
 import DynamicColor
+import Crashlytics
 
 enum Mode {
     case normal
@@ -778,6 +779,8 @@ class HomeViewController: UIViewController {
     
     func btnShopBtn() {
         
+//        Crashlytics.sharedInstance().crash()
+
     }
     
     func btnQuoteBtn(sender: UIButton) {
