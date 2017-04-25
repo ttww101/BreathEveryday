@@ -34,7 +34,7 @@ enum CustomButton {
         case .remindTime:
             
             button.setImage(#imageLiteral(resourceName: "Timer-48"), for: .normal)
-            button.frame = CGRect(x: 0, y: 0, width: 60, height: 31)
+            button.frame = CGRect(x: 0, y: 0, width: 60, height: 25)
             
         case .calender:
             

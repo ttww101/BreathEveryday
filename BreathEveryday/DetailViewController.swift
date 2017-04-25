@@ -26,6 +26,7 @@ class DetailViewController: UIViewController {
         
         textView.delegate = self
         textView.text = noteData
+        
         //notification for constraints
         textViewBottomConstraint = NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -10)
         view.addConstraint(textViewBottomConstraint!)
@@ -74,6 +75,30 @@ extension DetailViewController: UITextViewDelegate {
         
         EventManager.shared.update(row: entryRow, content: nil, note: textView.text,calendarEvent: nil, alarmDate: nil, isSetNotification: nil)
         EventManager.shared.appDelegate.saveContext()
+        
+        if let event = EventManager.shared.read(row: entryRow) {
+            
+            if let calendarEventID = event.calendarEventID,
+                let title = event.content,
+                let note = event.note,
+                let date = event.alarmStartTime {
+                
+                removeEvent(identifier: calendarEventID)
+                
+                let calendarIdentifier = insertEvent(title: title, notes: note, startDate: date as Date, EndDate: date as Date)
+                
+                EventManager.shared.update(row: entryRow,
+                                           content: nil,
+                                           note: nil,
+                                           calendarEvent: calendarIdentifier,
+                                           alarmDate: nil,
+                                           isSetNotification: nil)
+
+            }
+        }
+        
+        
+
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,

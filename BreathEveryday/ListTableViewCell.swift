@@ -199,8 +199,6 @@ extension ListTableViewCell: UITextViewDelegate {
             starBtn.setImage(#imageLiteral(resourceName: "Star-48"), for: .normal)
         }
         
-        //Read Remind Data?
-        
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -248,6 +246,7 @@ extension ListTableViewCell {
         var day = 0
         let hour = alarmPicker.selectedRow(inComponent: 0)
         let minutes = alarmPicker.selectedRow(inComponent: 2)
+        print(alarmPicker)
         
         // TODO: Set the alarm & store data
         if let jtvc = calendarJTVC {
@@ -351,10 +350,7 @@ extension ListTableViewCell {
 
     func btnStarToolBar(sender: UIButton) {
         
-        if !isSetNotification {
-            isSetNotification = true
-            starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
-        } else {
+        if isSetNotification {
             isSetNotification = false
             starBtn.setImage(#imageLiteral(resourceName: "Star-48"), for: .normal)
         }
@@ -363,10 +359,10 @@ extension ListTableViewCell {
 
     func btnCalendarToolBar(sender: UIButton) {
         
-        //        if !isSetNotification {
-        //            isSetNotification = true
-        //            starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
-        //        }
+        if !isSetNotification {
+            isSetNotification = true
+            starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+        }
         
         if calendarView.superview == nil {
             createCalendarPopView(xPos: sender.frame.midX)
@@ -389,6 +385,12 @@ extension ListTableViewCell {
 
     func btnAlarmToolBar(sender: UIButton) {
         
+        // set notification
+        if !isSetNotification {
+            isSetNotification = true
+            starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+        }
+
         if alarmView.superview == nil {
             createAlarmPopView(xPos: sender.frame.midX)
         } else {
@@ -399,6 +401,10 @@ extension ListTableViewCell {
             }
         }
         
+        //set current time
+        setupSelectedTime()
+
+        // other tool bar dismiss
         if !calendarView.isHidden {
             calendarView.isHidden = true
         }
@@ -455,8 +461,15 @@ extension ListTableViewCell {
             alarmPicker.selectRow(hour, inComponent: 0, animated: true)
             let min = calendar.component(.minute, from: date)
             alarmPicker.selectRow(min, inComponent: 2, animated: true)
+        } else {
+            let date = Date()
+            let calendar = Calendar.current
+            var hour = calendar.component(.hour, from: date)
+            if hour + 1 >= 24 {
+                hour = 0
+            }
+            alarmPicker.selectRow(hour + 1, inComponent: 0, animated: true)
         }
-        
     }
     
     func createAlarmPopView(xPos: CGFloat) {
@@ -483,18 +496,6 @@ extension ListTableViewCell {
         alarmPicker.delegate = self
         alarmPicker.dataSource = self
         alarmView.addSubview(alarmPicker)
-        //set current time
-        if dateAlarmSet == nil {
-            let date = Date()
-            let calendar = Calendar.current
-            var hour = calendar.component(.hour, from: date)
-            if hour + 1 >= 24 {
-                hour = 0
-            }
-            alarmPicker.selectRow(hour + 1, inComponent: 0, animated: true)
-        } else {
-            setupSelectedTime()
-        }
         
         //constraints
         alarmPicker.translatesAutoresizingMaskIntoConstraints = false

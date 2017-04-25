@@ -100,7 +100,6 @@ class ListViewController: UIViewController {
             UIView.animate(withDuration: 1, animations: {
                 //nav
                 let backItem = UIBarButtonItem()
-                backItem.title = ""
                 viewController.navigationController?.navigationBar.tintColor = UIColor.black
                 self.navigationItem.backBarButtonItem = backItem
                 
@@ -124,7 +123,6 @@ class ListViewController: UIViewController {
     //Notification Center
     func handleKeyboardNotification(notification: NSNotification) {
         
-        
         if let userInfo = notification.userInfo {
             if let rectInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
                 
@@ -147,49 +145,6 @@ class ListViewController: UIViewController {
                 
             }
         }
-    }
-    
-    //Gesture
-    func handleTapGesture(recognizer: UIGestureRecognizer) {
-        
-    }
-    
-    
-    func handleLeftSwipe(recognizer: UIPanGestureRecognizer) {
-        
-        let vel = recognizer.velocity(in: self.listTableView)
-        if vel.x < 0 {
-            
-            switch recognizer.state {
-                
-            case .began:
-                break
-                
-            case .ended:
-                if isTyping == false && recognizer.location(in: self.listTableView).x < 44  {
-                    let location = recognizer.location(in: self.listTableView)
-                    
-                    if let indexPath = listTableView.indexPathForRow(at: location) {
-                        
-                        //TODO: collection of O2
-                        
-                    }
-                    
-                    //animation : reveal delete mark
-                }
-            default:
-                break
-                
-            }
-            
-        } else if vel.x > 0 {
-            //animation : disappear delete mark
-            if recognizer.location(in: self.listTableView).x == 44 {
-                print("44 right")
-            }
-            
-        }
-        
     }
     
 }
