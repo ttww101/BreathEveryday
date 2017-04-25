@@ -72,7 +72,7 @@ class HomeViewController: UIViewController {
         quoteView.backgroundColor = UIColor(colorLiteralRed: 245/255, green: 245/255, blue: 250/255, alpha: 0.9)
         quoteView.layer.borderWidth = 2
         quoteLbl.numberOfLines = 0
-        quoteLbl.font = UIFont(name: "HelveticaNeue", size: 16)
+        quoteLbl.font = UIFont(name: "Menlo", size: 16)
         quoteLbl.adjustsFontSizeToFitWidth = true
         quoteButton.addTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
         quoteView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissQuote)))
