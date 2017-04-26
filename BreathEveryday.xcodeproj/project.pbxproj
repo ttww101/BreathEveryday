@@ -215,7 +215,7 @@
 				TargetAttributes = {
 					F4FA6A961E7FB0F100C2E46E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5VBM73Y9G2;
+						DevelopmentTeam = RG55XLA874;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -461,11 +461,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 5VBM73Y9G2;
+				DEVELOPMENT_TEAM = RG55XLA874;
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = PrototypeB.BreathEveryday;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -476,11 +476,11 @@
 			baseConfigurationReference = 52DDEAA6C3601664D4687571 /* Pods-BreathEveryday.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5VBM73Y9G2;
+				DEVELOPMENT_TEAM = RG55XLA874;
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = PrototypeB.BreathEveryday;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

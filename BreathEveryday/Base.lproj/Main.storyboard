@@ -25,7 +25,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grassland" translatesAutoresizingMaskIntoConstraints="NO" id="4Cy-BZ-aW7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-yd-5aA">
+                            <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-yd-5aA">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.1661240541" green="0.92653473980000001" blue="0.1941396849" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -148,7 +148,7 @@
                                 <color key="tintColor" red="0.16706953399999999" green="0.90724143400000001" blue="0.2008118277" alpha="0.80570419520000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="titleEdgeInsets" minX="-50" minY="65" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="15" maxX="-42" maxY="0.0"/>
-                                <state key="normal" title="Done" image="Courses-50">
+                                <state key="normal" title="Done" image="Checkmark Filled-50">
                                     <color key="titleColor" red="0.16706953399999999" green="0.90724143400000001" blue="0.2008118277" alpha="0.80570419520000003" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
@@ -543,7 +543,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Courses-50" width="50" height="50"/>
+        <image name="Checkmark Filled-50" width="50" height="50"/>
         <image name="Grassland" width="750" height="1334"/>
         <image name="Home-50" width="50" height="50"/>
         <image name="Message-50" width="50" height="50"/>

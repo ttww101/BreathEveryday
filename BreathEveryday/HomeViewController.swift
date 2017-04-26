@@ -296,7 +296,7 @@ class HomeViewController: UIViewController {
             self.colorPickerViewConstraint?.constant = -44
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
                 self.view.layoutIfNeeded()
-                self.alertLabel(replaceString: "Please choose a category", isHidden: false)
+                self.alertLabel(replaceString: "Please choose a category", isHidden: false, color: .red)
             }, completion: { (completed) in })
         })
         
@@ -479,7 +479,7 @@ class HomeViewController: UIViewController {
         
         //delete animation
         if isDeleteSuccess {
-            alertLabel(replaceString: "Deleted", isHidden: true)
+            alertLabel(replaceString: "Deleted", isHidden: true, color: .red)
         }
     }
     
@@ -575,7 +575,7 @@ class HomeViewController: UIViewController {
         //button action & appearance change
         switchMode(to: .setup)
         
-        alertLabel(replaceString: "Please select an item", isHidden: false)
+        alertLabel(replaceString: "Please select an item", isHidden: false, color: UIColor().blueMiddleGray())
     }
     
     func switchMode(to mode: Mode) {
@@ -689,12 +689,14 @@ class HomeViewController: UIViewController {
             removeAllAndSaveCoreData()
             
         } else {
-            alertLabel(replaceString: "please choose a category", isHidden: true)
+            alertLabel(replaceString: "please choose a category", isHidden: true, color: .red)
         }
     }
     
-    func alertLabel(replaceString: String, isHidden: Bool) {
+    func alertLabel(replaceString: String, isHidden: Bool, color: UIColor) {
         deleteSuccessLabel.text = replaceString
+        deleteSuccessLabel.textColor = color
+        deleteSuccessLabel.layer.borderColor = color.cgColor
         let maxSize = CGSize(width: quoteView.frame.width - 10, height: view.frame.maxY)
         let size = deleteSuccessLabel.sizeThatFits(maxSize)
         deleteLabelConstraint?.constant = size.width + 50
