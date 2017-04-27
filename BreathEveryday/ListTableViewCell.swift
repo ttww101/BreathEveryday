@@ -381,16 +381,23 @@ extension ListTableViewCell {
 
     func btnCalendarToolBar(sender: UIButton) {
         
-        if !isSetNotification {
-            isSetNotification = true
-            starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
-        }
-        
         if calendarView.superview == nil {
+            
             createCalendarPopView(xPos: sender.frame.midX)
+            if !isSetNotification {
+                isSetNotification = true
+                starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+            }
+            
         } else {
             if calendarView.isHidden {
+                
                 calendarView.isHidden = false
+                if !isSetNotification {
+                    isSetNotification = true
+                    starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+                }
+                
             } else {
                 calendarView.isHidden = true
             }
@@ -407,17 +414,25 @@ extension ListTableViewCell {
 
     func btnAlarmToolBar(sender: UIButton) {
         
-        // set notification
-        if !isSetNotification {
-            isSetNotification = true
-            starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
-        }
-
         if alarmView.superview == nil {
+            
             createAlarmPopView(xPos: sender.frame.midX)
+            
+            if !isSetNotification {
+                isSetNotification = true
+                starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+            }
+            
         } else {
+            
             if alarmView.isHidden { //display
+                
                 alarmView.isHidden = false
+                if !isSetNotification {
+                    isSetNotification = true
+                    starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+                }
+                
             } else {
                 alarmView.isHidden = true
             }
@@ -439,9 +454,17 @@ extension ListTableViewCell {
         
         if remindtimeView.superview == nil {
             createRemindTimePopView(midXPos: sender.frame.midX)
+            if !isSetNotification {
+                isSetNotification = true
+                starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+            }
         } else {
             if remindtimeView.isHidden { //display
                 remindtimeView.isHidden = false
+                if !isSetNotification {
+                    isSetNotification = true
+                    starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+                }
             } else {
                 remindtimeView.isHidden = true
             }
