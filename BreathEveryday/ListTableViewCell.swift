@@ -32,6 +32,7 @@ class ListTableViewCell: UITableViewCell {
     lazy var alarmView = UIView()
     lazy var remindtimeView = UIView()
     lazy var alarmPicker = UIPickerView()
+    lazy var remindTimePicker = UIPickerView()
     lazy var calendarView = UIView()
     var calendarJTVC: CalendarViewController? = nil
     weak var calendarPopupViewDelegate:calendarPopupViewProtocol?
@@ -87,47 +88,70 @@ class ListTableViewCell: UITableViewCell {
 //-----------------------------------
 extension ListTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
     
-    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        if component == 1 {
-            return 15
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        
+        if pickerView == alarmPicker {
+            return 30
         } else {
-            return 55
+            return 30
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        
+        if pickerView == alarmPicker {
+            if component == 1 {
+                return 15
+            } else {
+                return 55
+            }
+        } else {
+            return 160
         }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        if component == 0 {
-            return arrHours.count
-        } else if component == 2 {
-            return arrMinutes.count
+        if pickerView == alarmPicker {
+            return 3
         } else {
             return 1
         }
     }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == alarmPicker {
+            if component == 0 {
+                return arrHours.count
+            } else if component == 2 {
+                return arrMinutes.count
+            } else {
+                return 1
+            }
+        } else {
+            return arrAlertTime.count
+        }
+    }
+    
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
-        if component == 0 {
+        if pickerView == alarmPicker {
             
-            let attributedString = NSAttributedString(string: arrHours[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
-            return attributedString
-            
-        } else if component == 2 {
-            
-            let attributedString = NSAttributedString(string: arrMinutes[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
-            return attributedString
+            if component == 0 {
+                let attributedString = NSAttributedString(string: arrHours[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
+                return attributedString
+            } else if component == 2 {
+                let attributedString = NSAttributedString(string: arrMinutes[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
+                return attributedString
+            } else {
+                return NSAttributedString(string: ":", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            }
             
         } else {
             
-            return NSAttributedString(string: ":", attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return NSAttributedString(string: arrAlertTime[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
             
         }
-        
     }
     
     
@@ -194,7 +218,7 @@ extension ListTableViewCell: UITextViewDelegate {
         //set tool bar status
         if isSetNotification {
             starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
-            setupSelectedTime()
+            setupAlarmPickerSelectedTime()
         } else {
             starBtn.setImage(#imageLiteral(resourceName: "Star-48"), for: .normal)
         }
@@ -246,9 +270,8 @@ extension ListTableViewCell {
         var day = 0
         let hour = alarmPicker.selectedRow(inComponent: 0)
         let minutes = alarmPicker.selectedRow(inComponent: 2)
-        print(alarmPicker)
         
-        // TODO: Set the alarm & store data
+        // set the alarm & store data
         if let jtvc = calendarJTVC {
             let selectedDate = jtvc.calendarView.selectedDates[0]
             let calendar = Calendar.current
@@ -294,7 +317,7 @@ extension ListTableViewCell {
         //insert event
         let calendarIdentifier = insertEvent(title: textView.text, notes: savedNote, startDate: date, EndDate: date)
         
-        //TODO: store event identifier
+        //store event identifier
         if let calendarIdentifier = calendarIdentifier {
             
             EventManager.shared.update(row: indexRow,
@@ -305,7 +328,6 @@ extension ListTableViewCell {
                                        isSetNotification: isSetNotification)
             
         }
-        // TODO: Display the setup info of the event
         
     }
     
@@ -402,7 +424,7 @@ extension ListTableViewCell {
         }
         
         //set current time
-        setupSelectedTime()
+        setupAlarmPickerSelectedTime()
 
         // other tool bar dismiss
         if !calendarView.isHidden {
@@ -416,7 +438,7 @@ extension ListTableViewCell {
     func btnRemindTimeToolBar(sender: UIButton) {
         
         if remindtimeView.superview == nil {
-//            createRemindTimePopView(midXPos: sender.frame.midX)
+            createRemindTimePopView(midXPos: sender.frame.midX)
         } else {
             if remindtimeView.isHidden { //display
                 remindtimeView.isHidden = false
@@ -447,13 +469,8 @@ extension ListTableViewCell {
         return date
         
     }
-}
-
-// MARK: Appearance
-//------------------------------------
-extension ListTableViewCell {
     
-    func setupSelectedTime() {
+    func setupAlarmPickerSelectedTime() {
         
         if let date = dateAlarmSet {
             let calendar = Calendar.current
@@ -471,6 +488,11 @@ extension ListTableViewCell {
             alarmPicker.selectRow(hour + 1, inComponent: 0, animated: true)
         }
     }
+}
+
+// MARK: Appearance
+//------------------------------------
+extension ListTableViewCell {
     
     func createAlarmPopView(xPos: CGFloat) {
         
@@ -518,14 +540,38 @@ extension ListTableViewCell {
         remindtimeView.layer.cornerRadius = 10
         remindtimeView.layer.masksToBounds = true
         remindtimeView.isHidden = false
-        let width: CGFloat = 160
+        let width: CGFloat = 130
+        let height: CGFloat = 110
         superView.addSubview(remindtimeView)
         remindtimeView.translatesAutoresizingMaskIntoConstraints = false
         remindtimeView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
         remindtimeView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: midXPos - center.x).isActive = true
-        remindtimeView.heightAnchor.constraint(equalToConstant: width).isActive = true
+        remindtimeView.heightAnchor.constraint(equalToConstant: height).isActive = true
         remindtimeView.widthAnchor.constraint(equalToConstant: width).isActive = true
         
+        //pickerView
+        remindTimePicker.delegate = self
+        remindTimePicker.dataSource = self
+        remindtimeView.addSubview(remindTimePicker)
+        
+        let beforeLbl = UILabel()
+        beforeLbl.text = "Before"
+        beforeLbl.textColor = .white
+        beforeLbl.font = UIFont.systemFont(ofSize: 20)
+        beforeLbl.textAlignment = .center
+        remindtimeView.addSubview(beforeLbl)
+        
+        //constraints
+        beforeLbl.translatesAutoresizingMaskIntoConstraints = false
+        remindTimePicker.translatesAutoresizingMaskIntoConstraints = false
+        beforeLbl.topAnchor.constraint(equalTo: remindtimeView.topAnchor, constant: 8).isActive = true
+        beforeLbl.bottomAnchor.constraint(equalTo: remindtimeView.topAnchor, constant: 35).isActive = true
+        beforeLbl.leadingAnchor.constraint(equalTo: remindtimeView.leadingAnchor, constant: 10).isActive = true
+        beforeLbl.trailingAnchor.constraint(equalTo: remindtimeView.trailingAnchor, constant: -5).isActive = true
+        remindTimePicker.topAnchor.constraint(equalTo: beforeLbl.centerYAnchor, constant: 5).isActive = true
+        remindTimePicker.bottomAnchor.constraint(equalTo: remindtimeView.bottomAnchor, constant: 0).isActive = true
+        remindTimePicker.leadingAnchor.constraint(equalTo: remindtimeView.leadingAnchor, constant: -18).isActive = true
+        remindTimePicker.trailingAnchor.constraint(equalTo: remindtimeView.trailingAnchor, constant: 0).isActive = true
     }
     
     

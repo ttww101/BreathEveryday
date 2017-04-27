@@ -58,9 +58,6 @@ class ListViewController: UIViewController {
         listTableView.estimatedRowHeight = 77
         listTableView.allowsSelection = false
         listTableView.register(UINib(nibName: Identifier.listCell.rawValue, bundle: nil), forCellReuseIdentifier: Identifier.listCell.rawValue)
-        //swipe
-//        let leftSwipe = UIPanGestureRecognizer(target: self, action: #selector(handleLeftSwipe))
-//        view.addGestureRecognizer(leftSwipe)
         
         //notification for constraints
         tableViewBottomConstraint = NSLayoutConstraint(item: listTableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
@@ -128,8 +125,8 @@ class ListViewController: UIViewController {
                 
                 //get rect
                 let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+                
                 tableViewBottomConstraint?.constant = isKeyboardShowing ? -rectInfo.height : 0
-                heightOfKeyboard = isKeyboardShowing ? rectInfo.height : 0
                 
                 isTyping = isKeyboardShowing ? true : false
                 
