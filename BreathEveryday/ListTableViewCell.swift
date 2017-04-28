@@ -676,6 +676,7 @@ extension ListTableViewCell {
     
     func createCalendarPopView(xPos: CGFloat) {
         
+        //FIXME: iPhone 5S suitable size 
         guard let superView = textView.superview?.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview?.superview else {
             return
         }

@@ -25,11 +25,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grassland" translatesAutoresizingMaskIntoConstraints="NO" id="4Cy-BZ-aW7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-yd-5aA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.1661240541" green="0.92653473980000001" blue="0.1941396849" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sun-48" translatesAutoresizingMaskIntoConstraints="NO" id="iKL-Bq-tfO" customClass="SpringImageView" customModule="Spring">
                                 <rect key="frame" x="330" y="30" width="30" height="30"/>
                                 <constraints>
@@ -138,12 +133,23 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fdS-4w-R4o">
-                                <rect key="frame" x="37" y="30" width="300" height="90"/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ca-ex-v6o">
+                                <rect key="frame" x="67" y="477" width="80" height="100"/>
+                                <color key="backgroundColor" red="0.23921568630000001" green="0.22352941179999999" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="uUV-mq-vB3"/>
+                                    <constraint firstAttribute="width" constant="65" id="pUz-Wj-97L"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <color key="tintColor" red="0.16706953399999999" green="0.90724143400000001" blue="0.2008118277" alpha="0.80570419520000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="titleEdgeInsets" minX="-50" minY="65" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="15" maxX="-42" maxY="0.0"/>
+                                <state key="normal" title="Done" image="Checkmark Filled-50">
+                                    <color key="titleColor" red="0.16706953399999999" green="0.90724143400000001" blue="0.2008118277" alpha="0.80570419520000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fdS-4w-R4o">
+                                <rect key="frame" x="61" y="30" width="278" height="90"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deleted" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Me-1e-Ezf" customClass="SpringLabel" customModule="Spring">
                                 <rect key="frame" x="90" y="438" width="163" height="21"/>
@@ -161,20 +167,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ca-ex-v6o">
-                                <rect key="frame" x="67" y="477" width="80" height="100"/>
-                                <color key="backgroundColor" red="0.23921568630000001" green="0.22352941179999999" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="65" id="pUz-Wj-97L"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
-                                <color key="tintColor" red="0.16706953399999999" green="0.90724143400000001" blue="0.2008118277" alpha="0.80570419520000003" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="titleEdgeInsets" minX="-50" minY="65" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="15" maxX="-42" maxY="0.0"/>
-                                <state key="normal" title="Done" image="Checkmark Filled-50">
-                                    <color key="titleColor" red="0.16706953399999999" green="0.90724143400000001" blue="0.2008118277" alpha="0.80570419520000003" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-yd-5aA">
+                                <rect key="frame" x="-45" y="-30" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.1661240541" green="0.92653473980000001" blue="0.1941396849" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -192,6 +189,7 @@
                             <constraint firstItem="P5I-yd-5aA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Vvs-sa-791"/>
                             <constraint firstItem="X4R-1p-azy" firstAttribute="top" secondItem="ASp-IK-9Wr" secondAttribute="bottom" constant="10" id="X97-y2-Yh4"/>
                             <constraint firstItem="ASp-IK-9Wr" firstAttribute="top" secondItem="m2n-UU-Y66" secondAttribute="bottom" constant="10" id="Y8K-06-oNS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fdS-4w-R4o" secondAttribute="trailing" constant="20" id="bz7-Lt-NgK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4ca-ex-v6o" secondAttribute="bottom" id="h0d-Du-1qG"/>
                             <constraint firstItem="Xm5-RR-JRL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="ihg-Vr-Aiz"/>
                             <constraint firstItem="Xm5-RR-JRL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="jHl-o6-BMM"/>
