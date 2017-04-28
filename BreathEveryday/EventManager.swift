@@ -136,7 +136,7 @@ class EventManager {
         
     }
     
-    func update(row: Int, content: String?, note: String?, calendarEvent: String?, alarmDate: NSDate?, isSetNotification: Bool?) {
+    func update(row: Int, content: String?, note: String?, calendarEvent: String?, alarmDate: NSDate?, alarmIntervalOffset: Double?, isSetNotification: Bool?) {
         
         let moc = appDelegate.persistentContainer.viewContext
         
@@ -164,6 +164,10 @@ class EventManager {
             
             if let alarmDate = alarmDate {
                 event.alarmStartTime = alarmDate
+            }
+            
+            if let alarmIntervalOffset = alarmIntervalOffset {
+                event.alarmIntervalOffset = alarmIntervalOffset
             }
             
             if let isSetNotification = isSetNotification {

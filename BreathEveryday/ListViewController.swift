@@ -200,9 +200,8 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
                 
                 UIView.animate(withDuration: 0, animations: {
                     
-                    self.listTableView.beginUpdates()
                     self.listTableView.insertRows(at: [newIndexPath], with: .fade)
-                    self.listTableView.endUpdates()
+                    
                 } , completion: { (_) in
                     
                     UIView.animate(withDuration: 0.1, animations: {
@@ -228,30 +227,19 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
         case .delete:
             
             if let indexPath = indexPath {
-                listTableView.beginUpdates()
                 listTableView.deleteRows(at: [indexPath], with: .fade)
-                listTableView.endUpdates()
             }
             
         case .update:
             
             if let indexPath = indexPath {
-                listTableView.beginUpdates()
                 listTableView.reloadRows(at: [indexPath], with: .fade)
-                listTableView.endUpdates()
             }
             
         case .move:
             
-            if let indexPath = indexPath {
-                listTableView.beginUpdates()
-                listTableView.deleteRows(at: [indexPath], with: .fade)
-                listTableView.endUpdates()
-            }
-            if let indexPath = newIndexPath {
-                listTableView.beginUpdates()
-                listTableView.insertRows(at: [indexPath], with: .fade)
-                listTableView.endUpdates()
+            if let indexPath = indexPath, let newIndexPath =  newIndexPath{
+                listTableView.moveRow(at: indexPath, to: newIndexPath)
             }
             
         }

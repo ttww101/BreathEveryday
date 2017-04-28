@@ -41,7 +41,10 @@ class ListTableViewCell: UITableViewCell {
     var indexRow: Int = 0
     var isSetNotification: Bool = false
     var eventID: NSManagedObjectID?
-    var dateAlarmSet: Date?
+    var alarmDateSet: Date?
+    var alarmIntervalOffset: Double?
+    var isBtnAlarmSet = false
+    var isBtnRemindTimeSet = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -78,7 +81,9 @@ class ListTableViewCell: UITableViewCell {
         
         isSetNotification = event.isSetNotification
         
-        dateAlarmSet = event.alarmStartTime as Date?
+        alarmDateSet = event.alarmStartTime as Date?
+        
+        alarmIntervalOffset = event.alarmIntervalOffset
         
     }
     
@@ -172,6 +177,20 @@ extension ListTableViewCell: UITextViewDelegate {
             self.contentView.layoutIfNeeded()
         }, completion: { (completed) in })
         
+        //save contents
+        saveContent()
+        
+        if isSetNotification {
+            saveRemindData()
+        }
+        
+//        EventManager.shared.appDelegate.saveContext()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        appDelegate.saveContext()
+        
+        
         //disappear toolbar
         if !self.remindtimeView.isHidden {
             self.remindtimeView.isHidden = true
@@ -183,16 +202,9 @@ extension ListTableViewCell: UITextViewDelegate {
             self.alarmView.isHidden = true
         }
         
-        //save contents
+        isBtnAlarmSet = false
+        isBtnRemindTimeSet = false
         print("End Editing")
-        saveContent()
-        
-        if isSetNotification {
-            saveRemindData()
-        }
-        
-        EventManager.shared.appDelegate.saveContext()
-        
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,
@@ -218,7 +230,8 @@ extension ListTableViewCell: UITextViewDelegate {
         //set tool bar status
         if isSetNotification {
             starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
-            setupAlarmPickerSelectedTime()
+            setupAlarmPickerSelectedRow()
+            setupRemindTimePickerSelectedRow()
         } else {
             starBtn.setImage(#imageLiteral(resourceName: "Star-48"), for: .normal)
         }
@@ -259,6 +272,7 @@ extension ListTableViewCell {
                                    note: nil,
                                    calendarEvent: nil,
                                    alarmDate: nil,
+                                   alarmIntervalOffset: nil,
                                    isSetNotification: isSetNotification)
         
     }
@@ -268,8 +282,40 @@ extension ListTableViewCell {
         var year = 0
         var month = 0
         var day = 0
-        let hour = alarmPicker.selectedRow(inComponent: 0)
-        let minutes = alarmPicker.selectedRow(inComponent: 2)
+        var hour = 0
+        var minutes = 0
+        
+        //process hour & min
+        if isBtnAlarmSet {
+            
+            let selectedHour = alarmPicker.selectedRow(inComponent: 0)
+            let selectedMin =  alarmPicker.selectedRow(inComponent: 0)
+            if selectedHour >= 0 {
+                hour = alarmPicker.selectedRow(inComponent: 0)
+            }
+            if selectedMin >= 0 {
+                minutes = alarmPicker.selectedRow(inComponent: 2)
+            }
+            
+        } else {
+            
+            if let date = alarmDateSet {
+                let calendar = Calendar.current
+                let hourCal = calendar.component(.hour, from: date)
+                let minCal = calendar.component(.minute, from: date)
+                hour = hourCal
+                minutes = minCal
+            } else {
+                let date = Date()
+                let calendar = Calendar.current
+                var hourCal = calendar.component(.hour, from: date)
+                if hourCal + 1 >= 24 {
+                    hourCal = 0
+                }
+                hour = hourCal
+            }
+            
+        }
         
         // set the alarm & store data
         if let jtvc = calendarJTVC {
@@ -296,7 +342,7 @@ extension ListTableViewCell {
                 return
             }
         
-        dateAlarmSet = date
+        alarmDateSet = date
         
         var savedNote = ""
         
@@ -314,8 +360,20 @@ extension ListTableViewCell {
             
         }
         
+        //process remindTime
+        var relativeOffset:Double = 0
+        if isBtnRemindTimeSet {
+            let remindtimeSelectedRow = remindTimePicker.selectedRow(inComponent: 0)
+            relativeOffset = arrAlertTimeInterval[remindtimeSelectedRow]
+            alarmIntervalOffset = relativeOffset
+        } else {
+            if let intervalOffset = alarmIntervalOffset {
+                relativeOffset = intervalOffset
+            }
+        }
+        
         //insert event
-        let calendarIdentifier = insertEvent(title: textView.text, notes: savedNote, startDate: date, EndDate: date)
+        let calendarIdentifier = insertEvent(title: textView.text, notes: savedNote, startDate: date, EndDate: date, relativeOffset: relativeOffset * -1)
         
         //store event identifier
         if let calendarIdentifier = calendarIdentifier {
@@ -325,6 +383,7 @@ extension ListTableViewCell {
                                        note: nil,
                                        calendarEvent: calendarIdentifier,
                                        alarmDate: date as NSDate,
+                                       alarmIntervalOffset: alarmIntervalOffset,
                                        isSetNotification: isSetNotification)
             
         }
@@ -416,6 +475,7 @@ extension ListTableViewCell {
         
         if alarmView.superview == nil {
             
+            isBtnAlarmSet = true
             createAlarmPopView(xPos: sender.frame.midX)
             
             if !isSetNotification {
@@ -425,6 +485,7 @@ extension ListTableViewCell {
             
         } else {
             
+            isBtnAlarmSet = true
             if alarmView.isHidden { //display
                 
                 alarmView.isHidden = false
@@ -438,10 +499,8 @@ extension ListTableViewCell {
             }
         }
         
-        //set current time
-        setupAlarmPickerSelectedTime()
+        setupAlarmPickerSelectedRow()
 
-        // other tool bar dismiss
         if !calendarView.isHidden {
             calendarView.isHidden = true
         }
@@ -453,22 +512,18 @@ extension ListTableViewCell {
     func btnRemindTimeToolBar(sender: UIButton) {
         
         if remindtimeView.superview == nil {
+            isBtnRemindTimeSet = true
             createRemindTimePopView(midXPos: sender.frame.midX)
-            if !isSetNotification {
-                isSetNotification = true
-                starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
-            }
         } else {
-            if remindtimeView.isHidden { //display
+            if remindtimeView.isHidden {
+                isBtnRemindTimeSet = true
                 remindtimeView.isHidden = false
-                if !isSetNotification {
-                    isSetNotification = true
-                    starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
-                }
             } else {
                 remindtimeView.isHidden = true
             }
         }
+        
+        setupRemindTimePickerSelectedRow()
         
         if !calendarView.isHidden {
             calendarView.isHidden = true
@@ -493,14 +548,16 @@ extension ListTableViewCell {
         
     }
     
-    func setupAlarmPickerSelectedTime() {
+    func setupAlarmPickerSelectedRow() {
         
-        if let date = dateAlarmSet {
+        if let date = alarmDateSet {
             let calendar = Calendar.current
             let hour = calendar.component(.hour, from: date)
-            alarmPicker.selectRow(hour, inComponent: 0, animated: true)
+            alarmPicker.selectRow(hour, inComponent: 0, animated: false)
             let min = calendar.component(.minute, from: date)
-            alarmPicker.selectRow(min, inComponent: 2, animated: true)
+            alarmPicker.selectRow(min, inComponent: 2, animated: false)
+            print(alarmPicker.selectedRow(inComponent: 0))
+            print(alarmPicker.selectedRow(inComponent: 2))
         } else {
             let date = Date()
             let calendar = Calendar.current
@@ -511,6 +568,25 @@ extension ListTableViewCell {
             alarmPicker.selectRow(hour + 1, inComponent: 0, animated: true)
         }
     }
+    
+    func setupRemindTimePickerSelectedRow() {
+        
+        if let intervalOffset = alarmIntervalOffset {
+            
+            var selectRow = 0
+            for i in 0...arrAlertTimeInterval.count {
+                if intervalOffset == arrAlertTimeInterval[i] {
+                    selectRow = i
+                    break
+                }
+            }
+            remindTimePicker.selectRow(selectRow, inComponent: 0, animated: true)
+            
+        } else {
+            remindTimePicker.selectRow(0, inComponent: 0, animated: true)
+        }
+    }
+    
 }
 
 // MARK: Appearance
@@ -621,7 +697,7 @@ extension ListTableViewCell {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
         calendarJTVC = vc
-        vc.dateAlarmSet = dateAlarmSet
+        vc.alarmDateSet = alarmDateSet
         vc.view.frame = self.calendarView.bounds
         calendarView.addSubview(vc.view)
         if self.calendarPopupViewDelegate != nil {

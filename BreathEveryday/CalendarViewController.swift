@@ -15,7 +15,7 @@ class CalendarViewController: UIViewController {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var monthLabel: UILabel!
     let formatter = DateFormatter()
-    var dateAlarmSet: Date? = nil
+    var alarmDateSet: Date? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class CalendarViewController: UIViewController {
             self.setupYearMonthOfCalendar(from: visibleDate)
         }
         //set initial date
-        if let dateSet = dateAlarmSet {
+        if let dateSet = alarmDateSet {
             calendarView.selectDates([dateSet])
             calendarView.scrollToDate(dateSet)
         } else {

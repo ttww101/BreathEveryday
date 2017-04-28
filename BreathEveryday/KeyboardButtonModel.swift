@@ -65,44 +65,6 @@ func adjustFrame(button: UIButton, width: CGFloat, height: CGFloat, image: UIIma
 
 let grayBlueColor = UIColor(colorLiteralRed: 148/255, green: 163/255, blue: 169/255, alpha: 1)
 
-var arrHours: [String] {
-    get {
-        var arr:[String] = []
-        for i in 0...23 {
-            let str = String(format: "%02d", i)
-            arr.append(str)
-        }
-        return arr
-    }
-}
-
-var arrMinutes: [String] {
-    get {
-        var arr:[String] = []
-        for i in 0...59 {
-            let str = String(format: "%02d", i)
-            arr.append(str)
-        }
-        return arr
-    }
-}
-
-var arrAlertTime: [String] {
-    get {
-        var arr:[String] = []
-        
-        arr.append("0 mins")
-        arr.append("5 mins")
-        arr.append("15 mins")
-        arr.append("1 hour")
-        arr.append("2 hours")
-        arr.append("1 day")
-        arr.append("2 days")
-        
-        return arr
-    }
-}
-
 
 
 

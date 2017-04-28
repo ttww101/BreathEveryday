@@ -9,7 +9,7 @@
 import EventKit
 import UIKit
 
-func insertEvent(title: String, notes: String, startDate: Date, EndDate: Date) -> String? {
+func insertEvent(title: String, notes: String, startDate: Date, EndDate: Date, relativeOffset: Double) -> String? {
     
     let eventStore = EKEventStore()
     let newEvent:EKEvent = EKEvent(eventStore: eventStore)
@@ -19,7 +19,7 @@ func insertEvent(title: String, notes: String, startDate: Date, EndDate: Date) -
     newEvent.endDate = EndDate
     newEvent.notes = notes
     newEvent.calendar = eventStore.defaultCalendarForNewEvents
-    newEvent.addAlarm(EKAlarm(relativeOffset: 0))
+    newEvent.addAlarm(EKAlarm(relativeOffset: relativeOffset))
     
     do {
         try eventStore.save(newEvent, span: .thisEvent, commit: true)
@@ -58,6 +58,60 @@ func removeEvent(identifier: String) {
         
     }
     
+}
+
+var arrHours: [String] {
+    get {
+        var arr:[String] = []
+        for i in 0...23 {
+            let str = String(format: "%02d", i)
+            arr.append(str)
+        }
+        return arr
+    }
+}
+
+var arrMinutes: [String] {
+    get {
+        var arr:[String] = []
+        for i in 0...59 {
+            let str = String(format: "%02d", i)
+            arr.append(str)
+        }
+        return arr
+    }
+}
+
+var arrAlertTime: [String] {
+    get {
+        var arr:[String] = []
+        
+        arr.append("0 mins")
+        arr.append("5 mins")
+        arr.append("15 mins")
+        arr.append("1 hour")
+        arr.append("2 hours")
+        arr.append("1 day")
+        arr.append("2 days")
+        
+        return arr
+    }
+}
+
+var arrAlertTimeInterval: [Double] {
+    get {
+        var arr:[Double] = []
+        
+        arr.append(0)
+        arr.append(5 * 60)
+        arr.append(15 * 60)
+        arr.append(60 * 60)
+        arr.append(120 * 60)
+        arr.append(24 * 60 * 60)
+        arr.append(48 * 60 * 60)
+        
+        return arr
+    }
 }
 
 

@@ -73,28 +73,38 @@ extension DetailViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         
-        EventManager.shared.update(row: entryRow, content: nil, note: textView.text,calendarEvent: nil, alarmDate: nil, isSetNotification: nil)
-        EventManager.shared.appDelegate.saveContext()
+        EventManager.shared.update(row: entryRow, content: nil, note: textView.text,calendarEvent: nil, alarmDate: nil, alarmIntervalOffset: nil, isSetNotification: nil)
         
         if let event = EventManager.shared.read(row: entryRow) {
             
             if let calendarEventID = event.calendarEventID,
-                let title = event.content,
+                let content = event.content,
                 let note = event.note,
-                let date = event.alarmStartTime {
+                let date = event.alarmStartTime{
+                
+                let alarmIntervalOffset = event.alarmIntervalOffset
+                let isNotification = event.isSetNotification
+                print(content)
+                print(note)
+                print(date)
+                print(event.alarmIntervalOffset)
+                
                 
                 removeEvent(identifier: calendarEventID)
                 
-                let calendarIdentifier = insertEvent(title: title, notes: note, startDate: date as Date, EndDate: date as Date)
+                //FIXME: relative offset
+                let calendarIdentifier = insertEvent(title: content, notes: note, startDate: date as Date, EndDate: date as Date, relativeOffset: alarmIntervalOffset)
                 
                 EventManager.shared.update(row: entryRow,
-                                           content: nil,
-                                           note: nil,
+                                           content: content,
+                                           note: note,
                                            calendarEvent: calendarIdentifier,
-                                           alarmDate: nil,
-                                           isSetNotification: nil)
-
+                                           alarmDate: date,
+                                           alarmIntervalOffset: alarmIntervalOffset,
+                                           isSetNotification: isNotification)
             }
+            
+            EventManager.shared.appDelegate.saveContext()
         }
         
         
