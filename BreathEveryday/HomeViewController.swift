@@ -501,7 +501,8 @@ class HomeViewController: UIViewController {
             shopBtton.frame = CGRect(x: menuButton.frame.minX, y: menuButton.frame.minY, width: 0, height: 0)
             UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
                 self.settingButton.isHidden = false
-                self.shopBtton.isHidden = false
+                //FIXME: isHidden of shopBtn
+                self.shopBtton.isHidden = true
                 self.settingButton.frame = settingBtnFrame
                 self.shopBtton.frame = shopBtnFrame
             }, completion: { (_) in
