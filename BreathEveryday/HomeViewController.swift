@@ -17,6 +17,7 @@ enum Mode {
     case normal
     case setup
     case setupCategory
+    case tutorial
 }
 
 class HomeViewController: UIViewController {
@@ -25,7 +26,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var weatherImageView: SpringImageView!
     @IBOutlet weak var quoteView: UIView!
     @IBOutlet weak var menuButton: SpringButton!
-    @IBOutlet weak var shopBtton: UIButton!
+    @IBOutlet weak var infoBtton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
     var quoteViewBottomConstraint: NSLayoutConstraint?
     let quoteLbl = UILabel()
@@ -43,6 +44,8 @@ class HomeViewController: UIViewController {
     var dragAnimatorArray: [UIViewPropertyAnimator] = []
     @IBOutlet weak var deleteSuccessLabel: SpringLabel!
     var deleteLabelConstraint: NSLayoutConstraint?
+    let tutorialScrollView = UIScrollView()
+    var quitTutorialGesture: UITapGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +83,7 @@ class HomeViewController: UIViewController {
         
         //menu
         menuButton.alpha = 0.9
-        shopBtton.alpha = 0.9
+        infoBtton.alpha = 0.9
         settingButton.alpha = 0.9
         image = #imageLiteral(resourceName: "Thumbnails-48").withRenderingMode(.alwaysTemplate)
         menuButton.setImage(image, for: .normal)
@@ -91,14 +94,14 @@ class HomeViewController: UIViewController {
 //        settingButton.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2)
         settingButton.tintColor = UIColor.white
         settingButton.imageView?.contentMode = .scaleAspectFit
-        image = #imageLiteral(resourceName: "Shop").withRenderingMode(.alwaysTemplate)
-        shopBtton.setImage(image, for: .normal)
-        shopBtton.tintColor = UIColor.white
-        shopBtton.imageView?.contentMode = .scaleAspectFit
-        shopBtton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+        image = #imageLiteral(resourceName: "Help-96").withRenderingMode(.alwaysTemplate)
+        infoBtton.setImage(image, for: .normal)
+        infoBtton.tintColor = UIColor.white
+        infoBtton.imageView?.contentMode = .scaleAspectFit
+//        shopBtton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         menuButton.addTarget(self, action: #selector(btnMenuBtn), for: .touchUpInside)
         settingButton.addTarget(self, action: #selector(btnSettingBtn), for: .touchUpInside)
-        shopBtton.addTarget(self, action: #selector(btnShopBtn), for: .touchUpInside)
+        infoBtton.addTarget(self, action: #selector(btnInfoBtn), for: .touchUpInside)
         
         //category
         image = #imageLiteral(resourceName: "Checkmark Filled-50").withRenderingMode(.alwaysTemplate)
@@ -455,6 +458,9 @@ class HomeViewController: UIViewController {
                             self.categorysCollectionView.deselectItem(at: indexPath, animated: true)
                         }
                     }
+                    
+                default:
+                    break
                 }
                 
             }
@@ -492,23 +498,22 @@ class HomeViewController: UIViewController {
             menuButton.duration = 1
             menuButton.animate()
             menuButton.isEnabled = false
-            shopBtton.isEnabled = false
+            infoBtton.isEnabled = false
             settingButton.isEnabled = false
             menuButton.isSelected = true
             let settingBtnFrame = settingButton.frame
-            let shopBtnFrame = shopBtton.frame
+            let shopBtnFrame = infoBtton.frame
             settingButton.frame = CGRect(x: menuButton.frame.minX, y: menuButton.frame.minY, width: 0, height: 0)
-            shopBtton.frame = CGRect(x: menuButton.frame.minX, y: menuButton.frame.minY, width: 0, height: 0)
+            infoBtton.frame = CGRect(x: menuButton.frame.minX, y: menuButton.frame.minY, width: 0, height: 0)
             UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
                 self.settingButton.isHidden = false
-                //FIXME: isHidden of shopBtn
-                self.shopBtton.isHidden = true
+                self.infoBtton.isHidden = false
                 self.settingButton.frame = settingBtnFrame
-                self.shopBtton.frame = shopBtnFrame
+                self.infoBtton.frame = shopBtnFrame
             }, completion: { (_) in
                 self.menuButton.isEnabled = true
                 self.settingButton.isEnabled = true
-                self.shopBtton.isEnabled = true
+                self.infoBtton.isEnabled = true
             })
         } else {
             shrinkMenu()
@@ -525,18 +530,18 @@ class HomeViewController: UIViewController {
         menuButton.animate()
         menuButton.isEnabled = false
         settingButton.isEnabled = false
-        shopBtton.isEnabled = false
+        infoBtton.isEnabled = false
         let settingBtnFrame = settingButton.frame
-        let shopBtnFrame = shopBtton.frame
+        let shopBtnFrame = infoBtton.frame
         UIView.animate(withDuration: 0.25, animations: {
             self.settingButton.frame = CGRect(x: self.menuButton.frame.midX, y: self.menuButton.frame.midY, width: 0, height: 0)
-            self.shopBtton.frame = CGRect(x: self.menuButton.frame.midX, y: self.menuButton.frame.midY, width: 0, height: 0)
+            self.infoBtton.frame = CGRect(x: self.menuButton.frame.midX, y: self.menuButton.frame.midY, width: 0, height: 0)
         }, completion: { (_) in
             self.settingButton.frame = settingBtnFrame
-            self.shopBtton.frame = shopBtnFrame
+            self.infoBtton.frame = shopBtnFrame
             self.menuButton.isSelected = false
             self.settingButton.isHidden = true
-            self.shopBtton.isHidden = true
+            self.infoBtton.isHidden = true
             self.menuButton.isEnabled = true
         })
         
@@ -546,7 +551,7 @@ class HomeViewController: UIViewController {
         
         self.menuButton.isSelected = false
         self.settingButton.isHidden = true
-        self.shopBtton.isHidden = true
+        self.infoBtton.isHidden = true
         
         //add black view to view
         blackTransparentView.alpha = 0.8
@@ -614,6 +619,11 @@ class HomeViewController: UIViewController {
         case .setupCategory:
             currentMode = .setupCategory
             
+        case .tutorial:
+            deleteSuccessLabel.isUserInteractionEnabled = true
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(quitTutorial))
+            quitTutorialGesture = gesture
+            deleteSuccessLabel.addGestureRecognizer(quitTutorialGesture!)
         }
     }
     
@@ -780,10 +790,68 @@ class HomeViewController: UIViewController {
         
     }
     
-    func btnShopBtn() {
+    //MARK: INFOBTN
+    func btnInfoBtn() {
         
-//        Crashlytics.sharedInstance().crash()
+        self.menuButton.isSelected = false
+        self.settingButton.isHidden = true
+        self.infoBtton.isHidden = true
+        
+        //add black view to view
+        blackTransparentView.alpha = 0.8
+        blackTransparentView.backgroundColor = .black
+        view.addSubview(blackTransparentView)
+        blackTransparentView.translatesAutoresizingMaskIntoConstraints = false
+        blackTransparentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        blackTransparentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        blackTransparentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        blackTransparentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        
+        blackTransparentView.animation = "fadeIn"
+        blackTransparentView.duration = 1
+        blackTransparentView.animate()
+        blackTransparentView.alpha = 0.75
+        
+        //bring views to front
+        view.bringSubview(toFront: deleteSuccessLabel)
+        
+        //add tutorial info
+        view.addSubview(tutorialScrollView)
+        tutorialScrollView.isScrollEnabled = true
+        tutorialScrollView.isPagingEnabled = true
+//        scrollView.backgroundColor = UIColor.black.darkened()
+        tutorialScrollView.isUserInteractionEnabled = true
+        tutorialScrollView.translatesAutoresizingMaskIntoConstraints = false
+        tutorialScrollView.topAnchor.constraint(equalTo: blackTransparentView.centerYAnchor, constant: -200).isActive = true
+        tutorialScrollView.bottomAnchor.constraint(equalTo: blackTransparentView.centerYAnchor, constant: 200).isActive = true
+        tutorialScrollView.leadingAnchor.constraint(equalTo: blackTransparentView.leadingAnchor, constant: 0).isActive = true
+        tutorialScrollView.trailingAnchor.constraint(equalTo: blackTransparentView.trailingAnchor, constant: 0).isActive = true
+        view.layoutIfNeeded()
+        
+        let imageArray = [#imageLiteral(resourceName: "Slide to delete"), #imageLiteral(resourceName: "Quote Explain")]
+        
+        for i in 0...imageArray.count - 1 {
+            
+            let imageView = UIImageView()
+            imageView.image = imageArray[i]
+            imageView.contentMode = .scaleAspectFit
+            let xPos = self.view.frame.width * CGFloat(i)
+            imageView.frame = CGRect(x: xPos, y: 0, width: tutorialScrollView.frame.width, height: tutorialScrollView.frame.height)
+            tutorialScrollView.contentSize.width = tutorialScrollView.frame.width * CGFloat(i + 1)
+            tutorialScrollView.addSubview(imageView)
+            
+        }
+        
+        //TODO: remove after test
+        switchMode(to: .tutorial)
+        alertLabel(replaceString: "Quit Tutorial", isHidden: false, color: UIColor().blueMiddleGray().lighter())
 
+    }
+    
+    func quitTutorial() {
+        tutorialScrollView.removeFromSuperview()
+        btnDone()
+        deleteSuccessLabel.removeGestureRecognizer(quitTutorialGesture!)
     }
     
     func btnQuoteBtn(sender: UIButton) {
