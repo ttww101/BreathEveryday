@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grassland" translatesAutoresizingMaskIntoConstraints="NO" id="4Cy-BZ-aW7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BK-sea&amp;sunshine" translatesAutoresizingMaskIntoConstraints="NO" id="4Cy-BZ-aW7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-yd-5aA">
@@ -541,8 +541,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BK-sea&amp;sunshine" width="750" height="1334"/>
         <image name="Checkmark Filled-50" width="50" height="50"/>
-        <image name="Grassland" width="750" height="1334"/>
         <image name="Home-50" width="50" height="50"/>
         <image name="Message-50" width="50" height="50"/>
         <image name="Plus-50" width="50" height="50"/>

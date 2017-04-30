@@ -91,14 +91,12 @@ class HomeViewController: UIViewController {
         menuButton.imageView?.contentMode = .scaleAspectFit
         image = #imageLiteral(resourceName: "Settings").withRenderingMode(.alwaysTemplate)
         settingButton.setImage(image, for: .normal)
-//        settingButton.imageEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2)
         settingButton.tintColor = UIColor.white
         settingButton.imageView?.contentMode = .scaleAspectFit
         image = #imageLiteral(resourceName: "Help-96").withRenderingMode(.alwaysTemplate)
         infoBtton.setImage(image, for: .normal)
         infoBtton.tintColor = UIColor.white
         infoBtton.imageView?.contentMode = .scaleAspectFit
-//        shopBtton.imageEdgeInsets = UIEdgeInsetsMake(5, 5, 5, 5)
         menuButton.addTarget(self, action: #selector(btnMenuBtn), for: .touchUpInside)
         settingButton.addTarget(self, action: #selector(btnSettingBtn), for: .touchUpInside)
         infoBtton.addTarget(self, action: #selector(btnInfoBtn), for: .touchUpInside)
