@@ -15,13 +15,15 @@ import Crashlytics
 
 enum Mode {
     case normal
+    case tutorial
     case setup
     case setupCategory
-    case tutorial
+    case setupBackground
 }
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var quoteButton: SpringButton!
     @IBOutlet weak var weatherImageView: SpringImageView!
     @IBOutlet weak var quoteView: UIView!
@@ -45,7 +47,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var deleteSuccessLabel: SpringLabel!
     var deleteLabelConstraint: NSLayoutConstraint?
     let tutorialScrollView = UIScrollView()
-    var quitTutorialGesture: UITapGestureRecognizer?
+    var gestureQuitTutorial: UITapGestureRecognizer?
+    var gestureSetupBackground: UITapGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -381,7 +384,6 @@ class HomeViewController: UIViewController {
             //deceleration
             let velocity = gesture.velocity(in: view)
             let cgVelocity = CGVector(dx: velocity.x / 500, dy: velocity.y / 500)
-//            let springParameters = UISpringTimingParameters(mass: 5, stiffness: 70, damping: 30, initialVelocity: cgVelocity)
             let springParameters = UISpringTimingParameters(mass: 2.5, stiffness: 50, damping: 25, initialVelocity: cgVelocity)
             bubbleAnimator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springParameters) // original 2.5, 70, 55)
             var stopPoint_X = target.center.x + velocity.x * 0.05
@@ -474,7 +476,7 @@ class HomeViewController: UIViewController {
                 target.scaleY = 0.85
                 target.duration = 2.5
                 target.animate()
-                target.layer.opacity = 0.6 //
+                target.layer.opacity = 0.6
             }
             
         default:
@@ -600,35 +602,48 @@ class HomeViewController: UIViewController {
             quoteButton.removeTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
             quoteButton.addTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
             
+        case .tutorial:
+            deleteSuccessLabel.isUserInteractionEnabled = true
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(quitTutorial))
+            gestureQuitTutorial = gesture
+            deleteSuccessLabel.addGestureRecognizer(gestureQuitTutorial!)
+        
         case .setup:
-            //button targets
+            
+            //bubble
             currentMode = .setup
             for category in categoryDataArr {
                 category.button.removeTarget(self, action: #selector(displayListView), for: .touchUpInside)
                 category.button.addTarget(self, action: #selector(setBubbleCategory), for: .touchUpInside)
             }
             
+            //quote
             let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
             quoteButton.setImage(image, for: .normal)
             quoteButton.tintColor = .white
             quoteButton.removeTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
             quoteButton.addTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
             
+            //background
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(setBackground))
+            gestureSetupBackground = gesture
+            blackTransparentView.addGestureRecognizer(gestureSetupBackground!)
+            
         case .setupCategory:
             currentMode = .setupCategory
+            blackTransparentView.removeGestureRecognizer(gestureSetupBackground!)
             
-        case .tutorial:
-            deleteSuccessLabel.isUserInteractionEnabled = true
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(quitTutorial))
-            quitTutorialGesture = gesture
-            deleteSuccessLabel.addGestureRecognizer(quitTutorialGesture!)
+        case .setupBackground:
+            currentMode = .setupBackground
+            blackTransparentView.removeGestureRecognizer(gestureSetupBackground!)
         }
+        
     }
     
     func setBubbleCategory(sender: UIButton) {
         
+        switchMode(to: .setupCategory)
         self.deleteLabelConstraint?.constant = 0
-        currentMode = .setupCategory
         let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
         quoteButton.setImage(image, for: .normal)
         quoteButton.tintColor = .white
@@ -849,7 +864,7 @@ class HomeViewController: UIViewController {
     func quitTutorial() {
         tutorialScrollView.removeFromSuperview()
         btnDone()
-        deleteSuccessLabel.removeGestureRecognizer(quitTutorialGesture!)
+        deleteSuccessLabel.removeGestureRecognizer(gestureQuitTutorial!)
     }
     
     func btnQuoteBtn(sender: UIButton) {
@@ -1063,6 +1078,75 @@ extension HomeViewController: ColorPickerViewDelegateFlowLayout {
     }
     
 }
+
+import Photos
+extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func setBackground() {
+        
+        let photoStatus = PHPhotoLibrary.authorizationStatus()
+        
+        switch photoStatus {
+        case .authorized:
+            
+            let libraryPhoto = UIImagePickerController()
+            libraryPhoto.delegate = self
+            libraryPhoto.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            libraryPhoto.allowsEditing = true
+            self.present(libraryPhoto, animated: true) {
+                
+            }
+            
+        case .notDetermined, .denied, .restricted:
+        
+            PHPhotoLibrary.requestAuthorization({status in
+                if status == .authorized{
+                    
+                    let libraryPhoto = UIImagePickerController()
+                    libraryPhoto.delegate = self
+                    libraryPhoto.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                    libraryPhoto.allowsEditing = true
+                    self.present(libraryPhoto, animated: true) {
+                        
+                    }
+                    
+                } else {}
+            })
+
+        }
+
+
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        self.dismiss(animated: true, completion: nil)
+
+        if let getImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            
+            self.backgroundImageView.image = getImage
+            
+            self.dismiss(animated: true, completion: nil)
+            
+        } else if let getImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            self.backgroundImageView.image = getImage
+            
+            self.dismiss(animated: true, completion: nil)
+            
+        } else {
+            print("err GRABING IMAGE--------")
+        }
+        
+    }
+
+    
+    
+}
+
+
+
+
 
 
 

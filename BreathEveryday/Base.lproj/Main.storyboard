@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BK-sea&amp;sunshine" translatesAutoresizingMaskIntoConstraints="NO" id="4Cy-BZ-aW7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BK-beach sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="4Cy-BZ-aW7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-yd-5aA">
@@ -205,6 +205,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="4Cy-BZ-aW7" id="JzB-XE-h6M"/>
                         <outlet property="categoryDoneBtn" destination="4ca-ex-v6o" id="YkO-jb-VSZ"/>
                         <outlet property="categorysCollectionView" destination="w6o-HY-WeB" id="LtE-cb-ZgT"/>
                         <outlet property="deleteSuccessLabel" destination="4Me-1e-Ezf" id="pFQ-PK-D4S"/>
@@ -541,7 +542,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BK-sea&amp;sunshine" width="750" height="1334"/>
+        <image name="BK-beach sunrise" width="1242" height="2208"/>
         <image name="Checkmark Filled-50" width="50" height="50"/>
         <image name="Home-50" width="50" height="50"/>
         <image name="Message-50" width="50" height="50"/>
