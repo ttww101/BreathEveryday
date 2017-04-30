@@ -828,7 +828,7 @@ class HomeViewController: UIViewController {
         tutorialScrollView.trailingAnchor.constraint(equalTo: blackTransparentView.trailingAnchor, constant: 0).isActive = true
         view.layoutIfNeeded()
         
-        let imageArray = [#imageLiteral(resourceName: "Slide to delete"), #imageLiteral(resourceName: "Quote Explain")]
+        let imageArray = [#imageLiteral(resourceName: "Help-settings"), #imageLiteral(resourceName: "Help-choose categories"), #imageLiteral(resourceName: "Help-slide to delete"), #imageLiteral(resourceName: "Help-quote display"), #imageLiteral(resourceName: "Help-event filled star"), #imageLiteral(resourceName: "Help-add note"), #imageLiteral(resourceName: "Help-tutorial")]
         
         for i in 0...imageArray.count - 1 {
             
