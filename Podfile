@@ -11,6 +11,7 @@ target 'BreathEveryday' do
   pod 'DynamicColor', '~> 3.3'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'Fusuma’
   
   # Pods for BreathEveryday
 end

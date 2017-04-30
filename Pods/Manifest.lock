@@ -3,6 +3,7 @@ PODS:
     - Fabric (~> 1.6.3)
   - DynamicColor (3.3)
   - Fabric (1.6.11)
+  - Fusuma (1.0.3)
   - IGColorPicker (0.2.1):
     - M13Checkbox (~> 2.2.0)
   - JTAppleCalendar (7.0.1)
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - Crashlytics
   - DynamicColor (~> 3.3)
   - Fabric
+  - Fusuma
   - IGColorPicker
   - JTAppleCalendar (~> 7.0.1)
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
@@ -31,11 +33,12 @@ SPEC CHECKSUMS:
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   DynamicColor: 3cdaa1e01c16e93ba744e0630f768373e0fc7a7d
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  Fusuma: 60ed1dd51a3b3610960219df9862c83f03304ce1
   IGColorPicker: a6ed1bf42cccf9e260e24d33faec5263310b4cef
   JTAppleCalendar: 7c8cba3e06fd6fdfed72382eeeb87c304e727ddb
   M13Checkbox: 9989b7e275f18493bd33b960dc68374c47d0027b
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
 
-PODFILE CHECKSUM: 5c2ecbfc90843dbf0a58c54f52dba017a94de766
+PODFILE CHECKSUM: 5df0c4f128202615eb276f3ef3dfac90e8b96262
 
 COCOAPODS: 1.2.1

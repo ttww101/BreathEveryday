@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Fusuma.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>IGColorPicker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,12 +47,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>777A432EE4B695F249B5796064BA4D48</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7822DB3EBDED125C085069CEBA87C921</key>
+		<key>3E0D8640A124012AB6F0A9F775A38285</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -63,6 +63,16 @@
 			<true/>
 		</dict>
 		<key>E5F46CF08B487F1A01310C58918CF783</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F45E7B4D4324A7B9B7597551FC0BD5F7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F504AB29E6F49D5B08C817118F39B82E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

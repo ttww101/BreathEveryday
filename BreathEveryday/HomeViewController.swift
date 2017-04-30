@@ -1080,68 +1080,33 @@ extension HomeViewController: ColorPickerViewDelegateFlowLayout {
 }
 
 import Photos
-extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+import Fusuma
+extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate {
+    
+    func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
+        
+    }
+    
+    func fusumaVideoCompleted(withFileURL fileURL: URL) { }
+    
+    func fusumaCameraRollUnauthorized() {
+        
+        //TODO: GO TO SETTINGS
+        
+    }
     
     func setBackground() {
         
-        let photoStatus = PHPhotoLibrary.authorizationStatus()
-        
-        switch photoStatus {
-        case .authorized:
-            
-            let libraryPhoto = UIImagePickerController()
-            libraryPhoto.delegate = self
-            libraryPhoto.sourceType = UIImagePickerControllerSourceType.photoLibrary
-            libraryPhoto.allowsEditing = true
-            self.present(libraryPhoto, animated: true) {
-                
-            }
-            
-        case .notDetermined, .denied, .restricted:
-        
-            PHPhotoLibrary.requestAuthorization({status in
-                if status == .authorized{
-                    
-                    let libraryPhoto = UIImagePickerController()
-                    libraryPhoto.delegate = self
-                    libraryPhoto.sourceType = UIImagePickerControllerSourceType.photoLibrary
-                    libraryPhoto.allowsEditing = true
-                    self.present(libraryPhoto, animated: true) {
-                        
-                    }
-                    
-                } else {}
-            })
-
+        let fusumaViewController = FusumaViewController()
+        fusumaViewController.delegate = self
+        DispatchQueue.main.async {
+            self.present(fusumaViewController, animated: true, completion: nil)
         }
+        
 
 
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        self.dismiss(animated: true, completion: nil)
 
-        if let getImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-            
-            self.backgroundImageView.image = getImage
-            
-            self.dismiss(animated: true, completion: nil)
-            
-        } else if let getImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            
-            self.backgroundImageView.image = getImage
-            
-            self.dismiss(animated: true, completion: nil)
-            
-        } else {
-            print("err GRABING IMAGE--------")
-        }
-        
-    }
-
-    
-    
 }
 
 
