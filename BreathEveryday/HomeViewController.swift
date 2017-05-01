@@ -246,9 +246,13 @@ class HomeViewController: UIViewController {
             guard let results = try moc.fetch(request) as? [UserMO] else {
                 return
             }
-            let user = results[0]
-            if let image = user.backgroundImage {
-                backgroundImageView.image = UIImage(data: image as Data)
+            if results.count > 0 {
+                let user = results[0]
+                if let image = user.backgroundImage {
+                    backgroundImageView.image = UIImage(data: image as Data)
+                }
+            } else {
+                createBackgroundDataFirstTime()
             }
         } catch {
             
@@ -319,6 +323,11 @@ class HomeViewController: UIViewController {
         })
         
         //create data for the first time
+        createBackgroundDataFirstTime()
+        
+    }
+    
+    func createBackgroundDataFirstTime() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let moc = appDelegate.persistentContainer.viewContext
         if let entityDescription = NSEntityDescription.entity(forEntityName: "UserMO", in: moc) {
@@ -328,7 +337,6 @@ class HomeViewController: UIViewController {
             }
             appDelegate.saveContext()
         }
-        
     }
     
     func createRandomBubble(with image: UIImage, in frame: CGRect?, color: UIColor) -> UIButton {
