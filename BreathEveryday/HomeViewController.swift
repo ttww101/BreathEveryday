@@ -269,19 +269,8 @@ class HomeViewController: UIViewController {
     }
     
     func showupFirstTime() {
-        //add black view to view
-        blackTransparentView.alpha = 0.8
-        blackTransparentView.backgroundColor = .black
-        view.addSubview(blackTransparentView)
-        blackTransparentView.translatesAutoresizingMaskIntoConstraints = false
-        blackTransparentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        blackTransparentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        blackTransparentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        blackTransparentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        blackTransparentView.animation = "fadeIn"
-        blackTransparentView.duration = 1
-        blackTransparentView.animate()
-        blackTransparentView.alpha = 0.75
+        
+        addBlackTransparentView()
         
         UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
@@ -301,7 +290,15 @@ class HomeViewController: UIViewController {
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
                 self.view.layoutIfNeeded()
                 self.alertLabel(replaceString: "Please choose a category", isHidden: false, color: .red)
-            }, completion: { (completed) in })
+            }, completion: { (completed) in
+                
+                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-grassland"), self, nil, nil)
+                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-luka"), self, nil, nil)
+                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-lake forest"), self, nil, nil)
+                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-beach sunset"), self, nil, nil)
+                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-beach sunrise"), self, nil, nil)
+                
+            })
         })
         
     }
@@ -554,20 +551,7 @@ class HomeViewController: UIViewController {
         self.infoBtton.isHidden = true
         
         //add black view to view
-        blackTransparentView.alpha = 0.8
-        blackTransparentView.backgroundColor = .black
-        view.addSubview(blackTransparentView)
-        blackTransparentView.translatesAutoresizingMaskIntoConstraints = false
-        blackTransparentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        blackTransparentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        blackTransparentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        blackTransparentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        
-        
-        blackTransparentView.animation = "fadeIn"
-        blackTransparentView.duration = 1
-        blackTransparentView.animate()
-        blackTransparentView.alpha = 0.75
+        addBlackTransparentView()
         
         //bring views to front
         view.bringSubview(toFront: quoteButton)
@@ -589,24 +573,32 @@ class HomeViewController: UIViewController {
         switch mode {
             
         case .normal:
-            //button targets
+            
+            //button
             currentMode = .normal
             for category in categoryDataArr {
                 category.button.removeTarget(self, action: #selector(setBubbleCategory), for: .touchUpInside)
                 category.button.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
             }
             
+            //quote
             let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
             quoteButton.setImage(image, for: .normal)
             quoteButton.tintColor = .white
             quoteButton.removeTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
             quoteButton.addTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
             
+            //constrait
+            categoryScrollViewConstraint?.constant = 0
+            colorPickerViewConstraint?.constant = 0
+            deleteLabelConstraint?.constant = 0
+            
         case .tutorial:
             deleteSuccessLabel.isUserInteractionEnabled = true
             let gesture = UITapGestureRecognizer(target: self, action: #selector(quitTutorial))
             gestureQuitTutorial = gesture
             deleteSuccessLabel.addGestureRecognizer(gestureQuitTutorial!)
+            removeSetupBackgroundGesture()
         
         case .setup:
             
@@ -631,13 +623,19 @@ class HomeViewController: UIViewController {
             
         case .setupCategory:
             currentMode = .setupCategory
-            blackTransparentView.removeGestureRecognizer(gestureSetupBackground!)
+            removeSetupBackgroundGesture()
             
         case .setupBackground:
             currentMode = .setupBackground
-            blackTransparentView.removeGestureRecognizer(gestureSetupBackground!)
+            removeSetupBackgroundGesture()
         }
         
+    }
+    
+    func removeSetupBackgroundGesture() {
+        if let gesture = gestureSetupBackground {
+            blackTransparentView.removeGestureRecognizer(gesture)
+        }
     }
     
     func setBubbleCategory(sender: UIButton) {
@@ -700,9 +698,6 @@ class HomeViewController: UIViewController {
         if count > 0 {
             blackTransparentView.removeFromSuperview()
             switchMode(to: .normal)
-            categoryScrollViewConstraint?.constant = 0
-            colorPickerViewConstraint?.constant = 0
-            deleteLabelConstraint?.constant = 0
             
             //update categoryDataArray
             
@@ -803,27 +798,13 @@ class HomeViewController: UIViewController {
         
     }
     
-    //MARK: INFOBTN
     func btnInfoBtn() {
         
         self.menuButton.isSelected = false
         self.settingButton.isHidden = true
         self.infoBtton.isHidden = true
         
-        //add black view to view
-        blackTransparentView.alpha = 0.8
-        blackTransparentView.backgroundColor = .black
-        view.addSubview(blackTransparentView)
-        blackTransparentView.translatesAutoresizingMaskIntoConstraints = false
-        blackTransparentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        blackTransparentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        blackTransparentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        blackTransparentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        
-        blackTransparentView.animation = "fadeIn"
-        blackTransparentView.duration = 1
-        blackTransparentView.animate()
-        blackTransparentView.alpha = 0.75
+        addBlackTransparentView()
         
         //bring views to front
         view.bringSubview(toFront: deleteSuccessLabel)
@@ -832,7 +813,6 @@ class HomeViewController: UIViewController {
         view.addSubview(tutorialScrollView)
         tutorialScrollView.isScrollEnabled = true
         tutorialScrollView.isPagingEnabled = true
-//        scrollView.backgroundColor = UIColor.black.darkened()
         tutorialScrollView.isUserInteractionEnabled = true
         tutorialScrollView.translatesAutoresizingMaskIntoConstraints = false
         tutorialScrollView.topAnchor.constraint(equalTo: blackTransparentView.centerYAnchor, constant: -200).isActive = true
@@ -859,6 +839,23 @@ class HomeViewController: UIViewController {
         switchMode(to: .tutorial)
         alertLabel(replaceString: "Quit Tutorial", isHidden: false, color: UIColor().blueMiddleGray().lighter())
 
+    }
+    
+    func addBlackTransparentView() {
+        
+        //add black view to view
+        blackTransparentView.backgroundColor = .black
+        view.addSubview(blackTransparentView)
+        blackTransparentView.translatesAutoresizingMaskIntoConstraints = false
+        blackTransparentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        blackTransparentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        blackTransparentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        blackTransparentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        blackTransparentView.animation = "fadeIn"
+        blackTransparentView.duration = 1
+        blackTransparentView.animate()
+        blackTransparentView.alpha = 0.6
+        
     }
     
     func quitTutorial() {
@@ -1081,9 +1078,42 @@ extension HomeViewController: ColorPickerViewDelegateFlowLayout {
 
 import Photos
 import Fusuma
-extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate {
+import TOCropViewController
+
+extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate {
     
+    func setBackground() {
+        
+        presentFusumaViewController()
+        
+    }
+    
+    //CropViewController
+    func cropViewController(_ cropViewController: TOCropViewController, didCropToImage image: UIImage, rect cropRect: CGRect, angle: Int) {
+        
+        cropViewController.dismiss(animated: true) { 
+            self.backgroundImageView.image = image
+            self.blackTransparentView.removeFromSuperview()
+            self.switchMode(to: .normal)
+        }
+        
+    }
+    
+    func cropViewController(_ cropViewController: TOCropViewController, didFinishCancelled cancelled: Bool) {
+        cropViewController.dismiss(animated: true) { 
+            self.presentFusumaViewController()
+        }
+    }
+    
+    //FUSUMA
     func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
+        
+        let cropViewController = TOCropViewController(image: image)
+        cropViewController.delegate = self
+        
+        DispatchQueue.main.async {
+            self.present(cropViewController, animated: true, completion: nil)
+        }
         
     }
     
@@ -1095,16 +1125,19 @@ extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate {
         
     }
     
-    func setBackground() {
+    func presentFusumaViewController() {
         
         let fusumaViewController = FusumaViewController()
         fusumaViewController.delegate = self
-        DispatchQueue.main.async {
-            self.present(fusumaViewController, animated: true, completion: nil)
+        fusumaCropImage = false
+        fusumaBackgroundColor = UIColor.black.lighter(amount: 0.15)
+        fusumaTintColor = .white
+        fusumaCameraRollTitle = "Background"
+        fusumaCameraTitle = "Background"
+        fusumaViewController.modeOrder = .libraryFirst
+        self.present(fusumaViewController, animated: true) {
         }
         
-
-
     }
 
 }

@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -224,7 +224,7 @@
         <!--View Controller-->
         <scene sceneID="8dB-1u-z7C">
             <objects>
-                <viewController id="4Fa-bv-St5" sceneMemberID="viewController">
+                <viewController id="4Fa-bv-St5" customClass="IGRViewController" customModule="BreathEveryday" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fNY-O3-Un4"/>
                         <viewControllerLayoutGuide type="bottom" id="R9y-kT-2JG"/>
@@ -237,7 +237,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jAs-Ae-ksT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245" y="859"/>
+            <point key="canvasLocation" x="140" y="814.54272863568224"/>
         </scene>
         <!--List-->
         <scene sceneID="DRx-qF-MUy">

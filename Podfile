@@ -6,12 +6,12 @@ target 'BreathEveryday' do
   use_frameworks!
 
   pod 'JTAppleCalendar', '~> 7.0.1’
-  pod 'IGColorPicker'
+  pod 'IGColorPicker', '~> 0.2.1'
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
   pod 'DynamicColor', '~> 3.3'
   pod 'Fabric'
   pod 'Crashlytics'
-  pod 'Fusuma’
-  
+  pod 'Fusuma’, '~> 1.0.3'
+  pod 'TOCropViewController'
   # Pods for BreathEveryday
 end
