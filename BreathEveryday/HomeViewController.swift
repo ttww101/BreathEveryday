@@ -238,6 +238,23 @@ class HomeViewController: UIViewController {
 //            self.bubbleShowUpAnimation(sender: bubbleButtonShowedArr, fromCount: bubbleButtonShowedArr.count)
 //        }
         
+        //read data to set background image
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let moc = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserMO")
+        do {
+            guard let results = try moc.fetch(request) as? [UserMO] else {
+                return
+            }
+            let user = results[0]
+            if let image = user.backgroundImage {
+                backgroundImageView.image = UIImage(data: image as Data)
+            }
+        } catch {
+            
+            fatalError("Core Data Update: \(error)")
+        }
+
     }
     
     func bubbleShowUpAnimation(sender: [SpringButton], fromCount: Int) {
@@ -300,6 +317,17 @@ class HomeViewController: UIViewController {
                 
             })
         })
+        
+        //create data for the first time
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let moc = appDelegate.persistentContainer.viewContext
+        if let entityDescription = NSEntityDescription.entity(forEntityName: "UserMO", in: moc) {
+            let user = UserMO(entity: entityDescription, insertInto: moc)
+            if let imageData = UIImageJPEGRepresentation(#imageLiteral(resourceName: "BK-beach sunrise"), 1) {
+                user.backgroundImage = imageData as NSData
+            }
+            appDelegate.saveContext()
+        }
         
     }
     
@@ -813,6 +841,7 @@ class HomeViewController: UIViewController {
         view.addSubview(tutorialScrollView)
         tutorialScrollView.isScrollEnabled = true
         tutorialScrollView.isPagingEnabled = true
+        tutorialScrollView.showsHorizontalScrollIndicator = false
         tutorialScrollView.isUserInteractionEnabled = true
         tutorialScrollView.translatesAutoresizingMaskIntoConstraints = false
         tutorialScrollView.topAnchor.constraint(equalTo: blackTransparentView.centerYAnchor, constant: -200).isActive = true
@@ -1093,6 +1122,24 @@ extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TO
         
         cropViewController.dismiss(animated: true) { 
             self.backgroundImageView.image = image
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let moc = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserMO")
+            do {
+                guard let results = try moc.fetch(request) as? [UserMO] else {
+                    return
+                }
+                let user = results[0]
+                if let imageData = UIImageJPEGRepresentation(image, 1) {
+                    user.backgroundImage = imageData as NSData
+                }
+                appDelegate.saveContext()
+                
+            } catch {
+                
+                fatalError("Core Data Update: \(error)")
+            }
             self.blackTransparentView.removeFromSuperview()
             self.switchMode(to: .normal)
         }
