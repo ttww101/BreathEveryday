@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>6</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -39,7 +39,7 @@
 	<key>NSCalendarsUsageDescription</key>
 	<string>To help you track the events </string>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>For custom background</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>For custom background</string>
 	<key>UILaunchStoryboardName</key>

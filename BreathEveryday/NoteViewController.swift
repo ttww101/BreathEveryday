@@ -93,7 +93,7 @@ extension DetailViewController: UITextViewDelegate {
                 removeEvent(identifier: calendarEventID)
                 
                 //FIXME: relative offset
-                let calendarIdentifier = insertEvent(title: content, notes: note, startDate: date as Date, EndDate: date as Date, relativeOffset: alarmIntervalOffset)
+                let calendarIdentifier = insertEvent(title: content, notes: note, startDate: date as Date, EndDate: date as Date, relativeOffset: -alarmIntervalOffset)
                 
                 EventManager.shared.update(row: entryRow,
                                            content: content,
