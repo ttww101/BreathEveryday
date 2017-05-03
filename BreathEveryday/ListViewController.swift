@@ -227,7 +227,17 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
         case .delete:
             
             if let indexPath = indexPath {
+                
                 listTableView.deleteRows(at: [indexPath], with: .fade)
+                
+                //reload indexRow in cell for save data
+                if let cellCount = fetchedResultsController.fetchedObjects?.count {
+                    for i in indexPath.row...cellCount {
+                        if let cell = listTableView.cellForRow(at: IndexPath(row: i, section: 0)) as? ListTableViewCell {
+                            cell.indexRow = i - 1
+                        }
+                    }
+                }
             }
             
         case .update:

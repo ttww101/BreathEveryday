@@ -75,7 +75,7 @@ class HomeViewController: UIViewController {
         quoteButton.imageView?.contentMode = .scaleAspectFit
         quoteViewBottomConstraint = NSLayoutConstraint(item: quoteView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 25)
         view.addConstraint(quoteViewBottomConstraint!)
-        quoteView.layer.borderColor = UIColor().middleGray().cgColor
+        quoteView.layer.borderColor = UIColor.black.lighter(amount: 0.5).cgColor
         quoteView.backgroundColor = UIColor(colorLiteralRed: 245/255, green: 245/255, blue: 250/255, alpha: 0.9)
         quoteView.layer.borderWidth = 2
         quoteLbl.numberOfLines = 0
@@ -190,32 +190,7 @@ class HomeViewController: UIViewController {
                                                   color: color)
                 createButton.tag = i // to display name
                 createButton.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
-                
-                //test for color
-//                if i == 0 {
-//                    setBubbleColor(for: createButton, with: UIColor.init(hex: "#e3d8d8"))
-//                } else if i == 1 {
-//                    setBubbleColor(for: createButton, with: UIColor.init(hex: "#c1b5b5"))
-//                } else if i == 2 {
-//                    setBubbleColor(for: createButton, with: UIColor.init(hex: "#b2a4a4"))
-//                } else if i == 3 {
-//                    setBubbleColor(for: createButton, with: UIColor.init(hex: "#a99999"))
-//                } else if i == 4 {
-//                    setBubbleColor(for: createButton, with: UIColor.init(hex: "#9a8a8a"))
-//                }
-//                
-//                if i == 5 {
-//                    setBubbleColor(for: createButton, with: UIColor.init(hex: "#745e5e"))
-//                } else if i == 6 {
-//                    setBubbleColor(for: createButton, with: UIColor.init(hex: "#695151"))
-//                } else if i == 7 {
-//                    setBubbleColor(for: createButton, with: UIColor.init(hex: "#5a4141"))
-//                } else if i == 8 {
-//                    setBubbleColor(for: createButton, with: UIColor.init(hex: "#473030"))
-//                } else if i == 9 {
-//                    setBubbleColor(for: createButton, with: UIColor.init(hex: "#271515"))
-//                }
-//
+
                 view.addSubview(createButton)
             }
             

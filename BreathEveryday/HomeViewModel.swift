@@ -92,7 +92,7 @@ let categoryStringArray: [String] = ["Love",
 
 let categoryImageArray: [UIImage] = [#imageLiteral(resourceName: "Like-48"),
                              #imageLiteral(resourceName: "Family"),
-                             #imageLiteral(resourceName: "together"),
+                             #imageLiteral(resourceName: "Meeting-50"),
                              #imageLiteral(resourceName: "Cat Footprint"),
                              #imageLiteral(resourceName: "Business-50"),
                              #imageLiteral(resourceName: "Students-50"),
