@@ -316,9 +316,11 @@ class HomeViewController: UIViewController {
                 self.alertLabel(replaceString: "Please choose categories", isHidden: false, color: .red)
             }, completion: { (completed) in
                 
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-grassland"), self, nil, nil)
+                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-galaxy"), self, nil, nil)
+                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-Sword of Orion"), self, nil, nil)
+                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-tree"), self, nil, nil)
+                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-forest1"), self, nil, nil)
                 UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-luka"), self, nil, nil)
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-lake forest"), self, nil, nil)
                 UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-beach sunset"), self, nil, nil)
                 UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-beach sunrise"), self, nil, nil)
                 

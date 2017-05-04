@@ -217,6 +217,7 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
                             if let addCell = self.listTableView.cellForRow(at: newIndexPath) as? ListTableViewCell {
                                 addCell.textView.becomeFirstResponder()
                                 
+                                //ensure visible, or it cannot work when adding 7~12
                                 self.listTableView.scrollToRow(at: newIndexPath,
                                                                at: .none,
                                                                animated: false)

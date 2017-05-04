@@ -10,6 +10,7 @@
 		C78B464447E5B301489AF85C /* Pods_BreathEveryday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035937D110347F617E50F288 /* Pods_BreathEveryday.framework */; };
 		F408C5D71EA51B3B00F29A67 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */; };
 		F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */; };
+		F49B09251EBB14900002297F /* Background Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49B09241EBB14900002297F /* Background Image.xcassets */; };
 		F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A21F981E9C6E4200C24517 /* EventManager.swift */; };
 		F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A57E1E88EE4200CAECEE /* CoreDataModel.xcdatamodeld */; };
 		F4D6BD961EA4743500A93E46 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BD941EA4743500A93E46 /* CategoryCollectionViewCell.swift */; };
@@ -38,6 +39,7 @@
 		6AF2EE35D2892DEE60B9D142 /* Pods-BreathEveryday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreathEveryday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.debug.xcconfig"; sourceTree = "<group>"; };
 		F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
+		F49B09241EBB14900002297F /* Background Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Background Image.xcassets"; sourceTree = "<group>"; };
 		F4A21F981E9C6E4200C24517 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		F4B2A57F1E88EE4200CAECEE /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		F4D6BD941EA4743500A93E46 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				F4D55CB71EADB93500EE80C4 /* List Page */,
 				F4FA6AB61E7FD8F100C2E46E /* NoteViewController.swift */,
 				F4FA6A9E1E7FB0F100C2E46E /* Main.storyboard */,
+				F49B09241EBB14900002297F /* Background Image.xcassets */,
 				F4FA6AA11E7FB0F100C2E46E /* Assets.xcassets */,
 				F4FA6AA31E7FB0F100C2E46E /* LaunchScreen.storyboard */,
 				F4FA6AA61E7FB0F100C2E46E /* Info.plist */,
@@ -243,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F49B09251EBB14900002297F /* Background Image.xcassets in Resources */,
 				F4D6BD971EA4743500A93E46 /* CategoryCollectionViewCell.xib in Resources */,
 				F4F4D6711E828EAC00D7EFBA /* KeyboardBarButton.xib in Resources */,
 				F4FA6AA51E7FB0F100C2E46E /* LaunchScreen.storyboard in Resources */,
@@ -463,7 +467,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = RG55XLA874;
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -479,7 +483,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = RG55XLA874;
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
 				PRODUCT_NAME = "$(TARGET_NAME)";

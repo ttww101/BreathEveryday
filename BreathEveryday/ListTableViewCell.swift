@@ -691,7 +691,11 @@ extension ListTableViewCell {
         calendarView.translatesAutoresizingMaskIntoConstraints = false
         calendarView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
         calendarView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 2).isActive = true
+        if tableView.frame.maxY - 300 >= 0 {
         calendarView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -300).isActive = true
+        } else {
+            calendarView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: 0).isActive = true
+        }
         calendarView.widthAnchor.constraint(equalToConstant: width).isActive = true
         
         //initial calendrView

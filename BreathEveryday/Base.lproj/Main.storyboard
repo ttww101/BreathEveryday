@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -336,7 +336,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeu-Ug-rX4">
-                                <rect key="frame" x="19" y="0.0" width="257" height="40"/>
+                                <rect key="frame" x="10" y="0.0" width="266" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="A3q-eQ-Kgy"/>
                                 </constraints>
@@ -415,15 +415,15 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNU-d3-u6T">
-                                                            <rect key="frame" x="47.5" y="48" width="35" height="35"/>
+                                                            <rect key="frame" x="49" y="49.5" width="32" height="32"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="35" id="5mF-El-jTb"/>
-                                                                <constraint firstAttribute="width" constant="35" id="kaJ-uq-gqV"/>
+                                                                <constraint firstAttribute="height" constant="32" id="5mF-El-jTb"/>
+                                                                <constraint firstAttribute="width" constant="32" id="kaJ-uq-gqV"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                    <real key="value" value="17.5"/>
+                                                                    <integer key="value" value="16"/>
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
@@ -459,13 +459,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.89516576780000001" green="0.89516576780000001" blue="0.89516576780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="aeu-Ug-rX4" secondAttribute="leading" constant="-3" id="136-Tg-KsC"/>
                             <constraint firstItem="aeu-Ug-rX4" firstAttribute="top" secondItem="bqC-ao-NBn" secondAttribute="top" constant="-5" id="4ZK-2r-VsT"/>
                             <constraint firstItem="bqC-ao-NBn" firstAttribute="leading" secondItem="aeu-Ug-rX4" secondAttribute="trailing" id="7So-29-bag"/>
                             <constraint firstItem="aeu-Ug-rX4" firstAttribute="top" secondItem="cJj-8O-IbT" secondAttribute="top" id="9WV-vQ-wl6"/>
                             <constraint firstItem="mYj-w9-JiU" firstAttribute="top" secondItem="NqO-za-z25" secondAttribute="bottom" id="Ghp-2D-2GW"/>
                             <constraint firstItem="bqC-ao-NBn" firstAttribute="trailing" secondItem="cJj-8O-IbT" secondAttribute="trailingMargin" constant="-3" id="J8c-OR-gRC"/>
                             <constraint firstItem="NqO-za-z25" firstAttribute="top" secondItem="aeu-Ug-rX4" secondAttribute="bottom" id="JTg-vg-1w3"/>
+                            <constraint firstItem="aeu-Ug-rX4" firstAttribute="leading" secondItem="cJj-8O-IbT" secondAttribute="leading" constant="10" id="ZkQ-Xe-YCi"/>
                             <constraint firstItem="NqO-za-z25" firstAttribute="leading" secondItem="cJj-8O-IbT" secondAttribute="leading" id="pIR-Vp-mi6"/>
                             <constraint firstAttribute="trailing" secondItem="NqO-za-z25" secondAttribute="trailing" id="rfP-Mu-bcs"/>
                         </constraints>
