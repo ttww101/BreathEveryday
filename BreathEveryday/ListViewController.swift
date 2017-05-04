@@ -196,6 +196,7 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
             
         case .insert:
             
+            
             if let newIndexPath = newIndexPath {
                 
                 UIView.animate(withDuration: 0, animations: {
@@ -204,20 +205,25 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
                     
                 } , completion: { (_) in
                     
-                    UIView.animate(withDuration: 0.1, animations: {
-                        
-                        self.listTableView.scrollToRow(at: newIndexPath,
-                                                       at: .bottom,
-                                                       animated: false)
-                        
-                    }, completion: { (_) in
-                        // ?? can't work
-                        
-                        if let addCell = self.listTableView.cellForRow(at: newIndexPath) as? ListTableViewCell {
-                            addCell.textView.becomeFirstResponder()
-                        }
-                        
-                    })
+                        UIView.animate(withDuration: 0.1, animations: {
+                            
+                            self.listTableView.scrollToRow(at: newIndexPath,
+                                                           at: .none,
+                                                           animated: false)
+                            
+                        }, completion: { (_) in
+                            
+                            
+                            if let addCell = self.listTableView.cellForRow(at: newIndexPath) as? ListTableViewCell {
+                                addCell.textView.becomeFirstResponder()
+                                
+                                self.listTableView.scrollToRow(at: newIndexPath,
+                                                               at: .none,
+                                                               animated: false)
+                            }
+                            
+                        })
+                    
                     
                 })
                 
@@ -230,7 +236,7 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
                 
                 listTableView.deleteRows(at: [indexPath], with: .fade)
                 
-                //reload indexRow in cell for save data
+                //reload indexRow in cell for save data 
                 if let cellCount = fetchedResultsController.fetchedObjects?.count {
                     for i in indexPath.row...cellCount {
                         if let cell = listTableView.cellForRow(at: IndexPath(row: i, section: 0)) as? ListTableViewCell {

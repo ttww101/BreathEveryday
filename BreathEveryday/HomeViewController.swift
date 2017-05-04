@@ -313,7 +313,7 @@ class HomeViewController: UIViewController {
             self.colorPickerViewConstraint?.constant = -44
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseIn, animations: {
                 self.view.layoutIfNeeded()
-                self.alertLabel(replaceString: "Please choose a category", isHidden: false, color: .red)
+                self.alertLabel(replaceString: "Please choose categories", isHidden: false, color: .red)
             }, completion: { (completed) in
                 
                 UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-grassland"), self, nil, nil)
