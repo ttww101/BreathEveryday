@@ -26,20 +26,20 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var quoteButton: SpringButton!
     @IBOutlet weak var weatherImageView: SpringImageView!
-    @IBOutlet weak var quoteView: UIView!
+    @IBOutlet weak var quoteView: QuoteView!
     @IBOutlet weak var menuButton: SpringButton!
     @IBOutlet weak var infoBtton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
     var quoteViewBottomConstraint: NSLayoutConstraint?
-    let quoteLbl = UILabel()
+    let quoteLbl = QuoteLabel()
     var isAnimating: Bool = false
     let blackTransparentView = SpringView()
     @IBOutlet weak var categorysCollectionView: UICollectionView!
     var categoryScrollViewConstraint: NSLayoutConstraint?
     var colorPickerViewConstraint: NSLayoutConstraint?
-    @IBOutlet weak var categoryDoneBtn: UIButton!
+    @IBOutlet weak var categoryDoneBtn: CategoryDoneButton!
     var categoryDataArr: [Category] = []
-    var colorPickerView: ColorPickerView!
+    let colorPickerView = IGColorPickerView()
     var selectedCatogoryRow: Int = 0
     var circleCenter: CGPoint! // record for bubble circle center
     var currentMode: Mode = .normal //record for distinguish drag out of view action
@@ -54,6 +54,10 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         controllerSetup()
+    }
+    
+    func controllerSetup() {
+        
         weatherImageView.animation = "morph"
         weatherImageView.animate()
         weatherImageView.animateNext {
@@ -62,58 +66,35 @@ class HomeViewController: UIViewController {
             self.weatherImageView.animation = "morph"
             self.weatherImageView.animate()
         }
-    }
-    
-    func controllerSetup() {
         
-        //quote
-        var image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
-        quoteButton.setImage(image, for: .normal)
-        quoteButton.tintColor = UIColor.white
-        image = #imageLiteral(resourceName: "Feedback-50").withRenderingMode(.alwaysTemplate)
-        quoteButton.setImage(image, for: .selected)
-        quoteButton.imageView?.contentMode = .scaleAspectFit
+        //quoteBtn
+        quoteButton.normalSetup(normalImage: #imageLiteral(resourceName: "Message-50"), selectedImage: #imageLiteral(resourceName: "Feedback-50"), tintColor: .white)
+        quoteButton.addTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
+        
+        //quoteView
         quoteViewBottomConstraint = NSLayoutConstraint(item: quoteView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 25)
         view.addConstraint(quoteViewBottomConstraint!)
-        quoteView.layer.borderColor = UIColor.black.lighter(amount: 0.5).cgColor
-        quoteView.backgroundColor = UIColor(colorLiteralRed: 245/255, green: 245/255, blue: 250/255, alpha: 0.9)
-        quoteView.layer.borderWidth = 2
-        quoteLbl.numberOfLines = 0
-        quoteLbl.font = UIFont(name: "Menlo", size: 16)
-        quoteLbl.adjustsFontSizeToFitWidth = true
-        quoteButton.addTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
         quoteView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissQuote)))
         
         //menu
-        menuButton.alpha = 0.9
-        infoBtton.alpha = 0.9
-        settingButton.alpha = 0.9
-        image = #imageLiteral(resourceName: "Thumbnails-48").withRenderingMode(.alwaysTemplate)
-        menuButton.setImage(image, for: .normal)
-        menuButton.tintColor = UIColor(colorLiteralRed: 192/255, green: 214/255, blue: 204/255, alpha: 1.0)
-        menuButton.imageView?.contentMode = .scaleAspectFit
-        image = #imageLiteral(resourceName: "Settings").withRenderingMode(.alwaysTemplate)
-        settingButton.setImage(image, for: .normal)
-        settingButton.tintColor = UIColor.white
-        settingButton.imageView?.contentMode = .scaleAspectFit
-        image = #imageLiteral(resourceName: "Help-96").withRenderingMode(.alwaysTemplate)
-        infoBtton.setImage(image, for: .normal)
-        infoBtton.tintColor = UIColor.white
-        infoBtton.imageView?.contentMode = .scaleAspectFit
+        menuButton.normalSetup(normalImage: #imageLiteral(resourceName: "Thumbnails-48"),
+                         selectedImage: nil,
+                         tintColor: UIColor.blueMiddleGrayLight())
+        settingButton.normalSetup(normalImage: #imageLiteral(resourceName: "Settings"),
+                            selectedImage: nil,
+                            tintColor: .white)
+        infoBtton.normalSetup(normalImage: #imageLiteral(resourceName: "Help-96"),
+                        selectedImage: nil,
+                        tintColor: .white)
         menuButton.addTarget(self, action: #selector(btnMenuBtn), for: .touchUpInside)
         settingButton.addTarget(self, action: #selector(btnSettingBtn), for: .touchUpInside)
         infoBtton.addTarget(self, action: #selector(btnInfoBtn), for: .touchUpInside)
         
         //category
-        image = #imageLiteral(resourceName: "Checkmark Filled-50").withRenderingMode(.alwaysTemplate)
-        categoryDoneBtn.setImage(image, for: .normal)
-        categoryDoneBtn.imageEdgeInsets = UIEdgeInsetsMake(15, 15, 0, 15)
-        categoryDoneBtn.imageView?.contentMode = .scaleAspectFit
         categoryDoneBtn.addTarget(self, action: #selector(btnDone), for: .touchUpInside)
-        categoryDoneBtn.tintColor = UIColor().greenAirwaves()
-        categoryDoneBtn.setTitleColor(UIColor().greenAirwaves(), for: .normal)
-        categorysCollectionView.allowsMultipleSelection = true
         
+        //category 
+        categorysCollectionView.allowsMultipleSelection = true
         categorysCollectionView.delegate = self
         categorysCollectionView.dataSource = self
         categorysCollectionView.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoryCollectionViewCell")
@@ -121,37 +102,8 @@ class HomeViewController: UIViewController {
         view.addConstraint(categoryScrollViewConstraint!)
         
         //color picker
-        colorPickerView = ColorPickerView()
         colorPickerView.delegate = self
         colorPickerView.layoutDelegate = self
-        colorPickerView.backgroundColor = colorDarkPurple
-        colorPickerView.selectionStyle = .none
-        
-        colorPickerView.colors = [#colorLiteral(red: 1, green: 0.7176470588, blue: 0.8666666667, alpha: 1), #colorLiteral(red: 1, green: 0.8, blue: 0.8, alpha: 1), #colorLiteral(red: 1, green: 0.7843137255, blue: 0.7058823529, alpha: 1), #colorLiteral(red: 1, green: 0.8666666667, blue: 0.6666666667, alpha: 1), #colorLiteral(red: 1, green: 0.9333333333, blue: 0.6, alpha: 1), #colorLiteral(red: 0.7450980392, green: 0.9647058824, blue: 0.7960784314, alpha: 1), #colorLiteral(red: 0.8, green: 0.9333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.8, green: 0.8666666667, blue: 1, alpha: 1), #colorLiteral(red: 0.8, green: 0.8, blue: 1, alpha: 1), #colorLiteral(red: 0.9098039216, green: 0.8, blue: 1, alpha: 1)]
-        
-        colorPickerView.colors.append(contentsOf: [#colorLiteral(red: 1, green: 0.7333333333, blue: 0.9333333333, alpha: 1), #colorLiteral(red: 1, green: 0.7333333333, blue: 0.8666666667, alpha: 1), #colorLiteral(red: 1, green: 0.7333333333, blue: 0.8, alpha: 1), #colorLiteral(red: 1, green: 0.7333333333, blue: 0.7333333333, alpha: 1), #colorLiteral(red: 1, green: 0.7333333333, blue: 0.6666666667, alpha: 1),
-                                                   #colorLiteral(red: 1, green: 0.6, blue: 0.6, alpha: 1), #colorLiteral(red: 1, green: 0.4666666667, blue: 0.4666666667, alpha: 1), #colorLiteral(red: 1, green: 0.3333333333, blue: 0.3333333333, alpha: 1), #colorLiteral(red: 1, green: 0.2, blue: 0.2, alpha: 1),
-                                                   #colorLiteral(red: 1, green: 0.3529411765, blue: 0, alpha: 1), #colorLiteral(red: 1, green: 0.4549019608, blue: 0, alpha: 1), #colorLiteral(red: 1, green: 0.5529411765, blue: 0, alpha: 1), #colorLiteral(red: 1, green: 0.6549019608, blue: 0.3058823529, alpha: 1),
-                                                   #colorLiteral(red: 0.9607843137, green: 0.8784313725, blue: 0.4470588235, alpha: 1), #colorLiteral(red: 0.9921568627, green: 0.8235294118, blue: 0.3058823529, alpha: 1), #colorLiteral(red: 0.8784313725, green: 0.7764705882, blue: 0, alpha: 1), #colorLiteral(red: 0.9058823529, green: 0.8431372549, blue: 0.03529411765, alpha: 1), #colorLiteral(red: 0.9568627451, green: 0.862745098, blue: 0, alpha: 1), #colorLiteral(red: 1, green: 0.9137254902, blue: 0.1294117647, alpha: 1),
-                                                   #colorLiteral(red: 0.8705882353, green: 0.9411764706, blue: 0.6745098039, alpha: 1), #colorLiteral(red: 0.7490196078, green: 0.8588235294, blue: 0.5960784314, alpha: 1), #colorLiteral(red: 0.4941176471, green: 0.7568627451, blue: 0.4862745098, alpha: 1), #colorLiteral(red: 0.4, green: 0.6705882353, blue: 0.4705882353, alpha: 1), #colorLiteral(red: 0.2862745098, green: 0.5725490196, blue: 0.3921568627, alpha: 1), #colorLiteral(red: 0.3058823529, green: 0.7098039216, blue: 0.5294117647, alpha: 1), #colorLiteral(red: 0.5411764706, green: 0.9098039216, blue: 0.6862745098, alpha: 1), #colorLiteral(red: 0.462745098, green: 0.9176470588, blue: 0.8156862745, alpha: 1), #colorLiteral(red: 0.6588235294, green: 0.9058823529, blue: 0.8117647059, alpha: 1),
-                                                   #colorLiteral(red: 0.7843137255, green: 0.8980392157, blue: 1, alpha: 1), #colorLiteral(red: 0.462745098, green: 0.8431372549, blue: 0.9176470588, alpha: 1), #colorLiteral(red: 0.2039215686, green: 0.7058823529, blue: 0.9333333333, alpha: 1), #colorLiteral(red: 0.06666666667, green: 0.7411764706, blue: 0.9254901961, alpha: 1), #colorLiteral(red: 0.3921568627, green: 0.7058823529, blue: 0.9333333333, alpha: 1), #colorLiteral(red: 0.06274509804, green: 0.5058823529, blue: 0.8980392157, alpha: 1), #colorLiteral(red: 0.3333333333, green: 0.368627451, blue: 0.9333333333, alpha: 1),
-                                                   #colorLiteral(red: 0.4666666667, green: 0.4941176471, blue: 0.9333333333, alpha: 1), #colorLiteral(red: 0.6, green: 0.6196078431, blue: 0.9333333333, alpha: 1), #colorLiteral(red: 0.6392156863, green: 0.5960784314, blue: 0.9019607843, alpha: 1), #colorLiteral(red: 0.7529411765, green: 0.7019607843, blue: 0.9450980392, alpha: 1), #colorLiteral(red: 0.831372549, green: 0.7843137255, blue: 0.9725490196, alpha: 1)])
-        
-        colorPickerView.colors.append(contentsOf: [#colorLiteral(red: 1, green: 0.5333333333, blue: 0.5333333333, alpha: 1), #colorLiteral(red: 1, green: 0.6431372549, blue: 0.5333333333, alpha: 1),
-                                                   #colorLiteral(red: 1, green: 0.7333333333, blue: 0.4, alpha: 1), #colorLiteral(red: 1, green: 0.8666666667, blue: 0.3333333333, alpha: 1), #colorLiteral(red: 1, green: 1, blue: 0.4666666667, alpha: 1),
-                                                   #colorLiteral(red: 0.8666666667, green: 1, blue: 0.4666666667, alpha: 1), #colorLiteral(red: 0.7333333333, green: 1, blue: 0.4, alpha: 1), #colorLiteral(red: 0.4, green: 0.9215686275, blue: 0.4, alpha: 1), #colorLiteral(red: 0.6, green: 1, blue: 0.6, alpha: 1),
-                                                   #colorLiteral(red: 0.4666666667, green: 1, blue: 0.8, alpha: 1), #colorLiteral(red: 0.4666666667, green: 1, blue: 0.9333333333, alpha: 1), #colorLiteral(red: 0.4, green: 1, blue: 1, alpha: 1),
-                                                   #colorLiteral(red: 0.4666666667, green: 0.8666666667, blue: 1, alpha: 1), #colorLiteral(red: 0.6, green: 0.7333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.6, green: 0.6, blue: 1, alpha: 1),
-                                                   #colorLiteral(red: 0.6235294118, green: 0.5333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.6901960784, green: 0.5333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.8235294118, green: 0.5568627451, blue: 1, alpha: 1),
-                                                   #colorLiteral(red: 0.9411764706, green: 0.7333333333, blue: 1, alpha: 1), #colorLiteral(red: 0.8901960784, green: 0.5568627451, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.4666666667, blue: 1, alpha: 1), #colorLiteral(red: 1, green: 0.5333333333, blue: 0.7607843137, alpha: 1)])
-        
-        colorPickerView.colors.append(contentsOf: [#colorLiteral(red: 0.9607843137, green: 0.8980392157, blue: 0.6352941176, alpha: 1), #colorLiteral(red: 0.9607843137, green: 0.8352941176, blue: 0.6352941176, alpha: 1), #colorLiteral(red: 1, green: 0.8235294118, blue: 0.7019607843, alpha: 1), #colorLiteral(red: 0.9607843137, green: 0.7725490196, blue: 0.6352941176, alpha: 1), #colorLiteral(red: 0.9607843137, green: 0.7098039216, blue: 0.6352941176, alpha: 1), #colorLiteral(red: 0.9607843137, green: 0.6470588235, blue: 0.6352941176, alpha: 1), #colorLiteral(red: 1, green: 0.6588235294, blue: 0.6431372549, alpha: 1), #colorLiteral(red: 1, green: 0.5490196078, blue: 0.5803921569, alpha: 1)])
-        colorPickerView.colors.append(contentsOf: [#colorLiteral(red: 0.9843137255, green: 0.6078431373, blue: 0.6078431373, alpha: 1), #colorLiteral(red: 0.8470588235, green: 0.4117647059, blue: 0.4117647059, alpha: 1), #colorLiteral(red: 0.7647058824, green: 0.3176470588, blue: 0.3176470588, alpha: 1), #colorLiteral(red: 0.7411764706, green: 0.2274509804, blue: 0.2274509804, alpha: 1)])
-        colorPickerView.colors.append(contentsOf: [#colorLiteral(red: 0.8901960784, green: 0.8470588235, blue: 0.8470588235, alpha: 1), #colorLiteral(red: 0.6980392157, green: 0.6431372549, blue: 0.6431372549, alpha: 1), #colorLiteral(red: 0.6039215686, green: 0.5411764706, blue: 0.5411764706, alpha: 1), #colorLiteral(red: 0.4549019608, green: 0.368627451, blue: 0.368627451, alpha: 1), #colorLiteral(red: 0.4117647059, green: 0.3176470588, blue: 0.3176470588, alpha: 1),
-                                                   #colorLiteral(red: 0.4941176471, green: 0.4392156863, blue: 0.4941176471, alpha: 1), #colorLiteral(red: 0.5490196078, green: 0.5098039216, blue: 0.5960784314, alpha: 1), #colorLiteral(red: 0.6156862745, green: 0.6235294118, blue: 0.7137254902, alpha: 1), #colorLiteral(red: 0.7294117647, green: 0.7764705882, blue: 0.8156862745, alpha: 1),
-                                                   #colorLiteral(red: 0.8431372549, green: 0.9058823529, blue: 0.9176470588, alpha: 1), #colorLiteral(red: 0.8784313725, green: 0.8784313725, blue: 0.8784313725, alpha: 1) ,#colorLiteral(red: 0.9098039216, green: 0.9098039216, blue: 0.9098039216, alpha: 1), #colorLiteral(red: 0.8156862745, green: 0.8156862745, blue: 0.8156862745, alpha: 1), #colorLiteral(red: 0.7450980392, green: 0.7450980392, blue: 0.7450980392, alpha: 1),
-                                                   #colorLiteral(red: 0.6784313725, green: 0.6784313725, blue: 0.6784313725, alpha: 1), #colorLiteral(red: 0.5568627451, green: 0.5568627451, blue: 0.5568627451, alpha: 1), #colorLiteral(red: 0.4235294118, green: 0.4235294118, blue: 0.4235294118, alpha: 1), #colorLiteral(red: 0.3098039216, green: 0.3098039216, blue: 0.3098039216, alpha: 1), #colorLiteral(red: 0.2745098039, green: 0.2745098039, blue: 0.2745098039, alpha: 1), #colorLiteral(red: 0.2352941176, green: 0.2352941176, blue: 0.2352941176, alpha: 1), #colorLiteral(red: 0.1960784314, green: 0.1960784314, blue: 0.1960784314, alpha: 1)])
-        
         
         view.addSubview(colorPickerView)
         colorPickerView.translatesAutoresizingMaskIntoConstraints = false
@@ -163,7 +115,6 @@ class HomeViewController: UIViewController {
         view.addConstraint(colorPickerViewConstraint!)
         
         //Bubbles
-        //read data & create & transfer data
         var frame = CGRect()
         for i in 0...categoryStringArray.count - 1 {
             
@@ -172,11 +123,9 @@ class HomeViewController: UIViewController {
             let name = categoryStringArray[i]
             let image = categoryImageArray[i].withRenderingMode(.alwaysTemplate)
             var color = UIColor.lightGray
-            //MARK: find existing data
             
             if let category = CategoryManager.shared.read(name: name) {
-                //TODO: read saved color
-                //transfer data needed
+                
                 isCreated = category.isCreated
                 if let colorData = category.color as Data? {
                     color = UIColor.color(withData: colorData)
@@ -204,18 +153,6 @@ class HomeViewController: UIViewController {
             
         }
         
-        //handle set up mode
-        var willShowFirstSetup = true
-        for category in categoryDataArr {
-            if category.isCreated == true {
-                willShowFirstSetup = false
-                break
-            }
-        }
-        if willShowFirstSetup {
-            showupFirstTime()
-        }
-        
         //deleteLabel
         deleteSuccessLabel.translatesAutoresizingMaskIntoConstraints = false
         deleteSuccessLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
@@ -226,20 +163,17 @@ class HomeViewController: UIViewController {
         deleteLabelConstraint = NSLayoutConstraint(item: deleteSuccessLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
         view.addConstraint(deleteLabelConstraint!)
         
-        //nest animation
-//        var bubbleButtonShowedArr:[SpringButton] = []
-//        for category in categoryDataArr {
-//            if category.isCreated {
-//                category.button.layer.opacity = 0
-//                view.addSubview(category.button)
-//                if let button = category.button as? SpringButton {
-//                    bubbleButtonShowedArr.append(button)
-//                }
-//            }
-//        }
-//        if bubbleButtonShowedArr.count > 0 {
-//            self.bubbleShowUpAnimation(sender: bubbleButtonShowedArr, fromCount: bubbleButtonShowedArr.count)
-//        }
+        //show up firsttime
+        var willShowFirstSetup = true
+        for category in categoryDataArr {
+            if category.isCreated == true {
+                willShowFirstSetup = false
+                break
+            }
+        }
+        if willShowFirstSetup {
+            showupFirstTime()
+        }
         
         //read data to set background image
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -264,38 +198,9 @@ class HomeViewController: UIViewController {
 
     }
     
-    func bubbleShowUpAnimation(sender: [SpringButton], fromCount: Int) {
-        
-        //TODO: disable button
-        sender[sender.count - fromCount].animation = "fadeInUp"
-        sender[sender.count - fromCount].curve = "easeInOut"
-        sender[sender.count - fromCount].duration = 2.5
-        sender[sender.count - fromCount].damping = 10
-        sender[sender.count - fromCount].velocity = 0.1
-        sender[sender.count - fromCount].animate()
-        sender[sender.count - fromCount].layer.opacity = 0.6
-        
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (_) in
-            if fromCount - 1 > 0 {
-                DispatchQueue.main.async {
-                    self.bubbleShowUpAnimation(sender: sender, fromCount: fromCount - 1)
-                }
-            } else {
-                sender[sender.count - fromCount].animation = "fadeInUp"
-                sender[sender.count - fromCount].curve = "easeInOut"
-                sender[sender.count - fromCount].duration = 2.5
-                sender[sender.count - fromCount].damping = 10
-                sender[sender.count - fromCount].velocity = 0.1
-                sender[sender.count - fromCount].animate()
-                sender[sender.count - fromCount].layer.opacity = 0.6
-            }
-        }
-    }
-    
     func showupFirstTime() {
         
         addBlackTransparentView()
-        
         UIView.animate(withDuration: 0, delay: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
@@ -329,7 +234,30 @@ class HomeViewController: UIViewController {
         
         //create data for the first time
         createBackgroundDataFirstTime()
+    }
+    
+    func bubbleNestShowUpAnimation(sender: [SpringButton], toCount: Int) {
         
+        //TODO: disable button
+        sender[sender.count - toCount].animation = "fadeInUp"
+        sender[sender.count - toCount].curve = "easeInOut"
+        sender[sender.count - toCount].duration = 4
+        sender[sender.count - toCount].damping = 10
+        sender[sender.count - toCount].velocity = 0.08
+        sender[sender.count - toCount].layer.opacity = 0.6
+        sender[sender.count - toCount].animate()
+        sender[sender.count - toCount].animate()
+        
+        Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { (_) in
+            if toCount - 1 > 0 {
+                
+                self.bubbleNestShowUpAnimation(sender: sender,
+                                                   toCount: toCount - 1)
+                
+            } else {
+                
+            }
+        }
     }
     
     func createBackgroundDataFirstTime() {
@@ -341,189 +269,6 @@ class HomeViewController: UIViewController {
                 user.backgroundImage = imageData as NSData
             }
             appDelegate.saveContext()
-        }
-    }
-    
-    func createRandomBubble(with image: UIImage, in frame: CGRect?, color: UIColor) -> UIButton {
-        
-        let button = SpringButton()
-        if let frame = frame {
-            button.layer.frame = frame
-        } else {
-            let xPos = arc4random_uniform(UInt32(view.frame.width) - 100)
-            let yPos = arc4random_uniform(UInt32(colorPickerView.frame.minY) - 100 - UInt32(quoteButton.frame.maxY)) + UInt32(quoteButton.frame.maxY)
-            button.layer.frame = CGRect(x: Int(xPos), y: Int(yPos), width: 84, height: 84)
-        }
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = button.frame.width / 2
-        
-        //image
-        let imageRendered = image.withRenderingMode(.alwaysTemplate)
-        button.tintColor = UIColor.white
-        button.setImage(imageRendered, for: .normal)
-        button.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
-        
-        //drag gesture
-        let gesture = UIPanGestureRecognizer(target: self, action: #selector(dragCircle))
-        button.addGestureRecognizer(gesture)
-        
-        setBubbleColor(for: button, with: color)
-        
-        return button
-    }
-    
-    func setBubbleColor(for button: UIButton, with color: UIColor) {
-        //color
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = button.bounds
-        let dynamicGradient = DynamicGradient(colors: [UIColor.white, color, color.darkened()])
-        gradientLayer.colors = [dynamicGradient.pickColorAt(scale: 0).cgColor, color.cgColor, dynamicGradient.pickColorAt(scale: 0.6).cgColor]
-        button.layer.insertSublayer(gradientLayer, below: button.imageView?.layer)
-        button.layer.opacity = 0.6
-        
-        //shadow
-        button.layer.shadowColor = button.backgroundColor?.shaded().cgColor
-        button.layer.shadowOpacity = 1
-        button.layer.shadowOffset = CGSize(width: 0, height: 2)
-        button.layer.shadowRadius = 3
-        button.layer.shadowPath = UIBezierPath(rect: button.bounds).cgPath
-        button.layer.shouldRasterize = false
-    }
-    
-    func dragCircle(gesture: UIPanGestureRecognizer) {
-        let target = gesture.view!
-        var isDeleteSuccess = false
-        
-        var bubbleAnimator = UIViewPropertyAnimator(duration: 1.0, curve: .easeInOut, animations: { })
-//        dragAnimatorArray.append(bubbleAnimator)
-        
-        switch gesture.state {
-        case .began:
-            
-            if bubbleAnimator.state == .active {
-                bubbleAnimator.stopAnimation(true)
-            }
-            circleCenter = target.center
-            bubbleAnimator.addAnimations {
-                target.transform = CGAffineTransform(scaleX: 1.6, y: 1.6)
-            }
-            bubbleAnimator.startAnimation()
-            
-        case .changed:
-            let translation = gesture.translation(in: self.view)
-            target.center = CGPoint(x: circleCenter.x + translation.x,
-                                    y: circleCenter.y + translation.y)
-            
-        case .ended:
-            //shrink bubble
-            if bubbleAnimator.state == .active {
-                bubbleAnimator.stopAnimation(true)
-            }
-            //deceleration
-            let velocity = gesture.velocity(in: view)
-            let cgVelocity = CGVector(dx: velocity.x / 500, dy: velocity.y / 500)
-            let springParameters = UISpringTimingParameters(mass: 2.5, stiffness: 50, damping: 25, initialVelocity: cgVelocity)
-            bubbleAnimator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springParameters) // original 2.5, 70, 55)
-            var stopPoint_X = target.center.x + velocity.x * 0.05
-            var stopPoint_Y = target.center.y + velocity.y * 0.05
-            
-            bubbleAnimator.addAnimations {
-                
-                switch self.currentMode {
-                    
-                case .normal:
-                    
-                    if 50 <= stopPoint_X && stopPoint_X <= self.view.frame.maxX - 50 &&
-                       80 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 50 {
-                        
-                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
-                        target.transform = CGAffineTransform.identity
-                        
-                    } else {
-                        
-                        if stopPoint_X < 50 { stopPoint_X = 35 }
-                        if stopPoint_X > self.view.frame.maxX - 50 {
-                            stopPoint_X = self.view.frame.maxX - 35 }
-                        if stopPoint_Y < 80 { stopPoint_Y = 80 }
-                        if stopPoint_Y > self.view.frame.maxY - 50 {
-                            stopPoint_Y = self.view.frame.maxY - 35 }
-                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
-                        target.transform = CGAffineTransform.identity
-                        
-                    }
-                    
-                case .setup:
-                    
-                    if 50 <= stopPoint_X && stopPoint_X <= self.view.frame.maxX - 50 &&
-                        80 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 50 {
-                        
-                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
-                        target.transform = CGAffineTransform.identity
-                        
-                    } else {
-                        
-                        if stopPoint_X < 50 { stopPoint_X = 35 }
-                        if stopPoint_X > self.view.frame.maxX - 50 {
-                            stopPoint_X = self.view.frame.maxX - 35 }
-                        if stopPoint_Y < 80 { stopPoint_Y = 80 }
-                        if stopPoint_Y > self.view.frame.maxY - 50 {
-                            stopPoint_Y = self.view.frame.maxY - 35 }
-                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
-                        target.transform = CGAffineTransform.identity
-                        
-                    }
-                    
-                case .setupCategory:
-                    
-                    target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
-                    target.transform = CGAffineTransform.identity
-                    
-                    if 25 <= stopPoint_X && stopPoint_X <= self.view.frame.maxX - 25 &&
-                        25 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 25 {
-                    } else {
-                        
-                        //delete bubble data
-                        if let deleteRow = gesture.view?.tag {
-                            
-                            isDeleteSuccess = true
-                            
-                            let indexPath = IndexPath(row: deleteRow, section: 0)
-                            DispatchQueue.main.async {
-                                self.categorysCollectionView.reloadItems(at: [indexPath])
-                            }
-                            self.categoryDataArr[deleteRow].button.removeFromSuperview()
-                            self.categoryDataArr[deleteRow].isCreated = false
-                            self.categorysCollectionView.deselectItem(at: indexPath, animated: true)
-                        }
-                    }
-                    
-                default:
-                    break
-                }
-                
-            }
-            bubbleAnimator.startAnimation()
-            //swing animation
-            if let target = target as? SpringButton {
-                target.animation = "swing"
-                target.curve = "easeInCubic"
-                target.damping = 50
-                target.velocity = 0.1
-                target.force = 0.2
-                target.scaleX = 0.85
-                target.scaleY = 0.85
-                target.duration = 2.5
-                target.animate()
-                target.layer.opacity = 0.6
-            }
-            
-        default:
-            break
-        }
-        
-        //delete animation
-        if isDeleteSuccess {
-            alertLabel(replaceString: "Deleted", isHidden: true, color: .red)
         }
     }
     
@@ -603,10 +348,8 @@ class HomeViewController: UIViewController {
             }
         }
         
-        //button action & appearance change
         switchMode(to: .setup)
-        
-        alertLabel(replaceString: "Please select an item", isHidden: false, color: UIColor().blueMiddleGray())
+        alertLabel(replaceString: "Please select an item", isHidden: false, color: UIColor.blueMiddleGray())
     }
     
     func switchMode(to mode: Mode) {
@@ -704,10 +447,7 @@ class HomeViewController: UIViewController {
             
             //change color
             let clickedIndexPath = IndexPath(row: sender.tag, section: 0)
-            //selected color
-//            if let cell = self.categorysCollectionView.cellForItem(at: clickedIndexPath) as? CategoryCollectionViewCell {
-//                cell.colorBK = sender.backgroundColor!
-//            }
+            
             //selec created items
             for category in self.categoryDataArr {
                 if category.isCreated {
@@ -764,12 +504,9 @@ class HomeViewController: UIViewController {
         deleteSuccessLabel.isHidden = false
         deleteSuccessLabel.animation = "fadeIn"
         deleteSuccessLabel.animateNext {
-//            self.deleteSuccessLabel.animation = "fadeOut"
-//            self.deleteSuccessLabel.animate()
             self.deleteSuccessLabel.isHidden = isHidden
         }
     }
-    
     
     func updateCategoryDataArrayFrame() {
         
@@ -808,20 +545,14 @@ class HomeViewController: UIViewController {
         } catch {}
         
         for category in categoryDataArr {
+            
             if category.isCreated {
                 
-                guard let entityDescription = NSEntityDescription.entity(forEntityName: "CategoryMO", in: moc) else {
-                    
-                    return
-                    
-                }
-                
+                guard let entityDescription = NSEntityDescription.entity(forEntityName: "CategoryMO", in: moc) else { return }
                 let cMO = CategoryMO(entity: entityDescription, insertInto: moc)
                 
                 cMO.name = category.name
-                
                 cMO.isCreated = category.isCreated
-                
                 let frame = category.frame
                 cMO.posX = Float(frame.minX)
                 cMO.posY = Float(frame.minY)
@@ -877,10 +608,8 @@ class HomeViewController: UIViewController {
             
         }
         
-        //TODO: remove after test
         switchMode(to: .tutorial)
-        alertLabel(replaceString: "Quit Tutorial", isHidden: false, color: UIColor().blueMiddleGray().lighter())
-
+        alertLabel(replaceString: "Quit Tutorial", isHidden: false, color: UIColor.blueMiddleGray().lighter())
     }
     
     func addBlackTransparentView() {
@@ -897,7 +626,6 @@ class HomeViewController: UIViewController {
         blackTransparentView.duration = 1
         blackTransparentView.animate()
         blackTransparentView.alpha = 0.6
-        
     }
     
     func quitTutorial() {
@@ -943,7 +671,6 @@ class HomeViewController: UIViewController {
         } else {
             dismissQuote()
         }
-        
     }
     
     func dismissQuote() {
@@ -1003,6 +730,175 @@ class HomeViewController: UIViewController {
     }
 }
 
+//MARK: Bubble Control
+extension HomeViewController {
+    
+    func createRandomBubble(with image: UIImage, in frame: CGRect?, color: UIColor) -> SpringButton {
+        
+        let button = SpringButton()
+        
+        if let frame = frame {
+            button.layer.frame = frame
+        } else {
+            let xPos = arc4random_uniform(UInt32(view.frame.width) - 100)
+            let yPos = arc4random_uniform(UInt32(colorPickerView.frame.minY) - 100 - UInt32(quoteButton.frame.maxY)) + UInt32(quoteButton.frame.maxY)
+            button.layer.frame = CGRect(x: Int(xPos), y: Int(yPos), width: 84, height: 84)
+        }
+        
+        button.normalSetup(normalImage: image,
+                           selectedImage: nil,
+                           tintColor: .white)
+        button.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+        button.setFrameToCircle()
+        button.setBubbleColor(with: color)
+        
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(dragCircle))
+        button.addGestureRecognizer(gesture)
+        
+        return button
+    }
+    
+    
+    func dragCircle(gesture: UIPanGestureRecognizer) {
+        
+        let target = gesture.view!
+        var isDeleteSuccess = false
+        
+        var bubbleAnimator = UIViewPropertyAnimator(duration: 1.0, curve: .easeInOut, animations: { })
+        //        dragAnimatorArray.append(bubbleAnimator)
+        
+        switch gesture.state {
+        case .began:
+            
+            if bubbleAnimator.state == .active {
+                bubbleAnimator.stopAnimation(true)
+            }
+            circleCenter = target.center
+            bubbleAnimator.addAnimations {
+                target.transform = CGAffineTransform(scaleX: 1.6, y: 1.6)
+            }
+            bubbleAnimator.startAnimation()
+            
+        case .changed:
+            let translation = gesture.translation(in: self.view)
+            target.center = CGPoint(x: circleCenter.x + translation.x,
+                                    y: circleCenter.y + translation.y)
+            
+        case .ended:
+            //shrink bubble
+            if bubbleAnimator.state == .active {
+                bubbleAnimator.stopAnimation(true)
+            }
+            //deceleration
+            let velocity = gesture.velocity(in: view)
+            let cgVelocity = CGVector(dx: velocity.x / 500, dy: velocity.y / 500)
+            let springParameters = UISpringTimingParameters(mass: 2.5, stiffness: 50, damping: 25, initialVelocity: cgVelocity)
+            bubbleAnimator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springParameters) // original 2.5, 70, 55)
+            var stopPoint_X = target.center.x + velocity.x * 0.05
+            var stopPoint_Y = target.center.y + velocity.y * 0.05
+            
+            bubbleAnimator.addAnimations {
+                
+                switch self.currentMode {
+                    
+                case .normal:
+                    
+                    if 50 <= stopPoint_X && stopPoint_X <= self.view.frame.maxX - 50 &&
+                        80 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 50 {
+                        
+                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
+                        target.transform = CGAffineTransform.identity
+                        
+                    } else {
+                        
+                        if stopPoint_X < 50 { stopPoint_X = 35 }
+                        if stopPoint_X > self.view.frame.maxX - 50 {
+                            stopPoint_X = self.view.frame.maxX - 35 }
+                        if stopPoint_Y < 80 { stopPoint_Y = 80 }
+                        if stopPoint_Y > self.view.frame.maxY - 50 {
+                            stopPoint_Y = self.view.frame.maxY - 35 }
+                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
+                        target.transform = CGAffineTransform.identity
+                        
+                    }
+                    
+                case .setup:
+                    
+                    if 50 <= stopPoint_X && stopPoint_X <= self.view.frame.maxX - 50 &&
+                        80 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 50 {
+                        
+                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
+                        target.transform = CGAffineTransform.identity
+                        
+                    } else {
+                        
+                        if stopPoint_X < 50 { stopPoint_X = 35 }
+                        if stopPoint_X > self.view.frame.maxX - 50 {
+                            stopPoint_X = self.view.frame.maxX - 35 }
+                        if stopPoint_Y < 80 { stopPoint_Y = 80 }
+                        if stopPoint_Y > self.view.frame.maxY - 50 {
+                            stopPoint_Y = self.view.frame.maxY - 35 }
+                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
+                        target.transform = CGAffineTransform.identity
+                        
+                    }
+                    
+                case .setupCategory:
+                    
+                    target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
+                    target.transform = CGAffineTransform.identity
+                    
+                    if 25 <= stopPoint_X && stopPoint_X <= self.view.frame.maxX - 25 &&
+                        25 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 25 {
+                    } else {
+                        
+                        //delete bubble data
+                        if let deleteRow = gesture.view?.tag {
+                            
+                            isDeleteSuccess = true
+                            
+                            let indexPath = IndexPath(row: deleteRow, section: 0)
+                            DispatchQueue.main.async {
+                                self.categorysCollectionView.reloadItems(at: [indexPath])
+                            }
+                            self.categoryDataArr[deleteRow].button.removeFromSuperview()
+                            self.categoryDataArr[deleteRow].isCreated = false
+                            self.categorysCollectionView.deselectItem(at: indexPath, animated: true)
+                        }
+                    }
+                    
+                default:
+                    break
+                }
+                
+            }
+            bubbleAnimator.startAnimation()
+            //swing animation
+            if let target = target as? SpringButton {
+                target.animation = "swing"
+                target.curve = "easeInCubic"
+                target.damping = 50
+                target.velocity = 0.1
+                target.force = 0.2
+                target.scaleX = 0.85
+                target.scaleY = 0.85
+                target.duration = 2.5
+                target.animate()
+                target.layer.opacity = 0.6
+            }
+            
+        default:
+            break
+        }
+        
+        //delete animation
+        if isDeleteSuccess {
+            alertLabel(replaceString: "Deleted", isHidden: true, color: .red)
+        }
+    }
+    
+}
+
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -1010,7 +906,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
         
         cell.isCreated = true
-        let createColor = UIColor().randomColor()
+        let createColor = UIColor.randomColor(from: 130, to: 220)
         categoryDataArr[indexPath.row].isCreated = true
         let createBtn = createRandomBubble(with: categoryImageArray[indexPath.row],
                                            in: nil,
@@ -1025,15 +921,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         view.addSubview(createBtn)
         
         //float in animation
-        if let springBtn = createBtn as? SpringButton {
-            springBtn.animation = "fadeInUp"
-            springBtn.curve = "easeInOut"
-            springBtn.duration = 2.5
-            springBtn.damping = 10
-            springBtn.velocity = 0.1
-            springBtn.animate()
-            springBtn.layer.opacity = 0.6
-        }
+        createBtn.animation = "fadeInUp"
+        createBtn.curve = "easeInOut"
+        createBtn.duration = 2.5
+        createBtn.damping = 10
+        createBtn.velocity = 0.1
+        createBtn.animate()
+        createBtn.layer.opacity = 0.6
         
     }
     
@@ -1069,22 +963,16 @@ extension HomeViewController: ColorPickerViewDelegate {
     
     func colorPickerView(_ colorPickerView: ColorPickerView, didSelectItemAt indexPath: IndexPath) {
         
-        // A color has been selected
-        //category selected
-//        let catIndexPath = IndexPath(row: selectedCatogoryRow, section: 0)
-//        categorysCollectionView.cellForItem(at: catIndexPath)?.contentView.backgroundColor = colorPickerView.colors[indexPath.row]
         //bubble selected
-        setBubbleColor(for: categoryDataArr[selectedCatogoryRow].button, with: colorPickerView.colors[indexPath.row])
+        categoryDataArr[selectedCatogoryRow].button.setBubbleColor(with: colorPickerView.colors[indexPath.row])
         
-        //TODO: save color
+        //save color
         categoryDataArr[selectedCatogoryRow].color = colorPickerView.colors[indexPath.row]
-        
     }
     
     // This is an optional method
     func colorPickerView(_ colorPickerView: ColorPickerView, didDeselectItemAt indexPath: IndexPath) {
         // A color has been deselected
-        
     }
     
 }
@@ -1128,7 +1016,6 @@ extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TO
     func setBackground() {
         
         presentFusumaViewController()
-        
     }
     
     //CropViewController
@@ -1175,7 +1062,6 @@ extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TO
         DispatchQueue.main.async {
             self.present(cropViewController, animated: true, completion: nil)
         }
-        
     }
     
     func fusumaVideoCompleted(withFileURL fileURL: URL) { }
@@ -1183,7 +1069,6 @@ extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TO
     func fusumaCameraRollUnauthorized() {
         
         //TODO: GO TO SETTINGS
-        
     }
     
     func presentFusumaViewController() {
@@ -1198,14 +1083,7 @@ extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TO
         fusumaViewController.modeOrder = .libraryFirst
         self.present(fusumaViewController, animated: true) {
         }
-        
     }
 
 }
-
-
-
-
-
-
 

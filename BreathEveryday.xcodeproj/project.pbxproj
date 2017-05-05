@@ -10,6 +10,10 @@
 		C78B464447E5B301489AF85C /* Pods_BreathEveryday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035937D110347F617E50F288 /* Pods_BreathEveryday.framework */; };
 		F408C5D71EA51B3B00F29A67 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */; };
 		F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */; };
+		F43B3FEC1EBC1E00008577EF /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */; };
+		F43B3FEE1EBC1EDA008577EF /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */; };
+		F43B3FF01EBC2E62008577EF /* BubbleButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FEF1EBC2E62008577EF /* BubbleButton+Extension.swift */; };
+		F43B3FF21EBC321F008577EF /* HomeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FF11EBC321F008577EF /* HomeItemView.swift */; };
 		F49B09251EBB14900002297F /* Background Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49B09241EBB14900002297F /* Background Image.xcassets */; };
 		F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A21F981E9C6E4200C24517 /* EventManager.swift */; };
 		F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A57E1E88EE4200CAECEE /* CoreDataModel.xcdatamodeld */; };
@@ -40,6 +44,10 @@
 		F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
 		F43B3FCC1EBB323F008577EF /* BreathEveryday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BreathEveryday.entitlements; sourceTree = "<group>"; };
+		F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		F43B3FEF1EBC2E62008577EF /* BubbleButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BubbleButton+Extension.swift"; sourceTree = "<group>"; };
+		F43B3FF11EBC321F008577EF /* HomeItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeItemView.swift; sourceTree = "<group>"; };
 		F49B09241EBB14900002297F /* Background Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Background Image.xcassets"; sourceTree = "<group>"; };
 		F4A21F981E9C6E4200C24517 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		F4B2A57F1E88EE4200CAECEE /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -97,8 +105,10 @@
 		F4D55CB61EADB91600EE80C4 /* Home Page */ = {
 			isa = PBXGroup;
 			children = (
+				F43B3FF11EBC321F008577EF /* HomeItemView.swift */,
 				F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */,
 				F4D6BD981EA493D600A93E46 /* HomeViewModel.swift */,
+				F43B3FEF1EBC2E62008577EF /* BubbleButton+Extension.swift */,
 				F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */,
 				F4D6BD9A1EA4960600A93E46 /* BubbleButton.xib */,
 				F4D6BD931EA4740300A93E46 /* CategoryCell */,
@@ -172,6 +182,8 @@
 				F4B2A57E1E88EE4200CAECEE /* CoreDataModel.xcdatamodeld */,
 				F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */,
 				F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */,
+				F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */,
+				F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */,
 				F4D55CB61EADB91600EE80C4 /* Home Page */,
 				F4D55CB71EADB93500EE80C4 /* List Page */,
 				F4FA6AB61E7FD8F100C2E46E /* NoteViewController.swift */,
@@ -341,12 +353,16 @@
 				F4FA6AAF1E7FCD0D00C2E46E /* IdentifierModel.swift in Sources */,
 				F4D6BD961EA4743500A93E46 /* CategoryCollectionViewCell.swift in Sources */,
 				F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */,
+				F43B3FF01EBC2E62008577EF /* BubbleButton+Extension.swift in Sources */,
 				F4E3014E1E9E17CC00846EBF /* CalendarCell.swift in Sources */,
 				F4D6BD991EA493D600A93E46 /* HomeViewModel.swift in Sources */,
+				F43B3FEC1EBC1E00008577EF /* UIColor+Extensions.swift in Sources */,
 				F4FA6AB71E7FD8F100C2E46E /* NoteViewController.swift in Sources */,
 				F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */,
 				F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */,
 				F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */,
+				F43B3FEE1EBC1EDA008577EF /* UIButton+Extensions.swift in Sources */,
+				F43B3FF21EBC321F008577EF /* HomeItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

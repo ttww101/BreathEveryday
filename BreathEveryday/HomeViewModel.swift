@@ -9,41 +9,6 @@
 import Foundation
 import UIKit
 
-let colorDarkPurple = UIColor(colorLiteralRed: 61/255,
-                            green: 57/255,
-                            blue: 66/255,
-                            alpha: 1)
-
-extension UIColor {
-    class func color(withData data:Data) -> UIColor {
-        return NSKeyedUnarchiver.unarchiveObject(with: data) as! UIColor
-    }
-    
-    func encode()-> Data {
-        return NSKeyedArchiver.archivedData(withRootObject: self)
-    }
-    
-    func randomColor()-> UIColor {
-        let red = Float(arc4random_uniform(90)) + 130
-        let green = Float(arc4random_uniform(90)) + 130
-        let blue = Float(arc4random_uniform(90)) + 130
-        let color = UIColor(colorLiteralRed: red/255, green: green/255, blue: blue/255, alpha: 1)
-//        print(color)
-        return color
-    }
-    
-    func blueMiddleGray() -> UIColor {
-        return UIColor(colorLiteralRed: 163/255, green: 194/255, blue: 186/255, alpha: 1.0)
-    }
-    
-    func middleGray() -> UIColor {
-        return UIColor(colorLiteralRed: 161/255, green: 177/255, blue: 166/255, alpha: 1.0)
-    }
-    
-    func greenAirwaves() -> UIColor {
-        return UIColor(colorLiteralRed: 111/255, green: 191/255, blue: 152/255, alpha: 1.0)
-    }
-}
 
 struct Category {
     
