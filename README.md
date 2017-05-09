@@ -16,7 +16,7 @@ Create your own beauty! Hope you all like it :).
   
 * Plenty colors to choose for every category  
   
-  ![](http://i.imgur.com/ATvT0rF.gif)
+  ![](http://i.imgur.com/rDHz4Az.gif)
 
 * Background image setup  
 * Quotes to inspiring people  
