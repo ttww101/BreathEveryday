@@ -2,8 +2,8 @@
 ### Features
 ✦  Alive, beauty, custom design app.  
 ✦  Categories for user to choose and record personal events.  
-✦  Easy setting to integrate events into iPhone Calendar. 
-✦  Record notes for every event. 
+✦  Easy setting to integrate events into iPhone Calendar.   
+✦  Record notes for every event.   
 ✦  Categories, color of every bubble, background can be customized.    
   
 Create your own beauty! Hope you all like it :). 
