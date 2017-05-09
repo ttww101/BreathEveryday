@@ -12,23 +12,25 @@ Create your own beauty! Hope you all like it :).
 * Display setup categories  
 * Bubbles can be drag to any position  
     
-  ![](http://i.imgur.com/xEXSs1h.gif)  
+![](http://i.imgur.com/xEXSs1h.gif)  
+  
   
 * Plenty colors to choose for every category  
   
-  ![](http://i.imgur.com/rDHz4Az.gif)
+![](http://i.imgur.com/rDHz4Az.gif)
 
+  
 * Background image setup  
 * Quotes to inspiring people  
   
-  ![](http://i.imgur.com/xnF0e13.gif)
+![](http://i.imgur.com/xnF0e13.gif)
   
 ### Event Page
 * Record events for certain category  
 * Set up date, time, remind time for every event, it will be integrate to the “Calendar” app automatically  
 * Add more details to single event  
   
-  ![](http://i.imgur.com/Zi9JvxH.gif)
+![](http://i.imgur.com/Zi9JvxH.gif)
   
 ## Requirement
 1. iOS 10.3+
