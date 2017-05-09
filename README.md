@@ -30,9 +30,13 @@ Create your own beauty! Hope you all like it :).
   
 ![](http://i.imgur.com/Zi9JvxH.gif)
   
-### Requirement
+## Requirement
 1. iOS 10.3+
 2. Xcode 8.3+
+
+## Contact Info
+Mail: bomiishere@gmail.con
+Facebook: https://www.facebook.com/Bomiishere
 
 
 
