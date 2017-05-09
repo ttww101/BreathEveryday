@@ -21,7 +21,7 @@ Create your own beauty! Hope you all like it :).
 * Background image setup  
 * Quotes to inspiring people  
   
-  ![](http://i.imgur.com/HNOK0Cz.gif)
+  ![](http://i.imgur.com/xnF0e13.gif)
   
 ### Event Page
 * Record events for certain category  
