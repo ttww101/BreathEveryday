@@ -9,8 +9,7 @@
 Create your own beauty! Hope you all like it :). 
 ***
 ### Home Page
-* Display setup categories  
-* Bubbles can be drag to any position  
+* Display setup categories & bubbles can be drag to any position  
     
   ![](http://i.imgur.com/xEXSs1h.gif)  
   
@@ -20,8 +19,7 @@ Create your own beauty! Hope you all like it :).
   ![](http://i.imgur.com/rDHz4Az.gif)
 
   
-* Background image setup  
-* Quotes to inspiring people  
+* Background image setup & quotes to inspiring people  
   
   ![](http://i.imgur.com/xnF0e13.gif)
   
