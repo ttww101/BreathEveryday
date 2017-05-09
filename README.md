@@ -6,7 +6,8 @@
 ✦  Record notes for every event.   
 ✦  Categories, color of every bubble, background can be customized.    
   
-Create your own beauty! Hope you all like it :). 
+Create your own beauty! Hope you all like it :)  
+App Store: https://itunes.apple.com/app/id1230293980  
 ***
 ### Home Page
 * Display setup categories & bubbles can be drag to any position  
