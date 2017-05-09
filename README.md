@@ -15,7 +15,9 @@ Create your own beauty! Hope you all like it :)
 
 ✦ Choose plenty of colors for every category
 
+
 ![](http://i.imgur.com/ATvT0rF.gif)
+
 
 ✦ Settings for background image
 
