@@ -1,11 +1,13 @@
 ## BreathEveryday
-A beautiful note and to-do list app for user to choose and record personal events in every aspects in life. With integration to iPhone Calendar, it can easily remind user to accomplish tasks.  
+### Features
+✦  Alive, beauty, custom design app.  
+✦  Categories for user to choose and record personal events.  
+✦  Easy setting to integrate events into iPhone Calendar. 
+✦  Record notes for every event. 
+✦  Categories, color of every bubble, background can be customized.    
   
-Categories, color of every bubble, background all can be customized.  
-Create your own beauty! Hope you all like it :) 
+Create your own beauty! Hope you all like it :). 
 
-
-## Features
 ### Home Page
 ✦ Display every setup category   
 
