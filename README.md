@@ -11,7 +11,7 @@ Create your own beauty! Hope you all like it :)
 ✦ Bubble-like circle for categories, can be drag to any position
 
 
-![](http://i.imgur.com/TfoFh1J.gifv)
+![](http://i.imgur.com/kitUs2H.gif)
 
 
 ✦ Choose plenty of colors for every category
