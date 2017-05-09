@@ -11,10 +11,10 @@ Create your own beauty! Hope you all like it :).
 ### Home Page
 ✦ Display setup categories  
 ✦ Bubbles can be drag to any position  
-  
+    
 ![](http://i.imgur.com/xEXSs1h.gif)  
-
-✦ Plenty colors to choose for every category
+  
+✦ Plenty colors to choose for every category  
   
 ![](http://i.imgur.com/ATvT0rF.gif)
 
@@ -26,6 +26,15 @@ Create your own beauty! Hope you all like it :).
 ### Event Page
 ✦ Record events for certain category  
 ✦ Set up date, time, remind time for every event, it will be integrate to the “Calendar” app automatically  
-✦ Add more details to single event 
+✦ Add more details to single event  
   
 ![](http://i.imgur.com/Zi9JvxH.gif)
+  
+### Requirement
+1. iOS 10.3+
+2. Xcode 8.3+
+
+
+
+
+
