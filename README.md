@@ -10,7 +10,7 @@ Create your own beauty! Hope you all like it :)
 ✦ Display every setup category 
 ✦ Bubble-like circle for categories, can be drag to any position
 
-![GITHUB](http://i.imgur.com/ppOa9Tx.gifv "123")
+![](http://imgur.com/ppOa9Tx)
 
 ✦ Choose plenty of colors for every category
 
