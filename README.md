@@ -31,7 +31,7 @@ App Store: https://itunes.apple.com/app/id1230293980
 * Add more details to single event  
   
   ![](http://i.imgur.com/Zi9JvxH.gif)
-  ***
+***
 ## Requirement
 1. iOS 10.3+
 2. Xcode 8.3+  
