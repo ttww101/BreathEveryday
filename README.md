@@ -7,6 +7,7 @@
 ✦  Categories, color of every bubble, background can be customized.    
   
 Create your own beauty! Hope you all like it :)  
+  
 App Store: https://itunes.apple.com/app/id1230293980  
 ***
 ### Home Page
