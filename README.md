@@ -19,12 +19,12 @@ App Store: https://itunes.apple.com/app/id1230293980
   
 * Plenty colors to choose for every category  
   
-  ![213](http://i.imgur.com/rDHz4Az.gif)
+  ![](http://i.imgur.com/rDHz4Az.gif)
 
   
 * Background image setup & quotes to inspiring people  
   
-  ![13213](http://i.imgur.com/xnF0e13.gif)
+  ![](http://i.imgur.com/xnF0e13.gif)
   
 ### Event Page
 * Record events for certain category  
