@@ -18,7 +18,6 @@ App Store: https://itunes.apple.com/app/id1230293980
   
 * Plenty colors to choose for every category  
   
-  <iframe src="https://www.youtube.com/watch?v=ZNO2qikX4BE"></iframe>  
   ![](http://i.imgur.com/rDHz4Az.gif)
 
   
