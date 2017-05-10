@@ -13,18 +13,18 @@ App Store: https://itunes.apple.com/app/id1230293980
 ### Home Page
 * Display setup categories & bubbles can be drag to any position  
     
-  [![Click to see video](http://i.imgur.com/xEXSs1h.gif)](http://www.youtube.com/watch?v=ZNO2qikX4BE)
+     [![](http://i.imgur.com/xEXSs1h.gif)](http://www.youtube.com/watch?v=ZNO2qikX4BE)
   
 
   
 * Plenty colors to choose for every category  
   
-  ![](http://i.imgur.com/rDHz4Az.gif)
+  ![213](http://i.imgur.com/rDHz4Az.gif)
 
   
 * Background image setup & quotes to inspiring people  
   
-  ![](http://i.imgur.com/xnF0e13.gif)
+  ![13213](http://i.imgur.com/xnF0e13.gif)
   
 ### Event Page
 * Record events for certain category  
