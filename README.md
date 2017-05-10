@@ -40,7 +40,7 @@ App Store: https://itunes.apple.com/app/id1230293980
 2. Xcode 8.3+  
 
 ## Contact Info
-Mail: bomiishere@gmail.con  
+Mail: bomiishere@gmail.com  
 Facebook: https://www.facebook.com/Bomiishere
 
 ***
