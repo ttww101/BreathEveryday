@@ -15,6 +15,7 @@ App Store: https://itunes.apple.com/app/id1230293980
     
   ![](http://i.imgur.com/xEXSs1h.gif)  
   
+  [![Everything Is AWESOME](https://img.youtube.com/vi/ZNO2qikX4BE/0.jpg)](https://www.youtube.com/watch?v=ZNO2qikX4BE "Everything Is AWESOME")
   
 * Plenty colors to choose for every category  
   
