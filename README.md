@@ -23,16 +23,15 @@ App Store: https://itunes.apple.com/app/id1230293980
   
 * Background image setup & quotes to inspiring people  
   
-                                          [![](http://i.imgur.com/xnF0e13.gif)](https://www.youtube.com/watch?v=g7QjH3KByoc)
+  [![](http://i.imgur.com/xnF0e13.gif)](https://www.youtube.com/watch?v=g7QjH3KByoc)
                                             
   
 ### Event Page
 * Record events for certain category  
 * Set up date, time, remind time for every event, it will be integrate to the “Calendar” app automatically  
 * Add more details to single event  
-  
 
-                                          [![](http://i.imgur.com/Zi9JvxH.gif)](https://www.youtube.com/watch?v=sk7VgqVJimg)
+  [![(http://i.imgur.com/Zi9JvxH.gif)](https://www.youtube.com/watch?v=sk7VgqVJimg)
   
   
 ***
