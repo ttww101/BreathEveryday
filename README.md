@@ -13,7 +13,7 @@ App Store: https://itunes.apple.com/app/id1230293980
 ### Home Page
 * Display setup categories & bubbles can be drag to any position  
     
-     [![](http://i.imgur.com/xEXSs1h.gif)](http://www.youtube.com/watch?v=ZNO2qikX4BE)
+       [![](http://i.imgur.com/xEXSs1h.gif)](http://www.youtube.com/watch?v=ZNO2qikX4BE)
   
 
   
