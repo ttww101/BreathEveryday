@@ -246,6 +246,7 @@ public class FusumaViewController: UIViewController {
             cameraView.fullAspectRatioConstraint.isActive = true
             cameraView.croppedAspectRatioConstraint?.isActive = false
         }
+        highlightButton(libraryButton)
     }
     
     override public func viewWillAppear(_ animated: Bool) {

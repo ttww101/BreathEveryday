@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import IGColorPicker
 import Spring
 import DynamicColor
 import Crashlytics
@@ -426,9 +425,6 @@ class HomeViewController: UIViewController {
         
         switchMode(to: .setupCategory)
         self.deleteLabelConstraint?.constant = 0
-        let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
-        quoteButton.setImage(image, for: .normal)
-        quoteButton.tintColor = .white
         view.bringSubview(toFront: blackTransparentView)
         view.bringSubview(toFront: categorysCollectionView)
         view.bringSubview(toFront: colorPickerView)
@@ -563,7 +559,6 @@ class HomeViewController: UIViewController {
         }
         
         do {
-            
             try moc.save()
             
         } catch { print(error.localizedDescription) }
@@ -752,14 +747,14 @@ extension HomeViewController {
         button.setFrameToCircle()
         button.setBubbleColor(with: color)
         
-        let gesture = UIPanGestureRecognizer(target: self, action: #selector(dragCircle))
+        let gesture = UIPanGestureRecognizer(target: self, action: #selector(dragBubble))
         button.addGestureRecognizer(gesture)
         
         return button
     }
     
     
-    func dragCircle(gesture: UIPanGestureRecognizer) {
+    func dragBubble(gesture: UIPanGestureRecognizer) {
         
         let target = gesture.view!
         var isDeleteSuccess = false
@@ -959,6 +954,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
 }
 
+import IGColorPicker
 extension HomeViewController: ColorPickerViewDelegate {
     
     func colorPickerView(_ colorPickerView: ColorPickerView, didSelectItemAt indexPath: IndexPath) {
