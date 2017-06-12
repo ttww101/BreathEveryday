@@ -11,7 +11,7 @@ target 'BreathEveryday' do
   pod 'DynamicColor', '~> 3.3'
   pod 'Fabric'
   pod 'Crashlytics'
-  pod 'Fusuma’, '~> 1.0.3'
+  pod 'Fusuma’, '~> 1.1.0’
   pod 'TOCropViewController'
   # Pods for BreathEveryday
 end
