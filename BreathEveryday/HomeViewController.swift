@@ -1009,6 +1009,11 @@ import TOCropViewController
 
 extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate {
     
+    func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
+        
+    }
+
+    
     func setBackground() {
         
         presentFusumaViewController()
@@ -1076,7 +1081,6 @@ extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TO
         fusumaTintColor = .white
         fusumaCameraRollTitle = "Background"
         fusumaCameraTitle = "Background"
-        fusumaViewController.modeOrder = .libraryFirst
         self.present(fusumaViewController, animated: true) {
         }
     }
