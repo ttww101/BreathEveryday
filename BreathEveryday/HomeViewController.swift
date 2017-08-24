@@ -236,7 +236,7 @@ class HomeViewController: UIViewController {
     }
     
     func bubbleNestShowUpAnimation(sender: [SpringButton], toCount: Int) {
-        
+
         //TODO: disable button
         sender[sender.count - toCount].animation = "fadeInUp"
         sender[sender.count - toCount].curve = "easeInOut"
@@ -256,6 +256,25 @@ class HomeViewController: UIViewController {
             } else {
                 
             }
+        }
+    }
+    
+    func animate() {
+        
+        let aView = UIView() //步驟1
+        self.view.addSubview(aView)
+        aView.backgroundColor = UIColor.red //步驟2
+        aView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        
+        UIView.animate(withDuration: 5, animations: { //步驟3.4
+            
+            aView.frame = CGRect(x: self.view.frame.maxX,
+                                 y: self.view.frame.maxY,
+                                 width: 0,
+                                 height: 0)
+        }) { (_) in
+            
+            self.animate() //步驟5
         }
     }
     
