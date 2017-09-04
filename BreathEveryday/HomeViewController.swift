@@ -12,13 +12,6 @@ import Spring
 import DynamicColor
 import Crashlytics
 
-enum Mode {
-    case normal
-    case tutorial
-    case setup
-    case setupCategory
-    case setupBackground
-}
 
 class HomeViewController: UIViewController {
     
@@ -227,7 +220,6 @@ class HomeViewController: UIViewController {
                 UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-luka"), self, nil, nil)
                 UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-beach sunset"), self, nil, nil)
                 UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-beach sunrise"), self, nil, nil)
-                
             })
         })
         
@@ -256,25 +248,6 @@ class HomeViewController: UIViewController {
             } else {
                 
             }
-        }
-    }
-    
-    func animate() {
-        
-        let aView = UIView() //步驟1
-        self.view.addSubview(aView)
-        aView.backgroundColor = UIColor.red //步驟2
-        aView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        
-        UIView.animate(withDuration: 5, animations: { //步驟3.4
-            
-            aView.frame = CGRect(x: self.view.frame.maxX,
-                                 y: self.view.frame.maxY,
-                                 width: 0,
-                                 height: 0)
-        }) { (_) in
-            
-            self.animate() //步驟5
         }
     }
     
@@ -744,6 +717,67 @@ class HomeViewController: UIViewController {
     }
 }
 
+//MARK: CollectionView
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
+        
+        cell.isCreated = true
+        let createColor = UIColor.randomColor(from: 130, to: 220)
+        categoryDataArr[indexPath.row].isCreated = true
+        let createBtn = createRandomBubble(with: categoryImageArray[indexPath.row],
+                                           in: nil,
+                                           color: createColor)
+        createBtn.addTarget(self, action: #selector(setBubbleCategory), for: .touchUpInside)
+        createBtn.tag = indexPath.row
+        selectedCatogoryRow = indexPath.row
+        categoryDataArr[indexPath.row].button = createBtn
+        categoryDataArr[indexPath.row].frame = createBtn.frame
+        categoryDataArr[indexPath.row].color = createColor
+        createBtn.layer.opacity = 0
+        view.addSubview(createBtn)
+        
+        //float in animation
+        createBtn.animation = "fadeInUp"
+        createBtn.curve = "easeInOut"
+        createBtn.duration = 2.5
+        createBtn.damping = 10
+        createBtn.velocity = 0.1
+        createBtn.animate()
+        createBtn.layer.opacity = 0.6
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
+        categoryDataArr[indexPath.row].button.removeFromSuperview()
+        cell.isCreated = false
+        categoryDataArr[indexPath.row].isCreated = false
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return categoryDataArr.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = categorysCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
+        //        cell.colorBK = categoryDataArr[indexPath.row].color
+        cell.configureCell()
+        cell.label.text = categoryDataArr[indexPath.row].name
+        let image = categoryDataArr[indexPath.row].image
+        cell.imageView.image = image
+        cell.isCreated = categoryDataArr[indexPath.row].isCreated
+        
+        return cell
+    }
+    
+}
+
 //MARK: Bubble Control
 extension HomeViewController {
     
@@ -771,7 +805,6 @@ extension HomeViewController {
         
         return button
     }
-    
     
     func dragBubble(gesture: UIPanGestureRecognizer) {
         
@@ -912,197 +945,3 @@ extension HomeViewController {
     }
     
 }
-
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
-        
-        cell.isCreated = true
-        let createColor = UIColor.randomColor(from: 130, to: 220)
-        categoryDataArr[indexPath.row].isCreated = true
-        let createBtn = createRandomBubble(with: categoryImageArray[indexPath.row],
-                                           in: nil,
-                                           color: createColor)
-        createBtn.addTarget(self, action: #selector(setBubbleCategory), for: .touchUpInside)
-        createBtn.tag = indexPath.row
-        selectedCatogoryRow = indexPath.row
-        categoryDataArr[indexPath.row].button = createBtn
-        categoryDataArr[indexPath.row].frame = createBtn.frame
-        categoryDataArr[indexPath.row].color = createColor
-        createBtn.layer.opacity = 0
-        view.addSubview(createBtn)
-        
-        //float in animation
-        createBtn.animation = "fadeInUp"
-        createBtn.curve = "easeInOut"
-        createBtn.duration = 2.5
-        createBtn.damping = 10
-        createBtn.velocity = 0.1
-        createBtn.animate()
-        createBtn.layer.opacity = 0.6
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
-        categoryDataArr[indexPath.row].button.removeFromSuperview()
-        cell.isCreated = false
-        categoryDataArr[indexPath.row].isCreated = false
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return categoryDataArr.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = categorysCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
-//        cell.colorBK = categoryDataArr[indexPath.row].color
-        cell.configureCell()
-        cell.label.text = categoryDataArr[indexPath.row].name
-        let image = categoryDataArr[indexPath.row].image
-        cell.imageView.image = image
-        cell.isCreated = categoryDataArr[indexPath.row].isCreated
-        
-        return cell
-    }
-    
-}
-
-import IGColorPicker
-extension HomeViewController: ColorPickerViewDelegate {
-    
-    func colorPickerView(_ colorPickerView: ColorPickerView, didSelectItemAt indexPath: IndexPath) {
-        
-        //bubble selected
-        categoryDataArr[selectedCatogoryRow].button.setBubbleColor(with: colorPickerView.colors[indexPath.row])
-        
-        //save color
-        categoryDataArr[selectedCatogoryRow].color = colorPickerView.colors[indexPath.row]
-    }
-    
-    // This is an optional method
-    func colorPickerView(_ colorPickerView: ColorPickerView, didDeselectItemAt indexPath: IndexPath) {
-        // A color has been deselected
-    }
-    
-}
-
-extension HomeViewController: ColorPickerViewDelegateFlowLayout {
-    
-    // ------------------------------------------------------------------
-    // All these methods are optionals, your are not to implement them 🖖🏻
-    // ------------------------------------------------------------------
-    
-    
-    func colorPickerView(_ colorPickerView: ColorPickerView, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // The size for each cell
-        // 👉🏻 WIDTH AND HEIGHT MUST BE EQUALS!
-        return CGSize(width: 25, height: 25)
-    }
-    
-    func colorPickerView(_ colorPickerView: ColorPickerView, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        // Space between cells
-        return 10
-    }
-    
-    func colorPickerView(_ colorPickerView: ColorPickerView, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        // Space between rows
-        return 10
-    }
-    
-    func colorPickerView(_ colorPickerView: ColorPickerView, insetForSectionAt section: Int) -> UIEdgeInsets {
-        // Inset used aroud the view
-        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-    }
-    
-}
-
-import Photos
-import Fusuma
-import TOCropViewController
-
-extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate {
-    
-    func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
-        
-    }
-
-    
-    func setBackground() {
-        
-        presentFusumaViewController()
-    }
-    
-    //CropViewController
-    func cropViewController(_ cropViewController: TOCropViewController, didCropToImage image: UIImage, rect cropRect: CGRect, angle: Int) {
-        
-        cropViewController.dismiss(animated: true) { 
-            self.backgroundImageView.image = image
-            
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let moc = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserMO")
-            do {
-                guard let results = try moc.fetch(request) as? [UserMO] else {
-                    return
-                }
-                let user = results[0]
-                if let imageData = UIImageJPEGRepresentation(image, 1) {
-                    user.backgroundImage = imageData as NSData
-                }
-                appDelegate.saveContext()
-                
-            } catch {
-                
-                fatalError("Core Data Update: \(error)")
-            }
-            self.blackTransparentView.removeFromSuperview()
-            self.switchMode(to: .normal)
-        }
-        
-    }
-    
-    func cropViewController(_ cropViewController: TOCropViewController, didFinishCancelled cancelled: Bool) {
-        cropViewController.dismiss(animated: true) { 
-            self.presentFusumaViewController()
-        }
-    }
-    
-    //FUSUMA
-    func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
-        
-        let cropViewController = TOCropViewController(image: image)
-        cropViewController.delegate = self
-        
-        DispatchQueue.main.async {
-            self.present(cropViewController, animated: true, completion: nil)
-        }
-    }
-    
-    func fusumaVideoCompleted(withFileURL fileURL: URL) { }
-    
-    func fusumaCameraRollUnauthorized() {
-        
-        //TODO: GO TO SETTINGS
-    }
-    
-    func presentFusumaViewController() {
-        
-        let fusumaViewController = FusumaViewController()
-        fusumaViewController.delegate = self
-        fusumaCropImage = false
-        fusumaBackgroundColor = UIColor.black.lighter(amount: 0.15)
-        fusumaTintColor = .white
-        fusumaCameraRollTitle = "Background"
-        fusumaCameraTitle = "Background"
-        self.present(fusumaViewController, animated: true) {
-        }
-    }
-
-}
-
