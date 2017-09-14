@@ -1,4 +1,5 @@
 PODS:
+  - AnimatedCollectionViewLayout (0.3.0)
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - DynamicColor (3.3)
@@ -12,6 +13,7 @@ PODS:
   - TOCropViewController (2.0.12)
 
 DEPENDENCIES:
+  - AnimatedCollectionViewLayout
   - Crashlytics
   - DynamicColor (~> 3.3)
   - Fabric
@@ -32,6 +34,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
+  AnimatedCollectionViewLayout: 504b992a4258eb39d2dd2b2b48e84b4b95860fd7
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   DynamicColor: 3cdaa1e01c16e93ba744e0630f768373e0fc7a7d
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
@@ -42,6 +45,6 @@ SPEC CHECKSUMS:
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   TOCropViewController: e6e31b38d785a901e5651a1e7fff71bcda6c5214
 
-PODFILE CHECKSUM: ef1376e811963c5ead88c4274d1ff686e1d7b92e
+PODFILE CHECKSUM: 4d16c31ee77c0259d2df8f0ee0d2729661384975
 
 COCOAPODS: 1.2.1

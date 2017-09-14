@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AnimatedCollectionViewLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>DynamicColor.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,7 +57,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>01B5F9358EAD17782FA546BF99060034</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>19864AB8F7B8E9064740E008772C4404</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1BCE50FAF92565E024CD56D0EED3112C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,12 +77,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>49C61967ADAA989BF2CD71590FBA2DCF</key>
+		<key>8BBC29B7B78D3EE84F058C39D4FBB28C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>95308746951D81CA3964F62472559C68</key>
+		<key>90678D6321D62C7CE98278DB60EB75B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,7 +92,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BB47C2A3693B798697B7BC3DCB293F82</key>
+		<key>A67E10B13D42B97AB21C7C6E4D4B3EF2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -88,11 +103,6 @@
 			<true/>
 		</dict>
 		<key>E5F46CF08B487F1A01310C58918CF783</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EC55CF5F401347712B50616900BA31AE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A67E10B13D42B97AB21C7C6E4D4B3EF2'
-               BlueprintName = 'TOCropViewController-TOCropViewControllerBundle'
+               BlueprintIdentifier = '01B5F9358EAD17782FA546BF99060034'
+               BlueprintName = 'AnimatedCollectionViewLayout'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'TOCropViewControllerBundle.bundle'>
+               BuildableName = 'AnimatedCollectionViewLayout.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

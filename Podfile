@@ -13,5 +13,7 @@ target 'BreathEveryday' do
   pod 'Crashlytics'
   pod 'Fusuma’, '~> 1.1.0’
   pod 'TOCropViewController'
+  pod ‘AnimatedCollectionViewLayout’
+
   # Pods for BreathEveryday
 end
