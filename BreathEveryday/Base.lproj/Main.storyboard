@@ -239,43 +239,42 @@
             </objects>
             <point key="canvasLocation" x="140" y="814.54272863568224"/>
         </scene>
-        <!--Image Collection View Controller-->
+        <!--Selete Image Collection View Controller-->
         <scene sceneID="78l-DY-5SU">
             <objects>
-                <collectionViewController id="eIB-Sl-8O3" customClass="ImageCollectionViewController" customModule="BreathEveryday" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="eIB-Sl-8O3" customClass="SeleteImageCollectionViewController" customModule="BreathEveryday" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="UTf-Cq-32z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hOe-lF-OJK">
-                            <size key="itemSize" width="238" height="248"/>
+                            <size key="itemSize" width="189" height="353"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SimpleCollectionViewCell" id="Ero-z0-puR" customClass="SimpleCollectionViewCell" customModule="BreathEveryday" customModuleProvider="target">
-                                <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="BackgroundImageCollectionViewCell" reuseIdentifier="BackgroundImageCollectionViewCell" id="Ero-z0-puR" customClass="BackgroundImageCollectionViewCell" customModule="BreathEveryday" customModuleProvider="target">
+                                <rect key="frame" x="93" y="0.0" width="189" height="353"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="189" height="353"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNn-3t-9uF">
-                                            <rect key="frame" x="79" y="89.5" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p9C-2b-B4J">
+                                            <rect key="frame" x="0.0" y="0.0" width="189" height="353"/>
+                                        </imageView>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="oNn-3t-9uF" firstAttribute="centerX" secondItem="Ero-z0-puR" secondAttribute="centerX" id="Q8U-bl-k5I"/>
-                                    <constraint firstItem="oNn-3t-9uF" firstAttribute="centerY" secondItem="Ero-z0-puR" secondAttribute="centerY" id="ieS-Ox-vgl"/>
+                                    <constraint firstAttribute="trailing" secondItem="p9C-2b-B4J" secondAttribute="trailing" id="Nwo-Dh-cYc"/>
+                                    <constraint firstAttribute="bottom" secondItem="p9C-2b-B4J" secondAttribute="bottom" id="ftb-MQ-2dU"/>
+                                    <constraint firstItem="p9C-2b-B4J" firstAttribute="leading" secondItem="Ero-z0-puR" secondAttribute="leading" id="vEl-CM-ynO"/>
+                                    <constraint firstItem="p9C-2b-B4J" firstAttribute="top" secondItem="Ero-z0-puR" secondAttribute="top" id="xXV-TY-pJp"/>
                                 </constraints>
-                                <size key="customSize" width="200" height="200"/>
+                                <size key="customSize" width="189" height="353"/>
                                 <connections>
-                                    <outlet property="cellTitleLabel" destination="oNn-3t-9uF" id="twY-fj-RE7"/>
+                                    <outlet property="selectedImageView" destination="p9C-2b-B4J" id="6qO-M5-G7h"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
