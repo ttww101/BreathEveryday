@@ -11,7 +11,7 @@ import CoreData
 import Spring
 import DynamicColor
 import Crashlytics
-
+import AnimatedCollectionViewLayout
 
 class HomeViewController: UIViewController {
     
@@ -36,6 +36,10 @@ class HomeViewController: UIViewController {
     var circleCenter: CGPoint! // record for bubble circle center
     var currentMode: Mode = .normal //record for distinguish drag out of view action
     var dragAnimatorArray: [UIViewPropertyAnimator] = []
+    var backgroundImageCollectionView: UICollectionView!
+    var animator: (LayoutAttributesAnimator, Bool, Int, Int) = (LinearCardAttributesAnimator(), false, 1, 1)
+    var direction: UICollectionViewScrollDirection = .vertical
+    let cellIdentifier = "BackgroundImageCollectionViewCell"
     @IBOutlet weak var deleteSuccessLabel: SpringLabel!
     var deleteLabelConstraint: NSLayoutConstraint?
     let tutorialScrollView = UIScrollView()
@@ -105,6 +109,22 @@ class HomeViewController: UIViewController {
         colorPickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         colorPickerViewConstraint = NSLayoutConstraint(item: colorPickerView, attribute: .top, relatedBy: .equal, toItem: categorysCollectionView, attribute: .top, multiplier: 1, constant: 0)
         view.addConstraint(colorPickerViewConstraint!)
+        
+        //
+        let layout = AnimatedCollectionViewLayout()
+        layout.scrollDirection = .horizontal
+        layout.animator = animator.0
+        backgroundImageCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        backgroundImageCollectionView.collectionViewLayout = layout
+        backgroundImageCollectionView.isHidden = true
+        backgroundImageCollectionView.delegate = self
+        backgroundImageCollectionView.dataSource = self
+        backgroundImageCollectionView.register(UINib(nibName: "BackgroundImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BackgroundImageCollectionViewCell")
+        
+        backgroundImageCollectionView.isPagingEnabled = true
+        
+        self.view.addSubview(backgroundImageCollectionView)
+        
         
         //Bubbles
         var frame = CGRect()
@@ -213,13 +233,13 @@ class HomeViewController: UIViewController {
                 self.alertLabel(replaceString: "Please choose categories", isHidden: false, color: .red)
             }, completion: { (completed) in
                 
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-galaxy"), self, nil, nil)
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-Sword of Orion"), self, nil, nil)
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-tree"), self, nil, nil)
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-forest1"), self, nil, nil)
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-luka"), self, nil, nil)
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-beach sunset"), self, nil, nil)
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-beach sunrise"), self, nil, nil)
+//                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-galaxy"), self, nil, nil)
+//                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-Sword of Orion"), self, nil, nil)
+//                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-tree"), self, nil, nil)
+//                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-forest1"), self, nil, nil)
+//                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-luka"), self, nil, nil)
+//                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-beach sunset"), self, nil, nil)
+//                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-beach sunrise"), self, nil, nil)
             })
         })
         
@@ -392,7 +412,7 @@ class HomeViewController: UIViewController {
             quoteButton.addTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
             
             //background
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(setBackground))
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(displaySetupBackgroundViewController))
             gestureSetupBackground = gesture
             blackTransparentView.addGestureRecognizer(gestureSetupBackground!)
             
@@ -449,6 +469,40 @@ class HomeViewController: UIViewController {
             self.categorysCollectionView.scrollToItem(at: clickedIndexPath, at: .centeredHorizontally, animated: true)
             
         })
+    }
+    
+    func displaySetupBackgroundViewController() {
+//        let vc = SeleteImageCollectionViewController()
+//        self.present(vc, animated: false) { 
+//            
+//        }
+//        presentFusumaViewController()
+        self.view.bringSubview(toFront: self.backgroundImageCollectionView)
+        self.backgroundImageCollectionView.isHidden = false
+        self.backgroundImageCollectionView.frame = self.view.frame
+        self.backgroundImageCollectionView.backgroundColor = rgbaToUIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.5)
+//        self.view.addSubview(clearView)
+        
+        
+//        if let vc = storyboard?.instantiateViewController(withIdentifier: "SeleteImageCollectionViewController") as? SeleteImageCollectionViewController {
+//            
+//            //save frame
+//            for category in categoryDataArr {
+//                category.button.layer.removeAllAnimations()
+//            }
+//            updateCategoryDataArrayFrame()
+//            removeAllAndSaveCoreData()
+//            vc.modalPresentationStyle = .overCurrentContext
+//            vc.view.backgroundColor = .clear
+            
+//            self.present(vc, animated: true, completion: {
+//            })
+
+//            clearView.addSubview(vc.view)
+//            self.addChildViewController(vc)
+//        }
+
+        
     }
     
     func btnQuoteBtnSettingMode() {
@@ -722,6 +776,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        if collectionView == self.categorysCollectionView {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
         
         cell.isCreated = true
@@ -747,24 +802,47 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         createBtn.velocity = 0.1
         createBtn.animate()
         createBtn.layer.opacity = 0.6
-        
+        } else {
+            
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         
+        if collectionView == self.categorysCollectionView {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
         categoryDataArr[indexPath.row].button.removeFromSuperview()
         cell.isCreated = false
         categoryDataArr[indexPath.row].isCreated = false
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
+        if collectionView == self.categorysCollectionView {
         return categoryDataArr.count
+        }
+        return 5
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.bounds.width / CGFloat(animator.2), height: view.bounds.height / CGFloat(animator.3))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        if collectionView == self.categorysCollectionView {
         guard let cell = categorysCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
         //        cell.colorBK = categoryDataArr[indexPath.row].color
         cell.configureCell()
@@ -774,6 +852,28 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.isCreated = categoryDataArr[indexPath.row].isCreated
         
         return cell
+        } else if collectionView == self.backgroundImageCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BackgroundImageCollectionViewCell", for: indexPath) as! BackgroundImageCollectionViewCell
+            cell.clipsToBounds = animator.1
+            switch indexPath.row {
+            case 0:
+                cell.selectedImageView.image = #imageLiteral(resourceName: "BK-beach sunrise")
+            case 1:
+                cell.selectedImageView.image = #imageLiteral(resourceName: "BK-beach sunset")
+            case 2:
+                cell.selectedImageView.image = #imageLiteral(resourceName: "BK-luka")
+            case 3:
+                cell.selectedImageView.image = #imageLiteral(resourceName: "BK-forest1")
+            case 4:
+                cell.selectedImageView.image = #imageLiteral(resourceName: "BK-galaxy")
+            case 5:
+                cell.selectedImageView.image = #imageLiteral(resourceName: "BK-Sword of Orion")
+            default:
+                break
+            }
+            return cell
+        }
+        return UICollectionViewCell()
     }
     
 }

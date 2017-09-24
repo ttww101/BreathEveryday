@@ -17,10 +17,6 @@ extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TO
     func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
     }
     
-    func setBackground() {
-        presentFusumaViewController()
-    }
-    
     //CropViewController
     func cropViewController(_ cropViewController: TOCropViewController, didCropToImage image: UIImage, rect cropRect: CGRect, angle: Int) {
         
