@@ -10,13 +10,13 @@ import UIKit
 
 class BackgroundImageCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet var selectedImageView: UIImageView!
+    @IBOutlet var backgroundImageView: UIImageView!
+    @IBOutlet var photoImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.selectedImageView = UIImageView()
-        self.selectedImageView.frame = self.contentView.frame
         backgroundColor = .clear
+        photoImageView.tintColor = .white
     }
     
     func figureCell(color: String, imageName: String) {

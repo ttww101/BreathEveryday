@@ -18,7 +18,7 @@ class SeleteImageCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         collectionView?.isPagingEnabled = true
         
         let layout = AnimatedCollectionViewLayout()
@@ -54,17 +54,17 @@ extension SeleteImageCollectionViewController: UICollectionViewDelegateFlowLayou
             cell.clipsToBounds = animator.1
             switch indexPath.row {
             case 0:
-                cell.selectedImageView.image = #imageLiteral(resourceName: "BK-beach sunrise")
+                cell.backgroundImageView.image = #imageLiteral(resourceName: "BK-beach sunrise")
             case 1:
-                cell.selectedImageView.image = #imageLiteral(resourceName: "BK-beach sunset")
+                cell.backgroundImageView.image = #imageLiteral(resourceName: "BK-beach sunset")
             case 2:
-                cell.selectedImageView.image = #imageLiteral(resourceName: "BK-luka")
+                cell.backgroundImageView.image = #imageLiteral(resourceName: "BK-luka")
             case 3:
-                cell.selectedImageView.image = #imageLiteral(resourceName: "BK-forest1")
+                cell.backgroundImageView.image = #imageLiteral(resourceName: "BK-forest1")
             case 4:
-                cell.selectedImageView.image = #imageLiteral(resourceName: "BK-galaxy")
+                cell.backgroundImageView.image = #imageLiteral(resourceName: "BK-galaxy")
             case 5:
-                cell.selectedImageView.image = #imageLiteral(resourceName: "BK-Sword of Orion")
+                cell.backgroundImageView.image = #imageLiteral(resourceName: "BK-Sword of Orion")
             default:
                 break
             }
