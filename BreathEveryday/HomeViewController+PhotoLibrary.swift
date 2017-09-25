@@ -1,5 +1,5 @@
 //
-//  HomeViewController+Photo.swift
+//  HomeViewController+PhotoLibrary.swift
 //  BreathEveryday
 //
 //  Created by Bomi on 2017/8/30.
@@ -17,37 +17,41 @@ extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TO
     func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
     }
     
-    func setBackground() {
-        presentFusumaViewController()
-    }
-    
     //CropViewController
     func cropViewController(_ cropViewController: TOCropViewController, didCropToImage image: UIImage, rect cropRect: CGRect, angle: Int) {
         
         cropViewController.dismiss(animated: true) {
-            self.backgroundImageView.image = image
-            
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let moc = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserMO")
-            do {
-                guard let results = try moc.fetch(request) as? [UserMO] else {
-                    return
-                }
-                let user = results[0]
-                if let imageData = UIImageJPEGRepresentation(image, 1) {
-                    user.backgroundImage = imageData as NSData
-                }
-                appDelegate.saveContext()
-                
-            } catch {
-                
-                fatalError("Core Data Update: \(error)")
-            }
-            self.blackTransparentView.removeFromSuperview()
-            self.switchMode(to: .normal)
+            self.saveBackgroundImage(for: image)
+            self.changeBackgroundView(for: image)
         }
         
+    }
+    
+    func changeBackgroundView(for image: UIImage) {
+        self.backgroundImageCollectionView.isHidden = true
+        self.backgroundImageView.image = image
+        self.blackTransparentView.removeFromSuperview()
+        self.switchMode(to: .normal)
+    }
+    
+    func saveBackgroundImage(for image:UIImage) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let moc = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserMO")
+        do {
+            guard let results = try moc.fetch(request) as? [UserMO] else {
+                return
+            }
+            let user = results[0]
+            if let imageData = UIImageJPEGRepresentation(image, 1) {
+                user.backgroundImage = imageData as NSData
+            }
+            appDelegate.saveContext()
+            
+        } catch {
+            
+            fatalError("Core Data Update: \(error)")
+        }
     }
     
     func cropViewController(_ cropViewController: TOCropViewController, didFinishCancelled cancelled: Bool) {

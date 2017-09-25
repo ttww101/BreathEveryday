@@ -11,7 +11,7 @@ import CoreData
 import Spring
 import DynamicColor
 import Crashlytics
-
+import AnimatedCollectionViewLayout
 
 class HomeViewController: UIViewController {
     
@@ -24,18 +24,26 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var settingButton: UIButton!
     var quoteViewBottomConstraint: NSLayoutConstraint?
     let quoteLbl = QuoteLabel()
-    var isAnimating: Bool = false
     let blackTransparentView = SpringView()
+    
     @IBOutlet weak var categorysCollectionView: UICollectionView!
     var categoryScrollViewConstraint: NSLayoutConstraint?
     var colorPickerViewConstraint: NSLayoutConstraint?
     @IBOutlet weak var categoryDoneBtn: CategoryDoneButton!
     var categoryDataArr: [Category] = []
-    let colorPickerView = IGColorPickerView()
     var selectedCatogoryRow: Int = 0
+    
+    let colorPickerView = IGColorPickerView()
+    
     var circleCenter: CGPoint! // record for bubble circle center
     var currentMode: Mode = .normal //record for distinguish drag out of view action
     var dragAnimatorArray: [UIViewPropertyAnimator] = []
+    
+    var backgroundImageCollectionView: UICollectionView!
+    var animator: (LayoutAttributesAnimator, Bool, Int, Int) = (LinearCardAttributesAnimator(), false, 1, 1)
+    var direction: UICollectionViewScrollDirection = .vertical
+    let cellIdentifier = "BackgroundImageCollectionViewCell"
+    
     @IBOutlet weak var deleteSuccessLabel: SpringLabel!
     var deleteLabelConstraint: NSLayoutConstraint?
     let tutorialScrollView = UIScrollView()
@@ -105,6 +113,27 @@ class HomeViewController: UIViewController {
         colorPickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         colorPickerViewConstraint = NSLayoutConstraint(item: colorPickerView, attribute: .top, relatedBy: .equal, toItem: categorysCollectionView, attribute: .top, multiplier: 1, constant: 0)
         view.addConstraint(colorPickerViewConstraint!)
+        
+        //
+        let layout = AnimatedCollectionViewLayout()
+        backgroundImageCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        
+        backgroundImageCollectionView.delegate = self
+        backgroundImageCollectionView.dataSource = self
+        backgroundImageCollectionView.register(UINib(nibName: "BackgroundImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "BackgroundImageCollectionViewCell")
+        backgroundImageCollectionView.isHidden = true
+        backgroundImageCollectionView.frame = self.view.frame
+        backgroundImageCollectionView.backgroundColor = rgbaToUIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0)
+        layout.scrollDirection = .horizontal
+        layout.animator = animator.0
+        
+        backgroundImageCollectionView.collectionViewLayout = layout
+
+        
+        backgroundImageCollectionView.isPagingEnabled = true
+        
+        self.view.addSubview(backgroundImageCollectionView)
+        
         
         //Bubbles
         var frame = CGRect()
@@ -213,13 +242,6 @@ class HomeViewController: UIViewController {
                 self.alertLabel(replaceString: "Please choose categories", isHidden: false, color: .red)
             }, completion: { (completed) in
                 
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-galaxy"), self, nil, nil)
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-Sword of Orion"), self, nil, nil)
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-tree"), self, nil, nil)
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-forest1"), self, nil, nil)
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-luka"), self, nil, nil)
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-beach sunset"), self, nil, nil)
-                UIImageWriteToSavedPhotosAlbum(#imageLiteral(resourceName: "BK-beach sunrise"), self, nil, nil)
             })
         })
         
@@ -392,7 +414,7 @@ class HomeViewController: UIViewController {
             quoteButton.addTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
             
             //background
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(setBackground))
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(displaySetupBackgroundViewController))
             gestureSetupBackground = gesture
             blackTransparentView.addGestureRecognizer(gestureSetupBackground!)
             
@@ -449,6 +471,11 @@ class HomeViewController: UIViewController {
             self.categorysCollectionView.scrollToItem(at: clickedIndexPath, at: .centeredHorizontally, animated: true)
             
         })
+    }
+    
+    func displaySetupBackgroundViewController() {
+        self.view.bringSubview(toFront: self.backgroundImageCollectionView)
+        self.backgroundImageCollectionView.isHidden = false
     }
     
     func btnQuoteBtnSettingMode() {
@@ -717,231 +744,5 @@ class HomeViewController: UIViewController {
     }
 }
 
-//MARK: CollectionView
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
-        
-        cell.isCreated = true
-        let createColor = UIColor.randomColor(from: 130, to: 220)
-        categoryDataArr[indexPath.row].isCreated = true
-        let createBtn = createRandomBubble(with: categoryImageArray[indexPath.row],
-                                           in: nil,
-                                           color: createColor)
-        createBtn.addTarget(self, action: #selector(setBubbleCategory), for: .touchUpInside)
-        createBtn.tag = indexPath.row
-        selectedCatogoryRow = indexPath.row
-        categoryDataArr[indexPath.row].button = createBtn
-        categoryDataArr[indexPath.row].frame = createBtn.frame
-        categoryDataArr[indexPath.row].color = createColor
-        createBtn.layer.opacity = 0
-        view.addSubview(createBtn)
-        
-        //float in animation
-        createBtn.animation = "fadeInUp"
-        createBtn.curve = "easeInOut"
-        createBtn.duration = 2.5
-        createBtn.damping = 10
-        createBtn.velocity = 0.1
-        createBtn.animate()
-        createBtn.layer.opacity = 0.6
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else { return }
-        categoryDataArr[indexPath.row].button.removeFromSuperview()
-        cell.isCreated = false
-        categoryDataArr[indexPath.row].isCreated = false
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return categoryDataArr.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = categorysCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
-        //        cell.colorBK = categoryDataArr[indexPath.row].color
-        cell.configureCell()
-        cell.label.text = categoryDataArr[indexPath.row].name
-        let image = categoryDataArr[indexPath.row].image
-        cell.imageView.image = image
-        cell.isCreated = categoryDataArr[indexPath.row].isCreated
-        
-        return cell
-    }
-    
-}
 
-//MARK: Bubble Control
-extension HomeViewController {
-    
-    func createRandomBubble(with image: UIImage, in frame: CGRect?, color: UIColor) -> SpringButton {
-        
-        let button = SpringButton()
-        
-        if let frame = frame {
-            button.layer.frame = frame
-        } else {
-            let xPos = arc4random_uniform(UInt32(view.frame.width) - 100)
-            let yPos = arc4random_uniform(UInt32(colorPickerView.frame.minY) - 100 - UInt32(quoteButton.frame.maxY)) + UInt32(quoteButton.frame.maxY)
-            button.layer.frame = CGRect(x: Int(xPos), y: Int(yPos), width: 84, height: 84)
-        }
-        
-        button.normalSetup(normalImage: image,
-                           selectedImage: nil,
-                           tintColor: .white)
-        button.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
-        button.setFrameToCircle()
-        button.setBubbleColor(with: color)
-        
-        let gesture = UIPanGestureRecognizer(target: self, action: #selector(dragBubble))
-        button.addGestureRecognizer(gesture)
-        
-        return button
-    }
-    
-    func dragBubble(gesture: UIPanGestureRecognizer) {
-        
-        let target = gesture.view!
-        var isDeleteSuccess = false
-        
-        var bubbleAnimator = UIViewPropertyAnimator(duration: 1.0, curve: .easeInOut, animations: { })
-        //        dragAnimatorArray.append(bubbleAnimator)
-        
-        switch gesture.state {
-        case .began:
-            
-            if bubbleAnimator.state == .active {
-                bubbleAnimator.stopAnimation(true)
-            }
-            circleCenter = target.center
-            bubbleAnimator.addAnimations {
-                target.transform = CGAffineTransform(scaleX: 1.6, y: 1.6)
-            }
-            bubbleAnimator.startAnimation()
-            
-        case .changed:
-            let translation = gesture.translation(in: self.view)
-            target.center = CGPoint(x: circleCenter.x + translation.x,
-                                    y: circleCenter.y + translation.y)
-            
-        case .ended:
-            //shrink bubble
-            if bubbleAnimator.state == .active {
-                bubbleAnimator.stopAnimation(true)
-            }
-            //deceleration
-            let velocity = gesture.velocity(in: view)
-            let cgVelocity = CGVector(dx: velocity.x / 500, dy: velocity.y / 500)
-            let springParameters = UISpringTimingParameters(mass: 2.5, stiffness: 50, damping: 25, initialVelocity: cgVelocity)
-            bubbleAnimator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springParameters) // original 2.5, 70, 55)
-            var stopPoint_X = target.center.x + velocity.x * 0.05
-            var stopPoint_Y = target.center.y + velocity.y * 0.05
-            
-            bubbleAnimator.addAnimations {
-                
-                switch self.currentMode {
-                    
-                case .normal:
-                    
-                    if 50 <= stopPoint_X && stopPoint_X <= self.view.frame.maxX - 50 &&
-                        80 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 50 {
-                        
-                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
-                        target.transform = CGAffineTransform.identity
-                        
-                    } else {
-                        
-                        if stopPoint_X < 50 { stopPoint_X = 35 }
-                        if stopPoint_X > self.view.frame.maxX - 50 {
-                            stopPoint_X = self.view.frame.maxX - 35 }
-                        if stopPoint_Y < 80 { stopPoint_Y = 80 }
-                        if stopPoint_Y > self.view.frame.maxY - 50 {
-                            stopPoint_Y = self.view.frame.maxY - 35 }
-                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
-                        target.transform = CGAffineTransform.identity
-                        
-                    }
-                    
-                case .setup:
-                    
-                    if 50 <= stopPoint_X && stopPoint_X <= self.view.frame.maxX - 50 &&
-                        80 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 50 {
-                        
-                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
-                        target.transform = CGAffineTransform.identity
-                        
-                    } else {
-                        
-                        if stopPoint_X < 50 { stopPoint_X = 35 }
-                        if stopPoint_X > self.view.frame.maxX - 50 {
-                            stopPoint_X = self.view.frame.maxX - 35 }
-                        if stopPoint_Y < 80 { stopPoint_Y = 80 }
-                        if stopPoint_Y > self.view.frame.maxY - 50 {
-                            stopPoint_Y = self.view.frame.maxY - 35 }
-                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
-                        target.transform = CGAffineTransform.identity
-                        
-                    }
-                    
-                case .setupCategory:
-                    
-                    target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
-                    target.transform = CGAffineTransform.identity
-                    
-                    if 25 <= stopPoint_X && stopPoint_X <= self.view.frame.maxX - 25 &&
-                        25 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 25 {
-                    } else {
-                        
-                        //delete bubble data
-                        if let deleteRow = gesture.view?.tag {
-                            
-                            isDeleteSuccess = true
-                            
-                            let indexPath = IndexPath(row: deleteRow, section: 0)
-                            DispatchQueue.main.async {
-                                self.categorysCollectionView.reloadItems(at: [indexPath])
-                            }
-                            self.categoryDataArr[deleteRow].button.removeFromSuperview()
-                            self.categoryDataArr[deleteRow].isCreated = false
-                            self.categorysCollectionView.deselectItem(at: indexPath, animated: true)
-                        }
-                    }
-                    
-                default:
-                    break
-                }
-                
-            }
-            bubbleAnimator.startAnimation()
-            //swing animation
-            if let target = target as? SpringButton {
-                target.animation = "swing"
-                target.curve = "easeInCubic"
-                target.damping = 50
-                target.velocity = 0.1
-                target.force = 0.2
-                target.scaleX = 0.85
-                target.scaleY = 0.85
-                target.duration = 2.5
-                target.animate()
-                target.layer.opacity = 0.6
-            }
-            
-        default:
-            break
-        }
-        
-        //delete animation
-        if isDeleteSuccess {
-            alertLabel(replaceString: "Deleted", isHidden: true, color: .red)
-        }
-    }
-    
-}
+

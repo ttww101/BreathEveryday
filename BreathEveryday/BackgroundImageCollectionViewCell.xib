@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BackgroundImageCollectionViewCell" id="SPi-jg-Lrz" customClass="BackgroundImageCollectionViewCell" customModule="BreathEveryday" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="540" height="481"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="540" height="481"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LUW-Jz-whf">
+                        <rect key="frame" x="0.0" y="0.0" width="540" height="481"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hIN-AJ-aqe">
+                        <rect key="frame" x="230" y="200" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="UBJ-Jb-fgZ"/>
+                            <constraint firstAttribute="height" constant="80" id="aP5-um-mM1"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.23921568630000001" green="0.20392156859999999" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="LUW-Jz-whf" firstAttribute="top" secondItem="SPi-jg-Lrz" secondAttribute="top" id="2ld-VP-OQo"/>
+                <constraint firstItem="LUW-Jz-whf" firstAttribute="leading" secondItem="SPi-jg-Lrz" secondAttribute="leading" id="Bax-vB-po3"/>
+                <constraint firstAttribute="bottom" secondItem="LUW-Jz-whf" secondAttribute="bottom" id="GlZ-0b-CRW"/>
+                <constraint firstItem="hIN-AJ-aqe" firstAttribute="centerY" secondItem="LUW-Jz-whf" secondAttribute="centerY" id="GsU-Lf-AEo"/>
+                <constraint firstItem="hIN-AJ-aqe" firstAttribute="centerX" secondItem="LUW-Jz-whf" secondAttribute="centerX" id="TJq-pQ-9fu"/>
+                <constraint firstAttribute="trailing" secondItem="LUW-Jz-whf" secondAttribute="trailing" id="nka-Se-dgI"/>
+            </constraints>
+            <size key="customSize" width="540" height="481"/>
+            <connections>
+                <outlet property="backgroundImageView" destination="LUW-Jz-whf" id="Hzv-22-tuF"/>
+                <outlet property="photoImageView" destination="hIN-AJ-aqe" id="TMA-7D-ZGX"/>
+            </connections>
+            <point key="canvasLocation" x="-313" y="223.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
