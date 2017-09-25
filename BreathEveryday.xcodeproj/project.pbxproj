@@ -12,7 +12,9 @@
 		F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */; };
 		F430B4C51F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4C31F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift */; };
 		F430B4C81F77E975003E1ADB /* BackgroundImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F430B4C71F77E975003E1ADB /* BackgroundImageCollectionViewCell.xib */; };
-		F431AD3A1F56C9F4005390D9 /* HomeViewController+Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F431AD391F56C9F4005390D9 /* HomeViewController+Photo.swift */; };
+		F430B4CC1F79267B003E1ADB /* HomeViewController+Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4CB1F79267B003E1ADB /* HomeViewController+Bubble.swift */; };
+		F430B4CE1F79273A003E1ADB /* HomeViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4CD1F79273A003E1ADB /* HomeViewController+CollectionView.swift */; };
+		F431AD3A1F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F431AD391F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift */; };
 		F431AD3C1F56CB32005390D9 /* HomeViewController+ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F431AD3B1F56CB32005390D9 /* HomeViewController+ColorPicker.swift */; };
 		F43B3FEC1EBC1E00008577EF /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */; };
 		F43B3FEE1EBC1EDA008577EF /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */; };
@@ -48,7 +50,9 @@
 		F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
 		F430B4C31F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		F430B4C71F77E975003E1ADB /* BackgroundImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundImageCollectionViewCell.xib; sourceTree = "<group>"; };
-		F431AD391F56C9F4005390D9 /* HomeViewController+Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Photo.swift"; sourceTree = "<group>"; };
+		F430B4CB1F79267B003E1ADB /* HomeViewController+Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Bubble.swift"; sourceTree = "<group>"; };
+		F430B4CD1F79273A003E1ADB /* HomeViewController+CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		F431AD391F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+PhotoLibrary.swift"; sourceTree = "<group>"; };
 		F431AD3B1F56CB32005390D9 /* HomeViewController+ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ColorPicker.swift"; sourceTree = "<group>"; };
 		F43B3FCC1EBB323F008577EF /* BreathEveryday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BreathEveryday.entitlements; sourceTree = "<group>"; };
 		F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -149,8 +153,10 @@
 				F4D6BD931EA4740300A93E46 /* Category */,
 				F43B3FF11EBC321F008577EF /* HomeItemView.swift */,
 				F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */,
+				F430B4CD1F79273A003E1ADB /* HomeViewController+CollectionView.swift */,
+				F430B4CB1F79267B003E1ADB /* HomeViewController+Bubble.swift */,
 				F431AD3B1F56CB32005390D9 /* HomeViewController+ColorPicker.swift */,
-				F431AD391F56C9F4005390D9 /* HomeViewController+Photo.swift */,
+				F431AD391F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift */,
 				F4D6BD981EA493D600A93E46 /* HomeViewModel.swift */,
 				F4D0A0B01F6AD71500DD4693 /* SelectImageCollectionViewController.swift */,
 				F430B4C31F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift */,
@@ -377,10 +383,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F431AD3A1F56C9F4005390D9 /* HomeViewController+Photo.swift in Sources */,
+				F431AD3A1F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift in Sources */,
 				F4E301501E9E1B1500846EBF /* CalendarViewController.swift in Sources */,
 				F4FA6A9D1E7FB0F100C2E46E /* HomeViewController.swift in Sources */,
 				F4E301481E9DC7E500846EBF /* KeyboardButtonModel.swift in Sources */,
+				F430B4CE1F79273A003E1ADB /* HomeViewController+CollectionView.swift in Sources */,
 				F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */,
 				F4FA6A9B1E7FB0F100C2E46E /* AppDelegate.swift in Sources */,
 				F4D0A0B21F6AD71500DD4693 /* SelectImageCollectionViewController.swift in Sources */,
@@ -389,6 +396,7 @@
 				F4D6BD961EA4743500A93E46 /* CategoryCollectionViewCell.swift in Sources */,
 				F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */,
 				F4E3014E1E9E17CC00846EBF /* CalendarCell.swift in Sources */,
+				F430B4CC1F79267B003E1ADB /* HomeViewController+Bubble.swift in Sources */,
 				F430B4C51F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift in Sources */,
 				F4D6BD991EA493D600A93E46 /* HomeViewModel.swift in Sources */,
 				F43B3FEC1EBC1E00008577EF /* UIColor+Extensions.swift in Sources */,
