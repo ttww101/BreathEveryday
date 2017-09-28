@@ -12,7 +12,6 @@ import UIKit
 enum Mode {
     case normal
     case tutorial
-    case setup
     case setupCategory
     case setupBackground
 }
@@ -31,6 +30,13 @@ struct Category {
     
     var color: UIColor = .lightGray
 }
+
+let backgroundImageArray: [UIImage] = [#imageLiteral(resourceName: "BK-beach sunrise"),
+                                       #imageLiteral(resourceName: "BK-beach sunset"),
+                                       #imageLiteral(resourceName: "BK-luka"),
+                                       #imageLiteral(resourceName: "BK-forest1"),
+                                       #imageLiteral(resourceName: "BK-galaxy"),
+                                       #imageLiteral(resourceName: "BK-Sword of Orion")]
 
 let categoryStringArray: [String] = ["Love",
                                "Family",

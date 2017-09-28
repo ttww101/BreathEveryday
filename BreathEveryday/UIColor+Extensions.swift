@@ -52,6 +52,14 @@ extension UIColor {
         return UIColor(colorLiteralRed: 111/255, green: 191/255, blue: 152/255, alpha: 1.0)
     }
     
+    class func blackTransparent() -> UIColor {
+        return UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.95)
+    }
+    
+    class func darkGreyTransparent() -> UIColor {
+        return UIColor(colorLiteralRed: 25/255, green: 25/255, blue: 25/255, alpha: 0.98)
+    }
+    
     class func arrayOfCategoriesSetup() -> [UIColor] {
         
         var colorArray:[UIColor] = []

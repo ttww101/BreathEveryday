@@ -10,14 +10,23 @@
 		C78B464447E5B301489AF85C /* Pods_BreathEveryday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035937D110347F617E50F288 /* Pods_BreathEveryday.framework */; };
 		F408C5D71EA51B3B00F29A67 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */; };
 		F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */; };
-		F431AD3A1F56C9F4005390D9 /* HomeViewController+Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F431AD391F56C9F4005390D9 /* HomeViewController+Photo.swift */; };
+		F430B4C51F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4C31F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift */; };
+		F430B4C81F77E975003E1ADB /* BackgroundImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F430B4C71F77E975003E1ADB /* BackgroundImageCollectionViewCell.xib */; };
+		F430B4CC1F79267B003E1ADB /* HomeViewController+Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4CB1F79267B003E1ADB /* HomeViewController+Bubble.swift */; };
+		F430B4CE1F79273A003E1ADB /* HomeViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4CD1F79273A003E1ADB /* HomeViewController+CollectionView.swift */; };
+		F430B4D11F794775003E1ADB /* SettingButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4CF1F794775003E1ADB /* SettingButtonTableViewCell.swift */; };
+		F430B4D21F794775003E1ADB /* SettingButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F430B4D01F794775003E1ADB /* SettingButtonTableViewCell.xib */; };
+		F430B4D41F794844003E1ADB /* HomeViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4D31F794844003E1ADB /* HomeViewController+TableView.swift */; };
+		F431AD3A1F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F431AD391F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift */; };
 		F431AD3C1F56CB32005390D9 /* HomeViewController+ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F431AD3B1F56CB32005390D9 /* HomeViewController+ColorPicker.swift */; };
 		F43B3FEC1EBC1E00008577EF /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */; };
 		F43B3FEE1EBC1EDA008577EF /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */; };
 		F43B3FF21EBC321F008577EF /* HomeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FF11EBC321F008577EF /* HomeItemView.swift */; };
 		F49B09251EBB14900002297F /* Background Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49B09241EBB14900002297F /* Background Image.xcassets */; };
 		F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A21F981E9C6E4200C24517 /* EventManager.swift */; };
+		F4A414431F7D307C00B066A4 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A414421F7D307C00B066A4 /* UITableView+Extensions.swift */; };
 		F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A57E1E88EE4200CAECEE /* CoreDataModel.xcdatamodeld */; };
+		F4D0A0B21F6AD71500DD4693 /* SelectImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D0A0B01F6AD71500DD4693 /* SelectImageCollectionViewController.swift */; };
 		F4D6BD961EA4743500A93E46 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BD941EA4743500A93E46 /* CategoryCollectionViewCell.swift */; };
 		F4D6BD971EA4743500A93E46 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4D6BD951EA4743500A93E46 /* CategoryCollectionViewCell.xib */; };
 		F4D6BD991EA493D600A93E46 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BD981EA493D600A93E46 /* HomeViewModel.swift */; };
@@ -43,7 +52,14 @@
 		6AF2EE35D2892DEE60B9D142 /* Pods-BreathEveryday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreathEveryday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.debug.xcconfig"; sourceTree = "<group>"; };
 		F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
-		F431AD391F56C9F4005390D9 /* HomeViewController+Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Photo.swift"; sourceTree = "<group>"; };
+		F430B4C31F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		F430B4C71F77E975003E1ADB /* BackgroundImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		F430B4CB1F79267B003E1ADB /* HomeViewController+Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Bubble.swift"; sourceTree = "<group>"; };
+		F430B4CD1F79273A003E1ADB /* HomeViewController+CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		F430B4CF1F794775003E1ADB /* SettingButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingButtonTableViewCell.swift; sourceTree = "<group>"; };
+		F430B4D01F794775003E1ADB /* SettingButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingButtonTableViewCell.xib; sourceTree = "<group>"; };
+		F430B4D31F794844003E1ADB /* HomeViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TableView.swift"; sourceTree = "<group>"; };
+		F431AD391F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+PhotoLibrary.swift"; sourceTree = "<group>"; };
 		F431AD3B1F56CB32005390D9 /* HomeViewController+ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ColorPicker.swift"; sourceTree = "<group>"; };
 		F43B3FCC1EBB323F008577EF /* BreathEveryday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BreathEveryday.entitlements; sourceTree = "<group>"; };
 		F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -51,7 +67,9 @@
 		F43B3FF11EBC321F008577EF /* HomeItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeItemView.swift; sourceTree = "<group>"; };
 		F49B09241EBB14900002297F /* Background Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Background Image.xcassets"; sourceTree = "<group>"; };
 		F4A21F981E9C6E4200C24517 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		F4A414421F7D307C00B066A4 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		F4B2A57F1E88EE4200CAECEE /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		F4D0A0B01F6AD71500DD4693 /* SelectImageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectImageCollectionViewController.swift; sourceTree = "<group>"; };
 		F4D6BD941EA4743500A93E46 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		F4D6BD951EA4743500A93E46 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		F4D6BD981EA493D600A93E46 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -114,6 +132,7 @@
 				F4FA6AA61E7FB0F100C2E46E /* Info.plist */,
 				F43B3FCC1EBB323F008577EF /* BreathEveryday.entitlements */,
 				F4B2A57E1E88EE4200CAECEE /* CoreDataModel.xcdatamodeld */,
+				F431AD371F56AA6B005390D9 /* Extensions */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -123,6 +142,7 @@
 			children = (
 				F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */,
 				F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */,
+				F4A414421F7D307C00B066A4 /* UITableView+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -143,9 +163,17 @@
 				F4D6BD931EA4740300A93E46 /* Category */,
 				F43B3FF11EBC321F008577EF /* HomeItemView.swift */,
 				F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */,
+				F430B4D31F794844003E1ADB /* HomeViewController+TableView.swift */,
+				F430B4CD1F79273A003E1ADB /* HomeViewController+CollectionView.swift */,
+				F430B4CB1F79267B003E1ADB /* HomeViewController+Bubble.swift */,
 				F431AD3B1F56CB32005390D9 /* HomeViewController+ColorPicker.swift */,
-				F431AD391F56C9F4005390D9 /* HomeViewController+Photo.swift */,
+				F431AD391F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift */,
 				F4D6BD981EA493D600A93E46 /* HomeViewModel.swift */,
+				F4D0A0B01F6AD71500DD4693 /* SelectImageCollectionViewController.swift */,
+				F430B4C31F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift */,
+				F430B4C71F77E975003E1ADB /* BackgroundImageCollectionViewCell.xib */,
+				F430B4CF1F794775003E1ADB /* SettingButtonTableViewCell.swift */,
+				F430B4D01F794775003E1ADB /* SettingButtonTableViewCell.xib */,
 			);
 			name = "Home Page";
 			sourceTree = "<group>";
@@ -214,7 +242,6 @@
 			isa = PBXGroup;
 			children = (
 				F431AD361F56AA2B005390D9 /* General */,
-				F431AD371F56AA6B005390D9 /* Extensions */,
 				F431AD381F56ABCA005390D9 /* Classes */,
 			);
 			path = BreathEveryday;
@@ -289,11 +316,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F430B4C81F77E975003E1ADB /* BackgroundImageCollectionViewCell.xib in Resources */,
 				F49B09251EBB14900002297F /* Background Image.xcassets in Resources */,
 				F4D6BD971EA4743500A93E46 /* CategoryCollectionViewCell.xib in Resources */,
 				F4F4D6711E828EAC00D7EFBA /* KeyboardBarButton.xib in Resources */,
 				F4FA6AA51E7FB0F100C2E46E /* LaunchScreen.storyboard in Resources */,
 				F4FA6AB31E7FD3DD00C2E46E /* ListTableViewCell.xib in Resources */,
+				F430B4D21F794775003E1ADB /* SettingButtonTableViewCell.xib in Resources */,
 				F4FA6AA21E7FB0F100C2E46E /* Assets.xcassets in Resources */,
 				F4FA6AA01E7FB0F100C2E46E /* Main.storyboard in Resources */,
 			);
@@ -367,17 +396,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F431AD3A1F56C9F4005390D9 /* HomeViewController+Photo.swift in Sources */,
+				F431AD3A1F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift in Sources */,
 				F4E301501E9E1B1500846EBF /* CalendarViewController.swift in Sources */,
 				F4FA6A9D1E7FB0F100C2E46E /* HomeViewController.swift in Sources */,
+				F430B4D41F794844003E1ADB /* HomeViewController+TableView.swift in Sources */,
 				F4E301481E9DC7E500846EBF /* KeyboardButtonModel.swift in Sources */,
+				F430B4D11F794775003E1ADB /* SettingButtonTableViewCell.swift in Sources */,
+				F430B4CE1F79273A003E1ADB /* HomeViewController+CollectionView.swift in Sources */,
 				F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */,
 				F4FA6A9B1E7FB0F100C2E46E /* AppDelegate.swift in Sources */,
+				F4A414431F7D307C00B066A4 /* UITableView+Extensions.swift in Sources */,
+				F4D0A0B21F6AD71500DD4693 /* SelectImageCollectionViewController.swift in Sources */,
 				F408C5D71EA51B3B00F29A67 /* CategoryManager.swift in Sources */,
 				F4FA6AAF1E7FCD0D00C2E46E /* IdentifierModel.swift in Sources */,
 				F4D6BD961EA4743500A93E46 /* CategoryCollectionViewCell.swift in Sources */,
 				F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */,
 				F4E3014E1E9E17CC00846EBF /* CalendarCell.swift in Sources */,
+				F430B4CC1F79267B003E1ADB /* HomeViewController+Bubble.swift in Sources */,
+				F430B4C51F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift in Sources */,
 				F4D6BD991EA493D600A93E46 /* HomeViewModel.swift in Sources */,
 				F43B3FEC1EBC1E00008577EF /* UIColor+Extensions.swift in Sources */,
 				F4FA6AB71E7FD8F100C2E46E /* NoteViewController.swift in Sources */,
