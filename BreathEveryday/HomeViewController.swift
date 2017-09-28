@@ -403,7 +403,9 @@ class HomeViewController: UIViewController {
         }
         blackTransparentView.alpha = 0.8
         
-        btnQuoteBtn(sender: quoteButton)
+        if quoteButton.isSelected {
+            btnQuoteBtn(sender: quoteButton)
+        }
     }
     
     func switchMode(to mode: Mode) {
