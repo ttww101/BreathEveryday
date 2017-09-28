@@ -208,12 +208,12 @@
                         <outlet property="backgroundImageView" destination="4Cy-BZ-aW7" id="JzB-XE-h6M"/>
                         <outlet property="categoryDoneBtn" destination="4ca-ex-v6o" id="YkO-jb-VSZ"/>
                         <outlet property="categorysCollectionView" destination="w6o-HY-WeB" id="LtE-cb-ZgT"/>
-                        <outlet property="deleteSuccessLabel" destination="4Me-1e-Ezf" id="pFQ-PK-D4S"/>
                         <outlet property="infoBtton" destination="m2n-UU-Y66" id="JW8-xL-kOY"/>
                         <outlet property="menuButton" destination="X4R-1p-azy" id="o97-uO-UIv"/>
                         <outlet property="quoteButton" destination="Xm5-RR-JRL" id="eCn-Vo-xrD"/>
                         <outlet property="quoteView" destination="fdS-4w-R4o" id="E5Z-9t-fs7"/>
                         <outlet property="settingButton" destination="ASp-IK-9Wr" id="11u-cW-kFi"/>
+                        <outlet property="tipLabel" destination="4Me-1e-Ezf" id="95q-p6-0vc"/>
                         <outlet property="weatherImageView" destination="iKL-Bq-tfO" id="wal-Dg-4gc"/>
                     </connections>
                 </viewController>
@@ -232,6 +232,13 @@
                     <view key="view" contentMode="scaleToFill" id="9nQ-j3-ond">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h3B-hV-Mh6">
+                                <rect key="frame" x="97" y="180" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="0.70798196231617638" green="0.76078431372549016" blue="0.72941176470588232" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
@@ -243,7 +250,7 @@
         <scene sceneID="78l-DY-5SU">
             <objects>
                 <collectionViewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="eIB-Sl-8O3" customClass="SeleteImageCollectionViewController" customModule="BreathEveryday" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="UTf-Cq-32z">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="UTf-Cq-32z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -258,7 +265,7 @@
                                 <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="201" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p9C-2b-B4J">

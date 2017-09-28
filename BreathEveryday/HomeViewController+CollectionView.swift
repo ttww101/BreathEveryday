@@ -21,7 +21,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             let createBtn = createRandomBubble(with: categoryImageArray[indexPath.row],
                                                in: nil,
                                                color: createColor)
-            createBtn.addTarget(self, action: #selector(setBubbleCategory), for: .touchUpInside)
+            createBtn.addTarget(self, action: #selector(displayCategorySetup), for: .touchUpInside)
             createBtn.tag = indexPath.row
             selectedCatogoryRow = indexPath.row
             categoryDataArr[indexPath.row].button = createBtn
@@ -46,6 +46,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
                 self.saveBackgroundImage(for: image)
                 self.changeBackgroundView(for: image)
                 backgroundImageCollectionView.isHidden = true
+                self.exitSettingButton.isHidden = true
             }
         }
     }
@@ -140,7 +141,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if collectionView == backgroundImageCollectionView {
-            print(indexPath.row)
             if indexPath.row == 6 {
                 if let cell = cell as? BackgroundImageCollectionViewCell {
                     cell.backgroundImageView.layer.borderWidth = 0

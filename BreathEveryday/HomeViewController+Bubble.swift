@@ -97,28 +97,7 @@ extension HomeViewController {
                         target.transform = CGAffineTransform.identity
                         
                     }
-                    
-                case .setup:
-                    
-                    if 50 <= stopPoint_X && stopPoint_X <= self.view.frame.maxX - 50 &&
-                        80 <= stopPoint_Y && stopPoint_Y <= self.view.frame.maxY - 50 {
-                        
-                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
-                        target.transform = CGAffineTransform.identity
-                        
-                    } else {
-                        
-                        if stopPoint_X < 50 { stopPoint_X = 35 }
-                        if stopPoint_X > self.view.frame.maxX - 50 {
-                            stopPoint_X = self.view.frame.maxX - 35 }
-                        if stopPoint_Y < 80 { stopPoint_Y = 80 }
-                        if stopPoint_Y > self.view.frame.maxY - 50 {
-                            stopPoint_Y = self.view.frame.maxY - 35 }
-                        target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)
-                        target.transform = CGAffineTransform.identity
-                        
-                    }
-                    
+
                 case .setupCategory:
                     
                     target.center = CGPoint(x: stopPoint_X, y: stopPoint_Y)

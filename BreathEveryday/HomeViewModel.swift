@@ -12,7 +12,6 @@ import UIKit
 enum Mode {
     case normal
     case tutorial
-    case setup
     case setupCategory
     case setupBackground
 }
