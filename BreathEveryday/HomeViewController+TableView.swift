@@ -9,7 +9,7 @@
 import UIKit
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
@@ -25,13 +25,13 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             switch indexPath.row {
             case 0:
                 cell.displayButton.setTitle("Bubbles' Category", for: .normal)
-                cell.displayButton.addTarget(self, action: #selector(setBubbleCategory), for: .touchUpInside)
+                cell.displayButton.addTarget(self, action: #selector(displayCategorySetup), for: .touchUpInside)
             case 1:
                 cell.displayButton.setTitle("Background Image", for: .normal)
-                cell.displayButton.addTarget(self, action: #selector(displaySetupBackgroundViewController), for: .touchUpInside)
+                cell.displayButton.addTarget(self, action: #selector(displayBackgroundSetup), for: .touchUpInside)
             case 2:
                 cell.displayButton.setTitle("Qoutes", for: .normal)
-                cell.displayButton.addTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
+                cell.displayButton.addTarget(self, action: #selector(displayQuoteSetup), for: .touchUpInside)
             default:
                 break
             }

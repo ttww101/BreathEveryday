@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,8 +20,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7vE-Sj-MgJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <rect key="frame" x="18" y="13" width="284" height="68.5"/>
+                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                         <state key="normal" title="Button1">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -28,10 +29,10 @@
                 </subviews>
                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="7vE-Sj-MgJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="DkD-vm-KOd"/>
-                    <constraint firstItem="7vE-Sj-MgJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HRI-Sm-hpE"/>
-                    <constraint firstItem="7vE-Sj-MgJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Izb-gA-YWP"/>
-                    <constraint firstAttribute="trailing" secondItem="7vE-Sj-MgJ" secondAttribute="trailing" id="d7v-eK-Qb6"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="7vE-Sj-MgJ" secondAttribute="trailing" constant="10" id="BPX-xM-Hnm"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="7vE-Sj-MgJ" secondAttribute="bottom" constant="5" id="Udn-Mu-gMT"/>
+                    <constraint firstItem="7vE-Sj-MgJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="pTP-Gl-xRA"/>
+                    <constraint firstItem="7vE-Sj-MgJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="w7e-gF-G7l"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

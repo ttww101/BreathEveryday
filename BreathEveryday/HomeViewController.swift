@@ -43,7 +43,6 @@ class HomeViewController: UIViewController {
     var deleteLabelConstraint: NSLayoutConstraint?
     let tutorialScrollView = UIScrollView()
     var gestureQuitTutorial: UITapGestureRecognizer?
-    var gestureSetupBackground: UITapGestureRecognizer?
     
     var backgroundImageCollectionView: UICollectionView!
     var animator: (LayoutAttributesAnimator, Bool, Int, Int) = (LinearCardAttributesAnimator(), false, 1, 1)
@@ -52,6 +51,7 @@ class HomeViewController: UIViewController {
     
     var settingButtonTableView: UITableView!
     var settingButtonTableViewConstraint: NSLayoutConstraint?
+    var exitSettingButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,18 +102,33 @@ class HomeViewController: UIViewController {
         settingButtonTableView.backgroundColor = .clear
         settingButtonTableView.contentMode = .center
         settingButtonTableView.isScrollEnabled = false
+        settingButtonTableView.allowsSelection = false
         view.addSubview(settingButtonTableView)
         settingButtonTableView.translatesAutoresizingMaskIntoConstraints = false
         settingButtonTableView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0).isActive = true
-        settingButtonTableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/3).isActive = true
+        settingButtonTableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 5/12).isActive = true
         settingButtonTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         settingButtonTableView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         settingButtonTableViewConstraint = NSLayoutConstraint(item: settingButtonTableView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 1000)
         view.addConstraint(settingButtonTableViewConstraint!)
 
-        //category
-        categoryDoneBtn.addTarget(self, action: #selector(btnDone), for: .touchUpInside)
+        //exit Button
+        exitSettingButton = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        self.view.addSubview(exitSettingButton)
+        self.exitSettingButton.isHidden = true
+        exitSettingButton.translatesAutoresizingMaskIntoConstraints = false
+        exitSettingButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
+        exitSettingButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        exitSettingButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        exitSettingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        exitSettingButton.setTitle("Exit", for: .normal)
+        let color = UIColor(hex: "ff5252")
+        exitSettingButton.setTitleColor(color, for: .normal)
+        exitSettingButton.titleLabel?.font = UIFont(name: "Menlo-Bold", size: 22)
+        exitSettingButton.addTarget(self, action: #selector(exitSettingMode), for: .touchUpInside)
         
+        //category
+        categoryDoneBtn.addTarget(self, action: #selector(exitSettingMode), for: .touchUpInside)
         categorysCollectionView.allowsMultipleSelection = true
         categorysCollectionView.delegate = self
         categorysCollectionView.dataSource = self
@@ -127,7 +142,6 @@ class HomeViewController: UIViewController {
         
         view.addSubview(colorPickerView)
         colorPickerView.translatesAutoresizingMaskIntoConstraints = false
-//        colorPickerView.topAnchor.constraint(equalTo: categorysCollectionView.topAnchor, constant: 300).isActive = true
         colorPickerView.bottomAnchor.constraint(equalTo: categorysCollectionView.topAnchor, constant: 0).isActive = true
         colorPickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         colorPickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
@@ -189,6 +203,7 @@ class HomeViewController: UIViewController {
         }
         
         //deleteLabel
+        tipLabel.isUserInteractionEnabled = true
         tipLabel.translatesAutoresizingMaskIntoConstraints = false
         tipLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         tipLabel.bottomAnchor.constraint(equalTo: colorPickerView.topAnchor, constant: 0).isActive = true
@@ -211,26 +226,31 @@ class HomeViewController: UIViewController {
         }
         
         //read data to set background image
+        if let savedImage = readBackgroundImage() {
+            backgroundImageView.image = savedImage
+        } else {
+            createBackgroundDataFirstTime()
+        }
+    }
+    
+    func readBackgroundImage() -> UIImage? {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let moc = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserMO")
         do {
             guard let results = try moc.fetch(request) as? [UserMO] else {
-                return
+                return nil
             }
             if results.count > 0 {
                 let user = results[0]
                 if let image = user.backgroundImage {
-                    backgroundImageView.image = UIImage(data: image as Data)
+                    return UIImage(data: image as Data)
                 }
-            } else {
-                createBackgroundDataFirstTime()
             }
         } catch {
-            
             fatalError("Core Data Update: \(error)")
         }
-
+        return nil
     }
     
     func showupFirstTime() {
@@ -247,7 +267,6 @@ class HomeViewController: UIViewController {
             self.view.bringSubview(toFront: self.tipLabel)
             
             //button action & appearance change
-            self.switchMode(to: .setup)
             self.switchMode(to: .setupCategory)
             self.categoryScrollViewConstraint?.constant = -100
             self.colorPickerViewConstraint?.constant = -44
@@ -277,12 +296,8 @@ class HomeViewController: UIViewController {
         
         Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { (_) in
             if toCount - 1 > 0 {
-                
                 self.bubbleNestShowUpAnimation(sender: sender,
                                                    toCount: toCount - 1)
-                
-            } else {
-                
             }
         }
     }
@@ -359,10 +374,12 @@ class HomeViewController: UIViewController {
     
     func btnSettingBtn() {
         
-        dismissMenuButton()
-//        addBlackTransparentView()
+        //dismiss menu button
+        self.menuButton.isSelected = false
+        self.settingButton.isHidden = true
+        self.infoBtton.isHidden = true
         
-        //add black view to view
+        //blackTransparentView show up
         blackTransparentView.backgroundColor = .black
         view.addSubview(blackTransparentView)
         backgroundImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 0)
@@ -371,9 +388,13 @@ class HomeViewController: UIViewController {
         blackTransparentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         blackTransparentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         blackTransparentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        
         blackTransparentView.animation = "fadeIn"
         blackTransparentView.duration = 0.5
         blackTransparentView.animateNext {
+            
+            self.exitSettingButton.isHidden = false
+            self.view.bringSubview(toFront: self.exitSettingButton)
             self.view.bringSubview(toFront: self.settingButtonTableView)
             self.settingButtonTableView.shrinkAllcell()
             self.settingButtonTableViewConstraint?.constant = 0
@@ -382,25 +403,7 @@ class HomeViewController: UIViewController {
         }
         blackTransparentView.alpha = 0.8
         
-        
-    
-        
-        //bring views to front
-//        view.bringSubview(toFront: quoteButton)
-//        view.bringSubview(toFront: tipLabel)
-//        for category in categoryDataArr {
-//            if category.isCreated {
-//                view.bringSubview(toFront: category.button)
-//            }
-//        }
-        //        alertLabel(replaceString: "Please select an item", isHidden: false, color: UIColor.blueMiddleGray())
-//        switchMode(to: .setup)
-    }
-    
-    func dismissMenuButton() {
-        self.menuButton.isSelected = false
-        self.settingButton.isHidden = true
-        self.infoBtton.isHidden = true
+        btnQuoteBtn(sender: quoteButton)
     }
     
     func switchMode(to mode: Mode) {
@@ -408,77 +411,53 @@ class HomeViewController: UIViewController {
         switch mode {
             
         case .normal:
-            
-            //button
             currentMode = .normal
+            
+            //logic
             for category in categoryDataArr {
-                category.button.removeTarget(self, action: #selector(setBubbleCategory), for: .touchUpInside)
+                category.button.removeTarget(self, action: #selector(displayCategorySetup), for: .touchUpInside)
                 category.button.addTarget(self, action: #selector(displayListView), for: .touchUpInside)
             }
             
-            //quote
-            let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
-            quoteButton.setImage(image, for: .normal)
-            quoteButton.tintColor = .white
-            quoteButton.removeTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
-            quoteButton.addTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
-            
-            //constrait
+            //views
+            exitSettingButton.isHidden = true
+            backgroundImageCollectionView.isHidden = true
+        
             categoryScrollViewConstraint?.constant = 0
             colorPickerViewConstraint?.constant = 0
             deleteLabelConstraint?.constant = 0
+            self.settingButtonTableViewConstraint?.constant = 1000
             
-        case .tutorial:
-            tipLabel.isUserInteractionEnabled = true
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(quitTutorial))
-            gestureQuitTutorial = gesture
-            tipLabel.addGestureRecognizer(gestureQuitTutorial!)
-            removeSetupBackgroundGesture()
-        
-        case .setup:
-            
-            //bubble
-            currentMode = .setup
-            for category in categoryDataArr {
-                category.button.removeTarget(self, action: #selector(displayListView), for: .touchUpInside)
-                category.button.addTarget(self, action: #selector(setBubbleCategory), for: .touchUpInside)
+            if let image = readBackgroundImage() {
+                self.backgroundImageView.image = image
             }
-            
-            //quote
-            let image = #imageLiteral(resourceName: "Message-50").withRenderingMode(.alwaysTemplate)
-            quoteButton.setImage(image, for: .normal)
-            quoteButton.tintColor = .white
-            quoteButton.removeTarget(self, action: #selector(btnQuoteBtn), for: .touchUpInside)
-            quoteButton.addTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
-            
-            //background
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(displaySetupBackgroundViewController))
-            gestureSetupBackground = gesture
-            blackTransparentView.addGestureRecognizer(gestureSetupBackground!)
             
         case .setupCategory:
             currentMode = .setupCategory
-            removeSetupBackgroundGesture()
+            
+            //bubble
+            for category in categoryDataArr {
+                category.button.removeTarget(self, action: #selector(displayListView), for: .touchUpInside)
+                category.button.addTarget(self, action: #selector(displayCategorySetup), for: .touchUpInside)
+            }
             
         case .setupBackground:
             currentMode = .setupBackground
-            removeSetupBackgroundGesture()
-        }
         
-    }
-    
-    func removeSetupBackgroundGesture() {
-        if let gesture = gestureSetupBackground {
-            blackTransparentView.removeGestureRecognizer(gesture)
+        case .tutorial:
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(quitTutorial))
+            gestureQuitTutorial = gesture
+            tipLabel.addGestureRecognizer(gestureQuitTutorial!)
         }
     }
     
-    func setBubbleCategory(sender: UIButton) {
+    func displayCategorySetup(sender: UIButton) {
+        switchMode(to: .setupCategory)
+        
         self.blackTransparentView.alpha = 0.6
         self.settingButtonTableViewConstraint?.constant = 1000
-        
-        switchMode(to: .setupCategory)
         self.deleteLabelConstraint?.constant = 0
+        
         view.bringSubview(toFront: blackTransparentView)
         view.bringSubview(toFront: categorysCollectionView)
         view.bringSubview(toFront: colorPickerView)
@@ -487,7 +466,6 @@ class HomeViewController: UIViewController {
         for category in categoryDataArr {
             view.bringSubview(toFront: category.button)
         }
-        quoteButton.removeTarget(self, action: #selector(btnQuoteBtnSettingMode), for: .touchUpInside)
         categoryScrollViewConstraint?.constant = -100
         colorPickerViewConstraint?.constant = -44
         selectedCatogoryRow = sender.tag
@@ -513,20 +491,22 @@ class HomeViewController: UIViewController {
         })
     }
     
-    func displaySetupBackgroundViewController() {
+    func displayBackgroundSetup() {
         self.view.bringSubview(toFront: self.backgroundImageCollectionView)
+        self.view.bringSubview(toFront: self.exitSettingButton)
         self.backgroundImageCollectionView.isHidden = false
         self.blackTransparentView.alpha = 0.6
         self.settingButtonTableViewConstraint?.constant = 1000
     }
     
-    func btnQuoteBtnSettingMode() {
-        self.blackTransparentView.alpha = 0.6
-        self.settingButtonTableViewConstraint?.constant = 1000
-        btnDone()
+    func displayQuoteSetup() {
+        let myAlert = UIAlertController(title: "", message: "Coming Soon...", preferredStyle: UIAlertControllerStyle.alert)
+        myAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+        self.present(myAlert, animated: true, completion: nil)
     }
     
-    func btnDone() {
+    func exitSettingMode() {
+        
         //calculate count
         var count = 0
         for category in categoryDataArr {
@@ -534,17 +514,15 @@ class HomeViewController: UIViewController {
                 count += 1
             }
         }
-        //check if more than one selected
+        //check if category > 0
         if count > 0 {
             blackTransparentView.removeFromSuperview()
             switchMode(to: .normal)
             
             //update categoryDataArray
-            
             updateCategoryDataArrayFrame()
             
-            //MARK: Core data save
-            
+            //TO DO: Core data save
             removeAllAndSaveCoreData()
             
         } else {
@@ -689,8 +667,8 @@ class HomeViewController: UIViewController {
     
     func quitTutorial() {
         tutorialScrollView.removeFromSuperview()
-        btnDone()
         tipLabel.removeGestureRecognizer(gestureQuitTutorial!)
+        exitSettingMode()
     }
     
     func btnQuoteBtn(sender: UIButton) {
