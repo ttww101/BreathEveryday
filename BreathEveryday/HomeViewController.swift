@@ -382,6 +382,7 @@ class HomeViewController: UIViewController {
         //blackTransparentView show up
         blackTransparentView.backgroundColor = .black
         view.addSubview(blackTransparentView)
+        //TODO: backgroundImage Animation
         backgroundImageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 0)
         blackTransparentView.translatesAutoresizingMaskIntoConstraints = false
         blackTransparentView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
@@ -436,6 +437,7 @@ class HomeViewController: UIViewController {
             
         case .setupCategory:
             currentMode = .setupCategory
+            backgroundImageCollectionView.isHidden = true
             
             //bubble
             for category in categoryDataArr {
