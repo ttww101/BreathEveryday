@@ -578,7 +578,7 @@ class HomeViewController: UIViewController {
             for result in results {
                 
                 moc.delete(result)
-                
+
             }
             
             try moc.save()
