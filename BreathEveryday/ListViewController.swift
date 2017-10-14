@@ -5,11 +5,6 @@
 //  Created by Lucy on 2017/3/20.
 //  Copyright © 2017年 Bomi. All rights reserved.
 //
-enum listSectionType {
-    case add
-    case content
-}
-
 
 import UIKit
 import CoreData
@@ -43,12 +38,16 @@ class ListViewController: UIViewController {
         super.viewDidLoad()
         
         //sync to bubble
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.tintColor = UIColor.black
-        self.navigationController?.navigationBar.barTintColor = .clear
-        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
+//        self.navigationController?.navigationBar.tintColor = bubbleSyncColor
+        self.navigationController?.navigationBar.barTintColor = bubbleSyncColor
+        self.navigationController?.navigationBar.backgroundColor = .white
         self.navigationController?.navigationBar.topItem?.title = listTitle
+        if let button = self.navigationItem.leftBarButtonItem?.customView as? UIButton {
+            button.imageView?.contentMode = .scaleAspectFit
+        }
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         listTableView.backgroundColor = bubbleSyncColor
         
         //tableView

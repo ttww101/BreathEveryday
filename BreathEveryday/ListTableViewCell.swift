@@ -556,8 +556,6 @@ extension ListTableViewCell {
             alarmPicker.selectRow(hour, inComponent: 0, animated: false)
             let min = calendar.component(.minute, from: date)
             alarmPicker.selectRow(min, inComponent: 2, animated: false)
-            print(alarmPicker.selectedRow(inComponent: 0))
-            print(alarmPicker.selectedRow(inComponent: 2))
         } else {
             let date = Date()
             let calendar = Calendar.current

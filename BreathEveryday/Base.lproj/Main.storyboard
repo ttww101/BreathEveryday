@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Futura.ttc">
+            <string>Futura-Medium</string>
+        </array>
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+        <array key="Menlo.ttc">
+            <string>Menlo-Bold</string>
+            <string>Menlo-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -308,16 +320,16 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" alpha="0.94999999999999996" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="njh-bq-OPJ">
-                                        <rect key="frame" x="0.0" y="-64" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <sections/>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="njh-bq-OPJ" secondAttribute="trailing" id="EZR-mO-uUf"/>
-                                    <constraint firstItem="njh-bq-OPJ" firstAttribute="leading" secondItem="drJ-b9-7Ax" secondAttribute="leading" id="P2w-tn-HUa"/>
-                                    <constraint firstItem="njh-bq-OPJ" firstAttribute="top" secondItem="drJ-b9-7Ax" secondAttribute="top" constant="-64" id="n68-CO-Acz"/>
+                                    <constraint firstAttribute="trailing" secondItem="njh-bq-OPJ" secondAttribute="trailing" id="9Zy-mt-iCf"/>
+                                    <constraint firstItem="njh-bq-OPJ" firstAttribute="leading" secondItem="drJ-b9-7Ax" secondAttribute="leading" id="GNa-ZO-8QS"/>
+                                    <constraint firstItem="njh-bq-OPJ" firstAttribute="top" secondItem="drJ-b9-7Ax" secondAttribute="top" id="bHm-CY-pkF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -330,13 +342,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="List" id="PW4-Ay-g9D">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="D93-AI-APj">
-                            <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Y6D-rk-YHm">
-                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Y6D-rk-YHm">
+                                <rect key="frame" x="16" y="0.0" width="150" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" image="Home-50">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <inset key="contentEdgeInsets" minX="-55" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="Home-50"/>
                                 <connections>
                                     <action selector="homeBtn:" destination="MfH-Ey-e3f" eventType="touchUpInside" id="pGi-kt-fKw"/>
                                 </connections>
@@ -344,7 +354,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="pzV-G3-KQW">
                             <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eEF-qO-fEy">
-                                <rect key="frame" x="329" y="7" width="30" height="30"/>
+                                <rect key="frame" x="309" y="0.0" width="50" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="0Uj-Me-kA0"/>
@@ -581,7 +591,7 @@
                 <navigationController storyboardIdentifier="HomeNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="NGL-vu-iaR" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" alpha="0.29999999999999999" contentMode="scaleToFill" id="3Cl-Xh-U5x">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -597,7 +607,7 @@
     <resources>
         <image name="BK-beach sunrise" width="1242" height="2208"/>
         <image name="Checkmark Filled-50" width="50" height="50"/>
-        <image name="Home-50" width="50" height="50"/>
+        <image name="Home-50" width="150" height="150"/>
         <image name="Message-50" width="50" height="50"/>
         <image name="Plus-50" width="50" height="50"/>
         <image name="Question Mark-64" width="48" height="48"/>
