@@ -314,7 +314,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func btnMenuBtn() {
+    @objc func btnMenuBtn() {
         
         if !menuButton.isSelected {
             menuButton.rotate = 720
@@ -372,7 +372,7 @@ class HomeViewController: UIViewController {
         
     }
     
-    func btnSettingBtn() {
+    @objc func btnSettingBtn() {
         
         //dismiss menu button
         self.menuButton.isSelected = false
@@ -455,7 +455,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func displayCategorySetup(sender: UIButton) {
+    @objc func displayCategorySetup(sender: UIButton) {
         switchMode(to: .setupCategory)
         
         self.blackTransparentView.alpha = 0.6
@@ -495,7 +495,7 @@ class HomeViewController: UIViewController {
         })
     }
     
-    func displayBackgroundSetup() {
+    @objc func displayBackgroundSetup() {
         self.view.bringSubview(toFront: self.backgroundImageCollectionView)
         self.view.bringSubview(toFront: self.exitSettingButton)
         self.backgroundImageCollectionView.isHidden = false
@@ -503,13 +503,13 @@ class HomeViewController: UIViewController {
         self.settingButtonTableViewConstraint?.constant = 1000
     }
     
-    func displayQuoteSetup() {
+    @objc func displayQuoteSetup() {
         let myAlert = UIAlertController(title: "", message: "Coming Soon...", preferredStyle: UIAlertControllerStyle.alert)
         myAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
         self.present(myAlert, animated: true, completion: nil)
     }
     
-    func exitSettingMode() {
+    @objc func exitSettingMode() {
         
         //calculate count
         var count = 0
@@ -610,7 +610,7 @@ class HomeViewController: UIViewController {
         
     }
     
-    func btnInfoBtn() {
+    @objc func btnInfoBtn() {
         
         self.menuButton.isSelected = false
         self.settingButton.isHidden = true
@@ -669,13 +669,13 @@ class HomeViewController: UIViewController {
         blackTransparentView.alpha = 0.6
     }
     
-    func quitTutorial() {
+    @objc func quitTutorial() {
         tutorialScrollView.removeFromSuperview()
         tipLabel.removeGestureRecognizer(gestureQuitTutorial!)
         exitSettingMode()
     }
     
-    func btnQuoteBtn(sender: UIButton) {
+    @objc func btnQuoteBtn(sender: UIButton) {
         
         if !sender.isSelected {
             
@@ -714,7 +714,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func dismissQuote() {
+    @objc func dismissQuote() {
         //state
         quoteView.isHidden = true
         quoteButton.isEnabled = false
@@ -736,7 +736,7 @@ class HomeViewController: UIViewController {
         })
     }
     
-    func displayListView(sender: UIButton) {
+    @objc func displayListView(sender: UIButton) {
         
         if let navigationVC = storyboard?.instantiateViewController(withIdentifier: "HomeNavigationController") as? UINavigationController {
             

@@ -70,7 +70,7 @@ class CalendarViewController: UIViewController {
         guard let cell = cell as? CalendarCell else { return }
         
         if cellState.isSelected {
-            cell.dateLabel.textColor = UIColor(colorLiteralRed: 145/255, green: 160/255, blue: 145/255, alpha: 1.0)
+            cell.dateLabel.textColor = UIColor(displayP3Red: 145/255, green: 160/255, blue: 145/255, alpha: 1.0)
         } else {
             if cellState.dateBelongsTo == .thisMonth {
                 cell.dateLabel.textColor = .white

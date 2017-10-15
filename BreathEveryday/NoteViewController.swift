@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
     }
     
     //Notification Center
-    func handleKeyboardNotification(notification: NSNotification) {
+    @objc func handleKeyboardNotification(notification: NSNotification) {
         
         
         if let userInfo = notification.userInfo {

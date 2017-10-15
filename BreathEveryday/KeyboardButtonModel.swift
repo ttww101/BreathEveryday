@@ -63,7 +63,7 @@ func adjustFrame(button: UIButton, width: CGFloat, height: CGFloat, image: UIIma
     button.frame = CGRect(x: 0, y: 0, width: width, height: height)
 }
 
-let grayBlueColor = UIColor(colorLiteralRed: 148/255, green: 163/255, blue: 169/255, alpha: 1)
+let grayBlueColor = UIColor(displayP3Red: 148/255, green: 163/255, blue: 169/255, alpha: 1)
 
 
 

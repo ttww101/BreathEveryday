@@ -38,16 +38,12 @@ class ListViewController: UIViewController {
         super.viewDidLoad()
         
         //sync to bubble
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-//        self.navigationController?.navigationBar.tintColor = bubbleSyncColor
         self.navigationController?.navigationBar.barTintColor = bubbleSyncColor
         self.navigationController?.navigationBar.backgroundColor = .white
         self.navigationController?.navigationBar.topItem?.title = listTitle
         if let button = self.navigationItem.leftBarButtonItem?.customView as? UIButton {
             button.imageView?.contentMode = .scaleAspectFit
         }
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
         listTableView.backgroundColor = bubbleSyncColor
         
         //tableView
@@ -78,7 +74,6 @@ class ListViewController: UIViewController {
         case .authorized: break
         case .denied: break
         case .notDetermined:
-            
             eventStore.requestAccess(to: .event, completion: { (granted, error) -> Void in
                 if granted { print("granted")
                 } else { print("Access denied")  }
@@ -89,8 +84,7 @@ class ListViewController: UIViewController {
     }
         
     //Segue
-    
-    func viewChangeToDetailPage(sender: UIButton) {
+    @objc func viewChangeToDetailPage(sender: UIButton) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
             
             UIView.animate(withDuration: 1, animations: {
@@ -117,7 +111,7 @@ class ListViewController: UIViewController {
     }
     
     //Notification Center
-    func handleKeyboardNotification(notification: NSNotification) {
+    @objc func handleKeyboardNotification(notification: NSNotification) {
         
         if let userInfo = notification.userInfo {
             if let rectInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
@@ -178,15 +172,11 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
     }
 
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        
         listTableView.beginUpdates()
-        
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        
         listTableView.endUpdates()
-        
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {

@@ -59,7 +59,6 @@ class ListTableViewCell: UITableViewCell {
         contentView.addConstraint(textViewLeadingConstraint!)
         contentView.addConstraint(textViewTrailingConstraint!)
         contentView.addConstraint(detailBtnLeadingConstraint!)
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -143,18 +142,18 @@ extension ListTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView == alarmPicker {
             
             if component == 0 {
-                let attributedString = NSAttributedString(string: arrHours[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
+                let attributedString = NSAttributedString(string: arrHours[row], attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
                 return attributedString
             } else if component == 2 {
-                let attributedString = NSAttributedString(string: arrMinutes[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
+                let attributedString = NSAttributedString(string: arrMinutes[row], attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
                 return attributedString
             } else {
-                return NSAttributedString(string: ":", attributes: [NSForegroundColorAttributeName : UIColor.white])
+                return NSAttributedString(string: ":", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             }
             
         } else {
             
-            return NSAttributedString(string: arrAlertTime[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return NSAttributedString(string: arrAlertTime[row], attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
             
         }
     }
@@ -400,8 +399,13 @@ extension ListTableViewCell {
         let toolBar = UIToolbar()
         
         let alarmBtn = CustomButton.alarm.button
+        alarmBtn.contentMode = .scaleAspectFit
         alarmBtn.addTarget(self, action: #selector(btnAlarmToolBar), for: .touchUpInside)
         adjustFrame(button: alarmBtn, width: UIScreen.main.bounds.width/6, height: alarmBtn.frame.height, image: nil)
+        alarmBtn.imageView?.contentMode = .scaleAspectFit
+        alarmBtn.imageView?.frame = CGRect(x: 0, y: 0, width: alarmBtn.frame.width - 30, height: alarmBtn.frame.height - 30)
+        alarmBtn.imageView?.center = alarmBtn.center
+
         let remindTimeBtn = CustomButton.remindTime.button
         remindTimeBtn.addTarget(self, action: #selector(btnRemindTimeToolBar), for: .touchUpInside)
         adjustFrame(button: remindTimeBtn, width: UIScreen.main.bounds.width/6, height: remindTimeBtn.frame.height, image: nil)
@@ -426,10 +430,9 @@ extension ListTableViewCell {
             , animated: false)
         toolBar.sizeToFit()
         textView.inputAccessoryView = toolBar
-        
     }
 
-    func btnStarToolBar(sender: UIButton) {
+    @objc func btnStarToolBar(sender: UIButton) {
         
         if isSetNotification {
             isSetNotification = false
@@ -438,7 +441,7 @@ extension ListTableViewCell {
         
     }
 
-    func btnCalendarToolBar(sender: UIButton) {
+    @objc func btnCalendarToolBar(sender: UIButton) {
         
         if calendarView.superview == nil {
             
@@ -471,7 +474,7 @@ extension ListTableViewCell {
         
     }
 
-    func btnAlarmToolBar(sender: UIButton) {
+    @objc func btnAlarmToolBar(sender: UIButton) {
         
         if alarmView.superview == nil {
             
@@ -509,7 +512,7 @@ extension ListTableViewCell {
         }
     }
     
-    func btnRemindTimeToolBar(sender: UIButton) {
+    @objc func btnRemindTimeToolBar(sender: UIButton) {
         
         if remindtimeView.superview == nil {
             isBtnRemindTimeSet = true
@@ -533,7 +536,7 @@ extension ListTableViewCell {
         }
     }
 
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         
         contentView.endEditing(true)
         
