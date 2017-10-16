@@ -228,11 +228,11 @@ extension ListTableViewCell: UITextViewDelegate {
         
         //set tool bar status
         if isSetNotification {
-            starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+            setNotificationStatus(isEnable: true)
             setupAlarmPickerSelectedRow()
             setupRemindTimePickerSelectedRow()
         } else {
-            starBtn.setImage(#imageLiteral(resourceName: "Star-48"), for: .normal)
+            setNotificationStatus(isEnable: false)
         }
         
     }
@@ -399,12 +399,8 @@ extension ListTableViewCell {
         let toolBar = UIToolbar()
         
         let alarmBtn = CustomButton.alarm.button
-        alarmBtn.contentMode = .scaleAspectFit
         alarmBtn.addTarget(self, action: #selector(btnAlarmToolBar), for: .touchUpInside)
         adjustFrame(button: alarmBtn, width: UIScreen.main.bounds.width/6, height: alarmBtn.frame.height, image: nil)
-        alarmBtn.imageView?.contentMode = .scaleAspectFit
-        alarmBtn.imageView?.frame = CGRect(x: 0, y: 0, width: alarmBtn.frame.width - 30, height: alarmBtn.frame.height - 30)
-        alarmBtn.imageView?.center = alarmBtn.center
 
         let remindTimeBtn = CustomButton.remindTime.button
         remindTimeBtn.addTarget(self, action: #selector(btnRemindTimeToolBar), for: .touchUpInside)
@@ -422,8 +418,11 @@ extension ListTableViewCell {
         let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(dismissKeyboard))
         
         toolBar.setItems([UIBarButtonItem(customView: starBtn),
+                          flexibleSpace,
                           UIBarButtonItem(customView: calendarBtn),
+                          flexibleSpace,
                           UIBarButtonItem(customView: alarmBtn),
+                          flexibleSpace,
                           UIBarButtonItem(customView: remindTimeBtn),
                           flexibleSpace,
                           doneBtn]
@@ -435,8 +434,7 @@ extension ListTableViewCell {
     @objc func btnStarToolBar(sender: UIButton) {
         
         if isSetNotification {
-            isSetNotification = false
-            starBtn.setImage(#imageLiteral(resourceName: "Star-48"), for: .normal)
+            setNotificationStatus(isEnable: false)
         }
         
     }
@@ -447,8 +445,7 @@ extension ListTableViewCell {
             
             createCalendarPopView(xPos: sender.frame.midX)
             if !isSetNotification {
-                isSetNotification = true
-                starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+                setNotificationStatus(isEnable: true)
             }
             
         } else {
@@ -456,8 +453,7 @@ extension ListTableViewCell {
                 
                 calendarView.isHidden = false
                 if !isSetNotification {
-                    isSetNotification = true
-                    starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+                    setNotificationStatus(isEnable: true)
                 }
                 
             } else {
@@ -474,29 +470,39 @@ extension ListTableViewCell {
         
     }
 
+    func setNotificationStatus(isEnable: Bool) {
+        if isEnable {
+            isSetNotification = true
+            if #available(iOS 11, *) {
+                starBtn.setImage(#imageLiteral(resourceName: "Star Filled-ios11"), for: .normal)
+            } else {
+                starBtn.setImage(#imageLiteral(resourceName: "Star-Filled"), for: .normal)
+            }
+        } else {
+            isSetNotification = false
+            if #available(iOS 11, *) {
+                starBtn.setImage(#imageLiteral(resourceName: "Star-ios11"), for: .normal)
+            } else {
+                starBtn.setImage(#imageLiteral(resourceName: "Star"), for: .normal)
+            }
+        }
+    }
+    
     @objc func btnAlarmToolBar(sender: UIButton) {
         
         if alarmView.superview == nil {
-            
             isBtnAlarmSet = true
             createAlarmPopView(xPos: sender.frame.midX)
-            
             if !isSetNotification {
-                isSetNotification = true
-                starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+                setNotificationStatus(isEnable: true)
             }
-            
         } else {
-            
             isBtnAlarmSet = true
             if alarmView.isHidden { //display
-                
                 alarmView.isHidden = false
                 if !isSetNotification {
-                    isSetNotification = true
-                    starBtn.setImage(#imageLiteral(resourceName: "Star Filled-50"), for: .normal)
+                    setNotificationStatus(isEnable: true)
                 }
-                
             } else {
                 alarmView.isHidden = true
             }

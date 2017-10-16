@@ -27,8 +27,8 @@
             <objects>
                 <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="BreathEveryday" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="6qc-u6-qjO"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fho-Yf-aus"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -187,30 +187,30 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1693567576142132" green="0.1693567576142132" blue="0.1693567576142132" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="w6o-HY-WeB" secondAttribute="bottom" id="000-Gk-khI"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4Cy-BZ-aW7" secondAttribute="bottom" id="1R2-xv-WSv"/>
+                            <constraint firstItem="Fho-Yf-aus" firstAttribute="top" secondItem="w6o-HY-WeB" secondAttribute="bottom" id="000-Gk-khI"/>
+                            <constraint firstItem="Fho-Yf-aus" firstAttribute="top" secondItem="4Cy-BZ-aW7" secondAttribute="bottom" id="1R2-xv-WSv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="X4R-1p-azy" secondAttribute="trailing" id="6s8-Cv-tDh"/>
-                            <constraint firstItem="fdS-4w-R4o" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="87x-oP-2rS"/>
+                            <constraint firstItem="fdS-4w-R4o" firstAttribute="top" secondItem="6qc-u6-qjO" secondAttribute="bottom" constant="16" id="87x-oP-2rS"/>
                             <constraint firstItem="w6o-HY-WeB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8gR-07-IzX"/>
                             <constraint firstItem="4ca-ex-v6o" firstAttribute="top" secondItem="w6o-HY-WeB" secondAttribute="top" id="Gvh-Ef-7fK"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="X4R-1p-azy" secondAttribute="bottom" constant="10" id="ILB-70-CID"/>
+                            <constraint firstItem="Fho-Yf-aus" firstAttribute="top" secondItem="X4R-1p-azy" secondAttribute="bottom" constant="10" id="ILB-70-CID"/>
                             <constraint firstItem="ASp-IK-9Wr" firstAttribute="centerX" secondItem="X4R-1p-azy" secondAttribute="centerX" id="JIe-FL-uEj"/>
                             <constraint firstAttribute="trailing" secondItem="iKL-Bq-tfO" secondAttribute="trailing" constant="15" id="Nu0-Ks-PMG"/>
-                            <constraint firstItem="iKL-Bq-tfO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="OV7-ir-oZt"/>
+                            <constraint firstItem="iKL-Bq-tfO" firstAttribute="top" secondItem="6qc-u6-qjO" secondAttribute="bottom" constant="10" id="OV7-ir-oZt"/>
                             <constraint firstItem="fdS-4w-R4o" firstAttribute="leading" secondItem="Xm5-RR-JRL" secondAttribute="trailing" constant="5" id="VH6-wN-cDf"/>
                             <constraint firstItem="P5I-yd-5aA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Vvs-sa-791"/>
                             <constraint firstItem="X4R-1p-azy" firstAttribute="top" secondItem="ASp-IK-9Wr" secondAttribute="bottom" constant="10" id="X97-y2-Yh4"/>
                             <constraint firstItem="ASp-IK-9Wr" firstAttribute="top" secondItem="m2n-UU-Y66" secondAttribute="bottom" constant="10" id="Y8K-06-oNS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fdS-4w-R4o" secondAttribute="trailing" constant="20" id="bz7-Lt-NgK"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4ca-ex-v6o" secondAttribute="bottom" id="h0d-Du-1qG"/>
-                            <constraint firstItem="Xm5-RR-JRL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="ihg-Vr-Aiz"/>
+                            <constraint firstItem="Fho-Yf-aus" firstAttribute="top" secondItem="4ca-ex-v6o" secondAttribute="bottom" id="h0d-Du-1qG"/>
+                            <constraint firstItem="Xm5-RR-JRL" firstAttribute="top" secondItem="6qc-u6-qjO" secondAttribute="bottom" constant="10" id="ihg-Vr-Aiz"/>
                             <constraint firstItem="Xm5-RR-JRL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="jHl-o6-BMM"/>
                             <constraint firstItem="m2n-UU-Y66" firstAttribute="centerX" secondItem="X4R-1p-azy" secondAttribute="centerX" id="jln-ok-SS3"/>
                             <constraint firstItem="4Cy-BZ-aW7" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mNS-nH-pSW"/>
                             <constraint firstItem="4Cy-BZ-aW7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="pQg-QC-hRy"/>
                             <constraint firstItem="P5I-yd-5aA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rDL-SF-R5B"/>
                             <constraint firstAttribute="trailing" secondItem="P5I-yd-5aA" secondAttribute="trailing" id="reM-2q-WdO"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="P5I-yd-5aA" secondAttribute="bottom" id="slP-6C-HCE"/>
+                            <constraint firstItem="Fho-Yf-aus" firstAttribute="top" secondItem="P5I-yd-5aA" secondAttribute="bottom" id="slP-6C-HCE"/>
                             <constraint firstAttribute="trailing" secondItem="4Cy-BZ-aW7" secondAttribute="trailing" id="sy7-Xt-1Pi"/>
                             <constraint firstAttribute="trailing" secondItem="4ca-ex-v6o" secondAttribute="trailing" id="xal-PE-dfT"/>
                             <constraint firstItem="4ca-ex-v6o" firstAttribute="leading" secondItem="w6o-HY-WeB" secondAttribute="trailing" id="zjj-ak-w0r"/>
@@ -238,8 +238,8 @@
             <objects>
                 <viewController id="4Fa-bv-St5" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fNY-O3-Un4"/>
-                        <viewControllerLayoutGuide type="bottom" id="R9y-kT-2JG"/>
+                        <viewControllerLayoutGuide type="top" id="aMd-GY-7QG"/>
+                        <viewControllerLayoutGuide type="bottom" id="oAU-6w-2cI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9nQ-j3-ond">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -309,8 +309,8 @@
             <objects>
                 <viewController id="MfH-Ey-e3f" customClass="ListViewController" customModule="BreathEveryday" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9gx-tE-fxp"/>
-                        <viewControllerLayoutGuide type="bottom" id="rcA-Ia-NJv"/>
+                        <viewControllerLayoutGuide type="top" id="uWs-AX-WPb"/>
+                        <viewControllerLayoutGuide type="bottom" id="JEe-eg-yH7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0Ei-1J-oEG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -335,38 +335,12 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="drJ-b9-7Ax" secondAttribute="trailing" id="CiL-u0-aBg"/>
-                            <constraint firstItem="rcA-Ia-NJv" firstAttribute="top" secondItem="drJ-b9-7Ax" secondAttribute="bottom" id="FZa-XI-XUR"/>
+                            <constraint firstItem="JEe-eg-yH7" firstAttribute="top" secondItem="drJ-b9-7Ax" secondAttribute="bottom" id="FZa-XI-XUR"/>
                             <constraint firstItem="drJ-b9-7Ax" firstAttribute="leading" secondItem="0Ei-1J-oEG" secondAttribute="leading" id="N4u-vm-dNE"/>
-                            <constraint firstItem="drJ-b9-7Ax" firstAttribute="top" secondItem="9gx-tE-fxp" secondAttribute="bottom" id="n4S-vN-jeN"/>
+                            <constraint firstItem="drJ-b9-7Ax" firstAttribute="top" secondItem="uWs-AX-WPb" secondAttribute="bottom" id="n4S-vN-jeN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="List" id="PW4-Ay-g9D">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="D93-AI-APj">
-                            <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Y6D-rk-YHm">
-                                <rect key="frame" x="16" y="0.0" width="150" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="contentEdgeInsets" minX="-55" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="Home-50"/>
-                                <connections>
-                                    <action selector="homeBtn:" destination="MfH-Ey-e3f" eventType="touchUpInside" id="pGi-kt-fKw"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="pzV-G3-KQW">
-                            <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eEF-qO-fEy">
-                                <rect key="frame" x="309" y="0.0" width="50" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="0Uj-Me-kA0"/>
-                                    <constraint firstAttribute="width" constant="30" id="mdN-bs-7Sb"/>
-                                </constraints>
-                                <state key="normal" image="Plus-50"/>
-                                <connections>
-                                    <action selector="addEventBtn:" destination="MfH-Ey-e3f" eventType="touchUpInside" id="1xl-gg-1sm"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="List" id="PW4-Ay-g9D"/>
                     <connections>
                         <outlet property="listTableView" destination="njh-bq-OPJ" id="nB4-3R-0Xp"/>
                     </connections>
@@ -380,8 +354,8 @@
             <objects>
                 <viewController storyboardIdentifier="CalendarViewController" id="Pe6-ZI-zHw" customClass="CalendarViewController" customModule="BreathEveryday" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="h2w-Rv-Ml7"/>
-                        <viewControllerLayoutGuide type="bottom" id="mYj-w9-JiU"/>
+                        <viewControllerLayoutGuide type="top" id="KPR-KJ-xA0"/>
+                        <viewControllerLayoutGuide type="bottom" id="Az8-4n-2r8"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cJj-8O-IbT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -525,7 +499,7 @@
                             <constraint firstItem="aeu-Ug-rX4" firstAttribute="top" secondItem="bqC-ao-NBn" secondAttribute="top" constant="-5" id="4ZK-2r-VsT"/>
                             <constraint firstItem="bqC-ao-NBn" firstAttribute="leading" secondItem="aeu-Ug-rX4" secondAttribute="trailing" id="7So-29-bag"/>
                             <constraint firstItem="aeu-Ug-rX4" firstAttribute="top" secondItem="cJj-8O-IbT" secondAttribute="top" id="9WV-vQ-wl6"/>
-                            <constraint firstItem="mYj-w9-JiU" firstAttribute="top" secondItem="NqO-za-z25" secondAttribute="bottom" id="Ghp-2D-2GW"/>
+                            <constraint firstItem="Az8-4n-2r8" firstAttribute="top" secondItem="NqO-za-z25" secondAttribute="bottom" id="Ghp-2D-2GW"/>
                             <constraint firstItem="bqC-ao-NBn" firstAttribute="trailing" secondItem="cJj-8O-IbT" secondAttribute="trailingMargin" constant="-3" id="J8c-OR-gRC"/>
                             <constraint firstItem="NqO-za-z25" firstAttribute="top" secondItem="aeu-Ug-rX4" secondAttribute="bottom" id="JTg-vg-1w3"/>
                             <constraint firstItem="aeu-Ug-rX4" firstAttribute="leading" secondItem="cJj-8O-IbT" secondAttribute="leading" constant="10" id="ZkQ-Xe-YCi"/>
@@ -548,8 +522,8 @@
             <objects>
                 <viewController storyboardIdentifier="DetailViewController" title="Note" id="nAw-WO-pXU" customClass="DetailViewController" customModule="BreathEveryday" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="d3C-ya-x4U"/>
-                        <viewControllerLayoutGuide type="bottom" id="cO5-IF-iox"/>
+                        <viewControllerLayoutGuide type="top" id="W74-NF-dOl"/>
+                        <viewControllerLayoutGuide type="bottom" id="l1a-Ul-Z93"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="g0y-hL-TWi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -569,9 +543,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kMu-i2-1QL" firstAttribute="top" secondItem="g0y-hL-TWi" secondAttribute="top" id="AzJ-ma-kYX"/>
-                            <constraint firstItem="cO5-IF-iox" firstAttribute="top" secondItem="kMu-i2-1QL" secondAttribute="bottom" id="HeQ-He-vfV"/>
+                            <constraint firstItem="l1a-Ul-Z93" firstAttribute="top" secondItem="kMu-i2-1QL" secondAttribute="bottom" id="HeQ-He-vfV"/>
                             <constraint firstAttribute="trailing" secondItem="kMu-i2-1QL" secondAttribute="trailing" id="bOR-7s-v1g"/>
-                            <constraint firstItem="0V1-Th-mcs" firstAttribute="top" secondItem="d3C-ya-x4U" secondAttribute="bottom" constant="10" id="pmb-69-JoS"/>
+                            <constraint firstItem="0V1-Th-mcs" firstAttribute="top" secondItem="W74-NF-dOl" secondAttribute="bottom" constant="10" id="pmb-69-JoS"/>
                             <constraint firstItem="kMu-i2-1QL" firstAttribute="leading" secondItem="g0y-hL-TWi" secondAttribute="leading" id="t4n-Bn-E6r"/>
                             <constraint firstAttribute="trailing" secondItem="0V1-Th-mcs" secondAttribute="trailing" constant="15" id="tCY-xJ-v1q"/>
                             <constraint firstItem="0V1-Th-mcs" firstAttribute="leading" secondItem="g0y-hL-TWi" secondAttribute="leading" constant="15" id="yTX-ns-4xd"/>
@@ -607,9 +581,7 @@
     <resources>
         <image name="BK-beach sunrise" width="1242" height="2208"/>
         <image name="Checkmark Filled-50" width="50" height="50"/>
-        <image name="Home-50" width="150" height="150"/>
         <image name="Message-50" width="50" height="50"/>
-        <image name="Plus-50" width="50" height="50"/>
         <image name="Question Mark-64" width="48" height="48"/>
         <image name="ReadMessage-50" width="50" height="50"/>
         <image name="Settings" width="48" height="48"/>

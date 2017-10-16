@@ -15,6 +15,8 @@ enum CustomButton {
     case locate
     case star
     case remindTime
+    case add
+    case home
     
     var button: UIButton {
         
@@ -27,32 +29,74 @@ enum CustomButton {
         switch self {
             
         case .alarm:
-            
-            button.setImage(#imageLiteral(resourceName: "Alarm-50"), for: .normal)
-            button.frame = CGRect(x: 0, y: 0, width: 60, height: 24)
+            if #available(iOS 11, *) {
+                button.setImage(#imageLiteral(resourceName: "Alarm-ios11"), for: .normal)
+                button.frame = CGRect(x: 0, y: 0, width: 60, height: 24)
+            } else {
+                button.setImage(#imageLiteral(resourceName: "Alarm"), for: .normal)
+                button.frame = CGRect(x: 0, y: 0, width: 60, height: 24)
+            }
             
         case .remindTime:
-            
-            button.setImage(#imageLiteral(resourceName: "Timer-48"), for: .normal)
-            button.frame = CGRect(x: 0, y: 0, width: 60, height: 25)
+            if #available(iOS 11, *) {
+                button.setImage(#imageLiteral(resourceName: "Timer-ios11"), for: .normal)
+                button.frame = CGRect(x: 0, y: 0, width: 60, height: 25)
+            } else {
+                button.setImage(#imageLiteral(resourceName: "Timer"), for: .normal)
+                button.frame = CGRect(x: 0, y: 0, width: 60, height: 25)
+            }
             
         case .calender:
-            
-            button.setImage(#imageLiteral(resourceName: "Calendar-64"), for: .normal)
-            button.frame = CGRect(x: 0, y: 0, width: 60, height: 33)
+            if #available(iOS 11, *) {
+                button.setImage(#imageLiteral(resourceName: "Calendar-ios11"), for: .normal)
+                button.frame = CGRect(x: 0, y: 0, width: 60, height: 33)
+            } else {
+                button.setImage(#imageLiteral(resourceName: "Calendar"), for: .normal)
+                button.frame = CGRect(x: 0, y: 0, width: 60, height: 33)
+            }
             
         case .locate:
-            
             button.setImage(#imageLiteral(resourceName: "Worldwide Location Filled-50"), for: .normal)
             button.frame = CGRect(x: 0, y: 0, width: 60, height: 27)
             
         case .star:
+            if #available(iOS 11, *) {
+                button.setImage(#imageLiteral(resourceName: "Star-ios11"), for: .normal)
+                button.frame = CGRect(x: 0, y: 0, width: 60, height: 26)
+            } else {
+                button.setImage(#imageLiteral(resourceName: "Star"), for: .normal)
+                button.frame = CGRect(x: 0, y: 0, width: 60, height: 26)
+            }
             
-            button.setImage(#imageLiteral(resourceName: "Star-48"), for: .normal)
-            button.frame = CGRect(x: 0, y: 0, width: 60, height: 26)
+        case .add:
+            if #available(iOS 11, *) {
+                button.normalSetup(normalImage: #imageLiteral(resourceName: "Plus-50"),
+                                   selectedImage: nil,
+                                   tintColor: UIColor.black)
+                button.frame = CGRect(x: 0, y: 0, width: 60, height: 20)
+            } else {
+                button.normalSetup(normalImage: #imageLiteral(resourceName: "Plus-50"),
+                                       selectedImage: nil,
+                                       tintColor: UIColor.black)
+                button.frame = CGRect(x: 0, y: 0, width: 60, height: 40)
+            }
+            
+        case .home:
+            if #available(iOS 11, *) {
+                button.normalSetup(normalImage: #imageLiteral(resourceName: "Home-50"),
+                                   selectedImage: nil,
+                                   tintColor: UIColor.black)
+                button.frame = CGRect(x: 0, y: 0, width: 60, height: 50)
+                button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -60, bottom: 0, right: 0)
+            } else {
+                button.normalSetup(normalImage: #imageLiteral(resourceName: "Home-50"),
+                                   selectedImage: nil,
+                                   tintColor: UIColor.black)
+                button.frame = CGRect(x: 0, y: 0, width: 60, height: 44)
+            }
             
         }
-        
+
         return button
         
     }
