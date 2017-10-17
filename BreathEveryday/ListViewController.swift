@@ -43,6 +43,15 @@ class ListViewController: UIViewController {
         listTableView.estimatedRowHeight = 77
         listTableView.allowsSelection = false
         listTableView.register(UINib(nibName: Identifier.listCell.rawValue, bundle: nil), forCellReuseIdentifier: Identifier.listCell.rawValue)
+        listTableView.translatesAutoresizingMaskIntoConstraints = false
+        listTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        listTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        if #available(iOS 11, *) {
+            listTableView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+        } else {
+            listTableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        }
+        
         
         //notification for constraints
         tableViewBottomConstraint = NSLayoutConstraint(item: listTableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
