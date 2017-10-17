@@ -87,7 +87,7 @@ enum CustomButton {
                                    selectedImage: nil,
                                    tintColor: UIColor.black)
                 button.frame = CGRect(x: 0, y: 0, width: 60, height: 50)
-                button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -60, bottom: 0, right: 0)
+                button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -UIScreen.main.bounds.width/6, bottom: 0, right: 0)
             } else {
                 button.normalSetup(normalImage: #imageLiteral(resourceName: "Home-50"),
                                    selectedImage: nil,

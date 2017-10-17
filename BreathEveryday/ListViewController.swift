@@ -20,17 +20,6 @@ class ListViewController: UIViewController {
     var listTitle = ""
     var bubbleSyncColor: UIColor = .white
     
-    @objc func backHome(_ sender: Any) {
-        displayHomeView()
-        //note: after saveContext the ID will totoally different
-        EventManager.shared.appDelegate.saveContext()
-    }
-    
-    @objc func addEvent(_ sender: Any) {
-        EventManager.shared.create(calendarEvent: nil, content: nil, note: nil, category: listTitle)
-        EventManager.shared.appDelegate.saveContext()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,9 +27,6 @@ class ListViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = bubbleSyncColor
         self.navigationController?.navigationBar.backgroundColor = .white
         self.navigationController?.navigationBar.topItem?.title = listTitle
-//        if let button = self.navigationItem.leftBarButtonItem?.customView as? UIButton {
-//            button.imageView?.contentMode = .scaleAspectFit
-//        }
         let homeBtn = CustomButton.home.button
         homeBtn.addTarget(self, action: #selector(backHome), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: homeBtn)
@@ -48,9 +34,6 @@ class ListViewController: UIViewController {
         let addEventBtn = CustomButton.add.button
         addEventBtn.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addEventBtn)
-//        if let button = self.navigationItem.rightBarButtonItem?.customView as? UIButton {
-//            button.imageView?.contentMode = .scaleAspectFit
-//        }
         listTableView.backgroundColor = bubbleSyncColor
         
         //tableView
@@ -89,8 +72,18 @@ class ListViewController: UIViewController {
         default: print("Case Default")
         }
     }
-        
-    //Segue
+    
+    @objc func backHome(_ sender: Any) {
+        displayHomeView()
+        //note: after saveContext the ID will totoally different
+        EventManager.shared.appDelegate.saveContext()
+    }
+    
+    @objc func addEvent(_ sender: Any) {
+        EventManager.shared.create(calendarEvent: nil, content: nil, note: nil, category: listTitle)
+        EventManager.shared.appDelegate.saveContext()
+    }
+    
     @objc func viewChangeToDetailPage(sender: UIButton) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
             
@@ -117,7 +110,6 @@ class ListViewController: UIViewController {
         }
     }
     
-    //Notification Center
     @objc func handleKeyboardNotification(notification: NSNotification) {
         
         if let userInfo = notification.userInfo {

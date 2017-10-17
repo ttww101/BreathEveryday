@@ -432,11 +432,9 @@ extension ListTableViewCell {
     }
 
     @objc func btnStarToolBar(sender: UIButton) {
-        
         if isSetNotification {
             setNotificationStatus(isEnable: false)
         }
-        
     }
 
     @objc func btnCalendarToolBar(sender: UIButton) {
@@ -492,6 +490,7 @@ extension ListTableViewCell {
         
         if alarmView.superview == nil {
             isBtnAlarmSet = true
+            print(sender.frame.midX)
             createAlarmPopView(xPos: sender.frame.midX)
             if !isSetNotification {
                 setNotificationStatus(isEnable: true)
@@ -522,7 +521,7 @@ extension ListTableViewCell {
         
         if remindtimeView.superview == nil {
             isBtnRemindTimeSet = true
-            createRemindTimePopView(midXPos: sender.frame.midX)
+            createRemindTimePopView(xPos: sender.frame.midX)
         } else {
             if remindtimeView.isHidden {
                 isBtnRemindTimeSet = true
@@ -602,120 +601,217 @@ extension ListTableViewCell {
     
     func createAlarmPopView(xPos: CGFloat) {
         
-        guard let superView = textView.superview?.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview?.superview else {
-            return
+        if #available(iOS 11, *) {
+            guard let superView = textView.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview else {
+                return
+            }
+            //view
+            alarmView.backgroundColor = grayBlueColor
+            alarmView.alpha = 0.96
+            alarmView.layer.cornerRadius = 10
+            alarmView.layer.masksToBounds = true
+            alarmView.isHidden = false
+            superView.addSubview(alarmView)
+            alarmView.translatesAutoresizingMaskIntoConstraints = false
+            alarmView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
+            print(tableView.frame)
+            print(tableView.center.x)
+            alarmView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: xPos*2/9).isActive = true
+            alarmView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            alarmView.widthAnchor.constraint(equalToConstant: 160).isActive = true
+            
+            //pickerView
+            alarmPicker.delegate = self
+            alarmPicker.dataSource = self
+            alarmView.addSubview(alarmPicker)
+            
+            //constraints
+            alarmPicker.translatesAutoresizingMaskIntoConstraints = false
+            alarmPicker.topAnchor.constraint(equalTo: alarmView.topAnchor, constant: 0).isActive = true
+            alarmPicker.bottomAnchor.constraint(equalTo: alarmView.bottomAnchor, constant: 0).isActive = true
+            alarmPicker.leadingAnchor.constraint(equalTo: alarmView.leadingAnchor, constant: 5).isActive = true
+            alarmPicker.trailingAnchor.constraint(equalTo: alarmView.trailingAnchor, constant: -15).isActive = true
+            
+        } else {
+            guard let superView = textView.superview?.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview?.superview else {
+                return
+            }
+            //view
+            alarmView.backgroundColor = grayBlueColor
+            alarmView.alpha = 0.96
+            alarmView.layer.cornerRadius = 10
+            alarmView.layer.masksToBounds = true
+            alarmView.isHidden = false
+            let width: CGFloat = 160
+            superView.addSubview(alarmView)
+            alarmView.translatesAutoresizingMaskIntoConstraints = false
+            alarmView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
+            alarmView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: xPos - center.x).isActive = true
+            alarmView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            alarmView.widthAnchor.constraint(equalToConstant: width).isActive = true
+            
+            //pickerView
+            alarmPicker.delegate = self
+            alarmPicker.dataSource = self
+            alarmView.addSubview(alarmPicker)
+            
+            //constraints
+            alarmPicker.translatesAutoresizingMaskIntoConstraints = false
+            alarmPicker.topAnchor.constraint(equalTo: alarmView.topAnchor, constant: 0).isActive = true
+            alarmPicker.bottomAnchor.constraint(equalTo: alarmView.bottomAnchor, constant: 0).isActive = true
+            alarmPicker.leadingAnchor.constraint(equalTo: alarmView.leadingAnchor, constant: 5).isActive = true
+            alarmPicker.trailingAnchor.constraint(equalTo: alarmView.trailingAnchor, constant: -15).isActive = true
         }
-        
-        //view
-        alarmView.backgroundColor = grayBlueColor
-        alarmView.alpha = 0.96
-        alarmView.layer.cornerRadius = 10
-        alarmView.layer.masksToBounds = true
-        alarmView.isHidden = false
-        let width: CGFloat = 160
-        superView.addSubview(alarmView)
-        alarmView.translatesAutoresizingMaskIntoConstraints = false
-        alarmView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
-        alarmView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: xPos - center.x).isActive = true
-        alarmView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        alarmView.widthAnchor.constraint(equalToConstant: width).isActive = true
-        
-        //pickerView
-        alarmPicker.delegate = self
-        alarmPicker.dataSource = self
-        alarmView.addSubview(alarmPicker)
-        
-        //constraints
-        alarmPicker.translatesAutoresizingMaskIntoConstraints = false
-        alarmPicker.topAnchor.constraint(equalTo: alarmView.topAnchor, constant: 0).isActive = true
-        alarmPicker.bottomAnchor.constraint(equalTo: alarmView.bottomAnchor, constant: 0).isActive = true
-        alarmPicker.leadingAnchor.constraint(equalTo: alarmView.leadingAnchor, constant: 5).isActive = true
-        alarmPicker.trailingAnchor.constraint(equalTo: alarmView.trailingAnchor, constant: -15).isActive = true
-        
     }
     
-    func createRemindTimePopView(midXPos: CGFloat) {
-        
-        guard let superView = textView.superview?.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview?.superview else {
-            return
+    func createRemindTimePopView(xPos: CGFloat) {
+        if #available(iOS 11, *) {
+            guard let superView = textView.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview else {
+                return
+            }
+            
+            remindtimeView.backgroundColor = grayBlueColor
+            remindtimeView.alpha = 0.96
+            remindtimeView.layer.cornerRadius = 10
+            remindtimeView.layer.masksToBounds = true
+            remindtimeView.isHidden = false
+            superView.addSubview(remindtimeView)
+            remindtimeView.translatesAutoresizingMaskIntoConstraints = false
+            remindtimeView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
+            remindtimeView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: 2*xPos + xPos*4/9).isActive = true
+            remindtimeView.heightAnchor.constraint(equalToConstant: 110).isActive = true
+            remindtimeView.widthAnchor.constraint(equalToConstant: 130).isActive = true
+            
+            //pickerView
+            remindTimePicker.delegate = self
+            remindTimePicker.dataSource = self
+            remindtimeView.addSubview(remindTimePicker)
+            
+            let beforeLbl = UILabel()
+            beforeLbl.text = "Before"
+            beforeLbl.textColor = .white
+            beforeLbl.font = UIFont.systemFont(ofSize: 20)
+            beforeLbl.textAlignment = .center
+            remindtimeView.addSubview(beforeLbl)
+            
+            //constraints
+            beforeLbl.translatesAutoresizingMaskIntoConstraints = false
+            remindTimePicker.translatesAutoresizingMaskIntoConstraints = false
+            beforeLbl.topAnchor.constraint(equalTo: remindtimeView.topAnchor, constant: 8).isActive = true
+            beforeLbl.bottomAnchor.constraint(equalTo: remindtimeView.topAnchor, constant: 35).isActive = true
+            beforeLbl.leadingAnchor.constraint(equalTo: remindtimeView.leadingAnchor, constant: 10).isActive = true
+            beforeLbl.trailingAnchor.constraint(equalTo: remindtimeView.trailingAnchor, constant: -5).isActive = true
+            remindTimePicker.topAnchor.constraint(equalTo: beforeLbl.centerYAnchor, constant: 5).isActive = true
+            remindTimePicker.bottomAnchor.constraint(equalTo: remindtimeView.bottomAnchor, constant: 0).isActive = true
+            remindTimePicker.leadingAnchor.constraint(equalTo: remindtimeView.leadingAnchor, constant: -18).isActive = true
+            remindTimePicker.trailingAnchor.constraint(equalTo: remindtimeView.trailingAnchor, constant: 0).isActive = true
+        } else {
+            guard let superView = textView.superview?.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview?.superview else {
+                return
+            }
+            //view
+            remindtimeView.backgroundColor = grayBlueColor
+            remindtimeView.alpha = 0.96
+            remindtimeView.layer.cornerRadius = 10
+            remindtimeView.layer.masksToBounds = true
+            remindtimeView.isHidden = false
+            superView.addSubview(remindtimeView)
+            remindtimeView.translatesAutoresizingMaskIntoConstraints = false
+            remindtimeView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
+            remindtimeView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: xPos - center.x).isActive = true
+            remindtimeView.heightAnchor.constraint(equalToConstant: 110).isActive = true
+            remindtimeView.widthAnchor.constraint(equalToConstant: 130).isActive = true
+            
+            //pickerView
+            remindTimePicker.delegate = self
+            remindTimePicker.dataSource = self
+            remindtimeView.addSubview(remindTimePicker)
+            
+            let beforeLbl = UILabel()
+            beforeLbl.text = "Before"
+            beforeLbl.textColor = .white
+            beforeLbl.font = UIFont.systemFont(ofSize: 20)
+            beforeLbl.textAlignment = .center
+            remindtimeView.addSubview(beforeLbl)
+            
+            //constraints
+            beforeLbl.translatesAutoresizingMaskIntoConstraints = false
+            remindTimePicker.translatesAutoresizingMaskIntoConstraints = false
+            beforeLbl.topAnchor.constraint(equalTo: remindtimeView.topAnchor, constant: 8).isActive = true
+            beforeLbl.bottomAnchor.constraint(equalTo: remindtimeView.topAnchor, constant: 35).isActive = true
+            beforeLbl.leadingAnchor.constraint(equalTo: remindtimeView.leadingAnchor, constant: 10).isActive = true
+            beforeLbl.trailingAnchor.constraint(equalTo: remindtimeView.trailingAnchor, constant: -5).isActive = true
+            remindTimePicker.topAnchor.constraint(equalTo: beforeLbl.centerYAnchor, constant: 5).isActive = true
+            remindTimePicker.bottomAnchor.constraint(equalTo: remindtimeView.bottomAnchor, constant: 0).isActive = true
+            remindTimePicker.leadingAnchor.constraint(equalTo: remindtimeView.leadingAnchor, constant: -18).isActive = true
+            remindTimePicker.trailingAnchor.constraint(equalTo: remindtimeView.trailingAnchor, constant: 0).isActive = true
         }
-        
-        //view
-        remindtimeView.backgroundColor = grayBlueColor
-        remindtimeView.alpha = 0.96
-        remindtimeView.layer.cornerRadius = 10
-        remindtimeView.layer.masksToBounds = true
-        remindtimeView.isHidden = false
-        let width: CGFloat = 130
-        let height: CGFloat = 110
-        superView.addSubview(remindtimeView)
-        remindtimeView.translatesAutoresizingMaskIntoConstraints = false
-        remindtimeView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
-        remindtimeView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: midXPos - center.x).isActive = true
-        remindtimeView.heightAnchor.constraint(equalToConstant: height).isActive = true
-        remindtimeView.widthAnchor.constraint(equalToConstant: width).isActive = true
-        
-        //pickerView
-        remindTimePicker.delegate = self
-        remindTimePicker.dataSource = self
-        remindtimeView.addSubview(remindTimePicker)
-        
-        let beforeLbl = UILabel()
-        beforeLbl.text = "Before"
-        beforeLbl.textColor = .white
-        beforeLbl.font = UIFont.systemFont(ofSize: 20)
-        beforeLbl.textAlignment = .center
-        remindtimeView.addSubview(beforeLbl)
-        
-        //constraints
-        beforeLbl.translatesAutoresizingMaskIntoConstraints = false
-        remindTimePicker.translatesAutoresizingMaskIntoConstraints = false
-        beforeLbl.topAnchor.constraint(equalTo: remindtimeView.topAnchor, constant: 8).isActive = true
-        beforeLbl.bottomAnchor.constraint(equalTo: remindtimeView.topAnchor, constant: 35).isActive = true
-        beforeLbl.leadingAnchor.constraint(equalTo: remindtimeView.leadingAnchor, constant: 10).isActive = true
-        beforeLbl.trailingAnchor.constraint(equalTo: remindtimeView.trailingAnchor, constant: -5).isActive = true
-        remindTimePicker.topAnchor.constraint(equalTo: beforeLbl.centerYAnchor, constant: 5).isActive = true
-        remindTimePicker.bottomAnchor.constraint(equalTo: remindtimeView.bottomAnchor, constant: 0).isActive = true
-        remindTimePicker.leadingAnchor.constraint(equalTo: remindtimeView.leadingAnchor, constant: -18).isActive = true
-        remindTimePicker.trailingAnchor.constraint(equalTo: remindtimeView.trailingAnchor, constant: 0).isActive = true
     }
     
     
     func createCalendarPopView(xPos: CGFloat) {
-        
-        //FIXME: iPhone 5S suitable size 
-        guard let superView = textView.superview?.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview?.superview else {
-            return
-        }
-        
-        calendarView.backgroundColor = grayBlueColor
-        calendarView.alpha = 0.98
-        calendarView.layer.cornerRadius = 10
-        calendarView.layer.masksToBounds = true
-        calendarView.isHidden = false
-        let width: CGFloat = 295
-        superView.addSubview(calendarView)
-        calendarView.translatesAutoresizingMaskIntoConstraints = false
-        calendarView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
-        calendarView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 2).isActive = true
-        if tableView.frame.maxY - 300 >= 0 {
-        calendarView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -300).isActive = true
+        if #available(iOS 11, *) {
+            guard let superView = textView.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview else {
+                return
+            }
+            calendarView.backgroundColor = grayBlueColor
+            calendarView.alpha = 0.98
+            calendarView.layer.cornerRadius = 10
+            calendarView.layer.masksToBounds = true
+            calendarView.isHidden = false
+            superView.addSubview(calendarView)
+            calendarView.translatesAutoresizingMaskIntoConstraints = false
+            calendarView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
+            calendarView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 2).isActive = true
+            if tableView.frame.maxY - 300 >= 0 {
+                calendarView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -300).isActive = true
+            } else {
+                calendarView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: 0).isActive = true
+            }
+            calendarView.widthAnchor.constraint(equalToConstant: 295).isActive = true
+            
+            //initial calendrView
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
+            calendarJTVC = vc
+            vc.alarmDateSet = alarmDateSet
+            vc.view.frame = self.calendarView.bounds
+            calendarView.addSubview(vc.view)
+            if self.calendarPopupViewDelegate != nil {
+                self.calendarPopupViewDelegate?.addViewControllerAsChild(viewController: vc)
+            }
         } else {
-            calendarView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: 0).isActive = true
+            //FIXME: iPhone 5S suitable size
+            guard let superView = textView.superview?.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview?.superview else {
+                return
+            }
+            calendarView.backgroundColor = grayBlueColor
+            calendarView.alpha = 0.98
+            calendarView.layer.cornerRadius = 10
+            calendarView.layer.masksToBounds = true
+            calendarView.isHidden = false
+            superView.addSubview(calendarView)
+            calendarView.translatesAutoresizingMaskIntoConstraints = false
+            calendarView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -3).isActive = true
+            calendarView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 2).isActive = true
+            if tableView.frame.maxY - 300 >= 0 {
+            calendarView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -300).isActive = true
+            } else {
+                calendarView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: 0).isActive = true
+            }
+            calendarView.widthAnchor.constraint(equalToConstant: 295).isActive = true
+            
+            //initial calendrView
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
+            calendarJTVC = vc
+            vc.alarmDateSet = alarmDateSet
+            vc.view.frame = self.calendarView.bounds
+            calendarView.addSubview(vc.view)
+            if self.calendarPopupViewDelegate != nil {
+                self.calendarPopupViewDelegate?.addViewControllerAsChild(viewController: vc)
+            }
         }
-        calendarView.widthAnchor.constraint(equalToConstant: width).isActive = true
-        
-        //initial calendrView
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
-        calendarJTVC = vc
-        vc.alarmDateSet = alarmDateSet
-        vc.view.frame = self.calendarView.bounds
-        calendarView.addSubview(vc.view)
-        if self.calendarPopupViewDelegate != nil {
-            self.calendarPopupViewDelegate?.addViewControllerAsChild(viewController: vc)
-        }
-        
     }
     
     //Default set up
