@@ -308,7 +308,7 @@ class HomeViewController: UIViewController {
         if let entityDescription = NSEntityDescription.entity(forEntityName: "UserMO", in: moc) {
             let user = UserMO(entity: entityDescription, insertInto: moc)
             if let imageData = UIImageJPEGRepresentation(#imageLiteral(resourceName: "BK-beach sunrise"), 1) {
-                user.backgroundImage = imageData as NSData
+                user.backgroundImage = imageData 
             }
             appDelegate.saveContext()
         }
@@ -599,7 +599,7 @@ class HomeViewController: UIViewController {
                 cMO.posY = Float(frame.minY)
                 cMO.width = Float(frame.width)
                 cMO.height = Float(frame.height)
-                cMO.color = category.color.encode() as NSData
+                cMO.color = category.color.encode()
             }
         }
         

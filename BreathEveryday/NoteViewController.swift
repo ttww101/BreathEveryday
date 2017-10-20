@@ -99,7 +99,7 @@ extension DetailViewController: UITextViewDelegate {
                                            content: content,
                                            note: note,
                                            calendarEvent: calendarIdentifier,
-                                           alarmDate: date,
+                                           alarmDate: date as NSDate,
                                            alarmIntervalOffset: alarmIntervalOffset,
                                            isSetNotification: isNotification)
             }

@@ -44,7 +44,7 @@ extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TO
             }
             let user = results[0]
             if let imageData = UIImageJPEGRepresentation(image, 1) {
-                user.backgroundImage = imageData as NSData
+                user.backgroundImage = imageData
             }
             appDelegate.saveContext()
             
