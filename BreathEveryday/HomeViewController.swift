@@ -397,10 +397,10 @@ class HomeViewController: UIViewController {
             self.exitSettingButton.isHidden = false
             self.view.bringSubview(toFront: self.exitSettingButton)
             self.view.bringSubview(toFront: self.settingButtonTableView)
-            self.settingButtonTableView.shrinkAllcell()
+            self.settingButtonTableView.cellshrinkAll(duration: 0)
             self.settingButtonTableViewConstraint?.constant = 0
             self.view.layoutIfNeeded()
-            self.settingButtonTableView.emergeOrderly(from: 0)
+            self.settingButtonTableView.cellEmergeOrderly(from: 0)
         }
         blackTransparentView.alpha = 0.8
         

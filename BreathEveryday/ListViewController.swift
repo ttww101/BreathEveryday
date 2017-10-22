@@ -18,11 +18,11 @@ class ListViewController: UIViewController {
     var fetchedResultsController: NSFetchedResultsController<EventMO>!
     var isTyping = false
     var listTitle = ""
+    private var strCompletedListTitle = ""
     var bubbleSyncColor: UIColor = .white
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //sync to bubble
         self.navigationController?.navigationBar.barTintColor = bubbleSyncColor
         self.navigationController?.navigationBar.backgroundColor = .white
@@ -89,8 +89,17 @@ class ListViewController: UIViewController {
     }
     
     @objc func addEvent(_ sender: Any) {
-        EventManager.shared.create(calendarEvent: nil, content: nil, note: nil, category: listTitle)
-        EventManager.shared.appDelegate.saveContext()
+        
+        listTableView.cellShrink(duration: 1) { (duration, times)  in
+            self.listTableView.rotate(duration: duration, times: times, completion: {
+                self.listTitle.append("Completed")
+                self.listTableView.reloadData()
+            })
+        }
+        
+        
+//        EventManager.shared.create(calendarEvent: nil, content: nil, note: nil, category: listTitle)
+//        EventManager.shared.appDelegate.saveContext()
     }
     
     @objc func viewChangeToDetailPage(sender: UIButton) {

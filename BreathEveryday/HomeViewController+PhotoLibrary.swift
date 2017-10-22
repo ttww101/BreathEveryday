@@ -6,7 +6,6 @@
 //  Copyright © 2017年 Bomi. All rights reserved.
 //
 
-
 import Photos
 import Fusuma
 import TOCropViewController

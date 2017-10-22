@@ -23,6 +23,7 @@
 		F43B3FEE1EBC1EDA008577EF /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */; };
 		F43B3FF21EBC321F008577EF /* HomeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FF11EBC321F008577EF /* HomeItemView.swift */; };
 		F483B8B61F8E63E700ED5E8E /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483B8B51F8E63E700ED5E8E /* ListViewModel.swift */; };
+		F4916C5E1F9B1A0D00D99938 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4916C5D1F9B1A0D00D99938 /* TestViewController.swift */; };
 		F49B09251EBB14900002297F /* Background Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49B09241EBB14900002297F /* Background Image.xcassets */; };
 		F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A21F981E9C6E4200C24517 /* EventManager.swift */; };
 		F4A414431F7D307C00B066A4 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A414421F7D307C00B066A4 /* UITableView+Extensions.swift */; };
@@ -67,6 +68,7 @@
 		F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		F43B3FF11EBC321F008577EF /* HomeItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeItemView.swift; sourceTree = "<group>"; };
 		F483B8B51F8E63E700ED5E8E /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		F4916C5D1F9B1A0D00D99938 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		F49B09241EBB14900002297F /* Background Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Background Image.xcassets"; sourceTree = "<group>"; };
 		F4A21F981E9C6E4200C24517 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		F4A414421F7D307C00B066A4 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */,
 				F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */,
+				F4916C5D1F9B1A0D00D99938 /* TestViewController.swift */,
 				F4FA6A9E1E7FB0F100C2E46E /* Main.storyboard */,
 				F4FA6AA31E7FB0F100C2E46E /* LaunchScreen.storyboard */,
 				F4FA6AA11E7FB0F100C2E46E /* Assets.xcassets */,
@@ -185,6 +188,8 @@
 			children = (
 				F4FA6AAC1E7FC24700C2E46E /* ListViewController.swift */,
 				F483B8B51F8E63E700ED5E8E /* ListViewModel.swift */,
+				F4A21F981E9C6E4200C24517 /* EventManager.swift */,
+				F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */,
 				F4E301491E9DC86400846EBF /* ListCell */,
 				F4E3014A1E9E166500846EBF /* JTCalendar */,
 			);
@@ -208,8 +213,6 @@
 				F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */,
 				F4E301471E9DC7E500846EBF /* KeyboardButtonModel.swift */,
 				F4F4D6701E828EAC00D7EFBA /* KeyboardBarButton.xib */,
-				F4A21F981E9C6E4200C24517 /* EventManager.swift */,
-				F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */,
 			);
 			name = ListCell;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */,
 				F431AD3C1F56CB32005390D9 /* HomeViewController+ColorPicker.swift in Sources */,
 				F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */,
+				F4916C5E1F9B1A0D00D99938 /* TestViewController.swift in Sources */,
 				F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */,
 				F43B3FEE1EBC1EDA008577EF /* UIButton+Extensions.swift in Sources */,
 				F43B3FF21EBC321F008577EF /* HomeItemView.swift in Sources */,
@@ -557,7 +561,7 @@
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeC.BreathEveryday;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -573,7 +577,7 @@
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeC.BreathEveryday;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
