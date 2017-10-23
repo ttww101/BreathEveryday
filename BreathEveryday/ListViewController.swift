@@ -59,8 +59,13 @@ class ListViewController: UIViewController {
             listTableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         }
         
-//        self.backgroundImageView.image = UIImage(imageLiteralResourceName: self.listTitle)
-//        self.view.sendSubview(toBack: self.backgroundImageView)
+        completedListButton.backgroundColor = bubbleSyncColor.darkened().lighter(amount: 0.05)
+        completedListButton.layer.borderWidth = 2
+        completedListButton.layer.borderColor = bubbleSyncColor.darkened().lighter(amount: 0.44).cgColor
+        completedListButton.layer.masksToBounds = true
+        completedListButton.layer.cornerRadius = completedListButton.frame.width/2
+        completedListButton.imageView?.contentMode = .scaleAspectFit
+        completedListButton.normalSetup(normalImage: #imageLiteral(resourceName: "Checked List"), selectedImage: #imageLiteral(resourceName: "List"), tintColor: .white)
         completedListButton.addTarget(self, action: #selector(displayCompletedList), for: .touchUpInside)
         
         //notification for constraints
@@ -104,18 +109,18 @@ class ListViewController: UIViewController {
     
     @objc func displayCompletedList() {
         let strCompleted = "Completed"
-        if self.listTitle.contains(strCompleted) {
+        if self.completedListButton.isSelected {
+            self.completedListButton.isSelected = false
             self.listTitle = self.listTitle.replacingOccurrences(of: strCompleted, with: "")
             self.navigationItem.title = self.listTitle
         } else {
+            self.completedListButton.isSelected = true
             self.listTitle.append(strCompleted)
             self.navigationItem.title = strCompleted
         }
-//        listTableView.superview?.backgroundColor = bubbleSyncColor
         self.listTableView.rotate(duration: 0.3, times: 1, completion: {
             self.fetchCoreDataResult()
             self.listTableView.reloadData()
-//            self.listTableView.superview?.backgroundColor = .white
         })
     }
     

@@ -320,19 +320,21 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <sections/>
                                     </tableView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="995-Ov-oo1">
-                                        <rect key="frame" x="325" y="553" width="50" height="50"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="995-Ov-oo1">
+                                        <rect key="frame" x="299" y="527" width="66" height="66"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="CYf-TG-aZv"/>
-                                            <constraint firstAttribute="width" constant="50" id="Kwq-Wr-KOY"/>
+                                            <constraint firstAttribute="height" constant="66" id="CYf-TG-aZv"/>
+                                            <constraint firstAttribute="width" constant="66" id="Kwq-Wr-KOY"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="Top Menu"/>
+                                        <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                        <state key="normal" image="Checked List"/>
+                                        <state key="selected" image="List"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="995-Ov-oo1" secondAttribute="trailing" id="bQc-bY-ewB"/>
-                                    <constraint firstAttribute="bottom" secondItem="995-Ov-oo1" secondAttribute="bottom" id="s02-Oy-arm"/>
+                                    <constraint firstAttribute="trailing" secondItem="995-Ov-oo1" secondAttribute="trailing" constant="10" id="bQc-bY-ewB"/>
+                                    <constraint firstAttribute="bottom" secondItem="995-Ov-oo1" secondAttribute="bottom" constant="10" id="s02-Oy-arm"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -579,13 +581,14 @@
     </scenes>
     <resources>
         <image name="BK-beach sunrise" width="1242" height="2208"/>
+        <image name="Checked List" width="48" height="48"/>
         <image name="Checkmark Filled-50" width="50" height="50"/>
+        <image name="List" width="50" height="50"/>
         <image name="Message-50" width="50" height="50"/>
         <image name="Question Mark-64" width="48" height="48"/>
         <image name="ReadMessage-50" width="50" height="50"/>
         <image name="Settings" width="48" height="48"/>
         <image name="Sun-48" width="48" height="48"/>
-        <image name="Top Menu" width="50" height="50"/>
         <image name="items" width="128" height="128"/>
     </resources>
 </document>
