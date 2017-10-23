@@ -14,27 +14,34 @@ class ListViewController: UIViewController {
     
     let eventStore = EKEventStore()
     @IBOutlet weak var listTableView: UITableView!
+    weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var completedListButton: UIButton!
     var tableViewBottomConstraint: NSLayoutConstraint?
     var fetchedResultsController: NSFetchedResultsController<EventMO>!
     var isTyping = false
     var listTitle = ""
-    private var strCompletedListTitle = ""
     var bubbleSyncColor: UIColor = .white
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //sync to bubble
         self.navigationController?.navigationBar.barTintColor = bubbleSyncColor
         self.navigationController?.navigationBar.backgroundColor = .white
-        self.navigationController?.navigationBar.topItem?.title = listTitle
+        self.navigationItem.title = listTitle
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+        } else {
+            // Fallback on earlier versions
+        }
         let homeBtn = CustomButton.home.button
         homeBtn.addTarget(self, action: #selector(backHome), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: homeBtn)
-
         let addEventBtn = CustomButton.add.button
         addEventBtn.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addEventBtn)
         listTableView.backgroundColor = bubbleSyncColor
+        listTableView.superview?.backgroundColor = bubbleSyncColor
         
         //tableView
         listTableView.delegate = self
@@ -52,6 +59,9 @@ class ListViewController: UIViewController {
             listTableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         }
         
+//        self.backgroundImageView.image = UIImage(imageLiteralResourceName: self.listTitle)
+//        self.view.sendSubview(toBack: self.backgroundImageView)
+        completedListButton.addTarget(self, action: #selector(displayCompletedList), for: .touchUpInside)
         
         //notification for constraints
         tableViewBottomConstraint = NSLayoutConstraint(item: listTableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
@@ -61,7 +71,6 @@ class ListViewController: UIViewController {
         
         //fetchDataResult
         fetchCoreDataResult()
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -89,17 +98,25 @@ class ListViewController: UIViewController {
     }
     
     @objc func addEvent(_ sender: Any) {
-        
-        listTableView.cellShrink(duration: 1) { (duration, times)  in
-            self.listTableView.rotate(duration: duration, times: times, completion: {
-                self.listTitle.append("Completed")
-                self.listTableView.reloadData()
-            })
+        EventManager.shared.create(calendarEvent: nil, content: nil, note: nil, category: listTitle)
+        EventManager.shared.appDelegate.saveContext()
+    }
+    
+    @objc func displayCompletedList() {
+        let strCompleted = "Completed"
+        if self.listTitle.contains(strCompleted) {
+            self.listTitle = self.listTitle.replacingOccurrences(of: strCompleted, with: "")
+            self.navigationItem.title = self.listTitle
+        } else {
+            self.listTitle.append(strCompleted)
+            self.navigationItem.title = strCompleted
         }
-        
-        
-//        EventManager.shared.create(calendarEvent: nil, content: nil, note: nil, category: listTitle)
-//        EventManager.shared.appDelegate.saveContext()
+//        listTableView.superview?.backgroundColor = bubbleSyncColor
+        self.listTableView.rotate(duration: 0.3, times: 1, completion: {
+            self.fetchCoreDataResult()
+            self.listTableView.reloadData()
+//            self.listTableView.superview?.backgroundColor = .white
+        })
     }
     
     @objc func viewChangeToDetailPage(sender: UIButton) {

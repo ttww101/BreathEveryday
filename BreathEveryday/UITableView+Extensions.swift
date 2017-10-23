@@ -17,7 +17,7 @@ extension UITableView {
             for i in 0...self.numberOfRows(inSection: 0) {
                 let indexPath: IndexPath = IndexPath(item: i, section: 0)
                 if let cell = self.cellForRow(at: indexPath) {
-                    cell.layer.transform = CATransform3DMakeScale(0.01,0.01,1)
+                    cell.layer.transform = CATransform3DMakeScale(0.3,0.3,1)
                 }
             }
             completion(duration, 1)
@@ -48,8 +48,10 @@ extension UITableView {
     func rotate(duration: TimeInterval,times num: Int, completion: @escaping rotateCompletion) {
         UIView.animate(withDuration: duration, animations: {
             self.layer.transform = CATransform3DRotate(CATransform3DIdentity,           CGFloat(Double.pi)/2, 0, 1, 0)
-        },completion: { (_) in
+            
+        }, completion: { (_) in
             UIView.animate(withDuration: duration, animations: {
+                self.layer.transform = CATransform3DRotate(CATransform3DIdentity, CGFloat(Double.pi * 2), 0, 1, 0)
                 if num == 1 {
                     for i in 0...self.numberOfRows(inSection: 0) {
                         let indexPath: IndexPath = IndexPath(item: i, section: 0)
@@ -58,8 +60,8 @@ extension UITableView {
                         }
                     }
                 }
-                self.layer.transform = CATransform3DRotate(CATransform3DIdentity, CGFloat(Double.pi * 2), 0, 1, 0)
                 completion()
+                
             }, completion: { (_) in
                 if num - 1 > 0 {
                     self.rotate(duration: duration,times: num - 1, completion: completion)
