@@ -535,6 +535,7 @@
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0V1-Th-mcs">
                                 <rect key="frame" x="15" y="51" width="345" height="564"/>
+                                <viewLayoutGuide key="safeArea" id="chu-Cd-KdR"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -553,7 +554,7 @@
                         <viewLayoutGuide key="safeArea" id="eh5-jk-2n9"/>
                     </view>
                     <connections>
-                        <outlet property="textView" destination="0V1-Th-mcs" id="8Yw-V5-V88"/>
+                        <outlet property="textView" destination="0V1-Th-mcs" id="zgo-IU-bGO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eAr-BT-RHe" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -21,7 +21,13 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationItem.largeTitleDisplayMode = .always
+        } else {
+            // Fallback on earlier versions
+        }
+        self.navigationController?.navigationBar.tintColor = UIColor.black.lighter()
         self.view.backgroundColor = self.bubbleSyncColor
         
         textView.delegate = self
@@ -32,12 +38,10 @@ class DetailViewController: UIViewController {
         view.addConstraint(textViewBottomConstraint!)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
     }
     
     //Notification Center
     @objc func handleKeyboardNotification(notification: NSNotification) {
-        
         
         if let userInfo = notification.userInfo {
             if let rectInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
@@ -103,12 +107,7 @@ extension DetailViewController: UITextViewDelegate {
                                            alarmIntervalOffset: alarmIntervalOffset,
                                            isSetNotification: isNotification)
             }
-            
-            EventManager.shared.appDelegate.saveContext()
         }
-        
-        
-
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange,

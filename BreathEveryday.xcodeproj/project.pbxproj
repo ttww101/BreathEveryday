@@ -45,7 +45,7 @@
 		F4FA6AAF1E7FCD0D00C2E46E /* IdentifierModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */; };
 		F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AB01E7FD3DD00C2E46E /* ListTableViewCell.swift */; };
 		F4FA6AB31E7FD3DD00C2E46E /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */; };
-		F4FA6AB71E7FD8F100C2E46E /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AB61E7FD8F100C2E46E /* NoteViewController.swift */; };
+		F4FA6AB71E7FD8F100C2E46E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,7 +92,7 @@
 		F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifierModel.swift; sourceTree = "<group>"; };
 		F4FA6AB01E7FD3DD00C2E46E /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
-		F4FA6AB61E7FD8F100C2E46E /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +157,7 @@
 			children = (
 				F4D55CB61EADB91600EE80C4 /* Home Page */,
 				F4D55CB71EADB93500EE80C4 /* List Page */,
-				F4FA6AB61E7FD8F100C2E46E /* NoteViewController.swift */,
+				F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -424,7 +424,7 @@
 				F430B4C51F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift in Sources */,
 				F4D6BD991EA493D600A93E46 /* HomeViewModel.swift in Sources */,
 				F43B3FEC1EBC1E00008577EF /* UIColor+Extensions.swift in Sources */,
-				F4FA6AB71E7FD8F100C2E46E /* NoteViewController.swift in Sources */,
+				F4FA6AB71E7FD8F100C2E46E /* DetailViewController.swift in Sources */,
 				F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */,
 				F431AD3C1F56CB32005390D9 /* HomeViewController+ColorPicker.swift in Sources */,
 				F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */,

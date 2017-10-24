@@ -32,6 +32,7 @@ class ListViewController: UIViewController {
         self.navigationItem.title = listTitle
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
+            self.navigationItem.largeTitleDisplayMode = .always
         } else {
             // Fallback on earlier versions
         }
@@ -131,7 +132,7 @@ class ListViewController: UIViewController {
     }
     
     @objc func removeAllEvent(_ sender: Any) {
-        let myAlert = UIAlertController(title: "Refresh Confirm", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        let myAlert = UIAlertController(title: "Refresh Completed?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         let okAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.destructive) { (_) in
             EventManager.shared.deleteAll()
         }
@@ -148,14 +149,14 @@ class ListViewController: UIViewController {
             self.navigationItem.title = self.listTitle
             self.addEventButton.removeTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
             self.addEventButton.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
-            self.addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Plus-50"), selectedImage: nil, tintColor: .white)
+            self.addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Plus-50"), selectedImage: nil, tintColor: .black)
         } else {
             self.completedListButton.isSelected = true
             self.listTitle.append(strCompleted)
             self.navigationItem.title = strCompleted
             self.addEventButton.removeTarget(self, action: #selector(addEvent), for: .touchUpInside)
             self.addEventButton.addTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
-            self.addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Trash Can"), selectedImage: nil, tintColor: .white)
+            self.addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Refresh"), selectedImage: nil, tintColor: .white)
         }
         self.listTableView.rotate(duration: 0.3, times: 1, completion: {
             self.fetchCoreDataResult()
@@ -163,28 +164,19 @@ class ListViewController: UIViewController {
         })
     }
     
-    @objc func viewChangeToDetailPage(sender: UIButton) {
+    @objc func displayDetailPage(sender: UIButton) {
         if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
             
-            UIView.animate(withDuration: 1, animations: {
-                //nav
-                let backItem = UIBarButtonItem()
-                viewController.navigationController?.navigationBar.tintColor = UIColor.black
-                self.navigationItem.backBarButtonItem = backItem
-                
-                //attributes
-                viewController.bubbleSyncColor = self.bubbleSyncColor
-                if let event = EventManager.shared.read(row: sender.tag) {
-                    viewController.entryRow = sender.tag
-                    if let noteData = event.note {
-                        viewController.noteData = noteData
-                    }
+            viewController.bubbleSyncColor = self.bubbleSyncColor
+            if let event = EventManager.shared.read(row: sender.tag) {
+                viewController.entryRow = sender.tag
+                if let noteData = event.note {
+                    viewController.noteData = noteData
                 }
-            }, completion: { (_) in
-                if let navigator = self.navigationController {
-                    navigator.pushViewController(viewController, animated: true)
-                }
-            })
+            }
+            if let navigator = self.navigationController {
+                navigator.pushViewController(viewController, animated: true)
+            }
 
         }
     }
@@ -409,7 +401,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         dequeCell.indexRow = indexPath.row
         dequeCell.viewDetailBtn.tag = indexPath.row
         dequeCell.finishEventButton.tag = indexPath.row
-        dequeCell.viewDetailBtn.addTarget(self, action: #selector(viewChangeToDetailPage), for: .touchUpInside)
+        dequeCell.viewDetailBtn.addTarget(self, action: #selector(displayDetailPage), for: .touchUpInside)
         dequeCell.finishEventButton.addTarget(self, action: #selector(finishEvent), for: .touchUpInside)
         dequeCell.configureCell(event: fetchedResultsController.object(at: indexPath))
         
