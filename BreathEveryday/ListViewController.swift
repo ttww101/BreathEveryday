@@ -16,6 +16,7 @@ class ListViewController: UIViewController {
     @IBOutlet weak var listTableView: UITableView!
     weak var backgroundImageView: UIImageView!
     @IBOutlet weak var completedListButton: UIButton!
+    var addEventButton: UIButton!
     var tableViewBottomConstraint: NSLayoutConstraint?
     var fetchedResultsController: NSFetchedResultsController<EventMO>!
     var isTyping = false
@@ -37,9 +38,9 @@ class ListViewController: UIViewController {
         let homeBtn = CustomButton.home.button
         homeBtn.addTarget(self, action: #selector(backHome), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: homeBtn)
-        let addEventBtn = CustomButton.add.button
-        addEventBtn.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addEventBtn)
+        addEventButton = CustomButton.add.button
+        addEventButton.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addEventButton)
         listTableView.backgroundColor = bubbleSyncColor
         listTableView.superview?.backgroundColor = bubbleSyncColor
         
@@ -96,15 +97,47 @@ class ListViewController: UIViewController {
         }
     }
     
+    @objc func finishEvent(_ sender: UIButton) {
+        guard let senderEvent = readEvent(at: sender.tag) else {
+            return
+        }
+        EventManager.shared.create(calendarEvent: senderEvent.calendarEventID, content: senderEvent.content, note: nil, category: listTitle.appending("Completed"))
+        deleteEvent(at: IndexPath(row: sender.tag, section: 0))
+    }
+    
     @objc func backHome(_ sender: Any) {
         displayHomeView()
-        //note: after saveContext the ID will totoally different
-        EventManager.shared.appDelegate.saveContext()
     }
     
     @objc func addEvent(_ sender: Any) {
         EventManager.shared.create(calendarEvent: nil, content: nil, note: nil, category: listTitle)
-        EventManager.shared.appDelegate.saveContext()
+    }
+    
+    func readEvent(at row: Int) -> EventMO? {
+        guard let object = fetchedResultsController.fetchedObjects?[row]else { return nil }
+        
+        return object
+    }
+    
+    func deleteEvent(at indexPath: IndexPath) {
+        guard let objectID = fetchedResultsController.fetchedObjects?[indexPath.row].objectID else { return }
+        
+        EventManager.shared.delete(id: objectID)
+
+        if let cell = listTableView.cellForRow(at: indexPath) as? ListTableViewCell {
+            cell.detailBtnLeadingConstraint?.constant = view.frame.width + 100
+            cell.contentView.layoutIfNeeded()
+        }
+    }
+    
+    @objc func removeAllEvent(_ sender: Any) {
+        let myAlert = UIAlertController(title: "Refresh Confirm", message: "", preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.destructive) { (_) in
+            EventManager.shared.deleteAll()
+        }
+        myAlert.addAction(okAction)
+        myAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        self.present(myAlert, animated: true, completion: nil)
     }
     
     @objc func displayCompletedList() {
@@ -113,10 +146,16 @@ class ListViewController: UIViewController {
             self.completedListButton.isSelected = false
             self.listTitle = self.listTitle.replacingOccurrences(of: strCompleted, with: "")
             self.navigationItem.title = self.listTitle
+            self.addEventButton.removeTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
+            self.addEventButton.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
+            self.addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Plus-50"), selectedImage: nil, tintColor: .white)
         } else {
             self.completedListButton.isSelected = true
             self.listTitle.append(strCompleted)
             self.navigationItem.title = strCompleted
+            self.addEventButton.removeTarget(self, action: #selector(addEvent), for: .touchUpInside)
+            self.addEventButton.addTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
+            self.addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Trash Can"), selectedImage: nil, tintColor: .white)
         }
         self.listTableView.rotate(duration: 0.3, times: 1, completion: {
             self.fetchCoreDataResult()
@@ -216,6 +255,9 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         listTableView.endUpdates()
+        //note: after saveContext the ID will totoally different
+        EventManager.shared.appDelegate.saveContext()
+        
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -267,11 +309,7 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
                 
                 //reload indexRow in cell for save data 
                 if let cellCount = fetchedResultsController.fetchedObjects?.count {
-                    for i in indexPath.row...cellCount {
-                        if let cell = listTableView.cellForRow(at: IndexPath(row: i, section: 0)) as? ListTableViewCell {
-                            cell.indexRow = i - 1
-                        }
-                    }
+                    refreshCellButtonTag(from: indexPath.row, to: cellCount)
                 }
             }
             
@@ -286,11 +324,19 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
             if let indexPath = indexPath, let newIndexPath =  newIndexPath{
                 listTableView.moveRow(at: indexPath, to: newIndexPath)
             }
-            
         }
-        
     }
-        
+    
+    func refreshCellButtonTag(from startRow: Int, to endRow: Int) {
+        if startRow > endRow { return }
+        for i in startRow...endRow {
+            if let cell = listTableView.cellForRow(at: IndexPath(row: i, section: 0)) as? ListTableViewCell {
+                cell.indexRow = i - 1
+                cell.viewDetailBtn.tag = i - 1
+                cell.finishEventButton.tag = i - 1
+            }
+        }
+    }
     
 }
 
@@ -327,14 +373,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         
         if !isTyping {
             if editingStyle == UITableViewCellEditingStyle.delete {
-                
-                guard let objectID = fetchedResultsController.fetchedObjects?[indexPath.row].objectID else { return }
-                
-                EventManager.shared.delete(id: objectID)
-                if let cell = tableView.cellForRow(at: indexPath) as? ListTableViewCell {
-                    cell.detailBtnLeadingConstraint?.constant = view.frame.width + 100
-                    cell.contentView.layoutIfNeeded()
-                }
+                deleteEvent(at: indexPath)
             }
         }
         
@@ -350,17 +389,12 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
         if let sections = fetchedResultsController.sections  {
-            
             let sectionInfo = sections[0]
             return sectionInfo.numberOfObjects
-            
         }
         
         return 0
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -370,20 +404,16 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        dequeCell.viewDetailBtn.addTarget(self, action: #selector(viewChangeToDetailPage), for: .touchUpInside)
-        
+        dequeCell.calendarPopupViewDelegate = self
+        dequeCell.backgroundColor = bubbleSyncColor
         dequeCell.indexRow = indexPath.row
-        
         dequeCell.viewDetailBtn.tag = indexPath.row
-        
+        dequeCell.finishEventButton.tag = indexPath.row
+        dequeCell.viewDetailBtn.addTarget(self, action: #selector(viewChangeToDetailPage), for: .touchUpInside)
+        dequeCell.finishEventButton.addTarget(self, action: #selector(finishEvent), for: .touchUpInside)
         dequeCell.configureCell(event: fetchedResultsController.object(at: indexPath))
         
-        dequeCell.calendarPopupViewDelegate = self
-        
-        dequeCell.backgroundColor = bubbleSyncColor
-        
         return dequeCell
-        
     }
     
     func displayHomeView() {
