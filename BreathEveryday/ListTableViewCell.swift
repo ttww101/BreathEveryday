@@ -19,6 +19,7 @@ class ListTableViewCell: UITableViewCell {
     //appearance
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var viewDetailImage: UIImageView!
+    @IBOutlet weak var finishEventButton: UIButton!
     var viewDetailBtn = UIButton()
     var textViewLeadingConstraint: NSLayoutConstraint?
     var textViewTrailingConstraint: NSLayoutConstraint?
@@ -50,6 +51,7 @@ class ListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         textView.delegate = self
+        finishEventButton.imageView?.contentMode = .scaleAspectFit
         addDetailBtn()
         addToolBarOnKeyboard()
         textViewLeadingConstraint = NSLayoutConstraint(item: textView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: numTextViewLeftConstant)
@@ -182,13 +184,6 @@ extension ListTableViewCell: UITextViewDelegate {
         if isSetNotification {
             saveRemindData()
         }
-        
-//        EventManager.shared.appDelegate.saveContext()
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        appDelegate.saveContext()
-        
         
         //disappear toolbar
         if !self.remindtimeView.isHidden {
@@ -820,7 +815,6 @@ extension ListTableViewCell {
         viewDetailBtn.layer.frame = CGRect(x: 0, y: 0, width: viewDetailImage.frame.width, height: viewDetailImage.frame.height)
         viewDetailBtn.alpha = 0.1
         viewDetailImage.addSubview(viewDetailBtn)
-        
     }
 
 }

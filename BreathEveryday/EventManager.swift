@@ -215,8 +215,6 @@ class EventManager {
                 
             }
             
-            appDelegate.saveContext()
-            
         } catch {
             
             fatalError("Core Data Delete: \(error)")
