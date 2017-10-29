@@ -19,7 +19,7 @@ class ListTableViewCell: UITableViewCell {
     //appearance
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var viewDetailImage: UIImageView!
-    @IBOutlet weak var finishEventButton: UIButton!
+    @IBOutlet weak var completeEventButton: UIButton!
     var viewDetailBtn = UIButton()
     var textViewLeadingConstraint: NSLayoutConstraint?
     var textViewTrailingConstraint: NSLayoutConstraint?
@@ -51,7 +51,7 @@ class ListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         textView.delegate = self
-        finishEventButton.imageView?.contentMode = .scaleAspectFit
+        completeEventButton.imageView?.contentMode = .scaleAspectFit
         addDetailBtn()
         addToolBarOnKeyboard()
         textViewLeadingConstraint = NSLayoutConstraint(item: textView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: numTextViewLeftConstant)
@@ -234,9 +234,7 @@ extension ListTableViewCell: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         
-        guard let tableView = textView.superview?.superview?.superview?.superview as? UITableView else {
-            return
-        }
+        let tableView = getSuperTableView()
         
         // Resize the cell when size's changing
         let size = textView.bounds.size
@@ -252,6 +250,18 @@ extension ListTableViewCell: UITextViewDelegate {
         
     }
     
+    func getSuperTableView () -> UITableView {
+        if #available(iOS 11, *) {
+            if let tableView = textView.superview?.superview?.superview as? UITableView {
+                return tableView
+            }
+        } else {
+            if let tableView = textView.superview?.superview?.superview?.superview as? UITableView {
+            return tableView
+            }
+        }
+       return UITableView()
+    }
     
 }
 

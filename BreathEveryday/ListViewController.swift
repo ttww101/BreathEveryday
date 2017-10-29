@@ -98,7 +98,7 @@ class ListViewController: UIViewController {
         }
     }
     
-    @objc func finishEvent(_ sender: UIButton) {
+    @objc func completeEvent(_ sender: UIButton) {
         guard let senderEvent = readEvent(at: sender.tag) else {
             return
         }
@@ -132,7 +132,7 @@ class ListViewController: UIViewController {
     }
     
     @objc func removeAllEvent(_ sender: Any) {
-        let myAlert = UIAlertController(title: "Refresh Completed?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let myAlert = UIAlertController(title: "Refresh all?", message: "Clear all completed items.", preferredStyle: UIAlertControllerStyle.alert)
         let okAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.destructive) { (_) in
             EventManager.shared.deleteAll()
         }
@@ -143,25 +143,55 @@ class ListViewController: UIViewController {
     
     @objc func displayCompletedList() {
         let strCompleted = "Completed"
-        if self.completedListButton.isSelected {
-            self.completedListButton.isSelected = false
-            self.listTitle = self.listTitle.replacingOccurrences(of: strCompleted, with: "")
-            self.navigationItem.title = self.listTitle
-            self.addEventButton.removeTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
-            self.addEventButton.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
-            self.addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Plus-50"), selectedImage: nil, tintColor: .black)
+        if completedListButton.isSelected {
+            completedListButton.isSelected = false
+            listTitle = self.listTitle.replacingOccurrences(of: strCompleted, with: "")
+            navigationItem.title = self.listTitle
+            addEventButton.removeTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
+            addEventButton.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
+            addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Plus-50"), selectedImage: nil, tintColor: .black)
+            listTableView.rotate(duration: 0.3, times: 1, completion: {
+                self.fetchCoreDataResult()
+                self.listTableView.reloadData()
+                self.addCompleteButtonMethodOfAllCells()
+            })
         } else {
-            self.completedListButton.isSelected = true
-            self.listTitle.append(strCompleted)
-            self.navigationItem.title = strCompleted
-            self.addEventButton.removeTarget(self, action: #selector(addEvent), for: .touchUpInside)
-            self.addEventButton.addTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
-            self.addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Refresh"), selectedImage: nil, tintColor: .white)
+            completedListButton.isSelected = true
+            listTitle.append(strCompleted)
+            navigationItem.title = strCompleted
+            addEventButton.removeTarget(self, action: #selector(addEvent), for: .touchUpInside)
+            addEventButton.addTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
+            addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Refresh"), selectedImage: nil, tintColor: .white)
+            listTableView.rotate(duration: 0.3, times: 1, completion: {
+                self.fetchCoreDataResult()
+                self.listTableView.reloadData()
+                self.removeCompleteButtonMethodOfAllCells()
+            })
         }
-        self.listTableView.rotate(duration: 0.3, times: 1, completion: {
-            self.fetchCoreDataResult()
-            self.listTableView.reloadData()
-        })
+    }
+    
+    func addCompleteButtonMethodOfAllCells() {
+        guard let fetchedObjects = fetchedResultsController.fetchedObjects else {
+            return
+        }
+        for i in 0...fetchedObjects.count {
+            let indexPath = IndexPath(row: i, section: 0)
+            if let cell = listTableView.cellForRow(at: indexPath) as? ListTableViewCell {
+                cell.completeEventButton.addTarget(self, action: #selector(completeEvent(_:)), for: .touchUpInside)
+            }
+        }
+    }
+    
+    func removeCompleteButtonMethodOfAllCells() {
+        guard let fetchedObjects = fetchedResultsController.fetchedObjects else {
+            return
+        }
+        for i in 0...fetchedObjects.count {
+            let indexPath = IndexPath(row: i, section: 0)
+            if let cell = listTableView.cellForRow(at: indexPath) as? ListTableViewCell {
+                cell.completeEventButton.removeTarget(self, action: #selector(completeEvent(_:)), for: .touchUpInside)
+            }
+        }
     }
     
     @objc func displayDetailPage(sender: UIButton) {
@@ -325,7 +355,7 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
             if let cell = listTableView.cellForRow(at: IndexPath(row: i, section: 0)) as? ListTableViewCell {
                 cell.indexRow = i - 1
                 cell.viewDetailBtn.tag = i - 1
-                cell.finishEventButton.tag = i - 1
+                cell.completeEventButton.tag = i - 1
             }
         }
     }
@@ -400,9 +430,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         dequeCell.backgroundColor = bubbleSyncColor
         dequeCell.indexRow = indexPath.row
         dequeCell.viewDetailBtn.tag = indexPath.row
-        dequeCell.finishEventButton.tag = indexPath.row
+        dequeCell.completeEventButton.tag = indexPath.row
         dequeCell.viewDetailBtn.addTarget(self, action: #selector(displayDetailPage), for: .touchUpInside)
-        dequeCell.finishEventButton.addTarget(self, action: #selector(finishEvent), for: .touchUpInside)
+        dequeCell.completeEventButton.addTarget(self, action: #selector(completeEvent), for: .touchUpInside)
         dequeCell.configureCell(event: fetchedResultsController.object(at: indexPath))
         
         return dequeCell
