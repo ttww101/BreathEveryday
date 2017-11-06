@@ -373,12 +373,11 @@ class HomeViewController: UIViewController {
     }
     
     @objc func btnSettingBtn() {
-        
         //dismiss menu button
         self.menuButton.isSelected = false
         self.settingButton.isHidden = true
         self.infoBtton.isHidden = true
-        
+
         //blackTransparentView show up
         blackTransparentView.backgroundColor = .black
         view.addSubview(blackTransparentView)
@@ -389,11 +388,11 @@ class HomeViewController: UIViewController {
         blackTransparentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         blackTransparentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         blackTransparentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        
+
         blackTransparentView.animation = "fadeIn"
         blackTransparentView.duration = 0.5
         blackTransparentView.animateNext {
-            
+
             self.exitSettingButton.isHidden = false
             self.view.bringSubview(toFront: self.exitSettingButton)
             self.view.bringSubview(toFront: self.settingButtonTableView)
@@ -403,7 +402,7 @@ class HomeViewController: UIViewController {
             self.settingButtonTableView.cellEmergeOrderly(from: 0)
         }
         blackTransparentView.alpha = 0.8
-        
+
         if quoteButton.isSelected {
             btnQuoteBtn(sender: quoteButton)
         }
