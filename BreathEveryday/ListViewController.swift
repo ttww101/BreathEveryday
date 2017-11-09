@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 import EventKit
-import SpriteKit
 
 class ListViewController: UIViewController {
     
@@ -105,23 +104,6 @@ class ListViewController: UIViewController {
         }
         EventManager.shared.create(calendarEvent: senderEvent.calendarEventID, content: senderEvent.content, note: nil, category: listTitle.appending("Completed"))
         deleteEvent(at: IndexPath(row: sender.tag, section: 0))
-        
-        
-        guard let cell = listTableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? ListTableViewCell else {
-            return
-        }
-        let cellRect = self.listTableView.rectForRow(at: IndexPath(row: sender.tag, section: 0))
-        
-        let skView = SKView(frame: self.view.frame)
-        skView.backgroundColor = .clear
-        self.view.addSubview(skView)
-        print(self.navigationController?.navigationBar.frame.size.height)
-        
-        let scene = SpringScene(size: skView.bounds.size)
-//        skView.ignoresSiblingOrder = true
-        scene.scaleMode = .resizeFill
-        skView.presentScene(scene)
-//        scene.createSceneContents()
     }
     
     @objc func backHome(_ sender: Any) {

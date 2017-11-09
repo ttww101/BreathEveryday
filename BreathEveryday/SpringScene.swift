@@ -13,7 +13,7 @@ class SpringScene: SKScene {
     
     var bgNode: SKSpriteNode!
     var imagesName = ["Bubble"]
-    let nodeSize = CGSize(width: 25, height: 25)
+    let nodeSize = CGSize(width: 50, height: 50)
     
     //Scene LifeCycle
     override func didMove(to view: SKView) {
@@ -23,7 +23,6 @@ class SpringScene: SKScene {
     func createSceneContents() {
         self.backgroundColor = .clear
         self.scaleMode = .aspectFit
-        
         self.makeBubbles()
     }
     
@@ -31,6 +30,8 @@ class SpringScene: SKScene {
     
     @objc func addHeartNode() {
         let node = SKSpriteNode(imageNamed: randomImageName())
+        node.color = UIColor.randomColor(from: 200, to: 250)
+        node.colorBlendFactor = 1.0
         node.size = self.nodeSize;
         node.position = CGPoint(x: 0.5 * self.frame.width, y: 0)
         node.name = "test"
@@ -41,17 +42,34 @@ class SpringScene: SKScene {
             xOffset = -0.5*(width-self.nodeSize.width);
         }
         
-        let actions = SKAction.sequence([SKAction.moveBy(x: xOffset, y: 0.5*maxY, duration: 3),
-                                         SKAction.moveTo(y: maxY+10, duration: 3)])
+        let actions = SKAction.sequence([SKAction.moveBy(x: xOffset, y: maxY + 50, duration: 5)])
+//                                         SKAction.moveTo(y: maxY+100, duration: 3)])
         node.run(actions)
         self.addChild(node)
-//        print("==========================================")
-//        print("==== \(self.frame) ==============")
-//        print("==== \(self.view?.frame) ==============")
-//        print("==== \(self.view?.superview?.frame) ==============")
-//        print("==========================================")
+        
+        // Create a light
+//        let background = SKSpriteNode(texture: noiseTexture,
+//                                      normalMap: noiseTexture.generatingNormalMap())
+//        background.position = spriteKitViewController.center
+//        background.lightingBitMask = 0b0001
+//        scene.addChild(background)
+        
+//        let x: CGFloat = 150
+//        let y = self.size.width - 150
+//        let lightNode = SKLightNode()
+//        lightNode.position = CGPoint(x: self.size.width / 2, y: y)
+//        lightNode.categoryBitMask = 22323
+//        lightNode.lightColor = .orange
+//        self.addChild(lightNode)
+//
+//        for position in [CGPoint(x: x, y: y), CGPoint(x: y, y: y)] {
+//            let rabbit = SKSpriteNode(imageNamed: "Bubble")
+//            rabbit.position = position
+//            self.addChild(rabbit)
+//            rabbit.lightingBitMask = 0b0001
+//            rabbit.shadowCastBitMask = 0b0001
+//        }
     }
-    
     
     //#pragma mark - getter
     func randomImageName() -> String {
@@ -61,19 +79,30 @@ class SpringScene: SKScene {
     func makeBubbles() {
         let action = SKAction.sequence([SKAction.perform(#selector(addHeartNode), onTarget: self),
                                         SKAction.wait(forDuration: 0.3, withRange: 0.2)])
-//        self.run(SKAction.repeatForever(action), withKey: "test")
-        self.run(action, withKey: "test")
+        self.run(SKAction.repeatForever(action), withKey: "test")
+//        self.run(action, withKey: "test")
     }
     
     override func didSimulatePhysics() {
         self.enumerateChildNodes(withName: "test") { (node, stop) in
-            let maxxY = self.frame.height
             
-            if node.position.y >= 0.7 * maxxY {
+            let maxX = self.frame.width
+            
+            if node.position.x >= 0.8 * maxX {
                 node.run(SKAction.fadeOut(withDuration: 1))
             }
             
-            if node.position.y > maxxY {
+            if node.position.x > maxX {
+                node.removeFromParent()
+            }
+            
+            let maxY = self.frame.height
+            
+            if node.position.y >= 0.5 * maxY {
+                node.run(SKAction.fadeOut(withDuration: 1))
+            }
+            
+            if node.position.y > maxY {
                 node.removeFromParent()
             }
             

@@ -12,6 +12,7 @@ import Spring
 import DynamicColor
 import Crashlytics
 import AnimatedCollectionViewLayout
+import SpriteKit
 
 class HomeViewController: UIViewController {
     
@@ -25,6 +26,7 @@ class HomeViewController: UIViewController {
     var quoteViewBottomConstraint: NSLayoutConstraint?
     let quoteLbl = QuoteLabel()
     let blackTransparentView = SpringView()
+    var skView = SKView()
     
     @IBOutlet weak var categorysCollectionView: UICollectionView!
     var categoryScrollViewConstraint: NSLayoutConstraint?
@@ -503,9 +505,25 @@ class HomeViewController: UIViewController {
     }
     
     @objc func displayQuoteSetup() {
-        let myAlert = UIAlertController(title: "", message: "Coming Soon...", preferredStyle: UIAlertControllerStyle.alert)
-        myAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        self.present(myAlert, animated: true, completion: nil)
+        let alert = UIAlertController(title: "", message: "Coming Soon...", preferredStyle: UIAlertControllerStyle.alert)
+        let alertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (UIAlertAction) in
+            self.skView.removeFromSuperview()
+        }
+        alert.addAction(alertAction)
+        self.present(alert, animated: true, completion: nil)
+        let offset:CGFloat = 50;
+        let skViewFrame = CGRect(x: self.view.frame.minX - offset,
+                                 y: self.view.frame.minY,
+                                 width: self.view.frame.width + offset*2,
+                                 height: self.view.frame.height)
+        skView = SKView(frame: skViewFrame)
+        skView.backgroundColor = .clear
+        self.view.addSubview(skView)
+        let scene = SpringScene(size: skView.bounds.size)
+        skView.ignoresSiblingOrder = true
+        scene.scaleMode = .resizeFill
+        skView.presentScene(scene)
+        exitSettingMode()
     }
     
     @objc func exitSettingMode() {
