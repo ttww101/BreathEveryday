@@ -128,7 +128,26 @@ class ListViewController: UIViewController {
         if let cell = listTableView.cellForRow(at: indexPath) as? ListTableViewCell {
             cell.detailBtnLeadingConstraint?.constant = view.frame.width + 100
             cell.contentView.layoutIfNeeded()
+            
+            let image = UIImage.init(view: cell.contentView)
+            let imageView = UIImageView(image: image)
+            let rect1 = self.listTableView.rectForRow(at: indexPath)
+            let rect2 = listTableView.convert(rect1, to: self.view)
+            imageView.frame = rect2
+            
+            let rectCompleteListButton = listTableView.convert(self.completedListButton.frame, to: self.view)
+            self.view.addSubview(imageView)
+            self.view.bringSubview(toFront: self.completedListButton)
+            UIView.animate(withDuration: 1, animations: {
+                imageView.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+                imageView.center = CGPoint(x: rectCompleteListButton.midX, y: rectCompleteListButton.midY)
+            }, completion: { (_) in
+                imageView.removeFromSuperview()
+            })
         }
+        
+        
+        
     }
     
     @objc func removeAllEvent(_ sender: Any) {

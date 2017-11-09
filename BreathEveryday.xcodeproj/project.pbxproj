@@ -27,6 +27,7 @@
 		F4916C5E1F9B1A0D00D99938 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4916C5D1F9B1A0D00D99938 /* TestViewController.swift */; };
 		F49B09251EBB14900002297F /* Background Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49B09241EBB14900002297F /* Background Image.xcassets */; };
 		F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A21F981E9C6E4200C24517 /* EventManager.swift */; };
+		F4A332E51FB49F3700F30816 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A332E41FB49F3700F30816 /* UIImage+Extensions.swift */; };
 		F4A414431F7D307C00B066A4 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A414421F7D307C00B066A4 /* UITableView+Extensions.swift */; };
 		F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A57E1E88EE4200CAECEE /* CoreDataModel.xcdatamodeld */; };
 		F4D0A0B21F6AD71500DD4693 /* SelectImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D0A0B01F6AD71500DD4693 /* SelectImageCollectionViewController.swift */; };
@@ -73,6 +74,7 @@
 		F4916C5D1F9B1A0D00D99938 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		F49B09241EBB14900002297F /* Background Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Background Image.xcassets"; sourceTree = "<group>"; };
 		F4A21F981E9C6E4200C24517 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		F4A332E41FB49F3700F30816 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		F4A414421F7D307C00B066A4 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		F4B2A57F1E88EE4200CAECEE /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		F4D0A0B01F6AD71500DD4693 /* SelectImageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectImageCollectionViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */,
 				F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */,
 				F4A414421F7D307C00B066A4 /* UITableView+Extensions.swift */,
+				F4A332E41FB49F3700F30816 /* UIImage+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				F43B3FEC1EBC1E00008577EF /* UIColor+Extensions.swift in Sources */,
 				F4FA6AB71E7FD8F100C2E46E /* DetailViewController.swift in Sources */,
 				F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */,
+				F4A332E51FB49F3700F30816 /* UIImage+Extensions.swift in Sources */,
 				F431AD3C1F56CB32005390D9 /* HomeViewController+ColorPicker.swift in Sources */,
 				F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */,
 				F4916C5E1F9B1A0D00D99938 /* TestViewController.swift in Sources */,
