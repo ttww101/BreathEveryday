@@ -24,7 +24,7 @@ class SpringScene: SKScene {
         self.backgroundColor = .clear
         self.scaleMode = .aspectFit
         
-        self.makeHearts()
+        self.makeBubbles()
     }
     
     //#pragma mark - Sprite Node
@@ -32,15 +32,7 @@ class SpringScene: SKScene {
     @objc func addHeartNode() {
         let node = SKSpriteNode(imageNamed: randomImageName())
         node.size = self.nodeSize;
-        print("==========================================")
-        print("==== \(self.frame) ==============")
-        print("==== \(self.view?.frame) ==============")
-        print("==== \(self.view?.superview?.frame) ==============")
-        print("==========================================")
-//        print(self.view?.frame)
-//        print(self.view?.superview?.frame)
-//        print(self.frame)
-        node.position = CGPoint(x: 0.5 * self.frame.width, y: self.frame.maxY)
+        node.position = CGPoint(x: 0.5 * self.frame.width, y: 0)
         node.name = "test"
         let maxY = self.frame.height
         let width = self.size.width
@@ -53,6 +45,11 @@ class SpringScene: SKScene {
                                          SKAction.moveTo(y: maxY+10, duration: 3)])
         node.run(actions)
         self.addChild(node)
+//        print("==========================================")
+//        print("==== \(self.frame) ==============")
+//        print("==== \(self.view?.frame) ==============")
+//        print("==== \(self.view?.superview?.frame) ==============")
+//        print("==========================================")
     }
     
     
@@ -61,7 +58,7 @@ class SpringScene: SKScene {
         return imagesName[Int(arc4random())%imagesName.count];
     }
     
-    func makeHearts() {
+    func makeBubbles() {
         let action = SKAction.sequence([SKAction.perform(#selector(addHeartNode), onTarget: self),
                                         SKAction.wait(forDuration: 0.3, withRange: 0.2)])
 //        self.run(SKAction.repeatForever(action), withKey: "test")
@@ -72,7 +69,7 @@ class SpringScene: SKScene {
         self.enumerateChildNodes(withName: "test") { (node, stop) in
             let maxxY = self.frame.height
             
-            if node.position.y >= 0.7*maxxY {
+            if node.position.y >= 0.7 * maxxY {
                 node.run(SKAction.fadeOut(withDuration: 1))
             }
             

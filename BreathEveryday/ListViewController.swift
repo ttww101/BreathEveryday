@@ -106,17 +106,22 @@ class ListViewController: UIViewController {
         EventManager.shared.create(calendarEvent: senderEvent.calendarEventID, content: senderEvent.content, note: nil, category: listTitle.appending("Completed"))
         deleteEvent(at: IndexPath(row: sender.tag, section: 0))
         
-        guard let cell = listTableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) else {
+        
+        guard let cell = listTableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as? ListTableViewCell else {
             return
         }
-        let skView = SKView(frame: CGRect(x: sender.frame.midX, y: cell.frame.midY, width: sender.frame.width*2, height: self.view.frame.height - cell.frame.midY))
-        skView.backgroundColor = .orange
+        let cellRect = self.listTableView.rectForRow(at: IndexPath(row: sender.tag, section: 0))
+        
+        let skView = SKView(frame: self.view.frame)
+        skView.backgroundColor = .clear
         self.view.addSubview(skView)
+        print(self.navigationController?.navigationBar.frame.size.height)
+        
         let scene = SpringScene(size: skView.bounds.size)
 //        skView.ignoresSiblingOrder = true
         scene.scaleMode = .resizeFill
         skView.presentScene(scene)
-        scene.createSceneContents()
+//        scene.createSceneContents()
     }
     
     @objc func backHome(_ sender: Any) {
