@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,15 +25,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" scrollEnabled="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="enX-Wp-eca">
-                        <rect key="frame" x="91" y="11" width="305" height="63.5"/>
+                        <rect key="frame" x="91" y="14" width="305" height="60.5"/>
                         <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="18"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                     </textView>
                     <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ANe-ck-yiF">
                         <rect key="frame" x="22" y="23" width="25" height="25"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="12" id="BLh-vl-rxn"/>
-                            <constraint firstAttribute="width" constant="12" id="R5Q-ru-DXB"/>
+                            <constraint firstAttribute="width" constant="20" id="R5Q-ru-DXB"/>
                         </constraints>
                         <state key="normal" image="Circle Filled-50"/>
                     </button>
@@ -45,7 +44,7 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rqc-2x-ge5">
-                        <rect key="frame" x="18" y="76" width="433" height="1"/>
+                        <rect key="frame" x="30" y="76" width="409" height="1"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1.5" id="LHS-b2-lzK"/>
@@ -60,10 +59,10 @@
                     <constraint firstAttribute="trailingMargin" secondItem="rqc-2x-ge5" secondAttribute="trailing" constant="5" id="Hpf-ys-2mD"/>
                     <constraint firstAttribute="bottom" secondItem="enX-Wp-eca" secondAttribute="bottom" constant="3" id="MUB-g7-aqk"/>
                     <constraint firstItem="ANe-ck-yiF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerYWithinMargins" constant="3" id="QZl-Wk-Ktm"/>
+                    <constraint firstItem="ANe-ck-yiF" firstAttribute="height" secondItem="btv-sX-qwG" secondAttribute="height" id="Qw2-WX-XxO"/>
                     <constraint firstAttribute="bottom" secondItem="btv-sX-qwG" secondAttribute="bottom" id="T8Q-yN-NbN"/>
                     <constraint firstItem="btv-sX-qwG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Uc9-ce-S43"/>
                     <constraint firstItem="enX-Wp-eca" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="jOg-dH-gkw"/>
-                    <constraint firstItem="enX-Wp-eca" firstAttribute="leading" secondItem="ANe-ck-yiF" secondAttribute="trailing" constant="15" id="kdf-oB-57v"/>
                     <constraint firstAttribute="trailing" secondItem="btv-sX-qwG" secondAttribute="trailing" id="s2o-IK-M1X"/>
                 </constraints>
             </tableViewCellContentView>

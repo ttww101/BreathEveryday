@@ -139,8 +139,9 @@ class ListViewController: UIViewController {
             self.view.addSubview(imageView)
             self.view.bringSubview(toFront: self.completedListButton)
             UIView.animate(withDuration: 1, animations: {
-                imageView.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+                imageView.layer.transform = CATransform3DMakeScale(0.5, 0.5, 1)
                 imageView.center = CGPoint(x: rectCompleteListButton.midX, y: rectCompleteListButton.midY)
+                imageView.alpha = 0
             }, completion: { (_) in
                 imageView.removeFromSuperview()
             })

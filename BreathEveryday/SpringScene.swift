@@ -80,7 +80,6 @@ class SpringScene: SKScene {
         let action = SKAction.sequence([SKAction.perform(#selector(addHeartNode), onTarget: self),
                                         SKAction.wait(forDuration: 0.3, withRange: 0.2)])
         self.run(SKAction.repeatForever(action), withKey: "test")
-//        self.run(action, withKey: "test")
     }
     
     override func didSimulatePhysics() {
@@ -98,7 +97,7 @@ class SpringScene: SKScene {
             
             let maxY = self.frame.height
             
-            if node.position.y >= 0.5 * maxY {
+            if node.position.y >= 0.6 * maxY {
                 node.run(SKAction.fadeOut(withDuration: 1))
             }
             

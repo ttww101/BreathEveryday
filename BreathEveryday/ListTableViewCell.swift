@@ -20,44 +20,50 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var viewDetailImage: UIImageView!
     @IBOutlet weak var completeEventButton: UIButton!
-    var viewDetailBtn = UIButton()
+    var viewDetailBtn: UIButton = UIButton()
+    var completeBtnTrailingConstraint: NSLayoutConstraint?
     var textViewLeadingConstraint: NSLayoutConstraint?
     var textViewTrailingConstraint: NSLayoutConstraint?
     var detailBtnLeadingConstraint: NSLayoutConstraint?
-    let numTextViewLeftConstant:CGFloat = 40
-    let numTextViewRightConstant:CGFloat = -20
+    let constNormalCompleteBtnToTextView: CGFloat = -10
+    let constPushCompleteBtnToTextView: CGFloat = -30
+    let numTextViewLeftConstant:CGFloat = 45
+    let numTextViewRightConstant:CGFloat = -10
     let numTextViewMoveLeftConstant:CGFloat = 25
-    let numDetailImageToTextView: CGFloat = 25
+    let numDetailImageToTextView: CGFloat = 35
     //toolBar
     var starBtn: UIButton!
-    lazy var alarmView = UIView()
-    lazy var remindtimeView = UIView()
-    lazy var alarmPicker = UIPickerView()
-    lazy var remindTimePicker = UIPickerView()
-    lazy var calendarView = UIView()
+    lazy var alarmView: UIView = UIView()
+    lazy var remindtimeView: UIView = UIView()
+    lazy var alarmPicker: UIPickerView = UIPickerView()
+    lazy var remindTimePicker: UIPickerView = UIPickerView()
+    lazy var calendarView: UIView = UIView()
     var calendarJTVC: CalendarViewController? = nil
     weak var calendarPopupViewDelegate:calendarPopupViewProtocol?
-    lazy var locationView = UIView()
+    lazy var locationView: UIView = UIView()
     //event info
     var indexRow: Int = 0
     var isSetNotification: Bool = false
     var eventID: NSManagedObjectID?
     var alarmDateSet: Date?
     var alarmIntervalOffset: Double?
-    var isBtnAlarmSet = false
-    var isBtnRemindTimeSet = false
+    var isBtnAlarmSet: Bool = false
+    var isBtnRemindTimeSet: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         textView.delegate = self
+        textView.keyboardType = .default
         completeEventButton.imageView?.contentMode = .scaleAspectFit
         addDetailBtn()
         addToolBarOnKeyboard()
+        completeBtnTrailingConstraint = NSLayoutConstraint(item: completeEventButton, attribute: .trailing, relatedBy: .equal, toItem: textView, attribute: .leading, multiplier: 1, constant: constNormalCompleteBtnToTextView)
         textViewLeadingConstraint = NSLayoutConstraint(item: textView, attribute: .leading, relatedBy: .equal, toItem: contentView, attribute: .leading, multiplier: 1, constant: numTextViewLeftConstant)
         textViewTrailingConstraint = NSLayoutConstraint(item: textView, attribute: .trailing, relatedBy: .equal, toItem: contentView, attribute: .trailing, multiplier: 1, constant: numTextViewRightConstant)
         detailBtnLeadingConstraint = NSLayoutConstraint(item: viewDetailImage, attribute: .leading, relatedBy: .equal, toItem: textView, attribute: .trailing, multiplier: 1, constant: numDetailImageToTextView)
 
+        contentView.addConstraint(completeBtnTrailingConstraint!)
         contentView.addConstraint(textViewLeadingConstraint!)
         contentView.addConstraint(textViewTrailingConstraint!)
         contentView.addConstraint(detailBtnLeadingConstraint!)
@@ -171,6 +177,7 @@ extension ListTableViewCell: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         
         //constraints change
+        completeBtnTrailingConstraint?.constant = constNormalCompleteBtnToTextView
         textViewLeadingConstraint?.constant = numTextViewLeftConstant
         textViewTrailingConstraint?.constant = numTextViewRightConstant
         detailBtnLeadingConstraint?.constant = numDetailImageToTextView
@@ -213,6 +220,7 @@ extension ListTableViewCell: UITextViewDelegate {
         print("Begin Editing")
         
         //constraints change
+        completeBtnTrailingConstraint?.constant = constPushCompleteBtnToTextView
         textViewLeadingConstraint?.constant = numTextViewLeftConstant - numTextViewMoveLeftConstant
         textViewTrailingConstraint?.constant = numTextViewRightConstant - numTextViewMoveLeftConstant
         detailBtnLeadingConstraint?.constant = 5
