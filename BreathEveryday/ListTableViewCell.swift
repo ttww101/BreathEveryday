@@ -761,7 +761,6 @@ extension ListTableViewCell {
         }
     }
     
-    
     func createCalendarPopView(xPos: CGFloat) {
         if #available(iOS 11, *) {
             guard let superView = textView.superview?.superview?.superview?.superview , let tableView = textView.superview?.superview?.superview else {

@@ -720,8 +720,8 @@ class HomeViewController: UIViewController {
             
             UIView.animate(withDuration: 0.3, animations: {
                 animateView.layer.frame = self.quoteView.frame
-            }, completion: { (_) in
-                self.quoteView.isHidden = false
+            }, completion: { [weak self] (_) in
+                self?.quoteView.isHidden = false
                 animateView.removeFromSuperview()
                 sender.isEnabled = true
             })
@@ -745,17 +745,17 @@ class HomeViewController: UIViewController {
         view.addSubview(animateView)
         UIView.animate(withDuration: 0.2, animations: {
             animateView.layer.frame = CGRect(x: self.quoteView.frame.minX, y: self.quoteView.frame.minY, width: 0, height: 0)
-        }, completion: { (_) in
-            self.quoteLbl.removeFromSuperview()
+        }, completion: { [weak self] (_) in
+            self?.quoteLbl.removeFromSuperview()
             animateView.removeFromSuperview()
-            self.quoteButton.isEnabled = true
-            self.quoteButton.isSelected = false
+            self?.quoteButton.isEnabled = true
+            self?.quoteButton.isSelected = false
         })
     }
     
     @objc func displayListView(sender: UIButton) {
         
-        if let navigationVC = storyboard?.instantiateViewController(withIdentifier: "HomeNavigationController") as? UINavigationController {
+        if let navigationVC = storyboard?.instantiateViewController(withIdentifier: "ListNavigationController") as? UINavigationController {
             
             //save frame
             for category in categoryDataArr {

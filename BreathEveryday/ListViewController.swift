@@ -19,8 +19,8 @@ class ListViewController: UIViewController {
     var addEventButton: UIButton!
     var tableViewBottomConstraint: NSLayoutConstraint?
     var fetchedResultsController: NSFetchedResultsController<EventMO>!
-    var isTyping = false
-    var listTitle = ""
+    var isTyping: Bool = false
+    var listTitle: String = ""
     var bubbleSyncColor: UIColor = .white
     
     override func viewDidLoad() {
@@ -39,9 +39,9 @@ class ListViewController: UIViewController {
         let homeBtn = CustomButton.home.button
         homeBtn.addTarget(self, action: #selector(backHome), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: homeBtn)
-        addEventButton = CustomButton.add.button
-        addEventButton.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: addEventButton)
+        self.addEventButton = CustomButton.add.button
+        self.addEventButton.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.addEventButton)
         listTableView.backgroundColor = bubbleSyncColor
         listTableView.superview?.backgroundColor = bubbleSyncColor
         
@@ -129,8 +129,8 @@ class ListViewController: UIViewController {
             cell.detailBtnLeadingConstraint?.constant = view.frame.width + 100
             cell.contentView.layoutIfNeeded()
             
-            let image = UIImage.init(view: cell.contentView)
-            let imageView = UIImageView(image: image)
+            let image: UIImage = UIImage.init(view: cell.contentView)
+            let imageView: UIImageView = UIImageView(image: image)
             let rect1 = self.listTableView.rectForRow(at: indexPath)
             let rect2 = listTableView.convert(rect1, to: self.view)
             imageView.frame = rect2
@@ -142,8 +142,8 @@ class ListViewController: UIViewController {
                 imageView.layer.transform = CATransform3DMakeScale(0.5, 0.5, 1)
                 imageView.center = CGPoint(x: rectCompleteListButton.midX, y: rectCompleteListButton.midY)
                 imageView.alpha = 0
-            }, completion: { (_) in
-                imageView.removeFromSuperview()
+            }, completion: { [weak imageView] finished in
+                imageView?.removeFromSuperview()
             })
         }
         
@@ -167,9 +167,9 @@ class ListViewController: UIViewController {
             completedListButton.isSelected = false
             listTitle = self.listTitle.replacingOccurrences(of: strCompleted, with: "")
             navigationItem.title = self.listTitle
-            addEventButton.removeTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
-            addEventButton.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
-            addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Plus-50"), selectedImage: nil, tintColor: .black)
+            self.addEventButton.removeTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
+            self.addEventButton.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
+            self.addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Plus-50"), selectedImage: nil, tintColor: .black)
             listTableView.rotate(duration: 0.3, times: 1, completion: {
                 self.fetchCoreDataResult()
                 self.listTableView.reloadData()
@@ -179,9 +179,9 @@ class ListViewController: UIViewController {
             completedListButton.isSelected = true
             listTitle.append(strCompleted)
             navigationItem.title = strCompleted
-            addEventButton.removeTarget(self, action: #selector(addEvent), for: .touchUpInside)
-            addEventButton.addTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
-            addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Refresh"), selectedImage: nil, tintColor: .white)
+            self.addEventButton.removeTarget(self, action: #selector(addEvent), for: .touchUpInside)
+            self.addEventButton.addTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
+            self.addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Refresh"), selectedImage: nil, tintColor: .white)
             listTableView.rotate(duration: 0.3, times: 1, completion: {
                 self.fetchCoreDataResult()
                 self.listTableView.reloadData()
@@ -315,22 +315,22 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
                     
                     self.listTableView.insertRows(at: [newIndexPath], with: .fade)
                     
-                } , completion: { (_) in
+                } , completion: { [weak self] (_) in
                     
                         UIView.animate(withDuration: 0.1, animations: {
                             
-                            self.listTableView.scrollToRow(at: newIndexPath,
+                            self?.listTableView.scrollToRow(at: newIndexPath,
                                                            at: .none,
                                                            animated: false)
                             
-                        }, completion: { (_) in
+                        }, completion: { [weak self] (_) in
                             
                             
-                            if let addCell = self.listTableView.cellForRow(at: newIndexPath) as? ListTableViewCell {
+                            if let addCell = self?.listTableView.cellForRow(at: newIndexPath) as? ListTableViewCell {
                                 addCell.textView.becomeFirstResponder()
                                 
                                 //ensure visible, or it cannot work when adding 7~12
-                                self.listTableView.scrollToRow(at: newIndexPath,
+                                self?.listTableView.scrollToRow(at: newIndexPath,
                                                                at: .none,
                                                                animated: false)
                             }
