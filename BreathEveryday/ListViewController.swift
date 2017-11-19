@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import EventKit
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let eventStore = EKEventStore()
     @IBOutlet weak var listTableView: UITableView!
@@ -70,6 +70,10 @@ class ListViewController: UIViewController {
         completedListButton.normalSetup(normalImage: #imageLiteral(resourceName: "Checked List"), selectedImage: #imageLiteral(resourceName: "List"), tintColor: .white)
         completedListButton.addTarget(self, action: #selector(displayCompletedList), for: .touchUpInside)
         
+        //add gesture to view
+        let gesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKB))
+        self.view.addGestureRecognizer(gesture)
+        
         //notification for constraints
         tableViewBottomConstraint = NSLayoutConstraint(item: listTableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
         view.addConstraint(tableViewBottomConstraint!)
@@ -79,7 +83,7 @@ class ListViewController: UIViewController {
         //fetchDataResult
         fetchCoreDataResult()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         askCalendarAuthorized()
     }
@@ -102,8 +106,16 @@ class ListViewController: UIViewController {
         guard let senderEvent = readEvent(at: sender.tag) else {
             return
         }
-        EventManager.shared.create(calendarEvent: senderEvent.calendarEventID, content: senderEvent.content, note: nil, category: listTitle.appending("Completed"))
+        var categoryName = ""
+        let strCompleted = "Completed"
+        if completedListButton.isSelected {
+            categoryName = self.listTitle.replacingOccurrences(of: strCompleted, with: "")
+        } else {
+            categoryName = listTitle.appending(strCompleted)
+        }
+        EventManager.shared.create(calendarEvent: senderEvent.calendarEventID, content: senderEvent.content, note: nil, category: categoryName)
         deleteEvent(at: IndexPath(row: sender.tag, section: 0))
+        completedEventAnimation(at: IndexPath(row: sender.tag, section: 0))
     }
     
     @objc func backHome(_ sender: Any) {
@@ -124,11 +136,22 @@ class ListViewController: UIViewController {
         guard let objectID = fetchedResultsController.fetchedObjects?[indexPath.row].objectID else { return }
         
         EventManager.shared.delete(id: objectID)
-
+        
         if let cell = listTableView.cellForRow(at: indexPath) as? ListTableViewCell {
             cell.detailBtnLeadingConstraint?.constant = view.frame.width + 100
             cell.contentView.layoutIfNeeded()
+        }
+    }
+    
+    func completedEventAnimation(at indexPath: IndexPath) {
+        if let cell = listTableView.cellForRow(at: indexPath) as? ListTableViewCell {
+            //add white transparent view for cell
+            let addView = UIView(frame: cell.contentView.frame)
+            addView.backgroundColor = UIColor.white
+            addView.alpha = 0.5
+            cell.contentView.addSubview(addView)
             
+            //grab the cell image & the animations
             let image: UIImage = UIImage.init(view: cell.contentView)
             let imageView: UIImageView = UIImageView(image: image)
             let rect1 = self.listTableView.rectForRow(at: indexPath)
@@ -138,17 +161,15 @@ class ListViewController: UIViewController {
             let rectCompleteListButton = listTableView.convert(self.completedListButton.frame, to: self.view)
             self.view.addSubview(imageView)
             self.view.bringSubview(toFront: self.completedListButton)
-            UIView.animate(withDuration: 1, animations: {
-                imageView.layer.transform = CATransform3DMakeScale(0.5, 0.5, 1)
+            UIView.animate(withDuration: 0.8, delay: 0.2, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+                imageView.layer.transform = CATransform3DMakeScale(0.3, 0.3, 1)
                 imageView.center = CGPoint(x: rectCompleteListButton.midX, y: rectCompleteListButton.midY)
                 imageView.alpha = 0
-            }, completion: { [weak imageView] finished in
+            }, completion: { [weak imageView, addView] finished in
                 imageView?.removeFromSuperview()
+                addView.removeFromSuperview()
             })
         }
-        
-        
-        
     }
     
     @objc func removeAllEvent(_ sender: Any) {
@@ -164,9 +185,12 @@ class ListViewController: UIViewController {
     @objc func displayCompletedList() {
         let strCompleted = "Completed"
         if completedListButton.isSelected {
+            //to change the display list content
             completedListButton.isSelected = false
             listTitle = self.listTitle.replacingOccurrences(of: strCompleted, with: "")
             navigationItem.title = self.listTitle
+            
+            //change add event button to refresh button
             self.addEventButton.removeTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
             self.addEventButton.addTarget(self, action: #selector(addEvent), for: .touchUpInside)
             self.addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Plus-50"), selectedImage: nil, tintColor: .black)
@@ -176,9 +200,12 @@ class ListViewController: UIViewController {
                 self.addCompleteButtonMethodOfAllCells()
             })
         } else {
+            //to change the display list content
             completedListButton.isSelected = true
             listTitle.append(strCompleted)
             navigationItem.title = strCompleted
+            
+            //change add event button to refresh button
             self.addEventButton.removeTarget(self, action: #selector(addEvent), for: .touchUpInside)
             self.addEventButton.addTarget(self, action: #selector(removeAllEvent), for: .touchUpInside)
             self.addEventButton.normalSetup(normalImage: #imageLiteral(resourceName: "Refresh"), selectedImage: nil, tintColor: .white)
@@ -209,7 +236,7 @@ class ListViewController: UIViewController {
         for i in 0...fetchedObjects.count {
             let indexPath = IndexPath(row: i, section: 0)
             if let cell = listTableView.cellForRow(at: indexPath) as? ListTableViewCell {
-                cell.completeEventButton.removeTarget(self, action: #selector(completeEvent(_:)), for: .touchUpInside)
+                //                cell.completeEventButton.removeTarget(self, action: #selector(completeEvent(_:)), for: .touchUpInside)
             }
         }
     }
@@ -227,7 +254,7 @@ class ListViewController: UIViewController {
             if let navigator = self.navigationController {
                 navigator.pushViewController(viewController, animated: true)
             }
-
+            
         }
     }
     
@@ -249,7 +276,7 @@ class ListViewController: UIViewController {
                     
                 }, completion: { (completed) in
                     UIView.animate(withDuration: 0, animations: {
-                                                
+                        
                     })
                 })
                 
@@ -257,6 +284,26 @@ class ListViewController: UIViewController {
         }
     }
     
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view == self.listTableView {
+            if isTyping {
+                return true
+            } else {
+                return false
+            }
+        }
+        return true
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if isTyping {
+            self.dismissKB()
+        }
+    }
+    
+    @objc func dismissKB() {
+        self.view.endEditing(true)
+    }
 }
 
 // CoreData
@@ -290,7 +337,7 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
         }
         
     }
-
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         listTableView.beginUpdates()
     }
@@ -317,25 +364,25 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
                     
                 } , completion: { [weak self] (_) in
                     
-                        UIView.animate(withDuration: 0.1, animations: {
+                    UIView.animate(withDuration: 0.1, animations: {
+                        
+                        self?.listTableView.scrollToRow(at: newIndexPath,
+                                                        at: .none,
+                                                        animated: false)
+                        
+                    }, completion: { [weak self] (_) in
+                        
+                        
+                        if let addCell = self?.listTableView.cellForRow(at: newIndexPath) as? ListTableViewCell {
+                            addCell.textView.becomeFirstResponder()
                             
+                            //ensure visible, or it cannot work when adding 7~12
                             self?.listTableView.scrollToRow(at: newIndexPath,
-                                                           at: .none,
-                                                           animated: false)
-                            
-                        }, completion: { [weak self] (_) in
-                            
-                            
-                            if let addCell = self?.listTableView.cellForRow(at: newIndexPath) as? ListTableViewCell {
-                                addCell.textView.becomeFirstResponder()
-                                
-                                //ensure visible, or it cannot work when adding 7~12
-                                self?.listTableView.scrollToRow(at: newIndexPath,
-                                                               at: .none,
-                                                               animated: false)
-                            }
-                            
-                        })
+                                                            at: .none,
+                                                            animated: false)
+                        }
+                        
+                    })
                     
                     
                 })
