@@ -141,7 +141,6 @@
 				F4FA6AA61E7FB0F100C2E46E /* Info.plist */,
 				F43B3FCC1EBB323F008577EF /* BreathEveryday.entitlements */,
 				F4B2A57E1E88EE4200CAECEE /* CoreDataModel.xcdatamodeld */,
-				F431AD371F56AA6B005390D9 /* Extensions */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -160,6 +159,7 @@
 		F431AD381F56ABCA005390D9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F431AD371F56AA6B005390D9 /* Extensions */,
 				F4D55CB61EADB91600EE80C4 /* Home Page */,
 				F4D55CB71EADB93500EE80C4 /* List Page */,
 				F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */,

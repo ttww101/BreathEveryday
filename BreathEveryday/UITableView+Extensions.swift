@@ -79,7 +79,7 @@ extension UITableView {
             if let cell = self.cellForRow(at: indexPath) {
                 cell.layer.transform = CATransform3DMakeScale(0.1,0.1,1)
                 UIView.animate(withDuration: 0.25, animations: {
-                    cell.layer.transform = CATransform3DMakeScale(1.3,1.3,1)
+                    cell.layer.transform = CATransform3DMakeScale(1.1,1.1,1)
                 },completion: { finished in
                     UIView.animate(withDuration: 0.1, animations: {
                         cell.layer.transform = CATransform3DMakeScale(1,1,1)

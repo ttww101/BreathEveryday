@@ -505,25 +505,25 @@ class HomeViewController: UIViewController {
     }
     
     @objc func displayQuoteSetup() {
-//        let alert = UIAlertController(title: "", message: "Coming Soon...", preferredStyle: UIAlertControllerStyle.alert)
-//        let alertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (UIAlertAction) in
-//            self.skView.removeFromSuperview()
-//        }
-//        alert.addAction(alertAction)
-//        self.present(alert, animated: true, completion: nil)
-        let offset:CGFloat = 50;
-        let skViewFrame = CGRect(x: self.view.frame.minX - offset,
-                                 y: self.view.frame.minY,
-                                 width: self.view.frame.width + offset*2,
-                                 height: self.view.frame.height)
-        skView = SKView(frame: skViewFrame)
-        skView.backgroundColor = .clear
-        self.view.addSubview(skView)
-        let scene = SpringScene(size: skView.bounds.size)
-        skView.ignoresSiblingOrder = true
-        scene.scaleMode = .resizeFill
-        skView.presentScene(scene)
-        exitSettingMode()
+        let alert = UIAlertController(title: "", message: "Coming Soon...", preferredStyle: UIAlertControllerStyle.alert)
+        let alertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (UIAlertAction) in
+            self.skView.removeFromSuperview()
+        }
+        alert.addAction(alertAction)
+        self.present(alert, animated: true, completion: nil)
+//        let offset:CGFloat = 50;
+//        let skViewFrame = CGRect(x: self.view.frame.minX - offset,
+//                                 y: self.view.frame.minY,
+//                                 width: self.view.frame.width + offset*2,
+//                                 height: self.view.frame.height)
+//        skView = SKView(frame: skViewFrame)
+//        skView.backgroundColor = .clear
+//        self.view.addSubview(skView)
+//        let scene = SpringScene(size: skView.bounds.size)
+//        skView.ignoresSiblingOrder = true
+//        scene.scaleMode = .resizeFill
+//        skView.presentScene(scene)
+//        exitSettingMode()
     }
     
     @objc func exitSettingMode() {
