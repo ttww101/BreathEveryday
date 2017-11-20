@@ -51,7 +51,7 @@ class EventManager {
             event.note = note
         }
         
-        event.createdDate = NSDate()
+        event.createdDate = NSDate() as Date
         
         event.category = category
         
@@ -122,7 +122,7 @@ class EventManager {
             }
             
             if let alarmDate = alarmDate {
-                eventMO.alarmStartTime = alarmDate
+                eventMO.alarmStartTime = alarmDate as Date
             }
             
             if let isSetNotification = isSetNotification {
@@ -163,7 +163,7 @@ class EventManager {
             }
             
             if let alarmDate = alarmDate {
-                event.alarmStartTime = alarmDate
+                event.alarmStartTime = alarmDate as Date
             }
             
             if let alarmIntervalOffset = alarmIntervalOffset {
@@ -214,8 +214,6 @@ class EventManager {
                 moc.delete(result)
                 
             }
-            
-            appDelegate.saveContext()
             
         } catch {
             

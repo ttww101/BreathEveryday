@@ -31,7 +31,7 @@ class SeleteImageCollectionViewController: UICollectionViewController {
         self.view.addGestureRecognizer(dismissGesture)
     }
     
-    func swipeDown() {
+    @objc func swipeDown() {
         dismiss(animated: true, completion: nil)
     }
     

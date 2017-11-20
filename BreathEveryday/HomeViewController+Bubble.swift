@@ -35,7 +35,7 @@ extension HomeViewController {
         return button
     }
     
-    func dragBubble(gesture: UIPanGestureRecognizer) {
+    @objc func dragBubble(gesture: UIPanGestureRecognizer) {
         
         let target = gesture.view!
         var isDeleteSuccess = false

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C78B464447E5B301489AF85C /* Pods_BreathEveryday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035937D110347F617E50F288 /* Pods_BreathEveryday.framework */; };
+		F402D6AD1FA5F499008A53FD /* SpringScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402D6AC1FA5F499008A53FD /* SpringScene.swift */; };
 		F408C5D71EA51B3B00F29A67 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */; };
 		F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */; };
 		F430B4C51F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4C31F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift */; };
@@ -22,8 +23,11 @@
 		F43B3FEC1EBC1E00008577EF /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */; };
 		F43B3FEE1EBC1EDA008577EF /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */; };
 		F43B3FF21EBC321F008577EF /* HomeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FF11EBC321F008577EF /* HomeItemView.swift */; };
+		F483B8B61F8E63E700ED5E8E /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483B8B51F8E63E700ED5E8E /* ListViewModel.swift */; };
+		F4916C5E1F9B1A0D00D99938 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4916C5D1F9B1A0D00D99938 /* TestViewController.swift */; };
 		F49B09251EBB14900002297F /* Background Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49B09241EBB14900002297F /* Background Image.xcassets */; };
 		F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A21F981E9C6E4200C24517 /* EventManager.swift */; };
+		F4A332E51FB49F3700F30816 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A332E41FB49F3700F30816 /* UIImage+Extensions.swift */; };
 		F4A414431F7D307C00B066A4 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A414421F7D307C00B066A4 /* UITableView+Extensions.swift */; };
 		F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4B2A57E1E88EE4200CAECEE /* CoreDataModel.xcdatamodeld */; };
 		F4D0A0B21F6AD71500DD4693 /* SelectImageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D0A0B01F6AD71500DD4693 /* SelectImageCollectionViewController.swift */; };
@@ -43,13 +47,14 @@
 		F4FA6AAF1E7FCD0D00C2E46E /* IdentifierModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */; };
 		F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AB01E7FD3DD00C2E46E /* ListTableViewCell.swift */; };
 		F4FA6AB31E7FD3DD00C2E46E /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */; };
-		F4FA6AB71E7FD8F100C2E46E /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AB61E7FD8F100C2E46E /* NoteViewController.swift */; };
+		F4FA6AB71E7FD8F100C2E46E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		035937D110347F617E50F288 /* Pods_BreathEveryday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreathEveryday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DDEAA6C3601664D4687571 /* Pods-BreathEveryday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreathEveryday.release.xcconfig"; path = "Pods/Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.release.xcconfig"; sourceTree = "<group>"; };
 		6AF2EE35D2892DEE60B9D142 /* Pods-BreathEveryday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreathEveryday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.debug.xcconfig"; sourceTree = "<group>"; };
+		F402D6AC1FA5F499008A53FD /* SpringScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringScene.swift; sourceTree = "<group>"; };
 		F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
 		F430B4C31F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -65,8 +70,11 @@
 		F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		F43B3FF11EBC321F008577EF /* HomeItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeItemView.swift; sourceTree = "<group>"; };
+		F483B8B51F8E63E700ED5E8E /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		F4916C5D1F9B1A0D00D99938 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		F49B09241EBB14900002297F /* Background Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Background Image.xcassets"; sourceTree = "<group>"; };
 		F4A21F981E9C6E4200C24517 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		F4A332E41FB49F3700F30816 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		F4A414421F7D307C00B066A4 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		F4B2A57F1E88EE4200CAECEE /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		F4D0A0B01F6AD71500DD4693 /* SelectImageCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectImageCollectionViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +96,7 @@
 		F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifierModel.swift; sourceTree = "<group>"; };
 		F4FA6AB01E7FD3DD00C2E46E /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
-		F4FA6AB61E7FD8F100C2E46E /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +133,7 @@
 			children = (
 				F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */,
 				F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */,
+				F4916C5D1F9B1A0D00D99938 /* TestViewController.swift */,
 				F4FA6A9E1E7FB0F100C2E46E /* Main.storyboard */,
 				F4FA6AA31E7FB0F100C2E46E /* LaunchScreen.storyboard */,
 				F4FA6AA11E7FB0F100C2E46E /* Assets.xcassets */,
@@ -132,7 +141,6 @@
 				F4FA6AA61E7FB0F100C2E46E /* Info.plist */,
 				F43B3FCC1EBB323F008577EF /* BreathEveryday.entitlements */,
 				F4B2A57E1E88EE4200CAECEE /* CoreDataModel.xcdatamodeld */,
-				F431AD371F56AA6B005390D9 /* Extensions */,
 			);
 			name = General;
 			sourceTree = "<group>";
@@ -143,6 +151,7 @@
 				F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */,
 				F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */,
 				F4A414421F7D307C00B066A4 /* UITableView+Extensions.swift */,
+				F4A332E41FB49F3700F30816 /* UIImage+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -150,9 +159,10 @@
 		F431AD381F56ABCA005390D9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F431AD371F56AA6B005390D9 /* Extensions */,
 				F4D55CB61EADB91600EE80C4 /* Home Page */,
 				F4D55CB71EADB93500EE80C4 /* List Page */,
-				F4FA6AB61E7FD8F100C2E46E /* NoteViewController.swift */,
+				F4FA6AB61E7FD8F100C2E46E /* DetailViewController.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -182,8 +192,12 @@
 			isa = PBXGroup;
 			children = (
 				F4FA6AAC1E7FC24700C2E46E /* ListViewController.swift */,
+				F483B8B51F8E63E700ED5E8E /* ListViewModel.swift */,
+				F4A21F981E9C6E4200C24517 /* EventManager.swift */,
+				F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */,
 				F4E301491E9DC86400846EBF /* ListCell */,
 				F4E3014A1E9E166500846EBF /* JTCalendar */,
+				F402D6AC1FA5F499008A53FD /* SpringScene.swift */,
 			);
 			name = "List Page";
 			sourceTree = "<group>";
@@ -205,8 +219,6 @@
 				F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */,
 				F4E301471E9DC7E500846EBF /* KeyboardButtonModel.swift */,
 				F4F4D6701E828EAC00D7EFBA /* KeyboardBarButton.xib */,
-				F4A21F981E9C6E4200C24517 /* EventManager.swift */,
-				F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */,
 			);
 			name = ListCell;
 			sourceTree = "<group>";
@@ -278,7 +290,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = Bomi;
 				TargetAttributes = {
 					F4FA6A961E7FB0F100C2E46E = {
@@ -399,6 +411,7 @@
 			files = (
 				F431AD3A1F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift in Sources */,
 				F4E301501E9E1B1500846EBF /* CalendarViewController.swift in Sources */,
+				F483B8B61F8E63E700ED5E8E /* ListViewModel.swift in Sources */,
 				F4FA6A9D1E7FB0F100C2E46E /* HomeViewController.swift in Sources */,
 				F430B4D41F794844003E1ADB /* HomeViewController+TableView.swift in Sources */,
 				F4E301481E9DC7E500846EBF /* KeyboardButtonModel.swift in Sources */,
@@ -413,14 +426,17 @@
 				F4D6BD961EA4743500A93E46 /* CategoryCollectionViewCell.swift in Sources */,
 				F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */,
 				F4E3014E1E9E17CC00846EBF /* CalendarCell.swift in Sources */,
+				F402D6AD1FA5F499008A53FD /* SpringScene.swift in Sources */,
 				F430B4CC1F79267B003E1ADB /* HomeViewController+Bubble.swift in Sources */,
 				F430B4C51F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift in Sources */,
 				F4D6BD991EA493D600A93E46 /* HomeViewModel.swift in Sources */,
 				F43B3FEC1EBC1E00008577EF /* UIColor+Extensions.swift in Sources */,
-				F4FA6AB71E7FD8F100C2E46E /* NoteViewController.swift in Sources */,
+				F4FA6AB71E7FD8F100C2E46E /* DetailViewController.swift in Sources */,
 				F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */,
+				F4A332E51FB49F3700F30816 /* UIImage+Extensions.swift in Sources */,
 				F431AD3C1F56CB32005390D9 /* HomeViewController+ColorPicker.swift in Sources */,
 				F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */,
+				F4916C5E1F9B1A0D00D99938 /* TestViewController.swift in Sources */,
 				F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */,
 				F43B3FEE1EBC1EDA008577EF /* UIButton+Extensions.swift in Sources */,
 				F43B3FF21EBC321F008577EF /* HomeItemView.swift in Sources */,
@@ -458,7 +474,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -466,7 +484,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -489,7 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -508,7 +530,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -516,7 +540,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -533,7 +561,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -553,9 +581,9 @@
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeC.BreathEveryday;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -569,9 +597,9 @@
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeC.BreathEveryday;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
