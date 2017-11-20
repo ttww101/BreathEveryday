@@ -6,7 +6,6 @@
 //  Copyright © 2017年 Bomi. All rights reserved.
 //
 
-
 import Photos
 import Fusuma
 import TOCropViewController
@@ -44,7 +43,7 @@ extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TO
             }
             let user = results[0]
             if let imageData = UIImageJPEGRepresentation(image, 1) {
-                user.backgroundImage = imageData as NSData
+                user.backgroundImage = imageData
             }
             appDelegate.saveContext()
             

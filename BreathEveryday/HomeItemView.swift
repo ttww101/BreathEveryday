@@ -23,7 +23,7 @@ class QuoteView: UIView {
 class QuoteLabel: UILabel {
     
     override init(frame: CGRect) {
-            super.init(frame: frame)
+        super.init(frame: frame)
         
         self.numberOfLines = 0
         self.font = UIFont(name: "Menlo", size: 16)

@@ -12,6 +12,7 @@ import Spring
 import DynamicColor
 import Crashlytics
 import AnimatedCollectionViewLayout
+import SpriteKit
 
 class HomeViewController: UIViewController {
     
@@ -25,6 +26,7 @@ class HomeViewController: UIViewController {
     var quoteViewBottomConstraint: NSLayoutConstraint?
     let quoteLbl = QuoteLabel()
     let blackTransparentView = SpringView()
+    var skView = SKView()
     
     @IBOutlet weak var categorysCollectionView: UICollectionView!
     var categoryScrollViewConstraint: NSLayoutConstraint?
@@ -308,13 +310,13 @@ class HomeViewController: UIViewController {
         if let entityDescription = NSEntityDescription.entity(forEntityName: "UserMO", in: moc) {
             let user = UserMO(entity: entityDescription, insertInto: moc)
             if let imageData = UIImageJPEGRepresentation(#imageLiteral(resourceName: "BK-beach sunrise"), 1) {
-                user.backgroundImage = imageData as NSData
+                user.backgroundImage = imageData 
             }
             appDelegate.saveContext()
         }
     }
     
-    func btnMenuBtn() {
+    @objc func btnMenuBtn() {
         
         if !menuButton.isSelected {
             menuButton.rotate = 720
@@ -372,13 +374,12 @@ class HomeViewController: UIViewController {
         
     }
     
-    func btnSettingBtn() {
-        
+    @objc func btnSettingBtn() {
         //dismiss menu button
         self.menuButton.isSelected = false
         self.settingButton.isHidden = true
         self.infoBtton.isHidden = true
-        
+
         //blackTransparentView show up
         blackTransparentView.backgroundColor = .black
         view.addSubview(blackTransparentView)
@@ -389,21 +390,21 @@ class HomeViewController: UIViewController {
         blackTransparentView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         blackTransparentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         blackTransparentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
-        
+
         blackTransparentView.animation = "fadeIn"
         blackTransparentView.duration = 0.5
         blackTransparentView.animateNext {
-            
+
             self.exitSettingButton.isHidden = false
             self.view.bringSubview(toFront: self.exitSettingButton)
             self.view.bringSubview(toFront: self.settingButtonTableView)
-            self.settingButtonTableView.shrinkAllcell()
+            self.settingButtonTableView.cellshrinkAll(duration: 0)
             self.settingButtonTableViewConstraint?.constant = 0
             self.view.layoutIfNeeded()
-            self.settingButtonTableView.emergeOrderly(from: 0)
+            self.settingButtonTableView.cellEmergeOrderly(from: 0)
         }
         blackTransparentView.alpha = 0.8
-        
+
         if quoteButton.isSelected {
             btnQuoteBtn(sender: quoteButton)
         }
@@ -455,7 +456,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func displayCategorySetup(sender: UIButton) {
+    @objc func displayCategorySetup(sender: UIButton) {
         switchMode(to: .setupCategory)
         
         self.blackTransparentView.alpha = 0.6
@@ -495,7 +496,7 @@ class HomeViewController: UIViewController {
         })
     }
     
-    func displayBackgroundSetup() {
+    @objc func displayBackgroundSetup() {
         self.view.bringSubview(toFront: self.backgroundImageCollectionView)
         self.view.bringSubview(toFront: self.exitSettingButton)
         self.backgroundImageCollectionView.isHidden = false
@@ -503,13 +504,29 @@ class HomeViewController: UIViewController {
         self.settingButtonTableViewConstraint?.constant = 1000
     }
     
-    func displayQuoteSetup() {
-        let myAlert = UIAlertController(title: "", message: "Coming Soon...", preferredStyle: UIAlertControllerStyle.alert)
-        myAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-        self.present(myAlert, animated: true, completion: nil)
+    @objc func displayQuoteSetup() {
+        let alert = UIAlertController(title: "", message: "Coming Soon...", preferredStyle: UIAlertControllerStyle.alert)
+        let alertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (UIAlertAction) in
+            self.skView.removeFromSuperview()
+        }
+        alert.addAction(alertAction)
+        self.present(alert, animated: true, completion: nil)
+//        let offset:CGFloat = 50;
+//        let skViewFrame = CGRect(x: self.view.frame.minX - offset,
+//                                 y: self.view.frame.minY,
+//                                 width: self.view.frame.width + offset*2,
+//                                 height: self.view.frame.height)
+//        skView = SKView(frame: skViewFrame)
+//        skView.backgroundColor = .clear
+//        self.view.addSubview(skView)
+//        let scene = SpringScene(size: skView.bounds.size)
+//        skView.ignoresSiblingOrder = true
+//        scene.scaleMode = .resizeFill
+//        skView.presentScene(scene)
+//        exitSettingMode()
     }
     
-    func exitSettingMode() {
+    @objc func exitSettingMode() {
         
         //calculate count
         var count = 0
@@ -599,7 +616,7 @@ class HomeViewController: UIViewController {
                 cMO.posY = Float(frame.minY)
                 cMO.width = Float(frame.width)
                 cMO.height = Float(frame.height)
-                cMO.color = category.color.encode() as NSData
+                cMO.color = category.color.encode()
             }
         }
         
@@ -610,7 +627,7 @@ class HomeViewController: UIViewController {
         
     }
     
-    func btnInfoBtn() {
+    @objc func btnInfoBtn() {
         
         self.menuButton.isSelected = false
         self.settingButton.isHidden = true
@@ -669,13 +686,13 @@ class HomeViewController: UIViewController {
         blackTransparentView.alpha = 0.6
     }
     
-    func quitTutorial() {
+    @objc func quitTutorial() {
         tutorialScrollView.removeFromSuperview()
         tipLabel.removeGestureRecognizer(gestureQuitTutorial!)
         exitSettingMode()
     }
     
-    func btnQuoteBtn(sender: UIButton) {
+    @objc func btnQuoteBtn(sender: UIButton) {
         
         if !sender.isSelected {
             
@@ -703,8 +720,8 @@ class HomeViewController: UIViewController {
             
             UIView.animate(withDuration: 0.3, animations: {
                 animateView.layer.frame = self.quoteView.frame
-            }, completion: { (_) in
-                self.quoteView.isHidden = false
+            }, completion: { [weak self] (_) in
+                self?.quoteView.isHidden = false
                 animateView.removeFromSuperview()
                 sender.isEnabled = true
             })
@@ -714,7 +731,7 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func dismissQuote() {
+    @objc func dismissQuote() {
         //state
         quoteView.isHidden = true
         quoteButton.isEnabled = false
@@ -728,17 +745,17 @@ class HomeViewController: UIViewController {
         view.addSubview(animateView)
         UIView.animate(withDuration: 0.2, animations: {
             animateView.layer.frame = CGRect(x: self.quoteView.frame.minX, y: self.quoteView.frame.minY, width: 0, height: 0)
-        }, completion: { (_) in
-            self.quoteLbl.removeFromSuperview()
+        }, completion: { [weak self] (_) in
+            self?.quoteLbl.removeFromSuperview()
             animateView.removeFromSuperview()
-            self.quoteButton.isEnabled = true
-            self.quoteButton.isSelected = false
+            self?.quoteButton.isEnabled = true
+            self?.quoteButton.isSelected = false
         })
     }
     
-    func displayListView(sender: UIButton) {
+    @objc func displayListView(sender: UIButton) {
         
-        if let navigationVC = storyboard?.instantiateViewController(withIdentifier: "HomeNavigationController") as? UINavigationController {
+        if let navigationVC = storyboard?.instantiateViewController(withIdentifier: "ListNavigationController") as? UINavigationController {
             
             //save frame
             for category in categoryDataArr {

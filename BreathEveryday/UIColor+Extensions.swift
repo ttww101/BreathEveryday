@@ -21,43 +21,43 @@ extension UIColor {
     class func randomColor(from beginNum: Int, to endNum: Int)-> UIColor {
         
         let range = UInt32(endNum - beginNum)
-        let red = Float(arc4random_uniform(range)) + Float(beginNum)
-        let green = Float(arc4random_uniform(range)) + Float(beginNum)
-        let blue = Float(arc4random_uniform(range)) + Float(beginNum)
-        let color = UIColor(colorLiteralRed: red/255, green: green/255, blue: blue/255, alpha: 1)
+        let red = CGFloat(arc4random_uniform(range)) + CGFloat(beginNum)
+        let green = CGFloat(arc4random_uniform(range)) + CGFloat(beginNum)
+        let blue = CGFloat(arc4random_uniform(range)) + CGFloat(beginNum)
+        let color = UIColor(displayP3Red: red/255, green: green/255, blue: blue/255, alpha: 1)
         
         return color
     }
     
     class func darkPurple() -> UIColor {
-        return UIColor(colorLiteralRed: 61/255,
+        return UIColor(displayP3Red: 61/255,
                        green: 57/255,
                        blue: 66/255,
                        alpha: 1)
     }
     
     class func blueMiddleGray() -> UIColor {
-        return UIColor(colorLiteralRed: 163/255, green: 194/255, blue: 186/255, alpha: 1.0)
+        return UIColor(displayP3Red: 163/255, green: 194/255, blue: 186/255, alpha: 1.0)
     }
     
     class func blueMiddleGrayLight() -> UIColor {
-        return UIColor(colorLiteralRed: 192/255, green: 214/255, blue: 204/255, alpha: 1.0)
+        return UIColor(displayP3Red: 192/255, green: 214/255, blue: 204/255, alpha: 1.0)
     }
     
     class func middleGray() -> UIColor {
-        return UIColor(colorLiteralRed: 161/255, green: 177/255, blue: 166/255, alpha: 1.0)
+        return UIColor(displayP3Red: 161/255, green: 177/255, blue: 166/255, alpha: 1.0)
     }
     
     class func greenAirwaves() -> UIColor {
-        return UIColor(colorLiteralRed: 111/255, green: 191/255, blue: 152/255, alpha: 1.0)
+        return UIColor(displayP3Red: 111/255, green: 191/255, blue: 152/255, alpha: 1.0)
     }
     
     class func blackTransparent() -> UIColor {
-        return UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.95)
+        return UIColor(displayP3Red: 0, green: 0, blue: 0, alpha: 0.95)
     }
     
     class func darkGreyTransparent() -> UIColor {
-        return UIColor(colorLiteralRed: 25/255, green: 25/255, blue: 25/255, alpha: 0.98)
+        return UIColor(displayP3Red: 25/255, green: 25/255, blue: 25/255, alpha: 0.98)
     }
     
     class func arrayOfCategoriesSetup() -> [UIColor] {
