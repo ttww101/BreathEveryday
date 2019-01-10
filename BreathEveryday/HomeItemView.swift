@@ -46,7 +46,7 @@ class CategoryDoneButton: UIButton {
                          selectedImage: nil,
                          tintColor: UIColor.greenAirwaves())
         self.setTitleColor(UIColor.greenAirwaves(), for: .normal)
-        self.imageEdgeInsets = UIEdgeInsetsMake(15, 15, 0, 15)
+        self.imageEdgeInsets = UIEdgeInsets(top: 15, left: 15, bottom: 0, right: 15)
     }
     
 }

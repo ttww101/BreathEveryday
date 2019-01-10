@@ -13,7 +13,7 @@ import AnimatedCollectionViewLayout
 class SeleteImageCollectionViewController: UICollectionViewController {
     
     var animator: (LayoutAttributesAnimator, Bool, Int, Int) = (LinearCardAttributesAnimator(), false, 1, 1)
-    var direction: UICollectionViewScrollDirection = .vertical
+    var direction: UICollectionView.ScrollDirection = .vertical
     let cellIdentifier = "BackgroundImageCollectionViewCell"
     
     override func viewDidLoad() {

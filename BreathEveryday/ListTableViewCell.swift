@@ -150,18 +150,18 @@ extension ListTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
         if pickerView == alarmPicker {
             
             if component == 0 {
-                let attributedString = NSAttributedString(string: arrHours[row], attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+                let attributedString = NSAttributedString(string: arrHours[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
                 return attributedString
             } else if component == 2 {
-                let attributedString = NSAttributedString(string: arrMinutes[row], attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+                let attributedString = NSAttributedString(string: arrMinutes[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
                 return attributedString
             } else {
-                return NSAttributedString(string: ":", attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+                return NSAttributedString(string: ":", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
             }
             
         } else {
             
-            return NSAttributedString(string: arrAlertTime[row], attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
+            return NSAttributedString(string: arrAlertTime[row], attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
             
         }
     }
@@ -426,9 +426,9 @@ extension ListTableViewCell {
         starBtn = CustomButton.star.button
         starBtn.addTarget(self, action: #selector(btnStarToolBar), for: .touchUpInside)
         adjustFrame(button: starBtn, width: UIScreen.main.bounds.width/6, height: starBtn.frame.height, image: nil)
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(dismissKeyboard))
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(dismissKeyboard))
         
         toolBar.setItems([UIBarButtonItem(customView: starBtn),
                           flexibleSpace,
