@@ -1,50 +1,96 @@
 PODS:
-  - AnimatedCollectionViewLayout (0.3.0)
-  - Crashlytics (3.8.4):
-    - Fabric (~> 1.6.3)
-  - DynamicColor (3.3)
-  - Fabric (1.6.11)
-  - Fusuma (1.1.0)
-  - IGColorPicker (0.2.1):
-    - M13Checkbox (~> 2.2.0)
-  - JTAppleCalendar (7.0.4)
-  - M13Checkbox (2.2.6)
-  - Spring (1.0.3)
-  - TOCropViewController (2.0.12)
+  - AnimatedCollectionViewLayout (0.5.0)
+  - AVOSCloud (11.4.9)
+  - AVOSCloudIM (11.4.9):
+    - AVOSCloud (= 11.4.9)
+    - AVOSCloudIM/_ARC (= 11.4.9)
+    - AVOSCloudIM/_NOARC (= 11.4.9)
+  - AVOSCloudIM/_ARC (11.4.9):
+    - AVOSCloud (= 11.4.9)
+    - AVOSCloudIM/_NOARC (= 11.4.9)
+  - AVOSCloudIM/_NOARC (11.4.9):
+    - AVOSCloud (= 11.4.9)
+  - Crashlytics (3.12.0):
+    - Fabric (~> 1.9.0)
+  - DynamicColor (4.0.3)
+  - Fabric (1.9.0)
+  - Fusuma (1.3.1)
+  - IGColorPicker (0.4.2):
+    - M13Checkbox (~> 3.2.0)
+  - JAnalytics (1.2.1):
+    - JCore (~> 1.2.0)
+  - JCore (1.2.6)
+  - JPush (3.1.2):
+    - JCore (~> 1.2.6)
+  - JTAppleCalendar (7.1.6)
+  - M13Checkbox (3.2.2)
+  - Spring (1.0.6)
+  - TOCropViewController (2.4.0)
 
 DEPENDENCIES:
   - AnimatedCollectionViewLayout
+  - AVOSCloud
+  - AVOSCloudIM
   - Crashlytics
-  - DynamicColor (~> 3.3)
+  - DynamicColor
   - Fabric
-  - Fusuma (~> 1.1.0)
-  - IGColorPicker (~> 0.2.1)
-  - JTAppleCalendar (~> 7.0.1)
-  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
+  - Fusuma
+  - IGColorPicker
+  - JAnalytics
+  - JPush
+  - JTAppleCalendar
+  - M13Checkbox (from `https://github.com/Marxon13/M13Checkbox.git`, branch `swift_4_2`)
+  - Spring (from `https://github.com/MengTo/Spring.git`)
   - TOCropViewController
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AnimatedCollectionViewLayout
+    - AVOSCloud
+    - AVOSCloudIM
+    - Crashlytics
+    - DynamicColor
+    - Fabric
+    - Fusuma
+    - IGColorPicker
+    - JAnalytics
+    - JCore
+    - JPush
+    - JTAppleCalendar
+    - TOCropViewController
+
 EXTERNAL SOURCES:
+  M13Checkbox:
+    :branch: swift_4_2
+    :git: https://github.com/Marxon13/M13Checkbox.git
   Spring:
-    :branch: swift3
     :git: https://github.com/MengTo/Spring.git
 
 CHECKOUT OPTIONS:
+  M13Checkbox:
+    :commit: c26efb918e40ae4662dc6659b60f7c5493e94807
+    :git: https://github.com/Marxon13/M13Checkbox.git
   Spring:
-    :commit: 8201b5c93bd7ebdf4cd18160bcde1e6e88c2be64
+    :commit: fafd0b2e8d4d46405bd86fa7ba84bb7f73a20b13
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
-  AnimatedCollectionViewLayout: 504b992a4258eb39d2dd2b2b48e84b4b95860fd7
-  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
-  DynamicColor: 3cdaa1e01c16e93ba744e0630f768373e0fc7a7d
-  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  Fusuma: 087dcf57cd0e8712d357dcf14559927da369642c
-  IGColorPicker: a6ed1bf42cccf9e260e24d33faec5263310b4cef
-  JTAppleCalendar: 6def48ecd0daae1d5baaa45e813124c2a20b184d
-  M13Checkbox: 9989b7e275f18493bd33b960dc68374c47d0027b
-  Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
-  TOCropViewController: e6e31b38d785a901e5651a1e7fff71bcda6c5214
+  AnimatedCollectionViewLayout: 8b660a623d85001f76f00f0d2302a7b043c72bda
+  AVOSCloud: 1ad969db6e24c41ae1788d68698255d853883069
+  AVOSCloudIM: 712144be9ee5428c0bf895cf65954a0791b8364b
+  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  DynamicColor: bf19b33fe404c59a68e64af95cc6b017346e7e75
+  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  Fusuma: 2c39605534fa999d1d54c30a575272b31326f416
+  IGColorPicker: c6d43aa386a9fdc8f958f3bd4e5ab85905242c8a
+  JAnalytics: a65f716b383ad470aacd63a7af1984746cc3e06f
+  JCore: cae516dd2bf1a73b578ce6e1065abd49e709e0f7
+  JPush: d0cead70ba223a6a3b52749899ebda830dfbc49a
+  JTAppleCalendar: abb30678f42a4ef8a340a932b1dcb8c85a33dac2
+  M13Checkbox: 82182615a76646475b451ebe448a998f77f8cc6e
+  Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
+  TOCropViewController: 368d8df3ea43b62c3dc5a61f11b9048274d240bd
 
-PODFILE CHECKSUM: 4d16c31ee77c0259d2df8f0ee0d2729661384975
+PODFILE CHECKSUM: 987cf531d2e3d4e0c881f484348c3ff58c2f9e91
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.3

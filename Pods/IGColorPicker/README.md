@@ -1,12 +1,14 @@
-# IGColorPicker
+![alt text](https://github.com/iGenius-Srl/IGColorPicker/blob/master/Resources/Logo.png "IGColorPicker")
 
-<img src="https://img.shields.io/badge/language-swift%203-orange.svg" alt="Language: Swift">
-<img src="https://img.shields.io/badge/license-MIT-lightgrey.svg" alt="License: MIT">
-<img src="https://img.shields.io/badge/platform-iOS-000000.svg" alt="Platform: iOS">
+<p align="center">
+<img src="https://img.shields.io/badge/language-swift%204-orange.svg" alt="Language: Swift 4">
+<img src="https://img.shields.io/badge/license-MIT-000000.svg" alt="License: MIT">
+<img src="https://img.shields.io/badge/platform-iOS-blue.svg" alt="Platform: iOS">
+</p>
 
-IGColorPicker is a fantastic color picker 🎨 written in Swift. Developers can use our color picker just like we do in [crystal.io](https://crystal.io) or they can customize it with all the available features .
+IGColorPicker is a fantastic color picker 🎨 written in Swift. Developers can use our color picker just like we do in [crystal.io](https://crystal.io) or they can customize it with all the available features.
 
-![alt text](/Resources/wall-examples.png "Examples")
+![alt text](https://github.com/iGenius-Srl/IGColorPicker/blob/master/Resources/wall-examples.png "Examples")
 
 ## Table of Contents
 * [**Documentation**](#documentation)
@@ -29,7 +31,7 @@ IGColorPicker is a fantastic color picker 🎨 written in Swift. Developers can 
 ### Colors
 The color picker comes with our set of colors:
 
-![alt text](/Resources/Palette.png "Color Palette")
+![alt text](https://github.com/iGenius-Srl/IGColorPicker/blob/master/Resources/Palette.png "Color Palette")
 
 But if you don't like them, you are free to use your own colors 🖍:
 ```swift
@@ -42,20 +44,20 @@ colorPickerView.colors = [UIColor.red, UIColor.yellow, UIColor.green, UIColor.bl
 * **style** ```enum```: look and feel of color picker cells
   * **circle**
 
-    ![alt text](/Resources/Circle.png "Circle style")
+    ![alt text](https://github.com/iGenius-Srl/IGColorPicker/blob/master/Resources/Circle.png "Circle style")
 
   * **square**
 
-    ![alt text](/Resources/Square.png "Square style")
+    ![alt text](https://github.com/iGenius-Srl/IGColorPicker/blob/master/Resources/Square.png "Square style")
 
 * **selectionStyle** ```enum```: style applied when a color is selected
   * **check**
 
-    ![alt text](/Resources/Check.png "Check selection style")
+    ![alt text](https://github.com/iGenius-Srl/IGColorPicker/blob/master/Resources/Check.png "Check selection style")
 
   * **none**
 
-    ![alt text](/Resources/None.png "None selection style")
+    ![alt text](https://github.com/iGenius-Srl/IGColorPicker/blob/master/Resources/None.png "None selection style")
 
 ### Other features
 * **preselectedIndex** ```Int?```: the index of the preselected color in the color picker
@@ -98,7 +100,7 @@ class ViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    colorPickerView = ColorPickerView(frame: CGRect(x: 0.0, y: 0.0, width: widthSize, height: heightSize)
+    colorPickerView = ColorPickerView(frame: CGRect(x: 0.0, y: 0.0, width: widthSize, height: heightSize))
     view.addSubview(colorPickerView)
   }
 
@@ -139,7 +141,7 @@ Every developer can customize the color picker layout in the way to fit with the
 colorPickerView.layoutDelegate = self
 
 // MARK: - ColorPickerViewDelegateFlowLayout
-extension ViewController: ColorPickerViewDelegate {
+extension ViewController: ColorPickerViewDelegateFlowLayout {
 
   // ------------------------------------------------------------------
   // All these methods are optionals, your are not to implement them 🖖🏻
@@ -169,22 +171,24 @@ extension ViewController: ColorPickerViewDelegate {
 ## Project Details
 
 ### Requirements
-* Swift 3.0
-* Xcode 8.0+
-* iOS 8.0+
+* Swift 4.1
+* Xcode 9.0+
+* iOS 8.3+
 
 ### Contributing
 Feel free to collaborate with ideas 💭 , issues ⁉️ and/or pull requests 🔃.
 
+Here is a list of ToDo about bug fix and new features you can work on:
+* Custom check size
+* Support to custom view in `ColorPickerViewSelectStyle`
+* Support custom style in `ColorPickerViewStyle`
+* Substitute `M13Checkbox` with another framework. Or just create a custom checkbox with animation
+
 **P.S.** If you use IGColorPicker in your app we would love to hear about it! 😉
-
-### Author
-
-* Andrea Antonioni ([@andrea_anto97](https://twitter.com/andrea_anto97)), antonioni@igenius.net 
 
 ### License
 
-> Copyright (c) 2017 iGenius Srl
+> Copyright (c) 2018 iGenius Srl
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal
