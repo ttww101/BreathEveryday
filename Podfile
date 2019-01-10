@@ -15,6 +15,10 @@ target 'BreathEveryday' do
   pod 'M13Checkbox', :git => 'https://github.com/Marxon13/M13Checkbox.git', :branch => 'swift_4_2'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'AVOSCloud'
+  pod 'AVOSCloudIM'
+  pod 'JPush'
+  pod 'JAnalytics'
 
   # Pods for BreathEveryday
 end
