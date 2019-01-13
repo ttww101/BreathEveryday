@@ -21,6 +21,7 @@
 		945D080421EB57B5001E3F2D /* ADWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 945D07F721EB57B4001E3F2D /* ADWebViewController.m */; };
 		945D080521EB57B5001E3F2D /* bb.png in Resources */ = {isa = PBXBuildFile; fileRef = 945D07F821EB57B4001E3F2D /* bb.png */; };
 		945D080621EB57B5001E3F2D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 945D07F921EB57B4001E3F2D /* Reachability.m */; };
+		945D080921EB9D2E001E3F2D /* JPushKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D080821EB9D2E001E3F2D /* JPushKeys.swift */; };
 		C78B464447E5B301489AF85C /* Pods_BreathEveryday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035937D110347F617E50F288 /* Pods_BreathEveryday.framework */; };
 		F402D6AD1FA5F499008A53FD /* SpringScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402D6AC1FA5F499008A53FD /* SpringScene.swift */; };
 		F408C5D71EA51B3B00F29A67 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */; };
@@ -86,6 +87,7 @@
 		945D07F821EB57B4001E3F2D /* bb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bb.png; sourceTree = "<group>"; };
 		945D07F921EB57B4001E3F2D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		945D07FA21EB57B5001E3F2D /* ADWKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADWKWebViewController.h; sourceTree = "<group>"; };
+		945D080821EB9D2E001E3F2D /* JPushKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPushKeys.swift; sourceTree = "<group>"; };
 		F402D6AC1FA5F499008A53FD /* SpringScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringScene.swift; sourceTree = "<group>"; };
 		F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			children = (
 				945D07E521EB378A001E3F2D /* AVOSCloudKeys.swift */,
 				945D07E721EB3F71001E3F2D /* LCQuote.swift */,
+				945D080821EB9D2E001E3F2D /* JPushKeys.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				F4FA6A9B1E7FB0F100C2E46E /* AppDelegate.swift in Sources */,
 				F4A414431F7D307C00B066A4 /* UITableView+Extensions.swift in Sources */,
 				F4D0A0B21F6AD71500DD4693 /* SelectImageCollectionViewController.swift in Sources */,
+				945D080921EB9D2E001E3F2D /* JPushKeys.swift in Sources */,
 				F408C5D71EA51B3B00F29A67 /* CategoryManager.swift in Sources */,
 				F4FA6AAF1E7FCD0D00C2E46E /* IdentifierModel.swift in Sources */,
 				F4D6BD961EA4743500A93E46 /* CategoryCollectionViewCell.swift in Sources */,

@@ -10,8 +10,6 @@ import UIKit
 import CoreData
 import AVOSCloud
 
-public let appKey: String = "54323c16cf75a805e62efb53"     //填写appkey
-public let channel: String = "AppStore";    //填写channel   一般为nil
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
@@ -47,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
                 categories: nil)
         }
         
-        JPUSHService.setup(withOption: launchOptions, appKey: appKey, channel: channel, apsForProduction: true)
+        JPUSHService.setup(withOption: launchOptions, appKey: JPushKeys.appKey, channel: JPushKeys.channel, apsForProduction: true)
         
         return true
     }
