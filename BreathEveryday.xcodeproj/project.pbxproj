@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		945D07E621EB378A001E3F2D /* AVOSCloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D07E521EB378A001E3F2D /* AVOSCloudKeys.swift */; };
+		945D07E821EB3F71001E3F2D /* LCQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D07E721EB3F71001E3F2D /* LCQuote.swift */; };
 		C78B464447E5B301489AF85C /* Pods_BreathEveryday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035937D110347F617E50F288 /* Pods_BreathEveryday.framework */; };
 		F402D6AD1FA5F499008A53FD /* SpringScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402D6AC1FA5F499008A53FD /* SpringScene.swift */; };
 		F408C5D71EA51B3B00F29A67 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */; };
@@ -54,6 +56,8 @@
 		035937D110347F617E50F288 /* Pods_BreathEveryday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreathEveryday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DDEAA6C3601664D4687571 /* Pods-BreathEveryday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreathEveryday.release.xcconfig"; path = "Pods/Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.release.xcconfig"; sourceTree = "<group>"; };
 		6AF2EE35D2892DEE60B9D142 /* Pods-BreathEveryday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreathEveryday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.debug.xcconfig"; sourceTree = "<group>"; };
+		945D07E521EB378A001E3F2D /* AVOSCloudKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVOSCloudKeys.swift; sourceTree = "<group>"; };
+		945D07E721EB3F71001E3F2D /* LCQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCQuote.swift; sourceTree = "<group>"; };
 		F402D6AC1FA5F499008A53FD /* SpringScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringScene.swift; sourceTree = "<group>"; };
 		F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
@@ -128,6 +132,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		945D07E421EB3710001E3F2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				945D07E521EB378A001E3F2D /* AVOSCloudKeys.swift */,
+				945D07E721EB3F71001E3F2D /* LCQuote.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		945D07E921EB54B1001E3F2D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Components;
+			sourceTree = "<group>";
+		};
 		F431AD361F56AA2B005390D9 /* General */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +179,7 @@
 		F431AD381F56ABCA005390D9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				945D07E921EB54B1001E3F2D /* Components */,
 				F431AD371F56AA6B005390D9 /* Extensions */,
 				F4D55CB61EADB91600EE80C4 /* Home Page */,
 				F4D55CB71EADB93500EE80C4 /* List Page */,
@@ -253,6 +274,7 @@
 		F4FA6A991E7FB0F100C2E46E /* BreathEveryday */ = {
 			isa = PBXGroup;
 			children = (
+				945D07E421EB3710001E3F2D /* Model */,
 				F431AD361F56AA2B005390D9 /* General */,
 				F431AD381F56ABCA005390D9 /* Classes */,
 			);
@@ -443,9 +465,11 @@
 				F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */,
 				F4A332E51FB49F3700F30816 /* UIImage+Extensions.swift in Sources */,
 				F431AD3C1F56CB32005390D9 /* HomeViewController+ColorPicker.swift in Sources */,
+				945D07E621EB378A001E3F2D /* AVOSCloudKeys.swift in Sources */,
 				F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */,
 				F4916C5E1F9B1A0D00D99938 /* TestViewController.swift in Sources */,
 				F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */,
+				945D07E821EB3F71001E3F2D /* LCQuote.swift in Sources */,
 				F43B3FEE1EBC1EDA008577EF /* UIButton+Extensions.swift in Sources */,
 				F43B3FF21EBC321F008577EF /* HomeItemView.swift in Sources */,
 			);
