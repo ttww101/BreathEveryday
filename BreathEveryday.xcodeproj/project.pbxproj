@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		945D07E621EB378A001E3F2D /* AVOSCloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D07E521EB378A001E3F2D /* AVOSCloudKeys.swift */; };
 		945D07E821EB3F71001E3F2D /* LCQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D07E721EB3F71001E3F2D /* LCQuote.swift */; };
+		945D07FB21EB57B5001E3F2D /* ADWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 945D07EC21EB57B3001E3F2D /* ADWKWebViewController.m */; };
+		945D07FC21EB57B5001E3F2D /* ADWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945D07ED21EB57B3001E3F2D /* ADWebViewController.xib */; };
+		945D07FD21EB57B5001E3F2D /* aa.png in Resources */ = {isa = PBXBuildFile; fileRef = 945D07EE21EB57B3001E3F2D /* aa.png */; };
+		945D07FE21EB57B5001E3F2D /* ee.png in Resources */ = {isa = PBXBuildFile; fileRef = 945D07EF21EB57B3001E3F2D /* ee.png */; };
+		945D07FF21EB57B5001E3F2D /* ADWKWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945D07F021EB57B3001E3F2D /* ADWKWebViewController.xib */; };
+		945D080021EB57B5001E3F2D /* cc.png in Resources */ = {isa = PBXBuildFile; fileRef = 945D07F221EB57B4001E3F2D /* cc.png */; };
+		945D080121EB57B5001E3F2D /* TabarImage in Resources */ = {isa = PBXBuildFile; fileRef = 945D07F421EB57B4001E3F2D /* TabarImage */; };
+		945D080221EB57B5001E3F2D /* NoNet.png in Resources */ = {isa = PBXBuildFile; fileRef = 945D07F521EB57B4001E3F2D /* NoNet.png */; };
+		945D080321EB57B5001E3F2D /* dd.png in Resources */ = {isa = PBXBuildFile; fileRef = 945D07F621EB57B4001E3F2D /* dd.png */; };
+		945D080421EB57B5001E3F2D /* ADWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 945D07F721EB57B4001E3F2D /* ADWebViewController.m */; };
+		945D080521EB57B5001E3F2D /* bb.png in Resources */ = {isa = PBXBuildFile; fileRef = 945D07F821EB57B4001E3F2D /* bb.png */; };
+		945D080621EB57B5001E3F2D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 945D07F921EB57B4001E3F2D /* Reachability.m */; };
 		C78B464447E5B301489AF85C /* Pods_BreathEveryday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035937D110347F617E50F288 /* Pods_BreathEveryday.framework */; };
 		F402D6AD1FA5F499008A53FD /* SpringScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402D6AC1FA5F499008A53FD /* SpringScene.swift */; };
 		F408C5D71EA51B3B00F29A67 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */; };
@@ -58,6 +70,22 @@
 		6AF2EE35D2892DEE60B9D142 /* Pods-BreathEveryday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreathEveryday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.debug.xcconfig"; sourceTree = "<group>"; };
 		945D07E521EB378A001E3F2D /* AVOSCloudKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVOSCloudKeys.swift; sourceTree = "<group>"; };
 		945D07E721EB3F71001E3F2D /* LCQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCQuote.swift; sourceTree = "<group>"; };
+		945D07EB21EB57B1001E3F2D /* BreathEveryday-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BreathEveryday-Bridging-Header.h"; sourceTree = "<group>"; };
+		945D07EC21EB57B3001E3F2D /* ADWKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADWKWebViewController.m; sourceTree = "<group>"; };
+		945D07ED21EB57B3001E3F2D /* ADWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADWebViewController.xib; sourceTree = "<group>"; };
+		945D07EE21EB57B3001E3F2D /* aa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aa.png; sourceTree = "<group>"; };
+		945D07EF21EB57B3001E3F2D /* ee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ee.png; sourceTree = "<group>"; };
+		945D07F021EB57B3001E3F2D /* ADWKWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADWKWebViewController.xib; sourceTree = "<group>"; };
+		945D07F121EB57B3001E3F2D /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		945D07F221EB57B4001E3F2D /* cc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cc.png; sourceTree = "<group>"; };
+		945D07F321EB57B4001E3F2D /* ADWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADWebViewController.h; sourceTree = "<group>"; };
+		945D07F421EB57B4001E3F2D /* TabarImage */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TabarImage; sourceTree = "<group>"; };
+		945D07F521EB57B4001E3F2D /* NoNet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoNet.png; sourceTree = "<group>"; };
+		945D07F621EB57B4001E3F2D /* dd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dd.png; sourceTree = "<group>"; };
+		945D07F721EB57B4001E3F2D /* ADWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADWebViewController.m; sourceTree = "<group>"; };
+		945D07F821EB57B4001E3F2D /* bb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bb.png; sourceTree = "<group>"; };
+		945D07F921EB57B4001E3F2D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		945D07FA21EB57B5001E3F2D /* ADWKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADWKWebViewController.h; sourceTree = "<group>"; };
 		F402D6AC1FA5F499008A53FD /* SpringScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringScene.swift; sourceTree = "<group>"; };
 		F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
@@ -144,8 +172,39 @@
 		945D07E921EB54B1001E3F2D /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				945D07EA21EB5564001E3F2D /* ADWebViewController */,
 			);
 			name = Components;
+			sourceTree = "<group>";
+		};
+		945D07EA21EB5564001E3F2D /* ADWebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				945D07EE21EB57B3001E3F2D /* aa.png */,
+				945D07F321EB57B4001E3F2D /* ADWebViewController.h */,
+				945D07F721EB57B4001E3F2D /* ADWebViewController.m */,
+				945D07ED21EB57B3001E3F2D /* ADWebViewController.xib */,
+				945D07FA21EB57B5001E3F2D /* ADWKWebViewController.h */,
+				945D07EC21EB57B3001E3F2D /* ADWKWebViewController.m */,
+				945D07F021EB57B3001E3F2D /* ADWKWebViewController.xib */,
+				945D07F821EB57B4001E3F2D /* bb.png */,
+				945D07F221EB57B4001E3F2D /* cc.png */,
+				945D07F621EB57B4001E3F2D /* dd.png */,
+				945D07EF21EB57B3001E3F2D /* ee.png */,
+				945D07F521EB57B4001E3F2D /* NoNet.png */,
+				945D07F121EB57B3001E3F2D /* Reachability.h */,
+				945D07F921EB57B4001E3F2D /* Reachability.m */,
+				945D07F421EB57B4001E3F2D /* TabarImage */,
+			);
+			name = ADWebViewController;
+			sourceTree = "<group>";
+		};
+		945D080721EB57C6001E3F2D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				945D07EB21EB57B1001E3F2D /* BreathEveryday-Bridging-Header.h */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F431AD361F56AA2B005390D9 /* General */ = {
@@ -179,7 +238,6 @@
 		F431AD381F56ABCA005390D9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				945D07E921EB54B1001E3F2D /* Components */,
 				F431AD371F56AA6B005390D9 /* Extensions */,
 				F4D55CB61EADB91600EE80C4 /* Home Page */,
 				F4D55CB71EADB93500EE80C4 /* List Page */,
@@ -274,6 +332,8 @@
 		F4FA6A991E7FB0F100C2E46E /* BreathEveryday */ = {
 			isa = PBXGroup;
 			children = (
+				945D080721EB57C6001E3F2D /* Supporting Files */,
+				945D07E921EB54B1001E3F2D /* Components */,
 				945D07E421EB3710001E3F2D /* Model */,
 				F431AD361F56AA2B005390D9 /* General */,
 				F431AD381F56ABCA005390D9 /* Classes */,
@@ -317,7 +377,7 @@
 					F4FA6A961E7FB0F100C2E46E = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = GYL29GRBTQ;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.DataProtection = {
@@ -350,14 +410,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				945D080221EB57B5001E3F2D /* NoNet.png in Resources */,
 				F430B4C81F77E975003E1ADB /* BackgroundImageCollectionViewCell.xib in Resources */,
+				945D080021EB57B5001E3F2D /* cc.png in Resources */,
 				F49B09251EBB14900002297F /* Background Image.xcassets in Resources */,
+				945D080121EB57B5001E3F2D /* TabarImage in Resources */,
 				F4D6BD971EA4743500A93E46 /* CategoryCollectionViewCell.xib in Resources */,
 				F4F4D6711E828EAC00D7EFBA /* KeyboardBarButton.xib in Resources */,
+				945D080521EB57B5001E3F2D /* bb.png in Resources */,
+				945D080321EB57B5001E3F2D /* dd.png in Resources */,
 				F4FA6AA51E7FB0F100C2E46E /* LaunchScreen.storyboard in Resources */,
 				F4FA6AB31E7FD3DD00C2E46E /* ListTableViewCell.xib in Resources */,
+				945D07FD21EB57B5001E3F2D /* aa.png in Resources */,
+				945D07FE21EB57B5001E3F2D /* ee.png in Resources */,
+				945D07FF21EB57B5001E3F2D /* ADWKWebViewController.xib in Resources */,
 				F430B4D21F794775003E1ADB /* SettingButtonTableViewCell.xib in Resources */,
 				F4FA6AA21E7FB0F100C2E46E /* Assets.xcassets in Resources */,
+				945D07FC21EB57B5001E3F2D /* ADWebViewController.xib in Resources */,
 				F4FA6AA01E7FB0F100C2E46E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,14 +532,17 @@
 				F43B3FEC1EBC1E00008577EF /* UIColor+Extensions.swift in Sources */,
 				F4FA6AB71E7FD8F100C2E46E /* DetailViewController.swift in Sources */,
 				F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */,
+				945D080421EB57B5001E3F2D /* ADWebViewController.m in Sources */,
 				F4A332E51FB49F3700F30816 /* UIImage+Extensions.swift in Sources */,
 				F431AD3C1F56CB32005390D9 /* HomeViewController+ColorPicker.swift in Sources */,
 				945D07E621EB378A001E3F2D /* AVOSCloudKeys.swift in Sources */,
 				F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */,
+				945D07FB21EB57B5001E3F2D /* ADWKWebViewController.m in Sources */,
 				F4916C5E1F9B1A0D00D99938 /* TestViewController.swift in Sources */,
 				F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */,
 				945D07E821EB3F71001E3F2D /* LCQuote.swift in Sources */,
 				F43B3FEE1EBC1EDA008577EF /* UIButton+Extensions.swift in Sources */,
+				945D080621EB57B5001E3F2D /* Reachability.m in Sources */,
 				F43B3FF21EBC321F008577EF /* HomeItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,6 +680,7 @@
 			baseConfigurationReference = 6AF2EE35D2892DEE60B9D142 /* Pods-BreathEveryday.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -618,6 +691,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "BreathEveryday/BreathEveryday-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -628,6 +703,7 @@
 			baseConfigurationReference = 52DDEAA6C3601664D4687571 /* Pods-BreathEveryday.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GYL29GRBTQ;
@@ -637,6 +713,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "BreathEveryday/BreathEveryday-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
