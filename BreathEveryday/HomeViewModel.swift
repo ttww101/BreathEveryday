@@ -98,7 +98,7 @@ let categoryImageArray: [UIImage] = [#imageLiteral(resourceName: "Like-48"),
                              #imageLiteral(resourceName: "x")]
 
 var numberOfQuote = 0
-let quotes:[String] = ["Steve Jobs - \nIf today was the last day of my life would I want to do what I’m about to do today?",
+let defaultQuotes:[String] = ["Steve Jobs - \nIf today was the last day of my life would I want to do what I’m about to do today?",
                        "Kobe Bryant - \nI don't talk trash often, but when I do, I go for the jugular.",
                        "William James - \nBe not afraid of life. Believe that life is worth living, and your belief will help create the fact.",
                        "Erma Bombeck - \nWhen I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.",
