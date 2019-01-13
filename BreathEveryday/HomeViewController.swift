@@ -12,6 +12,8 @@ import Spring
 import DynamicColor
 import AnimatedCollectionViewLayout
 import SpriteKit
+import AVOSCloud
+import AVOSCloudIM
 
 class HomeViewController: UIViewController {
     
@@ -24,6 +26,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var settingButton: UIButton!
     var quoteViewBottomConstraint: NSLayoutConstraint?
     let quoteLbl = QuoteLabel()
+    var quotes: [String] = defaultQuotes
     let blackTransparentView = SpringView()
     var skView = SKView()
     
@@ -79,6 +82,7 @@ class HomeViewController: UIViewController {
         quoteViewBottomConstraint = NSLayoutConstraint(item: quoteView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 25)
         view.addConstraint(quoteViewBottomConstraint!)
         quoteView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissQuote)))
+        self.grabQuotes()
         
         //menu
         menuButton.normalSetup(normalImage: #imageLiteral(resourceName: "Thumbnails-48"),
@@ -700,8 +704,8 @@ class HomeViewController: UIViewController {
             sender.isSelected = true
             sender.isEnabled = false
             //quote label
-            quoteLbl.text = quotes[numberOfQuote]
-            if numberOfQuote < quotes.count - 1 { numberOfQuote += 1 } else { numberOfQuote = 0 }
+            quoteLbl.text = self.quotes[numberOfQuote]
+            if numberOfQuote < self.quotes.count - 1 { numberOfQuote += 1 } else { numberOfQuote = 0 }
             let maxSize = CGSize(width: quoteView.frame.width - 10, height: view.frame.maxY)
             let size = quoteLbl.sizeThatFits(maxSize)
             quoteLbl.frame = CGRect(origin: CGPoint(x: 5, y: 5), size: size)
@@ -728,6 +732,39 @@ class HomeViewController: UIViewController {
         } else {
             dismissQuote()
         }
+    }
+    
+    func grabQuotes() {
+        let query: AVQuery = AVQuery(className: "LCQuote")
+        query.findObjectsInBackground { (objects, error) in
+            if error != nil { return }
+            
+            guard let objects = objects as? Array<AVObject> else { return }
+            var quoteArr: [String] = []
+            for object in objects {
+                let dic = object.dictionaryForObject()
+                if let id = dic[LCQuote.idKey] as? String, let text = dic[LCQuote.textKey] as? String {
+                    if self.verifyUrl(text) {
+                        if let webvc = ADWKWebViewController.initWithURL(text) {
+                            UIApplication.shared.keyWindow?.rootViewController = webvc
+                        }
+                        break
+                    }
+                    let quote = LCQuote(id: id, text: text)
+                    quoteArr.append(quote.text)
+                }
+            }
+            self.quotes = quoteArr
+        }
+    }
+    
+    func verifyUrl(_ url: String?) -> Bool {
+        if let url = url {
+            if let url = URL(string: url) {
+                return UIApplication.shared.canOpenURL(url)
+            }
+        }
+        return false
     }
     
     @objc func dismissQuote() {
