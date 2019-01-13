@@ -36,18 +36,18 @@ class DetailViewController: UIViewController {
         //notification for constraints
         textViewBottomConstraint = NSLayoutConstraint(item: textView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -10)
         view.addConstraint(textViewBottomConstraint!)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     //Notification Center
     @objc func handleKeyboardNotification(notification: NSNotification) {
         
         if let userInfo = notification.userInfo {
-            if let rectInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+            if let rectInfo = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
                 
                 //get rect
-                let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+                let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
                 
                 textViewBottomConstraint?.constant = isKeyboardShowing ? -rectInfo.height : -10
                 

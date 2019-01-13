@@ -48,7 +48,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
         //tableView
         listTableView.delegate = self
         listTableView.dataSource = self
-        listTableView.rowHeight = UITableViewAutomaticDimension
+        listTableView.rowHeight = UITableView.automaticDimension
         listTableView.estimatedRowHeight = 77
         listTableView.allowsSelection = false
         listTableView.register(UINib(nibName: Identifier.listCell.rawValue, bundle: nil), forCellReuseIdentifier: Identifier.listCell.rawValue)
@@ -77,8 +77,8 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
         //notification for constraints
         tableViewBottomConstraint = NSLayoutConstraint(item: listTableView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
         view.addConstraint(tableViewBottomConstraint!)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         //fetchDataResult
         fetchCoreDataResult()
@@ -160,8 +160,8 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
             
             let rectCompleteListButton = listTableView.convert(self.completedListButton.frame, to: self.view)
             self.view.addSubview(imageView)
-            self.view.bringSubview(toFront: self.completedListButton)
-            UIView.animate(withDuration: 0.8, delay: 0.2, options: UIViewAnimationOptions.curveEaseInOut, animations: {
+            self.view.bringSubviewToFront(self.completedListButton)
+            UIView.animate(withDuration: 0.8, delay: 0.2, options: UIView.AnimationOptions.curveEaseInOut, animations: {
                 imageView.layer.transform = CATransform3DMakeScale(0.3, 0.3, 1)
                 imageView.center = CGPoint(x: rectCompleteListButton.midX, y: rectCompleteListButton.midY)
                 imageView.alpha = 0
@@ -173,12 +173,12 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func removeAllEvent(_ sender: Any) {
-        let myAlert = UIAlertController(title: "Refresh all?", message: "Clear all completed items.", preferredStyle: UIAlertControllerStyle.alert)
-        let okAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.destructive) { (_) in
+        let myAlert = UIAlertController(title: "Refresh all?", message: "Clear all completed items.", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Confirm", style: UIAlertAction.Style.destructive) { (_) in
             EventManager.shared.deleteAll()
         }
         myAlert.addAction(okAction)
-        myAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        myAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(myAlert, animated: true, completion: nil)
     }
     
@@ -261,10 +261,10 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc func handleKeyboardNotification(notification: NSNotification) {
         
         if let userInfo = notification.userInfo {
-            if let rectInfo = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect {
+            if let rectInfo = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
                 
                 //get rect
-                let isKeyboardShowing = notification.name == NSNotification.Name.UIKeyboardWillShow
+                let isKeyboardShowing = notification.name == UIResponder.keyboardWillShowNotification
                 
                 tableViewBottomConstraint?.constant = isKeyboardShowing ? -rectInfo.height : 0
                 
@@ -449,7 +449,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         
         if isTyping {
             return .none
@@ -458,10 +458,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if !isTyping {
-            if editingStyle == UITableViewCellEditingStyle.delete {
+            if editingStyle == UITableViewCell.EditingStyle.delete {
                 deleteEvent(at: indexPath)
             }
         }
@@ -530,7 +530,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 extension ListViewController: calendarPopupViewProtocol {
     
     func addViewControllerAsChild(viewController: CalendarViewController) {
-        self.addChildViewController(viewController)
+        self.addChild(viewController)
     }
 }
 

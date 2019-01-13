@@ -5,15 +5,20 @@ target 'BreathEveryday' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'JTAppleCalendar', '~> 7.0.1’
-  pod 'IGColorPicker', '~> 0.2.1'
-  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
-  pod 'DynamicColor', '~> 3.3'
+  pod 'JTAppleCalendar'
+  pod 'IGColorPicker'
+  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
+  pod 'DynamicColor'
+  pod 'Fusuma’
+  pod 'TOCropViewController'
+  pod ‘AnimatedCollectionViewLayout’
+  pod 'M13Checkbox', :git => 'https://github.com/Marxon13/M13Checkbox.git', :branch => 'swift_4_2'
   pod 'Fabric'
   pod 'Crashlytics'
-  pod 'Fusuma’, '~> 1.1.0’
-  pod 'TOCropViewController'
-  pod ‘AnimatedCollectionViewLayout’, '~> 0.3.0’
+  pod 'AVOSCloud'
+  pod 'AVOSCloudIM'
+  pod 'JPush'
+  pod 'JAnalytics'
 
   # Pods for BreathEveryday
 end

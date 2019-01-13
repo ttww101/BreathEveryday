@@ -25,7 +25,7 @@ extension HomeViewController {
         button.normalSetup(normalImage: image,
                            selectedImage: nil,
                            tintColor: .white)
-        button.imageEdgeInsets = UIEdgeInsetsMake(20, 20, 20, 20)
+        button.imageEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         button.setFrameToCircle()
         button.setBubbleColor(with: color)
         

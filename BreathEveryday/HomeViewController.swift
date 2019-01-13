@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 import Spring
 import DynamicColor
-import Crashlytics
 import AnimatedCollectionViewLayout
 import SpriteKit
 
@@ -48,7 +47,7 @@ class HomeViewController: UIViewController {
     
     var backgroundImageCollectionView: UICollectionView!
     var animator: (LayoutAttributesAnimator, Bool, Int, Int) = (LinearCardAttributesAnimator(), false, 1, 1)
-    var direction: UICollectionViewScrollDirection = .vertical
+    var direction: UICollectionView.ScrollDirection = .vertical
     let cellIdentifier = "BackgroundImageCollectionViewCell"
     
     var settingButtonTableView: UITableView!
@@ -263,10 +262,10 @@ class HomeViewController: UIViewController {
         }, completion: { (completed) in
             
             //bring views to front
-            self.view.bringSubview(toFront: self.categorysCollectionView)
-            self.view.bringSubview(toFront: self.colorPickerView)
-            self.view.bringSubview(toFront: self.categoryDoneBtn)
-            self.view.bringSubview(toFront: self.tipLabel)
+            self.view.bringSubviewToFront(self.categorysCollectionView)
+            self.view.bringSubviewToFront(self.colorPickerView)
+            self.view.bringSubviewToFront(self.categoryDoneBtn)
+            self.view.bringSubviewToFront(self.tipLabel)
             
             //button action & appearance change
             self.switchMode(to: .setupCategory)
@@ -309,7 +308,7 @@ class HomeViewController: UIViewController {
         let moc = appDelegate.persistentContainer.viewContext
         if let entityDescription = NSEntityDescription.entity(forEntityName: "UserMO", in: moc) {
             let user = UserMO(entity: entityDescription, insertInto: moc)
-            if let imageData = UIImageJPEGRepresentation(#imageLiteral(resourceName: "BK-beach sunrise"), 1) {
+            if let imageData = #imageLiteral(resourceName: "BK-beach sunrise").pngData() {
                 user.backgroundImage = imageData 
             }
             appDelegate.saveContext()
@@ -396,8 +395,8 @@ class HomeViewController: UIViewController {
         blackTransparentView.animateNext {
 
             self.exitSettingButton.isHidden = false
-            self.view.bringSubview(toFront: self.exitSettingButton)
-            self.view.bringSubview(toFront: self.settingButtonTableView)
+            self.view.bringSubviewToFront(self.exitSettingButton)
+            self.view.bringSubviewToFront(self.settingButtonTableView)
             self.settingButtonTableView.cellshrinkAll(duration: 0)
             self.settingButtonTableViewConstraint?.constant = 0
             self.view.layoutIfNeeded()
@@ -463,13 +462,13 @@ class HomeViewController: UIViewController {
         self.settingButtonTableViewConstraint?.constant = 1000
         self.deleteLabelConstraint?.constant = 0
         
-        view.bringSubview(toFront: blackTransparentView)
-        view.bringSubview(toFront: categorysCollectionView)
-        view.bringSubview(toFront: colorPickerView)
-        view.bringSubview(toFront: categoryDoneBtn)
-        view.bringSubview(toFront: tipLabel)
+        view.bringSubviewToFront(blackTransparentView)
+        view.bringSubviewToFront(categorysCollectionView)
+        view.bringSubviewToFront(colorPickerView)
+        view.bringSubviewToFront(categoryDoneBtn)
+        view.bringSubviewToFront(tipLabel)
         for category in categoryDataArr {
-            view.bringSubview(toFront: category.button)
+            view.bringSubviewToFront(category.button)
         }
         categoryScrollViewConstraint?.constant = -100
         colorPickerViewConstraint?.constant = -44
@@ -487,7 +486,7 @@ class HomeViewController: UIViewController {
                     self.categorysCollectionView.selectItem(
                         at: IndexPath(row: category.button.tag, section: 0),
                         animated: false,
-                        scrollPosition: UICollectionViewScrollPosition.centeredHorizontally)
+                        scrollPosition: UICollectionView.ScrollPosition.centeredHorizontally)
                 }
             }
             
@@ -497,16 +496,16 @@ class HomeViewController: UIViewController {
     }
     
     @objc func displayBackgroundSetup() {
-        self.view.bringSubview(toFront: self.backgroundImageCollectionView)
-        self.view.bringSubview(toFront: self.exitSettingButton)
+        self.view.bringSubviewToFront(self.backgroundImageCollectionView)
+        self.view.bringSubviewToFront(self.exitSettingButton)
         self.backgroundImageCollectionView.isHidden = false
         self.blackTransparentView.alpha = 0.6
         self.settingButtonTableViewConstraint?.constant = 1000
     }
     
     @objc func displayQuoteSetup() {
-        let alert = UIAlertController(title: "", message: "Coming Soon...", preferredStyle: UIAlertControllerStyle.alert)
-        let alertAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) { (UIAlertAction) in
+        let alert = UIAlertController(title: "", message: "Coming Soon...", preferredStyle: UIAlertController.Style.alert)
+        let alertAction = UIAlertAction(title: "Ok", style: UIAlertAction.Style.default) { (UIAlertAction) in
             self.skView.removeFromSuperview()
         }
         alert.addAction(alertAction)
@@ -636,7 +635,7 @@ class HomeViewController: UIViewController {
         addBlackTransparentView()
         
         //bring views to front
-        view.bringSubview(toFront: tipLabel)
+        view.bringSubviewToFront(tipLabel)
         
         //add tutorial info
         view.addSubview(tutorialScrollView)
@@ -696,7 +695,7 @@ class HomeViewController: UIViewController {
         
         if !sender.isSelected {
             
-            view.bringSubview(toFront: quoteView)
+            view.bringSubviewToFront(quoteView)
             //change state
             sender.isSelected = true
             sender.isEnabled = false
@@ -765,7 +764,7 @@ class HomeViewController: UIViewController {
             removeAllAndSaveCoreData()
             
             //send value
-            guard let vc = navigationVC.childViewControllers[0] as? ListViewController else { return }
+            guard let vc = navigationVC.children[0] as? ListViewController else { return }
             vc.listTitle = categoryDataArr[sender.tag].name
             vc.bubbleSyncColor = categoryDataArr[sender.tag].color
             
