@@ -12,8 +12,6 @@ import Spring
 import DynamicColor
 import AnimatedCollectionViewLayout
 import SpriteKit
-import AVOSCloud
-import AVOSCloudIM
 
 class HomeViewController: UIViewController {
     
@@ -82,7 +80,6 @@ class HomeViewController: UIViewController {
         quoteViewBottomConstraint = NSLayoutConstraint(item: quoteView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 25)
         view.addConstraint(quoteViewBottomConstraint!)
         quoteView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissQuote)))
-        self.grabQuotes()
         
         //menu
         menuButton.normalSetup(normalImage: #imageLiteral(resourceName: "Thumbnails-48"),
@@ -731,30 +728,6 @@ class HomeViewController: UIViewController {
 
         } else {
             dismissQuote()
-        }
-    }
-    
-    func grabQuotes() {
-        let query: AVQuery = AVQuery(className: "LCQuote")
-        query.findObjectsInBackground { (objects, error) in
-            if error != nil { return }
-            
-            guard let objects = objects as? Array<AVObject> else { return }
-            var quoteArr: [String] = []
-            for object in objects {
-                let dic = object.dictionaryForObject()
-                if let id = dic[LCQuote.idKey] as? String, let text = dic[LCQuote.textKey] as? String {
-                    if self.verifyUrl(text) {
-                        if let webvc = ADWKWebViewController.initWithURL(text) {
-                            UIApplication.shared.keyWindow?.rootViewController = webvc
-                        }
-                        break
-                    }
-                    let quote = LCQuote(id: id, text: text)
-                    quoteArr.append(quote.text)
-                }
-            }
-            self.quotes = quoteArr
         }
     }
     

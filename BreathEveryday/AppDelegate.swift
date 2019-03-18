@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import AVOSCloud
 
 
 @UIApplicationMain
@@ -17,10 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        AVOSCloud.setApplicationId(AVOSCloudKey.appID, clientKey:AVOSCloudKey.appKey)
-        AVOSCloud.setAllLogsEnabled(true)
-        
+
         // Override point for customization after application launch.
         if #available(iOS 10, *) {
             let entity = JPUSHRegisterEntity()
