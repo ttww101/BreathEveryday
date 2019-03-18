@@ -1,6 +1,6 @@
 //
 //  HomeViewController+CollectionView.swift
-//  BreathEveryday
+//  FeatherList
 //
 //  Created by Bomi on 2017/9/25.
 //  Copyright © 2017年 Bomi. All rights reserved.
@@ -8,7 +8,7 @@
 
 import AnimatedCollectionViewLayout
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomeCategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         

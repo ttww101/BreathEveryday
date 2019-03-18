@@ -1,6 +1,6 @@
 //
 //  ListTableViewCell.swift
-//  BreathEveryday
+//  FeatherList
 //
 //  Created by Lucy on 2017/3/20.
 //  Copyright © 2017年 Bomi. All rights reserved.
@@ -11,7 +11,7 @@ import CoreData
 import JTAppleCalendar
 
 protocol calendarPopupViewProtocol: class {
-    func addViewControllerAsChild(viewController :CalendarViewController)
+    func addViewControllerAsChild(viewController :PopUpCalendarViewController)
 }
 
 class ListTableViewCell: UITableViewCell {
@@ -38,7 +38,7 @@ class ListTableViewCell: UITableViewCell {
     lazy var alarmPicker: UIPickerView = UIPickerView()
     lazy var remindTimePicker: UIPickerView = UIPickerView()
     lazy var calendarView: UIView = UIView()
-    var calendarJTVC: CalendarViewController? = nil
+    var calendarJTVC: PopUpCalendarViewController? = nil
     weak var calendarPopupViewDelegate:calendarPopupViewProtocol?
     lazy var locationView: UIView = UIView()
     //event info
@@ -784,7 +784,7 @@ extension ListTableViewCell {
             
             //initial calendrView
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: "CalendarViewController") as! PopUpCalendarViewController
             calendarJTVC = vc
             vc.alarmDateSet = alarmDateSet
             vc.view.frame = self.calendarView.bounds
@@ -815,7 +815,7 @@ extension ListTableViewCell {
             
             //initial calendrView
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "CalendarViewController") as! CalendarViewController
+            let vc = storyboard.instantiateViewController(withIdentifier: "CalendarViewController") as! PopUpCalendarViewController
             calendarJTVC = vc
             vc.alarmDateSet = alarmDateSet
             vc.view.frame = self.calendarView.bounds

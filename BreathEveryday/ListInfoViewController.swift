@@ -1,6 +1,6 @@
 //
-//  ListViewController.swift
-//  BreathEveryday
+//  ListInfoViewController.swift
+//  FeatherList
 //
 //  Created by Lucy on 2017/3/20.
 //  Copyright © 2017年 Bomi. All rights reserved.
@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import EventKit
 
-class ListViewController: UIViewController, UIGestureRecognizerDelegate {
+class ListInfoViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let eventStore = EKEventStore()
     @IBOutlet weak var listTableView: UITableView!
@@ -307,7 +307,7 @@ class ListViewController: UIViewController, UIGestureRecognizerDelegate {
 }
 
 // CoreData
-extension ListViewController: NSFetchedResultsControllerDelegate {
+extension ListInfoViewController: NSFetchedResultsControllerDelegate {
     
     func fetchCoreDataResult() {
         
@@ -430,7 +430,7 @@ extension ListViewController: NSFetchedResultsControllerDelegate {
 }
 
 // TableView
-extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+extension ListInfoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
         
@@ -507,7 +507,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func displayHomeView() {
         
-        if let displayView = storyboard?.instantiateViewController(withIdentifier: Identifier.homeView.rawValue) as? HomeViewController {
+        if let displayView = storyboard?.instantiateViewController(withIdentifier: Identifier.homeView.rawValue) as? HomeCategoryViewController {
             let subView = UIView()
             subView.layer.frame = displayView.view.frame
             subView.backgroundColor = UIColor.white
@@ -527,9 +527,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-extension ListViewController: calendarPopupViewProtocol {
+extension ListInfoViewController: calendarPopupViewProtocol {
     
-    func addViewControllerAsChild(viewController: CalendarViewController) {
+    func addViewControllerAsChild(viewController: PopUpCalendarViewController) {
         self.addChild(viewController)
     }
 }

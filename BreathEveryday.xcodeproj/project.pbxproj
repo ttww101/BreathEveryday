@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		945D07E621EB378A001E3F2D /* AVOSCloudKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D07E521EB378A001E3F2D /* AVOSCloudKeys.swift */; };
-		945D07E821EB3F71001E3F2D /* LCQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D07E721EB3F71001E3F2D /* LCQuote.swift */; };
 		945D07FB21EB57B5001E3F2D /* ADWKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 945D07EC21EB57B3001E3F2D /* ADWKWebViewController.m */; };
 		945D07FC21EB57B5001E3F2D /* ADWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 945D07ED21EB57B3001E3F2D /* ADWebViewController.xib */; };
 		945D07FD21EB57B5001E3F2D /* aa.png in Resources */ = {isa = PBXBuildFile; fileRef = 945D07EE21EB57B3001E3F2D /* aa.png */; };
@@ -22,25 +20,24 @@
 		945D080521EB57B5001E3F2D /* bb.png in Resources */ = {isa = PBXBuildFile; fileRef = 945D07F821EB57B4001E3F2D /* bb.png */; };
 		945D080621EB57B5001E3F2D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 945D07F921EB57B4001E3F2D /* Reachability.m */; };
 		945D080921EB9D2E001E3F2D /* JPushKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D080821EB9D2E001E3F2D /* JPushKeys.swift */; };
-		9498D348223F47FB00A8355B /* UIWebView.lua in Resources */ = {isa = PBXBuildFile; fileRef = 9498D347223F47FB00A8355B /* UIWebView.lua */; };
+		9498D348223F47FB00A8355B /* start.lua in Resources */ = {isa = PBXBuildFile; fileRef = 9498D347223F47FB00A8355B /* start.lua */; };
 		C78B464447E5B301489AF85C /* Pods_BreathEveryday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035937D110347F617E50F288 /* Pods_BreathEveryday.framework */; };
 		F402D6AD1FA5F499008A53FD /* SpringScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402D6AC1FA5F499008A53FD /* SpringScene.swift */; };
 		F408C5D71EA51B3B00F29A67 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */; };
 		F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */; };
 		F430B4C51F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4C31F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift */; };
 		F430B4C81F77E975003E1ADB /* BackgroundImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F430B4C71F77E975003E1ADB /* BackgroundImageCollectionViewCell.xib */; };
-		F430B4CC1F79267B003E1ADB /* HomeViewController+Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4CB1F79267B003E1ADB /* HomeViewController+Bubble.swift */; };
-		F430B4CE1F79273A003E1ADB /* HomeViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4CD1F79273A003E1ADB /* HomeViewController+CollectionView.swift */; };
+		F430B4CC1F79267B003E1ADB /* HomeCategoryViewController+Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4CB1F79267B003E1ADB /* HomeCategoryViewController+Bubble.swift */; };
+		F430B4CE1F79273A003E1ADB /* HomeCategoryViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4CD1F79273A003E1ADB /* HomeCategoryViewController+CollectionView.swift */; };
 		F430B4D11F794775003E1ADB /* SettingButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4CF1F794775003E1ADB /* SettingButtonTableViewCell.swift */; };
 		F430B4D21F794775003E1ADB /* SettingButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F430B4D01F794775003E1ADB /* SettingButtonTableViewCell.xib */; };
-		F430B4D41F794844003E1ADB /* HomeViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4D31F794844003E1ADB /* HomeViewController+TableView.swift */; };
-		F431AD3A1F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F431AD391F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift */; };
-		F431AD3C1F56CB32005390D9 /* HomeViewController+ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F431AD3B1F56CB32005390D9 /* HomeViewController+ColorPicker.swift */; };
+		F430B4D41F794844003E1ADB /* HomeCategoryViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F430B4D31F794844003E1ADB /* HomeCategoryViewController+TableView.swift */; };
+		F431AD3A1F56C9F4005390D9 /* HomeCategoryViewController+PhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F431AD391F56C9F4005390D9 /* HomeCategoryViewController+PhotoLibrary.swift */; };
+		F431AD3C1F56CB32005390D9 /* HomeCategoryViewController+ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F431AD3B1F56CB32005390D9 /* HomeCategoryViewController+ColorPicker.swift */; };
 		F43B3FEC1EBC1E00008577EF /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */; };
 		F43B3FEE1EBC1EDA008577EF /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */; };
 		F43B3FF21EBC321F008577EF /* HomeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43B3FF11EBC321F008577EF /* HomeItemView.swift */; };
 		F483B8B61F8E63E700ED5E8E /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F483B8B51F8E63E700ED5E8E /* ListViewModel.swift */; };
-		F4916C5E1F9B1A0D00D99938 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4916C5D1F9B1A0D00D99938 /* TestViewController.swift */; };
 		F49B09251EBB14900002297F /* Background Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49B09241EBB14900002297F /* Background Image.xcassets */; };
 		F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A21F981E9C6E4200C24517 /* EventManager.swift */; };
 		F4A332E51FB49F3700F30816 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A332E41FB49F3700F30816 /* UIImage+Extensions.swift */; };
@@ -52,14 +49,14 @@
 		F4D6BD991EA493D600A93E46 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4D6BD981EA493D600A93E46 /* HomeViewModel.swift */; };
 		F4E301481E9DC7E500846EBF /* KeyboardButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E301471E9DC7E500846EBF /* KeyboardButtonModel.swift */; };
 		F4E3014E1E9E17CC00846EBF /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3014D1E9E17CC00846EBF /* CalendarCell.swift */; };
-		F4E301501E9E1B1500846EBF /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3014F1E9E1B1500846EBF /* CalendarViewController.swift */; };
+		F4E301501E9E1B1500846EBF /* PopUpCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E3014F1E9E1B1500846EBF /* PopUpCalendarViewController.swift */; };
 		F4F4D6711E828EAC00D7EFBA /* KeyboardBarButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4F4D6701E828EAC00D7EFBA /* KeyboardBarButton.xib */; };
 		F4FA6A9B1E7FB0F100C2E46E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */; };
-		F4FA6A9D1E7FB0F100C2E46E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */; };
+		F4FA6A9D1E7FB0F100C2E46E /* HomeCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6A9C1E7FB0F100C2E46E /* HomeCategoryViewController.swift */; };
 		F4FA6AA01E7FB0F100C2E46E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6A9E1E7FB0F100C2E46E /* Main.storyboard */; };
 		F4FA6AA21E7FB0F100C2E46E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6AA11E7FB0F100C2E46E /* Assets.xcassets */; };
 		F4FA6AA51E7FB0F100C2E46E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6AA31E7FB0F100C2E46E /* LaunchScreen.storyboard */; };
-		F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AAC1E7FC24700C2E46E /* ListViewController.swift */; };
+		F4FA6AAD1E7FC24700C2E46E /* ListInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AAC1E7FC24700C2E46E /* ListInfoViewController.swift */; };
 		F4FA6AAF1E7FCD0D00C2E46E /* IdentifierModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */; };
 		F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA6AB01E7FD3DD00C2E46E /* ListTableViewCell.swift */; };
 		F4FA6AB31E7FD3DD00C2E46E /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */; };
@@ -70,8 +67,6 @@
 		035937D110347F617E50F288 /* Pods_BreathEveryday.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreathEveryday.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DDEAA6C3601664D4687571 /* Pods-BreathEveryday.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreathEveryday.release.xcconfig"; path = "Pods/Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.release.xcconfig"; sourceTree = "<group>"; };
 		6AF2EE35D2892DEE60B9D142 /* Pods-BreathEveryday.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreathEveryday.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BreathEveryday/Pods-BreathEveryday.debug.xcconfig"; sourceTree = "<group>"; };
-		945D07E521EB378A001E3F2D /* AVOSCloudKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVOSCloudKeys.swift; sourceTree = "<group>"; };
-		945D07E721EB3F71001E3F2D /* LCQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCQuote.swift; sourceTree = "<group>"; };
 		945D07EB21EB57B1001E3F2D /* BreathEveryday-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BreathEveryday-Bridging-Header.h"; sourceTree = "<group>"; };
 		945D07EC21EB57B3001E3F2D /* ADWKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADWKWebViewController.m; sourceTree = "<group>"; };
 		945D07ED21EB57B3001E3F2D /* ADWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADWebViewController.xib; sourceTree = "<group>"; };
@@ -89,25 +84,24 @@
 		945D07F921EB57B4001E3F2D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		945D07FA21EB57B5001E3F2D /* ADWKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADWKWebViewController.h; sourceTree = "<group>"; };
 		945D080821EB9D2E001E3F2D /* JPushKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPushKeys.swift; sourceTree = "<group>"; };
-		9498D347223F47FB00A8355B /* UIWebView.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIWebView.lua; sourceTree = "<group>"; };
+		9498D347223F47FB00A8355B /* start.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.lua; sourceTree = "<group>"; };
 		F402D6AC1FA5F499008A53FD /* SpringScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringScene.swift; sourceTree = "<group>"; };
 		F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
 		F430B4C31F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		F430B4C71F77E975003E1ADB /* BackgroundImageCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundImageCollectionViewCell.xib; sourceTree = "<group>"; };
-		F430B4CB1F79267B003E1ADB /* HomeViewController+Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Bubble.swift"; sourceTree = "<group>"; };
-		F430B4CD1F79273A003E1ADB /* HomeViewController+CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		F430B4CB1F79267B003E1ADB /* HomeCategoryViewController+Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeCategoryViewController+Bubble.swift"; sourceTree = "<group>"; };
+		F430B4CD1F79273A003E1ADB /* HomeCategoryViewController+CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeCategoryViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		F430B4CF1F794775003E1ADB /* SettingButtonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingButtonTableViewCell.swift; sourceTree = "<group>"; };
 		F430B4D01F794775003E1ADB /* SettingButtonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingButtonTableViewCell.xib; sourceTree = "<group>"; };
-		F430B4D31F794844003E1ADB /* HomeViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TableView.swift"; sourceTree = "<group>"; };
-		F431AD391F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+PhotoLibrary.swift"; sourceTree = "<group>"; };
-		F431AD3B1F56CB32005390D9 /* HomeViewController+ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ColorPicker.swift"; sourceTree = "<group>"; };
+		F430B4D31F794844003E1ADB /* HomeCategoryViewController+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeCategoryViewController+TableView.swift"; sourceTree = "<group>"; };
+		F431AD391F56C9F4005390D9 /* HomeCategoryViewController+PhotoLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeCategoryViewController+PhotoLibrary.swift"; sourceTree = "<group>"; };
+		F431AD3B1F56CB32005390D9 /* HomeCategoryViewController+ColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HomeCategoryViewController+ColorPicker.swift"; sourceTree = "<group>"; };
 		F43B3FCC1EBB323F008577EF /* BreathEveryday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BreathEveryday.entitlements; sourceTree = "<group>"; };
 		F43B3FEB1EBC1E00008577EF /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		F43B3FED1EBC1EDA008577EF /* UIButton+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		F43B3FF11EBC321F008577EF /* HomeItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeItemView.swift; sourceTree = "<group>"; };
 		F483B8B51F8E63E700ED5E8E /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
-		F4916C5D1F9B1A0D00D99938 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		F49B09241EBB14900002297F /* Background Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Background Image.xcassets"; sourceTree = "<group>"; };
 		F4A21F981E9C6E4200C24517 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		F4A332E41FB49F3700F30816 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
@@ -119,16 +113,16 @@
 		F4D6BD981EA493D600A93E46 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F4E301471E9DC7E500846EBF /* KeyboardButtonModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardButtonModel.swift; sourceTree = "<group>"; };
 		F4E3014D1E9E17CC00846EBF /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
-		F4E3014F1E9E1B1500846EBF /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		F4E3014F1E9E1B1500846EBF /* PopUpCalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpCalendarViewController.swift; sourceTree = "<group>"; };
 		F4F4D6701E828EAC00D7EFBA /* KeyboardBarButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyboardBarButton.xib; sourceTree = "<group>"; };
-		F4FA6A971E7FB0F100C2E46E /* BreathEveryday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreathEveryday.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4FA6A971E7FB0F100C2E46E /* FeatherList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeatherList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F4FA6A9C1E7FB0F100C2E46E /* HomeCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoryViewController.swift; sourceTree = "<group>"; };
 		F4FA6A9F1E7FB0F100C2E46E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F4FA6AA11E7FB0F100C2E46E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4FA6AA41E7FB0F100C2E46E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F4FA6AA61E7FB0F100C2E46E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F4FA6AAC1E7FC24700C2E46E /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		F4FA6AAC1E7FC24700C2E46E /* ListInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListInfoViewController.swift; sourceTree = "<group>"; };
 		F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifierModel.swift; sourceTree = "<group>"; };
 		F4FA6AB01E7FD3DD00C2E46E /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		F4FA6AB11E7FD3DD00C2E46E /* ListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
@@ -167,8 +161,6 @@
 		945D07E421EB3710001E3F2D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				945D07E521EB378A001E3F2D /* AVOSCloudKeys.swift */,
-				945D07E721EB3F71001E3F2D /* LCQuote.swift */,
 				945D080821EB9D2E001E3F2D /* JPushKeys.swift */,
 			);
 			name = Model;
@@ -215,7 +207,7 @@
 		9498D346223F47FB00A8355B /* Lua */ = {
 			isa = PBXGroup;
 			children = (
-				9498D347223F47FB00A8355B /* UIWebView.lua */,
+				9498D347223F47FB00A8355B /* start.lua */,
 			);
 			path = Lua;
 			sourceTree = "<group>";
@@ -226,7 +218,6 @@
 				9498D346223F47FB00A8355B /* Lua */,
 				F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */,
 				F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */,
-				F4916C5D1F9B1A0D00D99938 /* TestViewController.swift */,
 				F4FA6A9E1E7FB0F100C2E46E /* Main.storyboard */,
 				F4FA6AA31E7FB0F100C2E46E /* LaunchScreen.storyboard */,
 				F4FA6AA11E7FB0F100C2E46E /* Assets.xcassets */,
@@ -265,12 +256,12 @@
 			children = (
 				F4D6BD931EA4740300A93E46 /* Category */,
 				F43B3FF11EBC321F008577EF /* HomeItemView.swift */,
-				F4FA6A9C1E7FB0F100C2E46E /* HomeViewController.swift */,
-				F430B4D31F794844003E1ADB /* HomeViewController+TableView.swift */,
-				F430B4CD1F79273A003E1ADB /* HomeViewController+CollectionView.swift */,
-				F430B4CB1F79267B003E1ADB /* HomeViewController+Bubble.swift */,
-				F431AD3B1F56CB32005390D9 /* HomeViewController+ColorPicker.swift */,
-				F431AD391F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift */,
+				F4FA6A9C1E7FB0F100C2E46E /* HomeCategoryViewController.swift */,
+				F430B4D31F794844003E1ADB /* HomeCategoryViewController+TableView.swift */,
+				F430B4CD1F79273A003E1ADB /* HomeCategoryViewController+CollectionView.swift */,
+				F430B4CB1F79267B003E1ADB /* HomeCategoryViewController+Bubble.swift */,
+				F431AD3B1F56CB32005390D9 /* HomeCategoryViewController+ColorPicker.swift */,
+				F431AD391F56C9F4005390D9 /* HomeCategoryViewController+PhotoLibrary.swift */,
 				F4D6BD981EA493D600A93E46 /* HomeViewModel.swift */,
 				F4D0A0B01F6AD71500DD4693 /* SelectImageCollectionViewController.swift */,
 				F430B4C31F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift */,
@@ -284,7 +275,7 @@
 		F4D55CB71EADB93500EE80C4 /* List Page */ = {
 			isa = PBXGroup;
 			children = (
-				F4FA6AAC1E7FC24700C2E46E /* ListViewController.swift */,
+				F4FA6AAC1E7FC24700C2E46E /* ListInfoViewController.swift */,
 				F483B8B51F8E63E700ED5E8E /* ListViewModel.swift */,
 				F4A21F981E9C6E4200C24517 /* EventManager.swift */,
 				F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */,
@@ -319,7 +310,7 @@
 		F4E3014A1E9E166500846EBF /* JTCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				F4E3014F1E9E1B1500846EBF /* CalendarViewController.swift */,
+				F4E3014F1E9E1B1500846EBF /* PopUpCalendarViewController.swift */,
 				F4E3014D1E9E17CC00846EBF /* CalendarCell.swift */,
 			);
 			name = JTCalendar;
@@ -338,7 +329,7 @@
 		F4FA6A981E7FB0F100C2E46E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F4FA6A971E7FB0F100C2E46E /* BreathEveryday.app */,
+				F4FA6A971E7FB0F100C2E46E /* FeatherList.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -358,9 +349,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F4FA6A961E7FB0F100C2E46E /* BreathEveryday */ = {
+		F4FA6A961E7FB0F100C2E46E /* FeatherList */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F4FA6AA91E7FB0F100C2E46E /* Build configuration list for PBXNativeTarget "BreathEveryday" */;
+			buildConfigurationList = F4FA6AA91E7FB0F100C2E46E /* Build configuration list for PBXNativeTarget "FeatherList" */;
 			buildPhases = (
 				6653DB221B0BB6CF88646EDE /* [CP] Check Pods Manifest.lock */,
 				F4FA6A931E7FB0F100C2E46E /* Sources */,
@@ -373,9 +364,9 @@
 			);
 			dependencies = (
 			);
-			name = BreathEveryday;
+			name = FeatherList;
 			productName = BreathEveryday;
-			productReference = F4FA6A971E7FB0F100C2E46E /* BreathEveryday.app */;
+			productReference = F4FA6A971E7FB0F100C2E46E /* FeatherList.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -414,7 +405,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F4FA6A961E7FB0F100C2E46E /* BreathEveryday */,
+				F4FA6A961E7FB0F100C2E46E /* FeatherList */,
 			);
 		};
 /* End PBXProject section */
@@ -439,7 +430,7 @@
 				945D07FE21EB57B5001E3F2D /* ee.png in Resources */,
 				945D07FF21EB57B5001E3F2D /* ADWKWebViewController.xib in Resources */,
 				F430B4D21F794775003E1ADB /* SettingButtonTableViewCell.xib in Resources */,
-				9498D348223F47FB00A8355B /* UIWebView.lua in Resources */,
+				9498D348223F47FB00A8355B /* start.lua in Resources */,
 				F4FA6AA21E7FB0F100C2E46E /* Assets.xcassets in Resources */,
 				945D07FC21EB57B5001E3F2D /* ADWebViewController.xib in Resources */,
 				F4FA6AA01E7FB0F100C2E46E /* Main.storyboard in Resources */,
@@ -525,14 +516,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F431AD3A1F56C9F4005390D9 /* HomeViewController+PhotoLibrary.swift in Sources */,
-				F4E301501E9E1B1500846EBF /* CalendarViewController.swift in Sources */,
+				F431AD3A1F56C9F4005390D9 /* HomeCategoryViewController+PhotoLibrary.swift in Sources */,
+				F4E301501E9E1B1500846EBF /* PopUpCalendarViewController.swift in Sources */,
 				F483B8B61F8E63E700ED5E8E /* ListViewModel.swift in Sources */,
-				F4FA6A9D1E7FB0F100C2E46E /* HomeViewController.swift in Sources */,
-				F430B4D41F794844003E1ADB /* HomeViewController+TableView.swift in Sources */,
+				F4FA6A9D1E7FB0F100C2E46E /* HomeCategoryViewController.swift in Sources */,
+				F430B4D41F794844003E1ADB /* HomeCategoryViewController+TableView.swift in Sources */,
 				F4E301481E9DC7E500846EBF /* KeyboardButtonModel.swift in Sources */,
 				F430B4D11F794775003E1ADB /* SettingButtonTableViewCell.swift in Sources */,
-				F430B4CE1F79273A003E1ADB /* HomeViewController+CollectionView.swift in Sources */,
+				F430B4CE1F79273A003E1ADB /* HomeCategoryViewController+CollectionView.swift in Sources */,
 				F4A21F991E9C6E4200C24517 /* EventManager.swift in Sources */,
 				F4FA6A9B1E7FB0F100C2E46E /* AppDelegate.swift in Sources */,
 				F4A414431F7D307C00B066A4 /* UITableView+Extensions.swift in Sources */,
@@ -544,7 +535,7 @@
 				F410FFE41E966BE8009AC535 /* CalendarEventModel.swift in Sources */,
 				F4E3014E1E9E17CC00846EBF /* CalendarCell.swift in Sources */,
 				F402D6AD1FA5F499008A53FD /* SpringScene.swift in Sources */,
-				F430B4CC1F79267B003E1ADB /* HomeViewController+Bubble.swift in Sources */,
+				F430B4CC1F79267B003E1ADB /* HomeCategoryViewController+Bubble.swift in Sources */,
 				F430B4C51F760A6B003E1ADB /* BackgroundImageCollectionViewCell.swift in Sources */,
 				F4D6BD991EA493D600A93E46 /* HomeViewModel.swift in Sources */,
 				F43B3FEC1EBC1E00008577EF /* UIColor+Extensions.swift in Sources */,
@@ -552,13 +543,10 @@
 				F4B2A5801E88EE4200CAECEE /* CoreDataModel.xcdatamodeld in Sources */,
 				945D080421EB57B5001E3F2D /* ADWebViewController.m in Sources */,
 				F4A332E51FB49F3700F30816 /* UIImage+Extensions.swift in Sources */,
-				F431AD3C1F56CB32005390D9 /* HomeViewController+ColorPicker.swift in Sources */,
-				945D07E621EB378A001E3F2D /* AVOSCloudKeys.swift in Sources */,
-				F4FA6AAD1E7FC24700C2E46E /* ListViewController.swift in Sources */,
+				F431AD3C1F56CB32005390D9 /* HomeCategoryViewController+ColorPicker.swift in Sources */,
+				F4FA6AAD1E7FC24700C2E46E /* ListInfoViewController.swift in Sources */,
 				945D07FB21EB57B5001E3F2D /* ADWKWebViewController.m in Sources */,
-				F4916C5E1F9B1A0D00D99938 /* TestViewController.swift in Sources */,
 				F4FA6AB21E7FD3DD00C2E46E /* ListTableViewCell.swift in Sources */,
-				945D07E821EB3F71001E3F2D /* LCQuote.swift in Sources */,
 				F43B3FEE1EBC1EDA008577EF /* UIButton+Extensions.swift in Sources */,
 				945D080621EB57B5001E3F2D /* Reachability.m in Sources */,
 				F43B3FF21EBC321F008577EF /* HomeItemView.swift in Sources */,
@@ -749,7 +737,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F4FA6AA91E7FB0F100C2E46E /* Build configuration list for PBXNativeTarget "BreathEveryday" */ = {
+		F4FA6AA91E7FB0F100C2E46E /* Build configuration list for PBXNativeTarget "FeatherList" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F4FA6AAA1E7FB0F100C2E46E /* Debug */,

@@ -1,6 +1,6 @@
 //
 //  SelectImageCollectionViewController.swift
-//  BreathEveryday
+//  FeatherList
 //
 //  Created by Bomi on 2017/9/14.
 //  Copyright © 2017年 Bomi. All rights reserved.

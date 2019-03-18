@@ -1,13 +1,13 @@
 //
-//  HomeViewController+ColorPicker.swift
-//  BreathEveryday
+//  HomeCategoryViewController+ColorPicker.swift
+//  FeatherList
 //
 //  Created by Bomi on 2017/8/30.
 //  Copyright © 2017年 Bomi. All rights reserved.
 //
 
 import IGColorPicker
-extension HomeViewController: ColorPickerViewDelegate {
+extension HomeCategoryViewController: ColorPickerViewDelegate {
     
     func colorPickerView(_ colorPickerView: ColorPickerView, didSelectItemAt indexPath: IndexPath) {
         
@@ -25,7 +25,7 @@ extension HomeViewController: ColorPickerViewDelegate {
     
 }
 
-extension HomeViewController: ColorPickerViewDelegateFlowLayout {
+extension HomeCategoryViewController: ColorPickerViewDelegateFlowLayout {
     
     // ------------------------------------------------------------------
     // All these methods are optionals, your are not to implement them 🖖🏻

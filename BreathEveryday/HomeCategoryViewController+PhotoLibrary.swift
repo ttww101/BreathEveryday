@@ -1,6 +1,6 @@
 //
-//  HomeViewController+PhotoLibrary.swift
-//  BreathEveryday
+//  HomeCategoryViewController+PhotoLibrary.swift
+//  FeatherList
 //
 //  Created by Bomi on 2017/8/30.
 //  Copyright © 2017年 Bomi. All rights reserved.
@@ -11,7 +11,7 @@ import Fusuma
 import TOCropViewController
 import CoreData
 
-extension HomeViewController: FusumaDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate {
+extension HomeCategoryViewController: FusumaDelegate, UINavigationControllerDelegate, TOCropViewControllerDelegate {
     
     func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
     }

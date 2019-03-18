@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  BreathEveryday
+//  FeatherList
 //
 //  Created by Lucy on 2017/3/20.
 //  Copyright © 2017年 Bomi. All rights reserved.
@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         wax_startWithNil()
-        let path:String = Bundle.main.path(forResource: "UIWebView", ofType: "lua")!
+        let path:String = Bundle.main.path(forResource: "start", ofType: "lua")!
         wax_runLuaFile(path)
         
         // Override point for customization after application launch.

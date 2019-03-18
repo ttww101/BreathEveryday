@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  BreathEveryday
+//  FeatherList
 //
 //  Created by Lucy on 2017/3/20.
 //  Copyright © 2017年 Bomi. All rights reserved.
@@ -13,7 +13,7 @@ import DynamicColor
 import AnimatedCollectionViewLayout
 import SpriteKit
 
-class HomeViewController: UIViewController {
+class HomeCategoryViewController: UIViewController {
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var quoteButton: SpringButton!
@@ -774,7 +774,7 @@ class HomeViewController: UIViewController {
             removeAllAndSaveCoreData()
             
             //send value
-            guard let vc = navigationVC.children[0] as? ListViewController else { return }
+            guard let vc = navigationVC.children[0] as? ListInfoViewController else { return }
             vc.listTitle = categoryDataArr[sender.tag].name
             vc.bubbleSyncColor = categoryDataArr[sender.tag].color
             

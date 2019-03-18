@@ -1,6 +1,6 @@
 //
 //  HomeViewController+TableView.swift
-//  BreathEveryday
+//  FeatherList
 //
 //  Created by Bomi on 2017/9/25.
 //  Copyright © 2017年 Bomi. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+extension HomeCategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3

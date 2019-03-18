@@ -1,6 +1,6 @@
 //
 //  CategoryCollectionViewCell.swift
-//  BreathEveryday
+//  FeatherList
 //
 //  Created by Lucy on 2017/4/17.
 //  Copyright © 2017年 Bomi. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  JPushKeys.swift
-//  BreathEveryday
+//  FeatherList
 //
 //  Created by Wu on 2019/1/14.
 //  Copyright © 2019 Bomi. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  HomeViewController+Bubble.swift
-//  BreathEveryday
+//  FeatherList
 //
 //  Created by Bomi on 2017/9/25.
 //  Copyright © 2017年 Bomi. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Spring
 
-extension HomeViewController {
+extension HomeCategoryViewController {
     
     func createRandomBubble(with image: UIImage, in frame: CGRect?, color: UIColor) -> SpringButton {
         

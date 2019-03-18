@@ -1,6 +1,6 @@
 //
-//  CalendarViewController.swift
-//  BreathEveryday
+//  PopUpCalendarViewController.swift
+//  FeatherList
 //
 //  Created by Lucy on 2017/4/12.
 //  Copyright © 2017年 Bomi. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 import JTAppleCalendar
 
-class CalendarViewController: UIViewController {
+class PopUpCalendarViewController: UIViewController {
 
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     @IBOutlet weak var yearLabel: UILabel!
@@ -83,7 +83,7 @@ class CalendarViewController: UIViewController {
     
 }
 
-extension CalendarViewController: JTAppleCalendarViewDataSource {
+extension PopUpCalendarViewController: JTAppleCalendarViewDataSource {
     
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         
@@ -108,7 +108,7 @@ extension CalendarViewController: JTAppleCalendarViewDataSource {
 
 }
 
-extension CalendarViewController: JTAppleCalendarViewDelegate {
+extension PopUpCalendarViewController: JTAppleCalendarViewDelegate {
     
     func calendar(_ calendar: JTAppleCalendarView, willDisplay cell: JTAppleCell, forItemAt date: Date, cellState: CellState, indexPath: IndexPath) {
         
