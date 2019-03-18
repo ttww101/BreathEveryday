@@ -22,6 +22,7 @@
 		945D080521EB57B5001E3F2D /* bb.png in Resources */ = {isa = PBXBuildFile; fileRef = 945D07F821EB57B4001E3F2D /* bb.png */; };
 		945D080621EB57B5001E3F2D /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 945D07F921EB57B4001E3F2D /* Reachability.m */; };
 		945D080921EB9D2E001E3F2D /* JPushKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D080821EB9D2E001E3F2D /* JPushKeys.swift */; };
+		9498D348223F47FB00A8355B /* UIWebView.lua in Resources */ = {isa = PBXBuildFile; fileRef = 9498D347223F47FB00A8355B /* UIWebView.lua */; };
 		C78B464447E5B301489AF85C /* Pods_BreathEveryday.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035937D110347F617E50F288 /* Pods_BreathEveryday.framework */; };
 		F402D6AD1FA5F499008A53FD /* SpringScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F402D6AC1FA5F499008A53FD /* SpringScene.swift */; };
 		F408C5D71EA51B3B00F29A67 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */; };
@@ -88,6 +89,7 @@
 		945D07F921EB57B4001E3F2D /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		945D07FA21EB57B5001E3F2D /* ADWKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADWKWebViewController.h; sourceTree = "<group>"; };
 		945D080821EB9D2E001E3F2D /* JPushKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPushKeys.swift; sourceTree = "<group>"; };
+		9498D347223F47FB00A8355B /* UIWebView.lua */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UIWebView.lua; sourceTree = "<group>"; };
 		F402D6AC1FA5F499008A53FD /* SpringScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpringScene.swift; sourceTree = "<group>"; };
 		F408C5D61EA51B3B00F29A67 /* CategoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		F410FFE31E966BE8009AC535 /* CalendarEventModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEventModel.swift; sourceTree = "<group>"; };
@@ -210,9 +212,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9498D346223F47FB00A8355B /* Lua */ = {
+			isa = PBXGroup;
+			children = (
+				9498D347223F47FB00A8355B /* UIWebView.lua */,
+			);
+			path = Lua;
+			sourceTree = "<group>";
+		};
 		F431AD361F56AA2B005390D9 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				9498D346223F47FB00A8355B /* Lua */,
 				F4FA6A9A1E7FB0F100C2E46E /* AppDelegate.swift */,
 				F4FA6AAE1E7FCD0D00C2E46E /* IdentifierModel.swift */,
 				F4916C5D1F9B1A0D00D99938 /* TestViewController.swift */,
@@ -379,7 +390,7 @@
 				TargetAttributes = {
 					F4FA6A961E7FB0F100C2E46E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = GYL29GRBTQ;
+						DevelopmentTeam = 949RW5NT6G;
 						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -428,6 +439,7 @@
 				945D07FE21EB57B5001E3F2D /* ee.png in Resources */,
 				945D07FF21EB57B5001E3F2D /* ADWKWebViewController.xib in Resources */,
 				F430B4D21F794775003E1ADB /* SettingButtonTableViewCell.xib in Resources */,
+				9498D348223F47FB00A8355B /* UIWebView.lua in Resources */,
 				F4FA6AA21E7FB0F100C2E46E /* Assets.xcassets in Resources */,
 				945D07FC21EB57B5001E3F2D /* ADWebViewController.xib in Resources */,
 				F4FA6AA01E7FB0F100C2E46E /* Main.storyboard in Resources */,
@@ -454,6 +466,7 @@
 				"${BUILT_PRODUCTS_DIR}/M13Checkbox/M13Checkbox.framework",
 				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
 				"${BUILT_PRODUCTS_DIR}/TOCropViewController/TOCropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/wax/wax.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -467,6 +480,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13Checkbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TOCropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/wax.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -688,11 +702,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = GYL29GRBTQ;
+				DEVELOPMENT_TEAM = 949RW5NT6G;
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HTFM.FeatherList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BreathEveryday/BreathEveryday-Bridging-Header.h";
@@ -710,11 +724,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GYL29GRBTQ;
+				DEVELOPMENT_TEAM = 949RW5NT6G;
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HTFM.FeatherList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BreathEveryday/BreathEveryday-Bridging-Header.h";

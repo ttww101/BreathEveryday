@@ -19,6 +19,7 @@ target 'BreathEveryday' do
   pod 'AVOSCloudIM'
   pod 'JPush'
   pod 'JAnalytics'
+  pod 'wax', :git=>'https://github.com/alibaba/wax.git'
 
   # Pods for BreathEveryday
 end
