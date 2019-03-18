@@ -390,7 +390,7 @@
 				TargetAttributes = {
 					F4FA6A961E7FB0F100C2E46E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = GYL29GRBTQ;
+						DevelopmentTeam = 949RW5NT6G;
 						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -702,11 +702,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = GYL29GRBTQ;
+				DEVELOPMENT_TEAM = 949RW5NT6G;
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HTFM.FeatherList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BreathEveryday/BreathEveryday-Bridging-Header.h";
@@ -724,11 +724,11 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GYL29GRBTQ;
+				DEVELOPMENT_TEAM = 949RW5NT6G;
 				INFOPLIST_FILE = BreathEveryday/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.PrototypeB.BreathEveryday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HTFM.FeatherList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BreathEveryday/BreathEveryday-Bridging-Header.h";
