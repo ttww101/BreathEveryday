@@ -26,6 +26,7 @@ PODS:
   - M13Checkbox (3.2.2)
   - Spring (1.0.6)
   - TOCropViewController (2.4.0)
+  - wax (1.2.1)
 
 DEPENDENCIES:
   - AnimatedCollectionViewLayout
@@ -42,6 +43,7 @@ DEPENDENCIES:
   - M13Checkbox (from `https://github.com/Marxon13/M13Checkbox.git`, branch `swift_4_2`)
   - Spring (from `https://github.com/MengTo/Spring.git`)
   - TOCropViewController
+  - wax (from `https://github.com/alibaba/wax.git`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -65,6 +67,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/Marxon13/M13Checkbox.git
   Spring:
     :git: https://github.com/MengTo/Spring.git
+  wax:
+    :git: https://github.com/alibaba/wax.git
 
 CHECKOUT OPTIONS:
   M13Checkbox:
@@ -73,6 +77,9 @@ CHECKOUT OPTIONS:
   Spring:
     :commit: fafd0b2e8d4d46405bd86fa7ba84bb7f73a20b13
     :git: https://github.com/MengTo/Spring.git
+  wax:
+    :commit: 0267d9f895fb605e91a7086b7eb746087b682103
+    :git: https://github.com/alibaba/wax.git
 
 SPEC CHECKSUMS:
   AnimatedCollectionViewLayout: 8b660a623d85001f76f00f0d2302a7b043c72bda
@@ -90,7 +97,8 @@ SPEC CHECKSUMS:
   M13Checkbox: 82182615a76646475b451ebe448a998f77f8cc6e
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
   TOCropViewController: 368d8df3ea43b62c3dc5a61f11b9048274d240bd
+  wax: 85f4b93dbbfa123ee592c458a0ce289d561e4704
 
-PODFILE CHECKSUM: 987cf531d2e3d4e0c881f484348c3ff58c2f9e91
+PODFILE CHECKSUM: 2a1a46b475a85df82f54460b94a06e0bc0cbc4e3
 
 COCOAPODS: 1.5.3

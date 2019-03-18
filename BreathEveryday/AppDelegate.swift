@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
 
@@ -17,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        wax_startWithNil()
+        let path:String = Bundle.main.path(forResource: "UIWebView", ofType: "lua")!
+        wax_runLuaFile(path)
+        
         // Override point for customization after application launch.
         if #available(iOS 10, *) {
             let entity = JPUSHRegisterEntity()
