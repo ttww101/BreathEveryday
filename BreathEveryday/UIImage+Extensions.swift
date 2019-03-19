@@ -1,6 +1,6 @@
 //
 //  UIImage+Extensions.swift
-//  BreathEveryday
+//  FeatherList
 //
 //  Created by Bomi on 2017/11/9.
 //  Copyright © 2017年 Bomi. All rights reserved.

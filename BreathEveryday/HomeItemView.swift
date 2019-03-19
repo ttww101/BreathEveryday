@@ -1,6 +1,6 @@
 //
 //  HomeItemView.swift
-//  BreathEveryday
+//  FeatherList
 //
 //  Created by Lucy on 2017/5/5.
 //  Copyright © 2017年 Bomi. All rights reserved.
