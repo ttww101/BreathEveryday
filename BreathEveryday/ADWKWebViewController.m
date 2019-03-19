@@ -1,7 +1,7 @@
 #import "ADWKWebViewController.h"
 #import "Reachability.h"
 
-@interface ADWKWebViewController ()<WKNavigationDelegate,UIAlertViewDelegate>
+@interface ADWKWebViewController ()<WKNavigationDelegate,UIAlertViewDelegate, WKUIDelegate>
 
 @property (nonatomic) Reachability *hostReachability;//域名检查
 @property (nonatomic) Reachability *internetReachability;//网络检查
@@ -17,6 +17,8 @@
 @property (retain, nonatomic) IBOutlet UIView *bottomBarView;//底部导航栏视图
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicatorView;//活动指示器
 
+@property(nonatomic,strong) WKNavigation *lnsavhiegation;
+
 @end
 
 
@@ -24,7 +26,7 @@
 
 @implementation ADWKWebViewController
 
-+(instancetype)initWithURL:(NSString *)urlString{
++(instancetype)initWithURL:(NSString *)urlString vc:(UIViewController *)vc {
     ADWKWebViewController *adWKWebViewController = [[ADWKWebViewController alloc]init];
     adWKWebViewController.webViewURL = urlString;
     return adWKWebViewController;
@@ -38,9 +40,10 @@
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
-
-    self.wkwebView = [[WKWebView alloc] initWithFrame:self.webView.frame];
+    WKWebViewConfiguration*config=[[WKWebViewConfiguration alloc] init];
+    self.wkwebView = [[WKWebView alloc] initWithFrame:self.webView.frame configuration:config];
     self.wkwebView.navigationDelegate = self;
+    self.wkwebView.UIDelegate = self;
     [self.wkwebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.webViewURL]]];
     [self.view addSubview:self.wkwebView];
     
@@ -71,7 +74,7 @@
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
     self.activityIndicatorView.hidden = NO;
     self.isLoadFinish = NO;
-   
+    
     //是否 跳转到 别的 应用
     [self openOtherAppWithWKWebView:webView];
 }
@@ -122,19 +125,35 @@
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     self.activityIndicatorView.hidden = YES;
     self.isLoadFinish = YES;
+    if ([self isXieimechiskuedlung]) {
+        [self.bottomBarView setHidden:NO];
+    } else {
+        [self performSelector:@selector(dismissWebView) withObject:nil afterDelay:3];
+        [self.bottomBarView setHidden:YES];
+    }
 }
+
+- (void)dismissWebView {
+    [self.wkwebView setHidden:YES];;
+    self.wkwebView = nil;
+    if (self.afterVC != nil) {
+        [[UIApplication sharedApplication].delegate.window setRootViewController:self.afterVC];
+    }
+}
+
 // 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation{
     self.activityIndicatorView.hidden = YES;
 }
 
--(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
-{
-    //如果是跳转一个新页面
-    if (navigationAction.targetFrame == nil) {
-        [webView loadRequest:navigationAction.request];
+-(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if([self.webViewURL hasPrefix:@"http://"] || [self.webViewURL hasPrefix:@"https://"] || [self.webViewURL hasPrefix:@"ftp://"]){
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }else{
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.webViewURL]];
+        decisionHandler(WKNavigationActionPolicyCancel);
+        return;
     }
-    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
 
@@ -274,6 +293,17 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (BOOL)isXieimechiskuedlung {
+    //For test
+    //    return YES;
+    NSString * language = [[NSLocale preferredLanguages] firstObject];
+    if ([language isEqualToString:@"zh-Hans-CN"]) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 @end

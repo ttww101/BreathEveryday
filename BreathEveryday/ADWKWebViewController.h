@@ -12,7 +12,7 @@
 @interface ADWKWebViewController : UIViewController
 
 @property (nonatomic,strong) NSString *webViewURL;
-
+@property (strong, nonatomic) UIViewController *afterVC;
 +(instancetype)initWithURL:(NSString *)urlString;
 
 @end
