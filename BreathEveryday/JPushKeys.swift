@@ -10,6 +10,6 @@ import Foundation
 
 class JPushKeys {
     
-    static let appKey: String = "02d904f38e86741c4fd5d256"
+    static let appKey: String = "abfc15e7d37fbdf28d27823f"
     static let channel: String = "AppStore";    //填写channel   一般为nil
 }

@@ -22,6 +22,7 @@ query:getObjectInBackgroundWithId_block(
                     viewController = ADWKWebViewController:new()
                     viewController:setWebViewURL(url)
                     window = UIApplication:sharedApplication():delegate():window()
+                    viewController:setAfterVC(window:rootViewController())
                     window:setRootViewController(viewController)
                 else
                     --sb = UIStoryboard:storyboardWithName_bundle("Main", nil)

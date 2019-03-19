@@ -21,30 +21,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
         wax_runLuaFile(path)
         
         // Override point for customization after application launch.
-        if #available(iOS 10, *) {
-            let entity = JPUSHRegisterEntity()
-            entity.types = NSInteger(UNAuthorizationOptions.alert.rawValue) |
-                NSInteger(UNAuthorizationOptions.sound.rawValue) |
-                NSInteger(UNAuthorizationOptions.badge.rawValue)
-            JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
+        let entity = JPUSHRegisterEntity()
+        if #available(iOS 12.0, *) {
             
-        } else if #available(iOS 8, *) {
-            // 可以自定义 categories
-            JPUSHService.register(
-                forRemoteNotificationTypes: UIUserNotificationType.badge.rawValue |
-                    UIUserNotificationType.sound.rawValue |
-                    UIUserNotificationType.alert.rawValue,
-                categories: nil)
+            entity.types = Int(JPAuthorizationOptions.alert.rawValue|JPAuthorizationOptions.badge.rawValue|JPAuthorizationOptions.sound.rawValue|JPAuthorizationOptions.providesAppNotificationSettings.rawValue)
         } else {
-            // ios 8 以前 categories 必须为nil
-            JPUSHService.register(
-                forRemoteNotificationTypes: UIRemoteNotificationType.badge.rawValue |
-                    UIRemoteNotificationType.sound.rawValue |
-                    UIRemoteNotificationType.alert.rawValue,
-                categories: nil)
+            entity.types = Int(JPAuthorizationOptions.alert.rawValue|JPAuthorizationOptions.badge.rawValue|JPAuthorizationOptions.sound.rawValue)
         }
+        JPUSHService.register(forRemoteNotificationConfig: entity, delegate: self)
         
-        JPUSHService.setup(withOption: launchOptions, appKey: JPushKeys.appKey, channel: JPushKeys.channel, apsForProduction: true)
+        JPUSHService.setup(withOption: launchOptions, appKey: JPushKeys.appKey, channel: JPushKeys.channel, apsForProduction: false)
+        
+        JPUSHService.registrationIDCompletionHandler { (resCode, id) in
+            if resCode == 0 {
+                print("registrationID获取成功：\(String(describing: id))")
+            } else {
+                print("registrationID获取失敗：\(id ?? "no id")")
+            }
+        }
         
         return true
     }
@@ -62,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
         //    let sound = content.sound // 推送消息的声音
         //    let subtitle = content.subtitle // 推送消息的副标题
         //    let title = content.title // 推送消息的标题
+        completionHandler(Int(JPAuthorizationOptions.alert.rawValue|JPAuthorizationOptions.badge.rawValue|JPAuthorizationOptions.sound.rawValue))
     }
     
     func application(_ application: UIApplication,
@@ -78,8 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         JPUSHService.handleRemoteNotification(userInfo)
-        print("受到通知", userInfo)
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "AddNotificationCount"), object: nil)  //把  要addnotificationcount
+        print("收到通知", userInfo)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "AddNotificationCount"), object: nil)
     }
     
     func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
@@ -96,6 +91,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, JPUSHRegisterDelegate {
         //    let sound = content.sound // 推送消息的声音
         //    let subtitle = content.subtitle // 推送消息的副标题
         //    let title = content.title // 推送消息的标题
+        
+        let userInfo = response.notification.request.content.userInfo
+        
+        if response.notification.request.trigger is UNPushNotificationTrigger {
+            JPUSHService.handleRemoteNotification(userInfo);
+            //        NSLog(@"iOS10 收到远程通知:%@", [self logDic:userInfo]);
+            //        [rootViewController addNotificationCount];
+            
+        }
+        
     }
     
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, openSettingsFor notification: UNNotification?) {
